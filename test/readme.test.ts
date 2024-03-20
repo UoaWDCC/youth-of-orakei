@@ -12,13 +12,16 @@ function readMarkdownFile(filePath: string): string | null {
 }
 
 const readMeFilePath = 'README.md';
+const readMeText = readMarkdownFile(readMeFilePath);
 
 test('README exists', () => {
-	const string = readMarkdownFile(readMeFilePath);
-	expect(string).toBeDefined();
+	expect(readMeText).toBeDefined();
 })
 
-test('Houston exists', () => {
-	const string = readMarkdownFile(readMeFilePath);
-	expect(string).toContain("Houston");
+test('Houston is on the README', () => {
+	expect(readMeText).toContain("Houston");
+})
+
+test('Chris is on the README', () => {
+	expect(readMeText).toContain("Chris");
 })
