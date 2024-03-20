@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "test": "vitest",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -24,6 +25,7 @@
     "vitest": "^1.4.0"
   },
   "devDependencies": {
-    "@flydotio/dockerfile": "^0.5.2"
+    "@flydotio/dockerfile": "^0.5.2",
+    "@types/node": "^20.11.30"
   }
 }
