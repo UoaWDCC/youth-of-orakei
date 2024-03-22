@@ -30,6 +30,10 @@ test('Eleanor is on the README', () => {
 	expect(readMeText).toContain("Houston");
 })
   
+test('Becky is on the README', () => {
+	expect(readMeText).toContain("Becky");
+})
+
 test('Emmanuel is on the README', () => {
 	expect(readMeText).toContain("Emmanuel");
 })
