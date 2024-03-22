@@ -34,6 +34,7 @@ All commands are run from the root of the project, from a terminal:
 Houston
 Chris Valenzuela
 Yash Kumar
+Emmanuel Araba
 Anna Lin
 Kimberley Zhu
 Owen Li
