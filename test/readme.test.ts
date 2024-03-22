@@ -26,9 +26,14 @@ test('Chris is on the README', () => {
 	expect(readMeText).toContain("Chris");
 })
 
-ORAKEI-12-AddAnton
+test('Owen is on the README', () => {
+	expect(readMeText).toContain("Owen");
+})
+
 test('Anton is on the README', () => {
 	expect(readMeText).toContain("Anton");
+})
+
 test('Andrew is on the README', () => {
     expect(readMeText).toContain("Andrew");
 })
