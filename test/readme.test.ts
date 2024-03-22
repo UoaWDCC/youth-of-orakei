@@ -26,10 +26,12 @@ test('Chris is on the README', () => {
 	expect(readMeText).toContain("Chris");
 })
 
+test('Becky is on the README', () => {
+	expect(readMeText).toContain("Becky");
+})
+
 test('Emmanuel is on the README', () => {
 	expect(readMeText).toContain("Emmanuel");
-
-  expect(readMeText).toContain("Chris");
 })
 
 test('Kimberley is on the README', () => {
