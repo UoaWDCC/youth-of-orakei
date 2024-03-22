@@ -29,3 +29,15 @@ test('Chris is on the README', () => {
 test('Kimberley is on the README', () => {
   expect(readMeText).toContain("Kimberley Zhu");
 })
+
+test('Owen is on the README', () => {
+	expect(readMeText).toContain("Owen");
+})
+
+test('Anton is on the README', () => {
+	expect(readMeText).toContain("Anton");
+})
+
+test('Andrew is on the README', () => {
+    expect(readMeText).toContain("Andrew");
+})
