@@ -1,4 +1,6 @@
 ---
+import { getMembers } from '../scripts/getMembers';
+let members = getMembers();
 ---
 
 <html lang="en">
@@ -10,7 +12,7 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
-		<a href="/members">Members</a>
+		<h1>Members</h1>
+		<p>{members}</p>
 	</body>
 </html>
