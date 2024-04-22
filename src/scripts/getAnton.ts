@@ -20,6 +20,8 @@ export async function getAnton(): Promise<any[]> {
     const blocks = response.results;
     
     var full_text = "";
+
+    console.log("yeh")
     
     for (var i = 0; i < blocks.length; i++) {
         var current_block = blocks[i] as block;
