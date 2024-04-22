@@ -1,15 +1,12 @@
 import { Client } from "@notionhq/client";
 import type { GetPageResponse } from "@notionhq/client/build/src/api-endpoints";
 
-type MemberData = {
-  team: string;
-  desc: string;
+type CoverData = {
   name: string;
-  cover?: string;
-  url?: string;
+  cover: string;
 }
 
-export async function getMembers(): Promise<MemberData[]> {
+export async function getCovers(): Promise<CoverData[]> {
 
     if (!import.meta.env.NOTION_TOKEN || !import.meta.env.NOTION_MEMBERS_ID)
     throw new Error("Missing secret(s)");
@@ -29,11 +26,10 @@ export async function getMembers(): Promise<MemberData[]> {
       });    
 
     // @ts-ignore
-    const members: MemberData[] = [{
-      team: "temp",
-      desc: "temp",
+    const covers: CoverData[] = [{
       name: "temp",
+      cover: "temp",
     }];
 
-    return members;
+    return covers;
 }
