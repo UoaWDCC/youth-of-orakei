@@ -5,3 +5,29 @@ body {
   padding: 1rem;
   line-height: 1.5;
 }
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  padding: 10px 0; /* 10px top and bottom, 0 left and right */
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+nav ul li a:hover {
+  text-decoration: none;
+  color: black;
+}
