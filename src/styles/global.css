@@ -6,25 +6,62 @@ body {
   line-height: 1.5;
 }
 
-header{
+
+.logo {
+  font-size: 32px;
+  color: #294E03;
+  text-decoration: none;
+  font-family: "Overpass", sans-serif;
+
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Overpass", sans-serif;
+}
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: left;
-  padding: 10px 0; /* 10px top and bottom, 0 left and right */
+  padding: 10px 100px; /* 10px top and bottom, 0 left and right */
   color: #F8F8F8;
   border-bottom: 1px solid black;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100; 
+
 }
+.img-logo{
+  
+  border-radius: 50%;
+  margin-right: 10px;
 
-
-nav ul li a {
-  text-decoration: none;
+}
+.logo {
+  font-size: 32px;
   color: #294E03;
-  font: Overpass;
-  padding-left: 10px;
+  text-decoration: none;
+  font-family: "Overpass", sans-serif;
+  font-weight: bold;
+
+}
+.navbar a{
+  color: #294E03;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 18px;
 }
 
-nav ul li a:hover {
-  text-decoration: none;
-  color: black;
+
+
+
+.overpass-font {
+  font-family: "Overpass", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
