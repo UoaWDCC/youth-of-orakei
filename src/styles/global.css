@@ -5,21 +5,13 @@ body {
   padding: 1rem;
   line-height: 1.5;
 }
-
-
-.logo {
-  font-size: 32px;
-  color: #294E03;
-  text-decoration: none;
-  font-family: "Overpass", sans-serif;
-
-}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Overpass", sans-serif;
 }
+
 .header{
   position: fixed;
   top: 0;
@@ -34,28 +26,52 @@ body {
   z-index: 100; 
 
 }
-.img-logo{
-  
-  border-radius: 50%;
-  margin-right: 10px;
-
-}
 .logo {
   font-size: 32px;
   color: #294E03;
   text-decoration: none;
   font-family: "Overpass", sans-serif;
   font-weight: bold;
+  display: inline-block;
+  vertical-align: middle;
 
 }
+
+.img-logo, .txt-logo{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+
+}
+.img-logo{
+  width: 50px;
+  height: 50px;
+}
 .navbar a{
+  position: relative;
   color: #294E03;
   text-decoration: none;
   margin-left: 20px;
   font-size: 18px;
+  margin-left : 40px;
+  font-family: 'Overpass', sans-serif;
 }
 
+.navbar a::before{
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  font-weight: bold;
+  transition: .3s;
+}
 
+.navbar a:hover::before{
+  width: 100%;
+}
 
 
 .overpass-font {
