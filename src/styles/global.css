@@ -1,7 +1,46 @@
+:root{
+
+  /* YOO colors */
+  --YOO-Green-Dark: #142601;
+  --YOO-Green-Primary: #294E03;
+  --YOO-Green-Medium: #618F32;
+  --YOO-Green-Light: #96BF70;
+  --YOO-Green-Lightest: #C8E4AE;
+  --YOO-Blue-Dark: #55BBCF;
+  --YOO-Blue-Primary: #A6DFEA;
+  --YOO-Blue-Light: #D9EBEF;
+  --YOO-Red-Dark: #E36866;
+  --YOO-Red-Primary: #ECB9B8;
+  --YOO-Red-Light: #FFE4E4;
+  --YOO-Yellow-Dark: #F3D746;
+  --YOO-Yellow-Primary: #F2EF89;
+  --YOO-Yellow-Light: #F9F7CE;
+
+  /* General text colors */
+  --text-dark: #292D2A;
+  --text-medium: #616562;
+  --text-light: #AAB0AB;
+
+  /* Hovers and links (TBD)*/
+  --text-active: #111111;
+
+  /* Font sizes */
+  --fontsize-h1: 3rem;
+  --fontsize-h2: 2.5rem;
+  --fontsize-h3: 2.1rem;
+  --fontsize-h4: 1.75rem;
+  --fontsize-h5: 1.44rem;
+  --fontsize-lrg: 1.2rem;
+  --fontsize-reg: 1rem;
+  --fontsize-sml: 0.8rem;
+}
+
 body {
   margin: 0 auto;
   width: 100%;
   max-width: 80ch;
   padding: 1rem;
   line-height: 1.5;
+
+  color: var(--text-dark);
 }
