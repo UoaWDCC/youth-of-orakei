@@ -7,6 +7,14 @@ import "../styles/global.css";
   <head>
     <style>
       /* HTML Classes below: */
+      .person-card {
+        background-color: rgb(193, 255, 145);
+        color: rgb(12, 42, 7);
+        border: 2px solid black;
+        border-radius: 13%;
+        margin: 20px;
+        padding: 20px;
+      }
     </style>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -17,26 +25,32 @@ import "../styles/global.css";
 
   <body>
     <div>
-      <h1>INTRODUCING OUR TEAMS</h1>
+      <h1 class="title">INTRODUCING OUR TEAMS</h1>
     </div>
-    <div class="nav">Teams</div>
+    <div class="nav">
+      <button>LEADERSHIP</button>
+      <button>COMMUNICATIONS</button>
+      <button>PROJECTS</button>
+    </div>
     <div class="leadership">
       <div class="left1">
         <h2>Leadership Team</h2>
-        <p>Description of the leadership team...</p>
+        <p>
+          Description of the leadership team... Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Integer sit amet fringilla libero.
+          Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
+          turpis ante.
+        </p>
       </div>
       <div class="right1">
-        <div class="person-card">
-          <p>Name+Description</p>
-        </div>
-        <div class="person-card">
-          <p>Name+Description</p>
-        </div>
-        <div class="person-card">
-          <p>Name+Description</p>
-        </div>
-        <div class="person-card">
-          <p>Name+Description</p>
+        <div class="people-c1">
+          <div class="person-card">
+            <p>Name+Description</p>
+          </div>
+          <div class="person-card">
+            <p>Name+Description</p>
+          </div>
         </div>
       </div>
     </div>
