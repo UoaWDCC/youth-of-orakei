@@ -1,0 +1,78 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Contact Page</title>
+        <style>
+            body {
+                background-color: #C8E4AE;
+                margin: auto;
+            }
+            .content-container{
+                display: flex;
+                justify-content: center;
+                column-gap: 40px;
+            }
+            h1 {
+                font-size: 48;
+                font-weight: bolder;
+                padding:5%;
+                margin-top: 5%;
+                margin-left: 250px;
+            }
+            label {
+                font-size: 33;
+            }
+            form{
+                padding-left: 10%;
+
+            }
+            .form-group{
+                padding: 1%;
+            }
+            img{
+               width: 300px;
+            }
+            button{
+                background-color: #D9EBEF;
+                padding: 5px;
+            }
+            input, textarea{
+                background-color:#D9EBEF ;
+            }
+
+        </style>
+	</head>
+	<body>
+		<h1>Contact Us</h1>
+        <div class = "content-container">
+        <form>
+            <div class="form-group">
+                <label for="full-name">Full Name</label> <br>
+                <input type="text" id="full-name" name="full_name"><br>
+            </div>
+            <div class="form-group">
+                <label for="school">School</label><br>
+                <input type="text" id="school" name="school"><br>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email"><br>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label><br>
+                <textarea id="message" name="message"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit"> Submit</button>
+            </div>
+        </form>
+
+        <div class="contact-image"> 
+            <img src="src/pages/images/contact-us-stock-image.png" alt="contact us stock image">
+        </div>
+    </div>
+	</body>
+</html>
