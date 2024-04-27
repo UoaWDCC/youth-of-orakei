@@ -36,20 +36,22 @@ body {
   text-decoration: none;
   font-family: "Overpass", sans-serif;
   font-weight: bolder;
-  display: inline-block;
+  display: inline-flex;
   vertical-align: middle;
 
 }
 
 .img-logo, .txt-logo{
-  display: inline-block;
+  display: inline-flex;
   vertical-align: middle;
 
 }
 .img-logo{
   width: 80px;
   height: auto;
+  display: inline-flex;
 }
+
 .navbar a{
   position: relative;
   color: #294E03;
@@ -59,6 +61,7 @@ body {
   margin-left : 40px;
   font-family: "Overpass", sans-serif;
   font-weight: bold;
+  display: inline-flex;
 }
 
 .navbar a::before{
@@ -68,9 +71,10 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: black;
+  background-color: #294E03;
   font-weight: bold;
   transition: .3s;
+  display: flex;
 }
 
 .navbar a:hover::before{
