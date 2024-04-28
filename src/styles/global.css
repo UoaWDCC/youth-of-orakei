@@ -5,11 +5,24 @@
 .title {
   text-align: center;
   font-size: 250%;
+  background-color: #CE4C4A;
 }
 
 .nav {
   text-align: center;
   font-size: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.lead-button,
+.proj-button,
+.com-button {
+  border-radius: 50px;
+  padding: 6px;
+  width: 300px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .leadership,
@@ -19,8 +32,50 @@
   margin: auto;
   margin-top: 5vh;
   display: flex;
-  /* background-color: pink; */
   height: auto;
+}
+
+.leadership,
+.lead-button {
+  background-color: #96BF70;
+}
+
+.communications,
+.com-button {
+  background-color: #A6DFEA;
+}
+
+.projects,
+.proj-button {
+  background-color: #ECB9B8;
+}
+
+.description-box-lead {
+  background-color: #C8E4AE;
+  border-radius: 20px;
+}
+
+.description-box-coms {
+  background-color: #D9EBEF;
+  border-radius: 20px;
+}
+
+.description-box-proj {
+  background-color: #FFE4E4;
+  border-radius: 20px;
+}
+
+.learn-more-proj,
+.project-team-nav button {
+  background-color: #CE4C4A;
+}
+
+.learn-more-coms {
+  background-color: #55BBCF;
+}
+
+.learn-more-lead {
+  background-color: #618F32;
 }
 
 .right1,
@@ -46,7 +101,7 @@
 
 .left1 h2,
 .right2 h2 {
-  font-size: 100%;
+  font-size: 300%;
 }
 
 .left1 button,
