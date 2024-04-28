@@ -7,13 +7,35 @@ import "../styles/global.css";
   <head>
     <style>
       /* HTML Classes below: */
+
+      .people-c1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-left: 0;
+        width: 100%;
+      }
+
+      .person-card li {
+        margin-bottom: 15px;
+        width: 40%;
+      }
+
+      .person-card img {
+        border-radius: 50%;
+        width: 170px;
+      }
+
+      .person-card p {
+        color: rgb(12, 42, 7);
+        border-radius: 50px;
+      }
+
       .person-card {
         background-color: rgb(193, 255, 145);
-        color: rgb(12, 42, 7);
-        border: 2px solid black;
-        border-radius: 13%;
-        margin: 20px;
+        margin: auto;
         padding: 20px;
+        flex: 0 1 calc(33.33% - 10px);
       }
     </style>
     <meta charset="utf-8" />
@@ -34,7 +56,7 @@ import "../styles/global.css";
     </div>
     <div class="leadership">
       <div class="left1">
-        <h2>Leadership Team</h2>
+        <h2>LEADERSHIP TEAM</h2>
         <p>
           Description of the leadership team... Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Integer sit amet fringilla libero.
@@ -44,14 +66,27 @@ import "../styles/global.css";
         </p>
       </div>
       <div class="right1">
-        <div class="people-c1">
-          <div class="person-card">
+        <ul class="people-c1">
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p>Sad Cat. Is sad all the time.</p>
+          </li>
+          <li class="person-card">
             <p>Name+Description</p>
-          </div>
-          <div class="person-card">
+          </li>
+          <li class="person-card">
             <p>Name+Description</p>
-          </div>
-        </div>
+          </li>
+          <li class="person-card">
+            <p>Name+Description</p>
+          </li>
+          <li class="person-card">
+            <p>Name+Description</p>
+          </li>
+          <li class="person-card">
+            <p>Name+Description</p>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="communications">

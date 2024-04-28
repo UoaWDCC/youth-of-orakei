@@ -2,18 +2,21 @@
   border: 1px solid black;
 }
 
+.title {
+  text-align: center;
+}
+
 .nav {
-  padding-left: 25%;
-  padding-right: 25%;
+  text-align: center;
 }
 
 .leadership {
-  width: 900px;
+  width: auto;
   margin: auto;
   margin-top: 5vh;
   display: flex;
   /* background-color: pink; */
-  height: 700px;
+  height: 500px;
 }
 
 .right1 {
@@ -24,17 +27,16 @@
 }
 
 .right1 {
-  width: 280px;
+  width: auto;
 }
 
 .left1 {
-  width: 280px;
+  width: 375px;
 }
 
 body {
   margin: 0 auto;
   width: 100%;
-  max-width: 80ch;
   padding: 1rem;
   line-height: 1.5;
 }
