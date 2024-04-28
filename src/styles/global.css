@@ -4,10 +4,12 @@
 
 .title {
   text-align: center;
+  font-size: 250%;
 }
 
 .nav {
   text-align: center;
+  font-size: xx-large;
 }
 
 .leadership {
@@ -31,7 +33,19 @@
 }
 
 .left1 {
-  width: 375px;
+  width: 1400px;
+}
+
+.left1 h2 {
+  font-size: xx-large;
+}
+
+.left1 button {
+  font-size: large;
+  width: 100%;
+  border-radius: 50px;
+  position: relative;
+  margin-top: 100%;
 }
 
 body {
