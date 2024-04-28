@@ -12,16 +12,19 @@
   font-size: 100%;
 }
 
-.leadership {
+.leadership,
+.communications,
+.projects {
   width: auto;
   margin: auto;
   margin-top: 5vh;
   display: flex;
   /* background-color: pink; */
-  height: 500px;
+  height: auto;
 }
 
-.right1 {
+.right1,
+.left2 {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -29,21 +32,25 @@
   margin-left: auto;
 }
 
-.right1 {
+.right1,
+.left2 {
   flex: 1;
 }
 
-.left1 {
+.left1,
+.right2 {
   flex: 0 0 auto;
   width: 375px;
   float: left;
 }
 
-.left1 h2 {
+.left1 h2,
+.right2 h2 {
   font-size: 100%;
 }
 
-.left1 button {
+.left1 button,
+.right2 button {
   font-size: large;
   width: 100%;
   border-radius: 50px;

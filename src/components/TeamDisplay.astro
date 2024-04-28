@@ -11,7 +11,7 @@ import "../styles/global.css";
       .people-c1 {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
+        /* justify-content: space-around; */
         padding-left: 0;
         width: 100%;
       }
@@ -40,6 +40,18 @@ import "../styles/global.css";
         flex: 0 1 calc(33.33% - 20px);
         text-align: center;
       }
+
+      .project-team-nav {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-button {
+        width: 360px;
+        /* change width later... */
+        margin-top: 10%;
+        border-radius: 50px;
+      }
     </style>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -57,7 +69,7 @@ import "../styles/global.css";
       <button>COMMUNICATIONS</button>
       <button>PROJECTS</button>
     </div>
-    <div class="projects">
+    <div class="leadership">
       <div class="left1">
         <h2>LEADERSHIP TEAM</h2>
         <p>
@@ -102,10 +114,30 @@ import "../styles/global.css";
         </ul>
       </div>
     </div>
+
     <div class="communications">
-      <h2>Communications Team</h2>
+      <div class="left2">
+        <ul class="people-c1">
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p>Name+Description</p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p>Name+Description</p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p>Name+Description</p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p>Name+Description</p>
+          </li>
+        </ul>
+      </div>
       <div class="right2">
-        <h3>Communications Team Description</h3>
+        <h2>COMMUNICATIONS TEAMS</h2>
         <p>
           Description of the communications team... Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Integer sit amet fringilla libero.
@@ -115,12 +147,8 @@ import "../styles/global.css";
         </p>
         <button>LEARN MORE</button>
       </div>
-      <div class="left2">
-        <ul class="people-c1">
-          <!-- Add your person cards for the communications team here -->
-        </ul>
-      </div>
     </div>
+
     <div class="projects">
       <div class="left1">
         <h2>PROJECTS TEAM</h2>
@@ -166,6 +194,23 @@ import "../styles/global.css";
               Is sad all the time. <br />
               Goes to sad cat school
             </p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p>
+              Sad Cat.<br />
+              Is sad all the time. <br />
+              Goes to sad cat school
+            </p>
+          </li>
+          <li class="nav-card">
+            <div class="project-team-nav">
+              <button class="project-button">Team 1</button>
+              <button class="project-button">Team 2</button>
+              <button class="project-button">Team 3</button>
+              <button class="project-button">Team 4</button>
+              <button class="project-button">Team 5</button>
+            </div>
           </li>
         </ul>
       </div>
