@@ -9,7 +9,7 @@
 
 .nav {
   text-align: center;
-  font-size: xx-large;
+  font-size: 100%;
 }
 
 .leadership {
@@ -26,18 +26,21 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
+  margin-left: auto;
 }
 
 .right1 {
-  width: auto;
+  flex: 1;
 }
 
 .left1 {
-  width: 1400px;
+  flex: 0 0 auto;
+  width: 375px;
+  float: left;
 }
 
 .left1 h2 {
-  font-size: xx-large;
+  font-size: 100%;
 }
 
 .left1 button {
