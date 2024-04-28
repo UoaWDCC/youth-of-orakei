@@ -36,8 +36,7 @@ export async function getAnton(): Promise<any[]> {
         // Checks if its paragraph
         else if (current_block.type === "paragraph") {
           // Loops through the paragraph
-          // Idk why its giving me an error here
-          for (const text of current_block.paragraph.rich_text) {
+          for (const text of current_block.paragraph?.rich_text || []) {
             let currentText = text.text.content;
             // Checks bold + italics and formats it correctly
             if (text.annotations.bold && text.annotations.italic) {
