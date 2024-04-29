@@ -1,0 +1,64 @@
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    padding: 10px 100px; /* 10px top and bottom, 0 left and right */
+    color: #F8F8F8;
+    border-bottom: 3px solid white;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    background-color: white;
+}
+.logo {
+    font-size: 40px;
+    color: #294E03;
+    text-decoration: none;
+    font-family: "Overpass", sans-serif;
+    font-weight: bolder;
+    display: inline-flex;
+    vertical-align: middle;
+
+}
+
+.img-logo, .txt-logo{
+    display: inline-flex;
+    vertical-align: middle;
+
+}
+.img-logo{
+    width: 80px;
+    height: auto;
+    display: inline-flex;
+}
+
+.navbar a{
+    position: relative;
+    color: #294E03;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 18px;
+    margin-left : 40px;
+    font-family: "Overpass", sans-serif;
+    font-weight: bold;
+    display: inline-flex;
+}
+
+.navbar a::before{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #294E03;
+    font-weight: bold;
+    transition: .3s;
+    display: flex;
+}
+
+.navbar a:hover::before{
+    width: 100%;
+}
