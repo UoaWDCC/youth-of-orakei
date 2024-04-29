@@ -14,7 +14,7 @@
 .hero-text{
     /* Fix for navbar height allowance */
     max-width: 80ch;
-    padding: 120px 0 3rem 0;
+    padding: 3rem 0;
 }
 
 .hero-subheading{
