@@ -1,20 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
-  /* YOO colors */
-  --YOO-Green-Dark: #142601;
+  /* YOO colors (Change per YOO brand)*/
   --YOO-Green-Primary: #294E03;
+  --YOO-Blue-Primary: #A6DFEA;
+  --YOO-Red-Primary: #ECB9B8;
+  --YOO-Yellow-Primary: #F2EF89;
+
+  /* Shades and tints (Contrast reasons; don't change) */
+  --YOO-Green-Dark: #142601;
   --YOO-Green-Medium: #618F32;
   --YOO-Green-Light: #96BF70;
   --YOO-Green-Lightest: #C8E4AE;
   --YOO-Blue-Dark: #55BBCF;
-  --YOO-Blue-Primary: #A6DFEA;
   --YOO-Blue-Light: #D9EBEF;
   --YOO-Red-Dark: #ce4c4a;
-  --YOO-Red-Primary: #ECB9B8;
   --YOO-Red-Light: #FFE4E4;
   --YOO-Yellow-Dark: #F3D746;
-  --YOO-Yellow-Primary: #F2EF89;
   --YOO-Yellow-Light: #F9F7CE;
 
   /* General text colors */
