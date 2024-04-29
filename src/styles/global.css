@@ -56,6 +56,26 @@ body {
   font-family: 'Overpass', sans-serif;
 }
 
+h1{
+  font-size: var(--fontsize-h1);
+}
+
+h2{
+  font-size: var(--fontsize-h2);
+}
+
+h3{
+  font-size: var(--fontsize-h3);
+}
+
+h4{
+  font-size: var(--fontsize-h4);
+}
+
+h5{
+  font-size: var(--fontsize-h5);
+}
+
 .general-wrapper{
   margin: 0 auto;
   width: clamp(300px, 75%, 1300px);
