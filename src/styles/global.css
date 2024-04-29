@@ -116,10 +116,11 @@ body {
   display: flex;
   padding: 10px 100px; /* 10px top and bottom, 0 left and right */
   color: #F8F8F8;
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid white;
   align-items: center;
   justify-content: space-between;
   z-index: 100; 
+  background-color: white;
 
 }
 .logo {
