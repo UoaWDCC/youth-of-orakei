@@ -1,0 +1,49 @@
+.hero{
+    width: 100%;
+    height: 90vh;
+}
+
+.hero-bg{
+    position: absolute;
+    width: 100%;
+    height: 90vh;
+
+    z-index: -10;
+}
+
+.hero-text{
+    /* Fix for navbar height allowance */
+    max-width: 80ch;
+    padding: 120px 0 3rem 0;
+}
+
+.hero-subheading{
+    margin: 1rem 0;
+
+    font-weight: 700;
+    color: var(--YOO-Green-Medium);
+}
+
+.hero-heading{
+    font-size: var(--fontsize-h2);
+    font-weight: 900;
+    color: var(--YOO-Green-Primary);
+    line-height: 1.1;
+}
+
+.hero-image{
+    height: 25rem;
+}
+
+/* Index sections */
+.index-section{
+    padding: 5rem 0;
+}
+
+/* TODO: temporary placeholder color */
+.placeholder{
+    height: 100%;
+    border-radius: var(--common-radius);
+    background-color: #d0dae5;
+}
+
