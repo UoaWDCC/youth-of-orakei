@@ -1,19 +1,111 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
 
-body {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
-  line-height: 1.5;
+:root{
+
+  /* YOO colors */
+  --YOO-Green-Dark: #142601;
+  --YOO-Green-Primary: #294E03;
+  --YOO-Green-Medium: #618F32;
+  --YOO-Green-Light: #96BF70;
+  --YOO-Green-Lightest: #C8E4AE;
+  --YOO-Blue-Dark: #55BBCF;
+  --YOO-Blue-Primary: #A6DFEA;
+  --YOO-Blue-Light: #D9EBEF;
+  --YOO-Red-Dark: #ce4c4a;
+  --YOO-Red-Primary: #ECB9B8;
+  --YOO-Red-Light: #FFE4E4;
+  --YOO-Yellow-Dark: #F3D746;
+  --YOO-Yellow-Primary: #F2EF89;
+  --YOO-Yellow-Light: #F9F7CE;
+
+  /* General text colors */
+  --text-dark: #292D2A;
+  --text-medium: #616562;
+  --text-light: #AAB0AB;
+
+  /* Hovers and links (TBD)*/
+  --text-active: #111111;
+
+  /* Font sizes */
+  --fontsize-h1: 3rem;
+  --fontsize-h2: 2.5rem;
+  --fontsize-h3: 2.1rem;
+  --fontsize-h4: 1.75rem;
+  --fontsize-h5: 1.44rem;
+  --fontsize-lrg: 1.2rem;
+  --fontsize-reg: 1rem;
+  --fontsize-sml: 0.8rem;
+
+  /* Rounded corners */
+  --common-radius: 15px;
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Overpass", sans-serif;
+}
+
+body {
+  margin: 0 auto;
+  width: 100%;
+  line-height: 1.5;
+  color: var(--text-dark);
+  font-family: 'Overpass', sans-serif;
+}
+
+.hero{
+  width: 100%;
+  height: 85vh;
+}
+
+.general-wrapper{
+  margin: 0 auto;
+  width: clamp(300px, 75%, 1300px);
+}
+
+.hero-bg{
+  position: absolute;
+  width: 100%;
+  height: 85vh;
+
+  z-index: -10;
+}
+
+.hero-text{
+  max-width: 80ch;
+  padding: 3rem 0;
+}
+
+.hero-subheading{
+  margin: 1rem 0;
+
+  font-weight: 700;
+  color: var(--YOO-Green-Medium);
+}
+
+.hero-heading{
+  font-size: var(--fontsize-h2);
+  font-weight: 900;
+  color: var(--YOO-Green-Primary);
+  line-height: 1.1;
+}
+
+.hero-image{
+  height: 30rem;
+}
+
+/* Index sections */
+.index-section{
+  padding: 5rem 0;
+}
+
+/* TODO: temporary placeholder color */
+.placeholder{
+  height: 100%;
+  border-radius: var(--common-radius);
+  background-color: #d0dae5;
 }
 
 .header{
@@ -80,12 +172,3 @@ body {
 .navbar a:hover::before{
   width: 100%;
 }
-
-
-.overpass-font {
-  font-family: "Overpass", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
