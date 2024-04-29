@@ -1,19 +1,20 @@
 .hero{
     width: 100%;
-    height: 85vh;
+    height: 90vh;
 }
 
 .hero-bg{
     position: absolute;
     width: 100%;
-    height: 85vh;
+    height: 90vh;
 
     z-index: -10;
 }
 
 .hero-text{
+    /* Fix for navbar height allowance */
     max-width: 80ch;
-    padding: 3rem 0;
+    padding: 120px 0 3rem 0;
 }
 
 .hero-subheading{
@@ -31,7 +32,7 @@
 }
 
 .hero-image{
-    height: 30rem;
+    height: 25rem;
 }
 
 /* Index sections */
