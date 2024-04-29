@@ -1,6 +1,11 @@
 ---
 // Members Page
 import '../styles/global.css';
+import '../styles/members.css';
+
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+
 import TeamDisplay from '../components/TeamDisplay.astro';
 ---
 
@@ -13,7 +18,9 @@ import TeamDisplay from '../components/TeamDisplay.astro';
 		<title>Members</title>
 	</head>
 	<body>
+		<Header />
 		<h1>Members</h1>
 		<TeamDisplay />
+		<Footer />
 	</body>
 </html>
