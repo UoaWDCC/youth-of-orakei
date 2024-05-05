@@ -1,10 +1,10 @@
 ---
 import { getMembers } from '../scripts/getMembers';
-let members = getMembers();
+let members = await getMembers();
 import { getAnton } from '../scripts/getAnton';
-let anton = getAnton();
+let anton = await getAnton();
 import { getCovers } from '../scripts/getCovers';
-let covers = getAnton();
+let covers = await getCovers();
 ---
 
 <html lang="en">

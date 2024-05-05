@@ -1,5 +1,6 @@
 import { Client } from "@notionhq/client";
-import type { GetPageResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { GetPageResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { page } from "../types/page";
 
 type CoverData = {
   name: string;
@@ -12,10 +13,6 @@ export async function getCovers(): Promise<CoverData[]> {
     throw new Error("Missing secret(s)");
 
     const notion = new Client({ auth: import.meta.env.NOTION_TOKEN });
-
-    type Row = {
-        // Do this part
-    };
 
     const query = await notion.databases.query({
         database_id: import.meta.env.NOTION_MEMBERS_ID,
