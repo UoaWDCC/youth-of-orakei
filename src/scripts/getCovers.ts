@@ -1,10 +1,9 @@
 import { Client } from "@notionhq/client";
-import type { GetPageResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import { page } from "../types/page";
+import type { page } from "../types/page";
 
 type CoverData = {
   name: string;
-  cover: string;
+  cover: string | undefined;
 }
 
 export async function getCovers(): Promise<CoverData[]> {
@@ -22,11 +21,14 @@ export async function getCovers(): Promise<CoverData[]> {
         }]
       });    
 
-    // @ts-ignore
-    const covers: CoverData[] = [{
-      name: "temp",
-      cover: "temp",
-    }];
+    const pages = query.results as page[];
+
+    const covers: CoverData[] = pages.map((row) => {
+      return { 
+        name: row.properties ? row.properties.Name.title[0].plain_text : "",
+        cover: row.cover?.external.url
+      }
+    });
 
     return covers;
 }

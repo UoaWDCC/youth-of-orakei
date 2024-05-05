@@ -18,13 +18,12 @@ export type page = {
     archived: boolean,
     in_trash: boolean,
     properties: {  
-      Name: { id: string, type: string, title: rich_text }
+      Name: { id: string, type: string, title: rich_text[] }
       Description: { id: string, type: string, rich_text: rich_text },
       Team: { id: string, type: string, rich_text: rich_text },
     },
     url: string,
     public_url: string,
-    // Delete these
     title: Array<RichTextItemResponse>,
     description: Array<RichTextItemResponse>,
     is_inline: boolean,
