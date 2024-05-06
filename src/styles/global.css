@@ -86,7 +86,7 @@ h5{
   height: auto;
   display: inline-flex;
   filter: drop-shadow(3px 6px 5px #a3a3a3);
-
+}
 /* Some quick text color classes */
 .text-green-dark{
   color: var(--YOO-Green-Dark);
