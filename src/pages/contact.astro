@@ -1,53 +1,69 @@
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Contact Page</title>
-        <style>
-            body {
-                background-color: #C8E4AE;
-                margin: auto;
-            }
-            .content-container{
-                display: flex;
-                justify-content: center;
-                column-gap: 40px;
-            }
-            h1 {
-                font-size: 48;
-                font-weight: bolder;
-                padding:5%;
-                margin-top: 5%;
-                margin-left: 250px;
-            }
-            label {
-                font-size: 33;
-            }
-            form{
-                padding-left: 10%;
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Contact Page</title>
+    <style>
+        body {
+            background-color: #C8E4AE;
+            margin: auto;
+        }
+        .content-container{
+            display: flex;
+            justify-content: center;
+            column-gap: 40px;
+        }
+        h1 {
+            font-size: 35px;
+            font-weight: bolder;
+            padding:2%;
+            margin-top: 2%;
+            margin-left: 4%;
+        }
+        label {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        form{
+            padding-left: 10%;
+            flex: 2;
+        }
+        .form-group{
+            padding: 1%;
+        }
+        img{
+            width: 500px;
+            margin-top: 8%;
+        }
+        button{
+            background-color: #D9EBEF;
+            padding: 5px;
+            font-weight: bold;
+        }
+        input, textarea{
+        background-color: #D9EBEF;
+        width: 100%;
+        padding: 1%; 
+        font-size: 15px; 
+        border: 2px solid #A4C6B0; 
+        border-radius: 5px; 
+        box-sizing: border-box;
+    }
 
-            }
-            .form-group{
-                padding: 1%;
-            }
-            img{
-               width: 300px;
-            }
-            button{
-                background-color: #D9EBEF;
-                padding: 5px;
-            }
-            input, textarea{
-                background-color:#D9EBEF ;
-            }
+        textarea#message {
+        height: 200px;
+    }
 
-        </style>
-	</head>
-	<body>
-		<h1>Contact Us</h1>
-        <div class = "content-container">
+    .contact-image{
+        flex: 1; 
+    }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <div class = "content-container">
         <form>
             <div class="form-group">
                 <label for="full-name">Full Name</label> <br>
@@ -74,5 +90,5 @@
             <img src="src/pages/images/contact-us-stock-image.png" alt="contact us stock image">
         </div>
     </div>
-	</body>
+</body>
 </html>
