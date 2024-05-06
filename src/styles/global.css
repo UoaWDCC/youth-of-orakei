@@ -86,5 +86,30 @@ h5{
   height: auto;
   display: inline-flex;
   filter: drop-shadow(3px 6px 5px #a3a3a3);
+
+/* Some quick text color classes */
+.text-green-dark{
+  color: var(--YOO-Green-Dark);
+}
+.text-green{
+  color: var(--YOO-Green-Medium);
+}
+.text-red{
+  color: var(--YOO-Red-Dark);
+}
+.text-blue{
+  color: var(--YOO-Blue-Dark);
+}
+.text-yellow{
+  color: var(--YOO-Yellow-Dark);
+}
+.text-dark{
+  color: var(--text-dark);
+}
+.text-medium{
+  color: var(--text-medium);
+}
+.text-light{
+  color: var(--text-light);
 }
 
