@@ -1,0 +1,82 @@
+.leadership {
+  width: auto;
+  display: flex;
+  height: auto;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: var(--YOO-Green-Light);
+}
+
+.description-box-person,
+.description-box-lead {
+  background-color: var(--YOO-Green-Lightest);
+  border-radius: 10px;
+}
+
+.description-box-lead {
+  padding: 22px;
+}
+
+.right1 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-left: auto;
+}
+
+.right1 {
+  flex: 1;
+}
+
+.left1 {
+  flex: 0 0 auto;
+  width: 375px;
+  float: left;
+}
+
+.left1 h2 {
+  font-size: var(--fontsize-h2);
+}
+
+.left1 button {
+  font-size: var(--fontsize-reg);
+  width: 100%;
+  border-radius: 10px;
+  position: relative;
+  margin-top: 10%;
+  background-color: var(--YOO-Green-Medium);
+  padding: 10px;
+}
+
+.people-c1 {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  padding-left: 0;
+  width: 100%;
+}
+
+.person-card li {
+  margin-bottom: 15px;
+  width: 40%;
+}
+
+.person-card img {
+  border-radius: 50%;
+  max-width: 85%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.person-card p {
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.person-card {
+  margin: 10px;
+  padding: 10px;
+  flex: 0 1 calc(33.33% - 20px);
+  text-align: center;
+}

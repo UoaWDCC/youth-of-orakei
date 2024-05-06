@@ -1,0 +1,270 @@
+---
+// Members Page
+import "../styles/global.css";
+import "../styles/members.css";
+
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+
+import TeamDisplay from "../components/TeamDisplay.astro";
+---
+
+<html lang="en">
+  <head>
+    <style>
+      /* HTML Classes below: */
+      .title {
+        text-align: center;
+        font-size: 250%;
+        background-color: #ce4c4a;
+      }
+
+      .nav {
+        text-align: center;
+        font-size: 100%;
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .lead-button,
+      .proj-button,
+      .com-button {
+        border-radius: 10px;
+        padding: 6px;
+        width: 300px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: var(--fontsize-h5);
+      }
+
+      .leadership,
+      .communications,
+      .projects {
+        width: auto;
+        display: flex;
+        height: auto;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+      }
+
+      .leadership,
+      .lead-button {
+        background-color: #96bf70;
+      }
+
+      .communications,
+      .com-button {
+        background-color: #a6dfea;
+      }
+
+      .projects,
+      .proj-button {
+        background-color: #ecb9b8;
+      }
+
+      .description-box-lead {
+        background-color: #c8e4ae;
+        border-radius: 20px;
+      }
+
+      .description-box-coms {
+        background-color: #d9ebef;
+        border-radius: 20px;
+      }
+
+      .description-box-proj {
+        background-color: #ffe4e4;
+        border-radius: 20px;
+      }
+
+      .learn-more-proj,
+      .project-team-nav button {
+        background-color: #ce4c4a;
+      }
+
+      .learn-more-coms {
+        background-color: #55bbcf;
+      }
+
+      .learn-more-lead {
+        background-color: #618f32;
+      }
+
+      .right1,
+      .left2 {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        margin-left: auto;
+      }
+
+      .right1,
+      .left2 {
+        flex: 1;
+      }
+
+      .left1,
+      .right2 {
+        flex: 0 0 auto;
+        width: 375px;
+        float: left;
+      }
+
+      .left1 h2,
+      .right2 h2 {
+        font-size: var(--fontsize-h2);
+      }
+
+      .left1 button,
+      .right2 button {
+        font-size: large;
+        width: 100%;
+        border-radius: 50px;
+        position: relative;
+        margin-top: 100%;
+      }
+
+      body {
+        margin: 0 auto;
+        width: 100%;
+        padding: 1rem;
+        line-height: 1.5;
+      }
+
+      .project-team-nav {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-button {
+        width: 350px;
+        /* change width later... */
+        margin-top: 10%;
+        border-radius: 50px;
+      }
+    </style>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+
+  <body>
+    <div>
+      <h1 class="title">INTRODUCING OUR TEAMS</h1>
+    </div>
+    <div class="nav">
+      <button class="lead-button">LEADERSHIP</button>
+      <button class="com-button">COMMUNICATIONS</button>
+      <button class="proj-button">PROJECTS</button>
+    </div>
+
+    <!-- importing the members component for leadership -->
+    <TeamDisplay/> 
+
+    <!-- temporary code: -->
+    <div class="communications">
+      <div class="left2">
+        <ul class="people-c1">
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-coms">Name+Description</p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-coms">Name+Description</p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-coms">Name+Description</p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-coms">Name+Description</p>
+          </li>
+        </ul>
+      </div>
+      <div class="right2">
+        <h2>COMMUNICATIONS TEAMS</h2>
+        <p class="description-box-coms">
+          Description of the communications team... Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Integer sit amet fringilla libero.
+          Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
+          turpis ante.
+          <button class="learn-more-coms">LEARN MORE</button>
+        </p>
+      </div>
+    </div>
+
+    <div class="projects">
+      <div class="left1">
+        <h2>PROJECTS TEAM</h2>
+        <p class="description-box-proj">
+          Description of the leadership team... Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Integer sit amet fringilla libero.
+          Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
+          turpis ante.
+          <button class="learn-more-proj">LEARN MORE</button>
+        </p>
+      </div>
+      <div class="right1">
+        <ul class="people-c1">
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-proj">
+              Sad Cat.<br />
+              Is sad all the time. <br />
+              Goes to sad cat school
+            </p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-proj">
+              Sad Cat.<br />
+              Is sad all the time. <br />
+              Goes to sad cat school
+            </p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-proj">
+              Sad Cat.<br />
+              Is sad all the time. <br />
+              Goes to sad cat school
+            </p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-proj">
+              Sad Cat.<br />
+              Is sad all the time. <br />
+              Goes to sad cat school
+            </p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-proj">
+              Sad Cat.<br />
+              Is sad all the time. <br />
+              Goes to sad cat school
+            </p>
+          </li>
+          <li class="nav-card">
+            <div class="project-team-nav">
+              <button class="project-button">Team 1</button>
+              <button class="project-button">Team 2</button>
+              <button class="project-button">Team 3</button>
+              <button class="project-button">Team 4</button>
+              <button class="project-button">Team 5</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
