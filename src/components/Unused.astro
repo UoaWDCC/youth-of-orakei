@@ -1,12 +1,6 @@
 ---
-// Members Page
 import "../styles/global.css";
-import "../styles/members.css";
-
-import Header from "../components/header.astro";
-import Footer from "../components/footer.astro";
-
-import TeamDisplay from "../components/TeamDisplay.astro";
+// const names = ["Kimberley", "Anna", "Anton"];
 ---
 
 <html lang="en">
@@ -29,23 +23,21 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       .lead-button,
       .proj-button,
       .com-button {
-        border-radius: 10px;
+        border-radius: 50px;
         padding: 6px;
         width: 300px;
         margin-top: 15px;
         margin-bottom: 15px;
-        font-size: var(--fontsize-h5);
       }
 
       .leadership,
       .communications,
       .projects {
         width: auto;
+        margin: auto;
+        margin-top: 5vh;
         display: flex;
         height: auto;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 10px;
       }
 
       .leadership,
@@ -114,7 +106,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
 
       .left1 h2,
       .right2 h2 {
-        font-size: var(--fontsize-h2);
+        font-size: 300%;
       }
 
       .left1 button,
@@ -133,13 +125,45 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         line-height: 1.5;
       }
 
+      .people-c1 {
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: space-around; */
+        padding-left: 0;
+        width: 100%;
+      }
+
+      .person-card li {
+        margin-bottom: 15px;
+        width: 40%;
+      }
+
+      .person-card img {
+        border-radius: 50%;
+        max-width: 85%;
+        height: auto;
+        margin: 0 auto;
+      }
+
+      .person-card p {
+        color: rgb(12, 42, 7);
+        border-radius: 50px;
+      }
+
+      .person-card {
+        margin: 10px;
+        padding: 10px;
+        flex: 0 1 calc(33.33% - 20px);
+        text-align: center;
+      }
+
       .project-team-nav {
         display: flex;
         flex-direction: column;
       }
 
       .project-button {
-        width: 350px;
+        width: 360px;
         /* change width later... */
         margin-top: 10%;
         border-radius: 50px;
@@ -161,11 +185,52 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       <button class="com-button">COMMUNICATIONS</button>
       <button class="proj-button">PROJECTS</button>
     </div>
+    <div class="leadership">
+      <div class="left1">
+        <h2>LEADERSHIP TEAM</h2>
+        <p class="description-box-lead">
+          Description of the leadership team... Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Integer sit amet fringilla libero.
+          Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
+          turpis ante.
+        </p>
+        <button class="learn-more-lead">LEARN MORE</button>
+      </div>
+      <div class="right1">
+        <ul class="people-c1">
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-lead">
+              Sad Cat.<br />
+              Is sad all the time. <br />
+              Goes to sad cat school
+            </p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-lead">Name+Description</p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-lead">Name+Description</p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-lead">Name+Description</p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-lead">Name+Description</p>
+          </li>
+          <li class="person-card">
+            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
+            <p class="description-box-lead">Name+Description</p>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-    <!-- importing the members component for leadership -->
-    <TeamDisplay/> 
-
-    <!-- temporary code: -->
     <div class="communications">
       <div class="left2">
         <ul class="people-c1">
@@ -195,8 +260,8 @@ import TeamDisplay from "../components/TeamDisplay.astro";
           Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
           turpis ante.
-          <button class="learn-more-coms">LEARN MORE</button>
         </p>
+        <button class="learn-more-coms">LEARN MORE</button>
       </div>
     </div>
 
@@ -209,8 +274,8 @@ import TeamDisplay from "../components/TeamDisplay.astro";
           Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
           turpis ante.
-          <button class="learn-more-proj">LEARN MORE</button>
         </p>
+        <button class="learn-more-proj">LEARN MORE</button>
       </div>
       <div class="right1">
         <ul class="people-c1">
