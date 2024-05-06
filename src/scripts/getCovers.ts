@@ -1,9 +1,9 @@
 import { Client } from "@notionhq/client";
-import type { GetPageResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { page } from "../types/page";
 
 type CoverData = {
   name: string;
-  cover: string;
+  cover: string | undefined;
 }
 
 export async function getCovers(): Promise<CoverData[]> {
@@ -13,10 +13,6 @@ export async function getCovers(): Promise<CoverData[]> {
 
     const notion = new Client({ auth: import.meta.env.NOTION_TOKEN });
 
-    type Row = {
-        // Do this part
-    };
-
     const query = await notion.databases.query({
         database_id: import.meta.env.NOTION_MEMBERS_ID,
         sorts: [{
@@ -25,11 +21,14 @@ export async function getCovers(): Promise<CoverData[]> {
         }]
       });    
 
-    // @ts-ignore
-    const covers: CoverData[] = [{
-      name: "temp",
-      cover: "temp",
-    }];
+    const pages = query.results as page[];
+
+    const covers: CoverData[] = pages.map((row) => {
+      return { 
+        name: row.properties ? row.properties.Name.title[0].plain_text : "",
+        cover: row.cover?.external.url
+      }
+    });
 
     return covers;
 }
