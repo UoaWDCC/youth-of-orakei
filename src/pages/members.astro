@@ -5,6 +5,7 @@ import "../styles/members.css";
 
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+import Layout from '../layouts/layout.astro';
 
 import TeamDisplay from "../components/TeamDisplay.astro";
 ---
@@ -152,7 +153,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
     <title>Astro</title>
   </head>
 
-  <body>
+  <Layout>
     <div>
       <h1 class="title">INTRODUCING OUR TEAMS</h1>
     </div>
@@ -266,5 +267,5 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         </ul>
       </div>
     </div>
-  </body>
+  </Layout>
 </html>

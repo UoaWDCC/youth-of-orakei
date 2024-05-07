@@ -1,4 +1,6 @@
-<html lang="en">
+---
+import Layout from '../layouts/layout.astro'
+---
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -45,10 +47,10 @@
         input, textarea{
         background-color: #D9EBEF;
         width: 100%;
-        padding: 1%; 
-        font-size: 15px; 
-        border: 2px solid #A4C6B0; 
-        border-radius: 5px; 
+        padding: 1%;
+        font-size: 15px;
+        border: 2px solid #A4C6B0;
+        border-radius: 5px;
         box-sizing: border-box;
     }
 
@@ -57,10 +59,12 @@
     }
 
     .contact-image{
-        flex: 1; 
+        flex: 1;
     }
     </style>
 </head>
+
+<Layout>
 <body>
     <h1>Contact Us</h1>
     <div class = "content-container">
@@ -86,9 +90,9 @@
             </div>
         </form>
 
-        <div class="contact-image"> 
+        <div class="contact-image">
             <img src="src/pages/images/contact-us-stock-image.png" alt="contact us stock image">
         </div>
     </div>
 </body>
-</html>
+</Layout>
