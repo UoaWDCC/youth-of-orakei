@@ -107,8 +107,18 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         background-color: #55bbcf;
       }
 
+      .learn-more-coms:hover {
+        background-color: var(--YOO-Blue-Primary);
+        transition: 0.3s;
+      }
+
       .learn-more-lead {
         background-color: #618f32;
+      }
+
+      .learn-more-lead:hover {
+        background-color: var(--YOO-Green-Light);
+        transition: 0.3s;
       }
 
       .right1,
@@ -166,9 +176,14 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         font: var(--fontsize-h4);
       }
 
-      .project-button:hover {
+      .project-button:hover,
+      .learn-more-proj:hover {
         background-color: var(--YOO-Red-Primary);
         transition: 0.3s;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
     </style>
     <meta charset="utf-8" />
@@ -183,16 +198,20 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       <h1 class="title">INTRODUCING OUR TEAMS</h1>
     </div>
     <div class="nav">
-      <button class="lead-button">LEADERSHIP</button>
-      <button class="com-button">COMMUNICATIONS</button>
-      <button class="proj-button">PROJECTS</button>
+      <button class="lead-button"
+        ><a href="#leadership-section">LEADERSHIP</a></button
+      >
+      <button class="com-button"
+        ><a href="#com-section">COMMUNICATIONS</a></button
+      >
+      <button class="proj-button"><a href="#proj-section">PROJECTS</a></button>
     </div>
 
     <!-- importing the members component for leadership -->
     <!-- <TeamDisplay /> -->
 
     <!-- temporary code: -->
-    <div class="leadership">
+    <div class="leadership" id="leadership-section">
       <div class="left1">
         <h2>LEADERSHIP TEAM</h2>
         <p class="description-box-lead">
@@ -234,7 +253,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       </div>
     </div>
 
-    <div class="communications">
+    <div class="communications" id="com-section">
       <div class="left2">
         <ul class="people-c1">
           <li class="person-card">
@@ -268,7 +287,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       </div>
     </div>
 
-    <div class="projects">
+    <div class="projects" id="proj-section">
       <div class="left1">
         <h2>PROJECT DELIVERY TEAM</h2>
         <p class="description-box-proj">
