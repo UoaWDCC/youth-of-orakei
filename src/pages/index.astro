@@ -3,8 +3,7 @@
 import "../styles/global.css";
 import "../styles/index.css";
 
-import Header from "../components/header.astro";
-import Footer from "../components/footer.astro";
+import Layout from '../layouts/layout.astro';
 ---
 
 <html lang="en">
@@ -15,8 +14,7 @@ import Footer from "../components/footer.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Homepage</title>
 	</head>
-	<body>
-		<Header />
+	<Layout>
 		<div class="hero">
 			<img class="hero-bg" alt = "abstract background shapes" src="src/assets/YOO_index-hero-bg.svg">
 			<div class="general-wrapper">
@@ -118,7 +116,5 @@ import Footer from "../components/footer.astro";
 				</div>
 			</div>
 		</section>
-
-		<Footer />
-	</body>
+	</Layout>
 </html>

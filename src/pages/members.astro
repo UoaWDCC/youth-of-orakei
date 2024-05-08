@@ -5,6 +5,7 @@ import "../styles/members.css";
 
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+import Layout from '../layouts/layout.astro';
 
 import TeamDisplay from "../components/TeamDisplay.astro";
 ---
@@ -126,13 +127,6 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         margin-top: 100%;
       }
 
-      body {
-        margin: 0 auto;
-        width: 100%;
-        padding: 1rem;
-        line-height: 1.5;
-      }
-
       .project-team-nav {
         display: flex;
         flex-direction: column;
@@ -152,7 +146,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
     <title>Astro</title>
   </head>
 
-  <body>
+  <Layout>
     <div>
       <h1 class="title">INTRODUCING OUR TEAMS</h1>
     </div>
@@ -266,5 +260,5 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         </ul>
       </div>
     </div>
-  </body>
+  </Layout>
 </html>

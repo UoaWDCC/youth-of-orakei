@@ -1,4 +1,6 @@
-<html lang="en">
+---
+import Layout from '../layouts/layout.astro'
+---
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -6,9 +8,8 @@
     <meta name="generator" content={Astro.generator} />
     <title>Contact Page</title>
     <style>
-        body {
-            background-color: #C8E4AE;
-            margin: auto;
+        .contact-wrapper {
+            background-color: var(--YOO-Green-Lightest);
         }
         .content-container{
             display: flex;
@@ -45,10 +46,10 @@
         input, textarea{
         background-color: #D9EBEF;
         width: 100%;
-        padding: 1%; 
-        font-size: 15px; 
-        border: 2px solid #A4C6B0; 
-        border-radius: 5px; 
+        padding: 1%;
+        font-size: 15px;
+        border: 2px solid #A4C6B0;
+        border-radius: 5px;
         box-sizing: border-box;
     }
 
@@ -57,38 +58,40 @@
     }
 
     .contact-image{
-        flex: 1; 
+        flex: 1;
     }
     </style>
 </head>
-<body>
-    <h1>Contact Us</h1>
-    <div class = "content-container">
-        <form>
-            <div class="form-group">
-                <label for="full-name">Full Name</label> <br>
-                <input type="text" id="full-name" name="full_name"><br>
-            </div>
-            <div class="form-group">
-                <label for="school">School</label><br>
-                <input type="text" id="school" name="school"><br>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label><br>
-                <input type="email" id="email" name="email"><br>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label><br>
-                <textarea id="message" name="message"></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit"> Submit</button>
-            </div>
-        </form>
 
-        <div class="contact-image"> 
-            <img src="src/pages/images/contact-us-stock-image.png" alt="contact us stock image">
+<Layout>
+    <div class="contact-wrapper">
+        <h1>Contact Us</h1>
+        <div class = "content-container">
+            <form>
+                <div class="form-group">
+                    <label for="full-name">Full Name</label> <br>
+                    <input type="text" id="full-name" name="full_name"><br>
+                </div>
+                <div class="form-group">
+                    <label for="school">School</label><br>
+                    <input type="text" id="school" name="school"><br>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label><br>
+                    <input type="email" id="email" name="email"><br>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label><br>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit"> Submit</button>
+                </div>
+            </form>
+
+            <div class="contact-image">
+                <img src="src/pages/images/contact-us-stock-image.png" alt="contact us stock image">
+            </div>
         </div>
     </div>
-</body>
-</html>
+</Layout>

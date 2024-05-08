@@ -2,6 +2,8 @@
 // Projects Page
 import '../styles/global.css';
 import TeamDisplay from '../components/TeamDisplay.astro';
+import Layout from '../layouts/layout.astro';
+
 ---
 
 <html lang="en">
@@ -12,8 +14,8 @@ import TeamDisplay from '../components/TeamDisplay.astro';
 		<meta name="generator" content={Astro.generator} />
 		<title>Projects</title>
 	</head>
-	<body>
+	<Layout>
 		<h1>Projects</h1>
 		<TeamDisplay />
-	</body>
+	</Layout>
 </html>
