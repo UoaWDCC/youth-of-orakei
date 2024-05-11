@@ -17,17 +17,17 @@ export async function getMembers(): Promise<MemberData[]> {
 
     const notion = new Client({ auth: import.meta.env.NOTION_TOKEN });
 
-    const query: any = await notion.databases.query({
+    const query: any = (await notion.databases.query({
         database_id: import.meta.env.NOTION_MEMBERS_ID,
         sorts: [{
           property: 'Name',
           direction: 'ascending'
         }]
-      });   
+      })).results;   
     
-    console.log(query.results[0].properties)
+    console.log(query[0].properties)
     
-    query.results.map((results: any) => {})
+    query.map((results: any) => {console.log(results.properties)})
 
     // @ts-ignore
     const members: MemberData[] = [{
