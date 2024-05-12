@@ -3,7 +3,7 @@
 import "../styles/global.css";
 import TeamDisplay from "../components/TeamDisplay.astro";
 import Layout from "../layouts/layout.astro";
-import ProjectDisplay from "../components/projectDisplay.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 ---
 
 <html lang="en">
@@ -12,12 +12,10 @@ import ProjectDisplay from "../components/projectDisplay.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Projects</title>
+
+    <Layout>
+      <h1>Projects</h1>
+      <ProjectCard />
+    </Layout>
   </head>
-  <Layout>
-    <h1>Projects</h1>
-    <ProjectDisplay />
-  </Layout>
-
-
 </html>
