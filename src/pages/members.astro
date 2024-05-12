@@ -16,26 +16,28 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       /* HTML Classes below: */
       .title {
         text-align: center;
-        font-size: 250%;
-        background-color: #ce4c4a;
+        font-size: var(--fontsize-h1);
+        background-color: var(--YOO-Green-Lightest);
+        padding: 15px;
+        color: var(--YOO-Green-Dark);
+        font-weight: bold;
       }
 
       .nav {
         text-align: center;
-        font-size: 100%;
         display: flex;
         justify-content: space-evenly;
+        background-color: var(--YOO-Green-Lightest);
       }
 
       .lead-button,
       .proj-button,
       .com-button {
-        border-radius: 10px;
-        padding: 6px;
-        width: 300px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        font-size: var(--fontsize-h5);
+        border-radius: 15px;
+        padding: 7px;
+        width: 350px;
+        max-width: 33%;
+        font-size: var(--fontsize-h4);
         box-shadow: 3px 3px gray;
       }
 
@@ -45,9 +47,9 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         width: auto;
         display: flex;
         height: auto;
-        padding: 20px;
-        border-radius: 10px;
-        margin: 15px;
+        padding: 30px;
+        margin: 50px;
+        border-radius: 15px;
       }
 
       .leadership,
@@ -128,6 +130,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         text-align: center;
         align-items: center;
         margin-left: auto;
+        padding: 15px;
       }
 
       .right1,
@@ -185,6 +188,60 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       html {
         scroll-behavior: smooth;
       }
+
+      .shapedividers_com-395 {
+        overflow: visible;
+        position: relative;
+        height: 60px;
+      }
+      .shapedividers_com-395::before {
+        content: "";
+        font-family: "shape divider from ShapeDividers.com";
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+        background-repeat: no-repeat;
+        bottom: -0.1vw;
+        left: -0.1vw;
+        right: -0.1vw;
+        top: -0.1vw;
+        background-size: 320% 65px;
+        background-position: 33% 0%;
+        background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100.86 4.15"><path fill="%23d9ebef" d="M0 0v3.5a9.07 9.07 0 0 0 9.37-1.67 9.07 9.07 0 0 0 12.1 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.06 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 12.09 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 6.86 2.28V.01z"/></svg>');
+      }
+
+      @media (min-width: 2100px) {
+        .shapedividers_com-395::before {
+          background-size: 320% calc(2vw + 60px);
+        }
+      }
+
+      .shapedividers_com-9592 {
+        overflow: visible;
+        position: relative;
+        height: 70px;
+      }
+      .shapedividers_com-9592::before {
+        content: "";
+        font-family: "shape divider from ShapeDividers.com";
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+        background-repeat: no-repeat;
+        bottom: -0.1vw;
+        left: -0.1vw;
+        right: -0.1vw;
+        top: -0.1vw;
+        background-size: 320% 70px;
+        background-position: 33% 0%;
+        background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100.86 4.15"><path fill="%23c8e4ae" d="M0 0v3.5a9.07 9.07 0 0 0 9.37-1.67 9.07 9.07 0 0 0 12.1 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.06 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 12.09 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 6.86 2.28V.01z"/></svg>');
+      }
+
+      @media (min-width: 2100px) {
+        .shapedividers_com-9592::before {
+          background-size: 320% calc(2vw + 60px);
+        }
+      }
     </style>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -194,9 +251,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
   </head>
 
   <Layout>
-    <div>
-      <h1 class="title">INTRODUCING OUR TEAMS</h1>
-    </div>
+    <div class="title"><h1>INTRODUCING OUR TEAMS</h1></div>
     <div class="nav">
       <button class="lead-button"
         ><a href="#leadership-section">LEADERSHIP</a></button
@@ -206,6 +261,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       >
       <button class="proj-button"><a href="#proj-section">PROJECTS</a></button>
     </div>
+    <div class="shapedividers_com-9592"></div>
 
     <!-- importing the members component for leadership -->
     <!-- <TeamDisplay /> -->
