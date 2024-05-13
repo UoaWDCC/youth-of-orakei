@@ -154,6 +154,10 @@
     overflow: hidden;
 }
 
+.index-carousel-image-hidden {
+    display: none;
+}
+
 .pic {
     object-fit: cover;
     width: 100%;

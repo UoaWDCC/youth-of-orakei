@@ -47,7 +47,7 @@ export default function ImageCarousel() {
             </div>
             <div className="index-carousel-box">
                 {images.map((event: Events, index: number) => (
-                    <div className="index-carousel-image">
+                    <div className={imgIndex === index ? "index-carousel-image" : "index-carousel-image-hidden"}>
                         <img src={event.src} alt={event.alt} key={index} className={imgIndex === index ? "pic" : "pic-hidden"} />
                     </div>
                 ))}
