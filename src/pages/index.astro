@@ -4,6 +4,7 @@ import "../styles/global.css";
 import "../styles/index.css";
 
 import Layout from '../layouts/layout.astro';
+import ImageCarousel from "../components/ImageCarousel";
 ---
 
 <html lang="en">
@@ -88,31 +89,7 @@ import Layout from '../layouts/layout.astro';
 			<div class="general-wrapper">
 				<h3 class="index-heading text-green-dark">Upcoming events</h3>
 				<div class="index-events-carousel-wrapper">
-					<div class="index-carousel-button">
-
-					</div>
-					<div class="index-carousel-box">
-
-						<div class="index-carousel-image">
-							<div class="placeholder">
-								<p class="placeholder-text">Placeholder image</p>
-							</div>
-						</div>
-						<div class="index-carousel-text">
-							<p class="carousel-subtitle">
-								2nd September, 12:30 - 3:30PM
-							</p>
-							<p class="carousel-title">
-								Sportathon
-							</p>
-							<p class="carousel-paragraph">
-								Are you a student interested in sports, fun, exercise, and meeting new people? Come to our Sportathon event on the 2nd September at College Rifles!
-							</p>
-						</div>
-					</div>
-					<div class="index-carousel-button">
-
-					</div>
+					<ImageCarousel />
 				</div>
 			</div>
 		</section>
