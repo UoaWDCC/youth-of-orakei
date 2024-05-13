@@ -1,0 +1,21 @@
+---
+// Projects Page
+import "../styles/global.css";
+import TeamDisplay from "../components/TeamDisplay.astro";
+import Layout from "../layouts/layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <Layout>
+      <h1>Projects</h1>
+      <ProjectCard />
+    </Layout>
+  </head>
+</html>
