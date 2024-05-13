@@ -134,6 +134,11 @@
     border-radius: 100px;
 }
 
+.index-carousel-button:hover {
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 2px #555);
+}
+
 .index-carousel-box{
     width: 75%;
     padding: 2rem;
