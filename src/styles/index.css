@@ -150,6 +150,10 @@
 .index-carousel-image{
     width: 400px;
     height: 300px;
+    display: flex;
+    overflow: hidden;
+    aspect-ratio: 8/2;
+    border-radius: 3em;
 }
 
 .index-carousel-text{
