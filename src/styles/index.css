@@ -152,18 +152,40 @@
     overflow: hidden;
 }
 
-.index-carousel-image{
+.image-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+.image-carousel-indicator {
+    background-color: white;
+    height: 0.6rem;
+    width: 0.6rem;
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 5px #555;
+    margin: 0 0.4rem;
+}
+
+.image-carousel-indicator-inactive {
+    background-color: #AAAAAA;
+
+}
+
+.index-carousel-image-wrapper{
     width: 400px;
     height: 300px;
     display: flex;
     overflow: hidden;
 }
 
-.index-carousel-image-hidden {
+.index-carousel-image-wrapper-hidden {
     display: none;
 }
 
-.pic {
+.index-carousel-image {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -172,7 +194,7 @@
     border-radius: var(--common-radius);
 }
 
-.pic-hidden {
+.index-carousel-image-hidden {
     display: none;
 }
 

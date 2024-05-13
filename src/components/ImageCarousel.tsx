@@ -42,12 +42,13 @@ export default function ImageCarousel() {
 
     return (
         <>
+        <div className="index-events-carousel-wrapper">
             <div className="index-carousel-button" onClick={() => handleBack()}>
             </div>
             <div className="index-carousel-box">
                 {images.map((event: Events, index: number) => (
-                    <div className={imgIndex === index ? "index-carousel-image" : "index-carousel-image-hidden" }>
-                        <img src={event.src} alt={event.alt} key={index} className={imgIndex === index ? "pic" : "pic-hidden"} />
+                    <div className={imgIndex === index ? "index-carousel-image-wrapper" : "index-carousel-image-wrapper-hidden" }>
+                        <img src={event.src} alt={event.alt} key={index} className={imgIndex === index ? "index-carousel-image" : "index-carousel-image-hidden"} />
                     </div>
                 ))}
                 <div className="index-carousel-text">
@@ -64,6 +65,12 @@ export default function ImageCarousel() {
             </div>
             <div className="index-carousel-button" onClick={() => handleForward()}>
             </div>
+        </div>
+            <span className="image-carousel-indicators">
+                {images.map((_: any, index: number) => (
+                    <button key={index} onClick={() => setImgIndex(index)} className={imgIndex === index ? "image-carousel-indicator" : "image-carousel-indicator image-carousel-indicator-inactive"}></button>
+                ))}
+            </span>
         </>
     );
 }
