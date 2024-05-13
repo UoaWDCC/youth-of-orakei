@@ -63,8 +63,9 @@
 
 .person-card img {
   border-radius: 50%;
-  max-width: 85%;
-  height: auto;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
   margin: 0 auto;
 }
 
@@ -75,7 +76,8 @@
 
 .person-card {
   margin: 10px;
+  width: 250px;
+
   padding: 7px;
-  flex: 0 1 calc(33.33% - 20px);
   text-align: center;
 }
