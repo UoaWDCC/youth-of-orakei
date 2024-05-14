@@ -1,5 +1,6 @@
 import { Client } from "@notionhq/client";
 import type { GetPageResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { memberRow } from "../types/memberRow"
 
 type MemberData = {
   team: string;
@@ -23,13 +24,14 @@ export async function getMembers(): Promise<MemberData[]> {
           direction: 'ascending'
         }]
       });    
-
-    // @ts-ignore
-    const members: MemberData[] = [{
-      team: "temp",
-      desc: "temp",
-      name: "temp",
-    }];
-
+  
+    const members: MemberData[] = query.results.map((row) => {
+      return {
+          team: row.properties.Team.rich_text[0] ? row.properties.Team.rich_text[0].plain_text : "",
+          desc: row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "",
+          name: row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : ""
+      };
+  });
+      
     return members;
 }
