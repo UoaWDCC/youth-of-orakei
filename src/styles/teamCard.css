@@ -1,16 +1,16 @@
 .grid-container {
-  display: grid;
-  grid-template-columns: repeat(
-    2,
-    2fr
-  ); /* Two columns with equal width */
-  gap: 20px; /* Adjust gap between cards */
-  padding: 40px;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  gap: 30px;
 }
 
 .team-card {
   height: 400px; /* Adjust height as needed */
-  width: auto;
+  width: 48%; /* TODO change this for dynamic width */
   background-color: var(--YOO-Green-Lightest);
   border-radius: 10px;
   overflow: hidden;
