@@ -1,0 +1,19 @@
+---
+import "../styles/global.css";
+import "../styles/header.css";
+import "../styles/teamCard.css";
+import TeamCard from "./TeamCard.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <body>
+    <div class="grid-container">
+      <a href="/projectsTeam1">
+        <div class="team-card" onclick="window.location.href='#'">
+          <TeamCard />
+        </div>
+      </a>
+    </div>
+  </body>
+</html>
