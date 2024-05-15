@@ -11,7 +11,7 @@
     position: absolute;
     width: 100%;
     height: var(--index-hero-height);
-
+    
     z-index: -10;
 }
 
@@ -42,7 +42,10 @@
 }
 
 .hero-image{
+    width:100%;
     height: 25rem;
+    border-radius: var(--common-radius);
+    border: 4px solid #d0dae5;
 }
 
 /* Index sections (general) */
@@ -204,9 +207,9 @@
     display: none;
 }
 
-.index-carousel-text{
+/* .index-carousel-text{
 
-}
+} */
 
 .carousel-subtitle{
     font-size: var(--fontsize-lrg);
@@ -271,3 +274,20 @@
     }
 }
 
+/* Images */
+img.about-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: 100% 40%;
+    border-radius: var(--common-radius);
+    border: 4px solid #d0dae5;
+}
+
+img.carousel-image{
+    width:100%;
+    /* aspect-ratio: 8/7; */
+    object-fit: cover;
+    border-radius: var(--common-radius);
+    border: 4px solid #d0dae5; 
+}

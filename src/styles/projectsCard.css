@@ -1,0 +1,34 @@
+/* Projects section */
+
+.index-section{
+  padding: 5rem 0;
+}
+
+
+.projects-section{
+  background-color: hsl(100, 50%, 50%, 0.12);
+  padding: 5rem 0;
+}
+
+.project-headlines{
+  display: flex;
+  align-items: center;
+
+  margin-top: 3rem;
+}
+
+.project-line{
+  width: 5px;
+  height: 150px;
+  border-radius: 100px;
+
+  margin: 0 4rem;
+  background-color: #CCCCCC;
+}
+
+.projects-text{
+  font-size: 5rem;
+  font-weight: 900;
+
+  line-height: 1.1;
+}
