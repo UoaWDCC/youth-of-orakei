@@ -46,14 +46,14 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         width: auto;
         display: flex;
         height: auto;
-        padding: 30px;
-        margin: 45px;
+        padding: 35px;
+        margin: 60px;
         border-radius: 15px;
       }
 
       .leadership,
       .lead-button {
-        background-color: #96bf70;
+        background-color: var(--YOO-Green-Light);
       }
 
       .lead-button:hover {
@@ -63,7 +63,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
 
       .communications,
       .com-button {
-        background-color: #a6dfea;
+        background-color: var(--YOO-Blue-Primary);
       }
 
       .com-button:hover {
@@ -73,7 +73,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
 
       .projects,
       .proj-button {
-        background-color: #ecb9b8;
+        background-color: var(--YOO-Red-Primary);
       }
 
       .proj-button:hover {
@@ -109,29 +109,36 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         }
       }
 
+      .main-description-box-coms,
+      .main-description-box-lead,
+      .main-description-box-proj {
+        padding: 18px;
+        border-radius: 15px;
+        margin-top: 25px;
+        font-size: var(--fontsize-lrg);
+      }
+
       .description-box-coms,
       .description-box-lead,
       .description-box-proj {
-        padding: 22px;
-        border-radius: 10px;
+        padding: 15px;
+        border-radius: 15px;
         margin-top: 15px;
+        font-size: var(--fontsize-lrg);
       }
-      .description-box-lead {
+      .description-box-lead,
+      .main-description-box-lead {
         background-color: var(--YOO-Green-Lightest);
       }
 
-      .description-box-coms {
+      .description-box-coms,
+      .main-description-box-coms {
         background-color: var(--YOO-Blue-Light);
       }
 
-      .description-box-proj {
+      .description-box-proj,
+      .main-description-box-proj {
         background-color: var(--YOO-Red-Light);
-      }
-
-      .learn-more-coms,
-      .learn-more-lead,
-      .learn-more-proj {
-        margin-top: 15px;
       }
 
       .learn-more-proj,
@@ -163,13 +170,15 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         flex-direction: column;
         text-align: center;
         align-items: center;
-        margin-left: auto;
-        padding: 15px;
+        flex: 1;
       }
 
-      .right1,
+      .right1 {
+        margin-left: 25px;
+      }
+
       .left2 {
-        flex: 1;
+        margin-right: 25px;
       }
 
       .left1,
@@ -184,34 +193,34 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         font-size: var(--fontsize-h2);
       }
 
-      .left1 button,
-      .right2 button {
+      .learn-more-coms,
+      .learn-more-lead,
+      .learn-more-proj {
         /*the learn more buttons but more general*/
-        font-size: large;
+        font-size: var(--fontsize-h5);
         width: 100%;
-        border-radius: 50px;
+        border-radius: 15px;
         position: relative;
         padding: 10px;
+        margin-top: 15px;
+        color: white;
       }
 
       .project-team-nav {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         background-color: var(--YOO-Red-Light);
         border-radius: 15px;
         padding: 10px;
-        margin-top: 25%;
       }
 
       .project-button {
         width: 95%;
         /* change width later... */
-        border-radius: 50px;
+        border-radius: 15px;
         margin: 3%;
-        padding: 8px;
+        padding: 10px;
         border-radius: 10px;
-        font: var(--fontsize-h4);
+        font-size: var(--fontsize-h5);
+        color: white;
       }
 
       .project-button:hover,
@@ -250,8 +259,8 @@ import TeamDisplay from "../components/TeamDisplay.astro";
     <!-- temporary code: -->
     <div class="leadership" id="leadership-section">
       <div class="left1">
-        <h2><b>Leadership Team</b></h2>
-        <p class="description-box-lead">
+        <h2 class="lead-title"><b>Leadership Team</b></h2>
+        <p class="main-description-box-lead">
           Description of the leadership team... Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Integer sit amet fringilla libero.
           Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
@@ -366,8 +375,8 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         </ul>
       </div>
       <div class="right2">
-        <h2><b>Communications Team</b></h2>
-        <p class="description-box-coms">
+        <h2 class="coms-title"><b>Communications Team</b></h2>
+        <p class="main-description-box-coms">
           Description of the communications team... Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Integer sit amet fringilla libero.
           Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
@@ -380,8 +389,8 @@ import TeamDisplay from "../components/TeamDisplay.astro";
 
     <div class="projects" id="proj-section">
       <div class="left1">
-        <h2><b>Project Delivery Team</b></h2>
-        <p class="description-box-proj">
+        <h2 class="proj-title"><b>Project Delivery Team</b></h2>
+        <p class="main-description-box-proj">
           Description of the leadership team... Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Integer sit amet fringilla libero.
           Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
@@ -392,7 +401,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       </div>
       <div class="right1">
         <ul class="people-c1">
-          <li class="person-card">
+          <li class="projects-nav-card">
             <div class="project-team-nav">
               <button class="project-button">Team 1</button>
               <button class="project-button">Team 2</button>
