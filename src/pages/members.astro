@@ -20,6 +20,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         background-color: var(--YOO-Green-Lightest);
         padding: 15px;
         color: var(--YOO-Green-Dark);
+        padding-top: 30px;
       }
 
       .nav {
@@ -46,14 +47,14 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         width: auto;
         display: flex;
         height: auto;
-        padding: 30px;
-        margin: 45px;
+        padding: 35px;
+        margin: 60px;
         border-radius: 15px;
       }
 
       .leadership,
       .lead-button {
-        background-color: #96bf70;
+        background-color: var(--YOO-Green-Light);
       }
 
       .lead-button:hover {
@@ -63,7 +64,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
 
       .communications,
       .com-button {
-        background-color: #a6dfea;
+        background-color: var(--YOO-Blue-Primary);
       }
 
       .com-button:hover {
@@ -73,7 +74,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
 
       .projects,
       .proj-button {
-        background-color: #ecb9b8;
+        background-color: var(--YOO-Red-Primary);
       }
 
       .proj-button:hover {
@@ -81,29 +82,64 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         transition: 0.3s;
       }
 
+      /* cloud svg: */
+      .shapedividers_com-9592 {
+        overflow: visible;
+        position: relative;
+        height: 70px;
+      }
+      .shapedividers_com-9592::before {
+        content: "";
+        font-family: "shape divider from ShapeDividers.com";
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+        background-repeat: no-repeat;
+        bottom: -0.1vw;
+        left: -0.1vw;
+        right: -0.1vw;
+        top: -0.1vw;
+        background-size: 320% 70px;
+        background-position: 33% 0%;
+        background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100.86 4.15"><path fill="%23c8e4ae" d="M0 0v3.5a9.07 9.07 0 0 0 9.37-1.67 9.07 9.07 0 0 0 12.1 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.06 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 12.09 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 6.86 2.28V.01z"/></svg>');
+      }
+
+      @media (min-width: 2100px) {
+        .shapedividers_com-9592::before {
+          background-size: 320% calc(2vw + 60px);
+        }
+      }
+
+      .main-description-box-coms,
+      .main-description-box-lead,
+      .main-description-box-proj {
+        padding: 18px;
+        border-radius: 15px;
+        margin-top: 15px;
+        font-size: var(--fontsize-lrg);
+      }
+
       .description-box-coms,
       .description-box-lead,
       .description-box-proj {
-        padding: 22px;
-        border-radius: 10px;
+        padding: 15px;
+        border-radius: 15px;
         margin-top: 15px;
+        font-size: var(--fontsize-lrg);
       }
-      .description-box-lead {
+      .description-box-lead,
+      .main-description-box-lead {
         background-color: var(--YOO-Green-Lightest);
       }
 
-      .description-box-coms {
+      .description-box-coms,
+      .main-description-box-coms {
         background-color: var(--YOO-Blue-Light);
       }
 
-      .description-box-proj {
+      .description-box-proj,
+      .main-description-box-proj {
         background-color: var(--YOO-Red-Light);
-      }
-
-      .learn-more-coms,
-      .learn-more-lead,
-      .learn-more-proj {
-        margin-top: 15px;
       }
 
       .learn-more-proj,
@@ -135,13 +171,15 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         flex-direction: column;
         text-align: center;
         align-items: center;
-        margin-left: auto;
-        padding: 15px;
+        flex: 1;
       }
 
-      .right1,
+      .right1 {
+        margin-left: 25px;
+      }
+
       .left2 {
-        flex: 1;
+        margin-right: 25px;
       }
 
       .left1,
@@ -156,19 +194,20 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         font-size: var(--fontsize-h2);
       }
 
-      .left1 button,
-      .right2 button {
+      .learn-more-coms,
+      .learn-more-lead,
+      .learn-more-proj {
         /*the learn more buttons but more general*/
-        font-size: large;
+        font-size: var(--fontsize-lrg);
         width: 100%;
-        border-radius: 50px;
+        border-radius: 15px;
         position: relative;
         padding: 10px;
+        margin-top: 15px;
+        color: white;
       }
 
       .project-team-nav {
-        display: flex;
-        flex-direction: column;
         background-color: var(--YOO-Red-Light);
         border-radius: 15px;
         padding: 10px;
@@ -177,11 +216,12 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       .project-button {
         width: 95%;
         /* change width later... */
-        border-radius: 50px;
+        border-radius: 15px;
         margin: 3%;
-        padding: 8px;
+        padding: 10px;
         border-radius: 10px;
-        font: var(--fontsize-h4);
+        font-size: var(--fontsize-lrg);
+        color: white;
       }
 
       .project-button:hover,
@@ -193,60 +233,6 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       html {
         scroll-behavior: smooth;
       }
-
-      .shapedividers_com-395 {
-        overflow: visible;
-        position: relative;
-        height: 60px;
-      }
-      .shapedividers_com-395::before {
-        content: "";
-        font-family: "shape divider from ShapeDividers.com";
-        position: absolute;
-        z-index: -1;
-        pointer-events: none;
-        background-repeat: no-repeat;
-        bottom: -0.1vw;
-        left: -0.1vw;
-        right: -0.1vw;
-        top: -0.1vw;
-        background-size: 320% 65px;
-        background-position: 33% 0%;
-        background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100.86 4.15"><path fill="%23d9ebef" d="M0 0v3.5a9.07 9.07 0 0 0 9.37-1.67 9.07 9.07 0 0 0 12.1 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.06 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 12.09 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 6.86 2.28V.01z"/></svg>');
-      }
-
-      @media (min-width: 2100px) {
-        .shapedividers_com-395::before {
-          background-size: 320% calc(2vw + 60px);
-        }
-      }
-
-      .shapedividers_com-9592 {
-        overflow: visible;
-        position: relative;
-        height: 70px;
-      }
-      .shapedividers_com-9592::before {
-        content: "";
-        font-family: "shape divider from ShapeDividers.com";
-        position: absolute;
-        z-index: -1;
-        pointer-events: none;
-        background-repeat: no-repeat;
-        bottom: -0.1vw;
-        left: -0.1vw;
-        right: -0.1vw;
-        top: -0.1vw;
-        background-size: 320% 70px;
-        background-position: 33% 0%;
-        background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100.86 4.15"><path fill="%23c8e4ae" d="M0 0v3.5a9.07 9.07 0 0 0 9.37-1.67 9.07 9.07 0 0 0 12.1 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.06 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 12.09 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 6.86 2.28V.01z"/></svg>');
-      }
-
-      @media (min-width: 2100px) {
-        .shapedividers_com-9592::before {
-          background-size: 320% calc(2vw + 60px);
-        }
-      }
     </style>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -256,7 +242,7 @@ import TeamDisplay from "../components/TeamDisplay.astro";
   </head>
 
   <Layout>
-    <div class="title"><h1>Introducing Our Teams</h1></div>
+    <div class="title"><h1><b>Introducing Our Teams</b></h1></div>
     <div class="nav">
       <button class="lead-button"
         ><a href="#leadership-section">Leadership</a></button
@@ -274,8 +260,8 @@ import TeamDisplay from "../components/TeamDisplay.astro";
     <!-- temporary code: -->
     <div class="leadership" id="leadership-section">
       <div class="left1">
-        <h2>Leadership Team</h2>
-        <p class="description-box-lead">
+        <h2 class="lead-title"><b>Leadership Team</b></h2>
+        <p class="main-description-box-lead">
           Description of the leadership team... Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Integer sit amet fringilla libero.
           Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
@@ -287,28 +273,60 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       <div class="right1">
         <ul class="people-c1">
           <li class="person-card">
-            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
-            <p class="description-box-lead">Name+Description</p>
+            <div class="img-wrapper">
+              <img src="/Team + Individual/LT-IshitaBarot (Co-chair).JPG" />
+            </div>
+            <p class="description-box-lead">
+              <b>Ishita Barot</b>
+              <br /> Co-chair <br /> [Text]
+            </p>
           </li>
           <li class="person-card">
-            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
-            <p class="description-box-lead">Name+Description</p>
+            <div class="img-wrapper">
+              <img src="/Team + Individual/LT-JoshuaCurtis (Co-chair).JPG" />
+            </div>
+            <p class="description-box-lead">
+              <b>Joshua Curtis</b>
+              <br /> Co-chair <br /> [Text]
+            </p>
           </li>
           <li class="person-card">
-            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
-            <p class="description-box-lead">Name+Description</p>
+            <div class="img-wrapper">
+              <img src="/Team + Individual/LT-BenSaunders (Treasurer).JPG" />
+            </div>
+            <p class="description-box-lead">
+              <b>Ben Saunders</b><br />Treasurer <br /> [Text]
+            </p>
           </li>
           <li class="person-card">
-            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
-            <p class="description-box-lead">Name+Description</p>
+            <div class="img-wrapper">
+              <img
+                src="/Team + Individual/LT-RashmiMuralidhar (Council Engagement Lead).JPG"
+              />
+            </div>
+            <p class="description-box-lead">
+              <b>Rashmi Muralidhar</b>
+              <br /> Council Engagement Lead <br /> [Text]
+            </p>
           </li>
           <li class="person-card">
-            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
-            <p class="description-box-lead">Name+Description</p>
+            <div class="img-wrapper">
+              <img
+                src="/Team + Individual/LT-ThanishkaSatheeshkumar (Communications Lead).JPG"
+              />
+            </div>
+            <p class="description-box-lead">
+              <b>Thanishka Satheeshkumar</b><br /> Communications Lead <br /> [Text]
+            </p>
           </li>
           <li class="person-card">
-            <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" />
-            <p class="description-box-lead">Name+Description</p>
+            <div class="img-wrapper">
+              <img src="/Team + Individual/LT-YixuanZhu (Secretary).JPG" />
+            </div>
+            <p class="description-box-lead">
+              <b>Yixuan Zhu</b>
+              <br />Secretary <br /> [Text]
+            </p>
           </li>
         </ul>
       </div>
@@ -318,30 +336,38 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       <div class="left2">
         <ul class="people-c1">
           <li class="person-card">
-            <img
-              src="/Team + Individual/LT-ThanishkaSatheeshkumar (Communications Lead).JPG"
-            />
+            <div class="img-wrapper">
+              <img
+                src="/Team + Individual/LT-ThanishkaSatheeshkumar (Communications Lead).JPG"
+              />
+            </div>
             <p class="description-box-coms">
               <b>Thanishka Satheeshkumar</b>
               <br />Communications Lead <br />[Text]
             </p>
           </li>
           <li class="person-card">
-            <img src="/Team + Individual/Comms-SaffronTse.JPG" />
+            <div class="img-wrapper">
+              <img src="/Team + Individual/Comms-SaffronTse.JPG" />
+            </div>
             <p class="description-box-coms">
               <b>Saffron Tse</b>
               <br /><br />[Text]
             </p>
           </li>
           <li class="person-card">
-            <img src="/Team + Individual/Comms-StellaCasey.JPG" />
+            <div class="img-wrapper">
+              <img src="/Team + Individual/Comms-StellaCasey.JPG" />
+            </div>
             <p class="description-box-coms">
               <b>Stella Casey</b>
               <br /><br />[Text]
             </p>
           </li>
           <li class="person-card">
-            <img src="/Team + Individual/Comms-Katerina Lontzetidou.JPG" />
+            <div class="img-wrapper">
+              <img src="/Team + Individual/Comms-Katerina Lontzetidou.JPG" />
+            </div>
             <p class="description-box-coms">
               <b>Katerina Lontzetidou</b>
               <br /><br />[Text]
@@ -350,8 +376,8 @@ import TeamDisplay from "../components/TeamDisplay.astro";
         </ul>
       </div>
       <div class="right2">
-        <h2>Communications Team</h2>
-        <p class="description-box-coms">
+        <h2 class="coms-title"><b>Communications Team</b></h2>
+        <p class="main-description-box-coms">
           Description of the communications team... Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Integer sit amet fringilla libero.
           Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
@@ -364,8 +390,8 @@ import TeamDisplay from "../components/TeamDisplay.astro";
 
     <div class="projects" id="proj-section">
       <div class="left1">
-        <h2>Project Delivery Team</h2>
-        <p class="description-box-proj">
+        <h2 class="proj-title"><b>Project Delivery Team</b></h2>
+        <p class="main-description-box-proj">
           Description of the leadership team... Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Integer sit amet fringilla libero.
           Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
@@ -376,17 +402,18 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       </div>
       <div class="right1">
         <ul class="people-c1">
-          <li class="person-card">
+          <li class="projects-nav-card">
             <div class="project-team-nav">
               <button class="project-button">Team 1</button>
               <button class="project-button">Team 2</button>
               <button class="project-button">Team 3</button>
               <button class="project-button">Team 4</button>
-              <button class="project-button">Team 5</button>
             </div>
           </li>
           <li class="person-card">
-            <img src="/Team + Individual/T1-LeoMorrison.JPG" />
+            <div class="img-wrapper">
+              <img src="/Team + Individual/T1-LeoMorrison.JPG" />
+            </div>
             <p class="description-box-proj">
               <b>Leo Morrison</b><br />
               Team 1 <br />
@@ -394,7 +421,9 @@ import TeamDisplay from "../components/TeamDisplay.astro";
             </p>
           </li>
           <li class="person-card">
-            <img src="/Team + Individual/T1-JamesHarbour.JPG" />
+            <div class="img-wrapper">
+              <img src="/Team + Individual/T1-JamesHarbour.JPG" />
+            </div>
             <p class="description-box-proj">
               <b>James Harbour</b><br />
               Team 1 <br />
@@ -402,7 +431,9 @@ import TeamDisplay from "../components/TeamDisplay.astro";
             </p>
           </li>
           <li class="person-card">
-            <img src="/Team + Individual/T1-TobyLow (TL).JPG" />
+            <div class="img-wrapper">
+              <img src="/Team + Individual/T1-TobyLow (TL).JPG" />
+            </div>
             <p class="description-box-proj">
               <b>Toby Low</b><br />
               Team 1 <br />
@@ -410,7 +441,9 @@ import TeamDisplay from "../components/TeamDisplay.astro";
             </p>
           </li>
           <li class="person-card">
-            <img src="/Team + Individual/T1-EllaAitken.jpg" />
+            <div class="img-wrapper">
+              <img src="/Team + Individual/T1-EllaAitken.jpg" />
+            </div>
             <p class="description-box-proj">
               <b>Ella Aitken</b><br />
               Team 1 <br />
@@ -418,7 +451,9 @@ import TeamDisplay from "../components/TeamDisplay.astro";
             </p>
           </li>
           <li class="person-card">
-            <img src="/Team + Individual/T1 - OliviaAnderson.JPG" />
+            <div class="img-wrapper">
+              <img src="/Team + Individual/T1 - OliviaAnderson.JPG" />
+            </div>
             <p class="description-box-proj">
               <b>Olivia Anderson</b><br />
               Team 1 <br />
