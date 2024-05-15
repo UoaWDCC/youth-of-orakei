@@ -44,6 +44,7 @@ export default function ImageCarousel() {
         <>
         <div className="index-events-carousel-wrapper">
             <div className="index-carousel-button" onClick={() => handleBack()}>
+                <p><b>&lt;</b></p>
             </div>
             <div className="index-carousel-box">
                 {images.map((event: Events, index: number) => (
@@ -64,6 +65,7 @@ export default function ImageCarousel() {
                     </div>
             </div>
             <div className="index-carousel-button" onClick={() => handleForward()}>
+                <p><b>&gt;</b></p>
             </div>
         </div>
             <span className="image-carousel-indicators">

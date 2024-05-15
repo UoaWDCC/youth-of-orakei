@@ -132,11 +132,17 @@
     height: 35px;
     background-color: #AAAAAA;
     border-radius: 100px;
+    margin: auto;
 }
 
 .index-carousel-button:hover {
     cursor: pointer;
     filter: drop-shadow(0px 0px 2px #555);
+}
+
+.index-carousel-button p {
+    text-align: center;
+    font-size: 26px;
 }
 
 .index-carousel-box{
