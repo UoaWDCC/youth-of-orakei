@@ -19,7 +19,7 @@
 }
 
 .team-details {
-  height: 33.3%; /* Top third for details */
+  height: 100%; /* Top third for details */
   box-sizing: border-box;
   color: white;
   text-align: left;
@@ -36,4 +36,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.placeholder-text {
+  font-size: var(--fontsize-lrg);
+  color: var(--text-medium);  
+  height: 270px;
+
 }
