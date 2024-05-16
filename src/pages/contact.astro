@@ -21,6 +21,7 @@ import Layout from '../layouts/layout.astro'
             font-weight: bolder;
             padding:2%;
             margin-left: 4%;
+            padding-bottom: 0px;
         }
         label {
             font-size: 18px;
@@ -41,6 +42,8 @@ import Layout from '../layouts/layout.astro'
             background-color: #D9EBEF;
             padding: 5px;
             font-weight: bold;
+            border: 2px solid #A4C6B0;
+            border-radius: 5px;
         }
         input, textarea{
         background-color: #D9EBEF;
@@ -56,8 +59,17 @@ import Layout from '../layouts/layout.astro'
         height: 200px;
     }
 
-    .contact-image{
+    .image-container{
         flex: 1;
+    }
+
+    #contact-image{
+        margin-top: 0px;
+    }
+
+    #pattern{
+    margin-right: 0px;
+    margin-top: 0px;
     }
     </style>
 </head>
@@ -88,8 +100,9 @@ import Layout from '../layouts/layout.astro'
                 </div>
             </form>
 
-            <div class="contact-image">
-                <img src="src/pages/images/contact-us-stock-image.png" alt="contact us stock image">
+            <div class="image-container">
+                <img id="contact-image" src="src/pages/images/contact-us-stock-image.png" alt="contact us stock image">
+                <img id="pattern" src="src/pages/images/bottom-right-pattern.png"alt = "pattern">
             </div>
         </div>
     </div>
