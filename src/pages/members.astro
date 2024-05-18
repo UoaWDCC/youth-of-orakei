@@ -1,4 +1,11 @@
 ---
+import { getMembers } from '../scripts/getMembers';
+let members = await getMembers();
+import { getAnton } from '../scripts/getAnton';
+let anton = await getAnton();
+import { getCovers } from '../scripts/getCovers';
+let covers = await getCovers();
+
 // Members Page
 import "../styles/global.css";
 import "../styles/members.css";
@@ -464,6 +471,4 @@ import TeamDisplay from "../components/TeamDisplay.astro";
       </div>
     </div>
   </Layout>
-
-
 </html>
