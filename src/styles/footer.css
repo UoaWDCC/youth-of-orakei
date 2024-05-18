@@ -1,0 +1,77 @@
+.organization {
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    background-color: var(--YOO-Yellow-Light);
+}
+
+.company {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 200px;
+    height: auto;
+    margin: auto;
+}
+
+img.footLogo {
+    width: 250px;
+    filter: drop-shadow(3px 6px 5px #a3a3a3);
+
+}
+
+img.soclog{
+    width: 30px;
+    height:auto;
+    padding: 3px;
+}
+
+.feet {
+    height: 230px;
+    margin: auto;
+    padding: 20px 0px;
+    display: flex;
+    background-color: white;
+}
+
+.logoContainer {
+    display: flex;
+    width: 20%;
+}
+
+.socials {
+    width: 50%;
+    padding: 20px 0;
+    color: #4E4E4E;
+}
+
+.youthFont {
+    padding:12px 0px;
+    color: var(--YOO-Green-Primary);
+    font-size: 20px;
+}
+
+.soclogContainer {
+    display: flex;
+    
+}
+
+.navFeet {
+    width: 30%;
+}
+
+.navFeet ul {
+    padding: 20px;
+}
+
+.navFeet ul li {
+    padding: 5px 0px;
+}
+
+.navFeet ul a:hover {
+    text-decoration: underline;
+}

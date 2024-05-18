@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/layout.astro'
+---
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Contact Page</title>
+    <style>
+        .contact-wrapper {
+            background-color: var(--YOO-Green-Lightest);
+        }
+        .content-container{
+            display: flex;
+            justify-content: center;
+            column-gap: 40px;
+        }
+        h1 {
+            font-size: 35px;
+            font-weight: bolder;
+            padding:2%;
+            margin-left: 4%;
+            padding-bottom: 0px;
+        }
+        label {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        form{
+            padding-left: 10%;
+            flex: 2;
+        }
+        .form-group{
+            padding: 1%;
+        }
+        img{
+            width: 500px;
+            margin-top: 8%;
+        }
+        button{
+            background-color: #D9EBEF;
+            padding: 5px;
+            font-weight: bold;
+            border: 2px solid #A4C6B0;
+            border-radius: 5px;
+        }
+        input, textarea{
+        background-color: #D9EBEF;
+        width: 100%;
+        padding: 1%;
+        font-size: 15px;
+        border: 2px solid #A4C6B0;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+        textarea#message {
+        height: 200px;
+    }
+
+    .image-container{
+        flex: 1;
+    }
+
+    #contact-image{
+        margin-top: 0px;
+    }
+
+    #pattern{
+    margin-right: 0px;
+    margin-top: 0px;
+    }
+    </style>
+</head>
+
+<Layout>
+    <div class="contact-wrapper">
+        <h1>Contact Us</h1>
+        <div class = "content-container">
+            <form>
+                <div class="form-group">
+                    <label for="full-name">Full Name</label> <br>
+                    <input type="text" id="full-name" name="full_name"><br>
+                </div>
+                <div class="form-group">
+                    <label for="school">School</label><br>
+                    <input type="text" id="school" name="school"><br>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label><br>
+                    <input type="email" id="email" name="email"><br>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label><br>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit"> Submit</button>
+                </div>
+            </form>
+
+            <div class="image-container">
+                <img id="contact-image" src="src/pages/images/contact-us-stock-image.png" alt="contact us stock image">
+                <img id="pattern" src="src/pages/images/bottom-right-pattern.png"alt = "pattern">
+            </div>
+        </div>
+    </div>
+</Layout>

@@ -1,7 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+  /* YOO colors (Change per YOO brand)*/
+  --YOO-Green-Primary: #294E03;
+  --YOO-Blue-Primary: #A6DFEA;
+  --YOO-Red-Primary: #ECB9B8;
+  --YOO-Yellow-Primary: #F2EF89;
+
+  /* Shades and tints (Contrast reasons; don't change) */
+  --YOO-Green-Dark: #142601;
+  --YOO-Green-Medium: #618F32;
+  --YOO-Green-Light: #96BF70;
+  --YOO-Green-Lightest: #C8E4AE;
+  --YOO-Blue-Dark: #55BBCF;
+  --YOO-Blue-Light: #D9EBEF;
+  --YOO-Red-Dark: #ce4c4a;
+  --YOO-Red-Light: #FFE4E4;
+  --YOO-Yellow-Dark: #F3D746;
+  --YOO-Yellow-Light: #F9F7CE;
+
+  /* General text colors */
+  --text-dark: #292D2A;
+  --text-medium: #616562;
+  --text-light: #AAB0AB;
+
+  /* Hovers and links (TBD)*/
+  --text-active: #111111;
+
+  /* Font sizes */
+  --fontsize-h1: 3rem;
+  --fontsize-h2: 2.5rem;
+  --fontsize-h3: 2.1rem;
+  --fontsize-h4: 1.75rem;
+  --fontsize-h5: 1.44rem;
+  --fontsize-lrg: 1.2rem;
+  --fontsize-reg: 1rem;
+  --fontsize-sml: 0.8rem;
+
+  /* Rounded corners */
+  --common-radius: 15px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Overpass", sans-serif;
+}
+
 body {
   margin: 0 auto;
   width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
   line-height: 1.5;
+  color: var(--text-dark);
+  font-family: 'Overpass', sans-serif;
 }
+
+h1{
+  font-size: var(--fontsize-h1);
+}
+
+h2{
+  font-size: var(--fontsize-h2);
+}
+
+h3{
+  font-size: var(--fontsize-h3);
+}
+
+h4{
+  font-size: var(--fontsize-h4);
+}
+
+h5{
+  font-size: var(--fontsize-h5);
+}
+
+.general-wrapper{
+  margin: 0 auto;
+  width: clamp(300px, 75%, 1300px);
+}
+
+
+.bold-heading{
+  font-weight: 900;
+}
+
+.section-content{
+  padding: 50px 0;
+}
+
+.img-logo{
+  width: 80px;
+  height: auto;
+  display: inline-flex;
+  filter: drop-shadow(3px 6px 5px #a3a3a3);
+}
+/* Some quick text color classes */
+.text-green-dark{
+  color: var(--YOO-Green-Dark);
+}
+.text-green{
+  color: var(--YOO-Green-Medium);
+}
+.text-red{
+  color: var(--YOO-Red-Dark);
+}
+.text-blue{
+  color: var(--YOO-Blue-Dark);
+}
+.text-yellow{
+  color: var(--YOO-Yellow-Dark);
+}
+.text-dark{
+  color: var(--text-dark);
+}
+.text-medium{
+  color: var(--text-medium);
+}
+.text-light{
+  color: var(--text-light);
+}
+

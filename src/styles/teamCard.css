@@ -1,0 +1,46 @@
+.grid-container {
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.team-card {
+  height: 400px; /* Adjust height as needed */
+  width: 48%; /* TODO change this for dynamic width */
+  background-color: var(--YOO-Green-Lightest);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  padding: 30px;
+}
+
+.team-details {
+  height: 100%; /* Top third for details */
+  box-sizing: border-box;
+  color: white;
+  text-align: left;
+}
+
+.team-image {
+  height: 66.6%; /* Bottom two thirds for image */
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--YOO-Green-Light);
+}
+
+.team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder-text {
+  font-size: var(--fontsize-lrg);
+  color: var(--text-medium);  
+  height: 270px;
+
+}
