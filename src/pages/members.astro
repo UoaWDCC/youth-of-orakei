@@ -5,18 +5,470 @@ import { getAnton } from '../scripts/getAnton';
 let anton = await getAnton();
 import { getCovers } from '../scripts/getCovers';
 let covers = await getCovers();
+
+// Members Page
+import "../styles/global.css";
+import "../styles/members.css";
+
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+import Layout from "../layouts/layout.astro";
+
+import TeamDisplay from "../components/TeamDisplay.astro";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Members</h1>
-		<p>{members}</p>
-	</body>
+  <head>
+    <style>
+      /* HTML Classes below: */
+      .title {
+        text-align: center;
+        font-size: var(--fontsize-h3);
+        background-color: var(--YOO-Green-Lightest);
+        padding: 15px;
+        color: var(--YOO-Green-Dark);
+        padding-top: 30px;
+      }
+
+      .nav {
+        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        background-color: var(--YOO-Green-Lightest);
+      }
+
+      .lead-button,
+      .proj-button,
+      .com-button {
+        border-radius: 15px;
+        padding: 7px;
+        width: 350px;
+        max-width: 33%;
+        font-size: var(--fontsize-h4);
+        box-shadow: 3px 3px gray;
+      }
+
+      .leadership,
+      .communications,
+      .projects {
+        width: auto;
+        display: flex;
+        height: auto;
+        padding: 35px;
+        margin: 60px;
+        border-radius: 15px;
+      }
+
+      .leadership,
+      .lead-button {
+        background-color: var(--YOO-Green-Light);
+      }
+
+      .lead-button:hover {
+        background-color: var(--YOO-Green-Lightest);
+        transition: 0.3s;
+      }
+
+      .communications,
+      .com-button {
+        background-color: var(--YOO-Blue-Primary);
+      }
+
+      .com-button:hover {
+        background-color: var(--YOO-Blue-Light);
+        transition: 0.3s;
+      }
+
+      .projects,
+      .proj-button {
+        background-color: var(--YOO-Red-Primary);
+      }
+
+      .proj-button:hover {
+        background-color: var(--YOO-Red-Light);
+        transition: 0.3s;
+      }
+
+      /* cloud svg: */
+      .shapedividers_com-9592 {
+        overflow: visible;
+        position: relative;
+        height: 70px;
+      }
+      .shapedividers_com-9592::before {
+        content: "";
+        font-family: "shape divider from ShapeDividers.com";
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+        background-repeat: no-repeat;
+        bottom: -0.1vw;
+        left: -0.1vw;
+        right: -0.1vw;
+        top: -0.1vw;
+        background-size: 320% 70px;
+        background-position: 33% 0%;
+        background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100.86 4.15"><path fill="%23c8e4ae" d="M0 0v3.5a9.07 9.07 0 0 0 9.37-1.67 9.07 9.07 0 0 0 12.1 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.06 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 12.09 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 6.86 2.28V.01z"/></svg>');
+      }
+
+      @media (min-width: 2100px) {
+        .shapedividers_com-9592::before {
+          background-size: 320% calc(2vw + 60px);
+        }
+      }
+
+      .main-description-box-coms,
+      .main-description-box-lead,
+      .main-description-box-proj {
+        padding: 18px;
+        border-radius: 15px;
+        margin-top: 15px;
+        font-size: var(--fontsize-lrg);
+      }
+
+      .description-box-coms,
+      .description-box-lead,
+      .description-box-proj {
+        padding: 15px;
+        border-radius: 15px;
+        margin-top: 15px;
+        font-size: var(--fontsize-lrg);
+      }
+      .description-box-lead,
+      .main-description-box-lead {
+        background-color: var(--YOO-Green-Lightest);
+      }
+
+      .description-box-coms,
+      .main-description-box-coms {
+        background-color: var(--YOO-Blue-Light);
+      }
+
+      .description-box-proj,
+      .main-description-box-proj {
+        background-color: var(--YOO-Red-Light);
+      }
+
+      .learn-more-proj,
+      .project-button {
+        background-color: var(--YOO-Red-Dark);
+      }
+
+      .learn-more-coms {
+        background-color: var(--YOO-Blue-Dark);
+      }
+
+      .learn-more-coms:hover {
+        background-color: var(--YOO-Blue-Primary);
+        transition: 0.3s;
+      }
+
+      .learn-more-lead {
+        background-color: var(--YOO-Green-Medium);
+      }
+
+      .learn-more-lead:hover {
+        background-color: var(--YOO-Green-Light);
+        transition: 0.3s;
+      }
+
+      .right1,
+      .left2 {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        flex: 1;
+      }
+
+      .right1 {
+        margin-left: 25px;
+      }
+
+      .left2 {
+        margin-right: 25px;
+      }
+
+      .left1,
+      .right2 {
+        flex: 0 0 auto;
+        width: 375px;
+        float: left;
+      }
+
+      .left1 h2,
+      .right2 h2 {
+        font-size: var(--fontsize-h2);
+      }
+
+      .learn-more-coms,
+      .learn-more-lead,
+      .learn-more-proj {
+        /*the learn more buttons but more general*/
+        font-size: var(--fontsize-lrg);
+        width: 100%;
+        border-radius: 15px;
+        position: relative;
+        padding: 10px;
+        margin-top: 15px;
+        color: white;
+      }
+
+      .project-team-nav {
+        background-color: var(--YOO-Red-Light);
+        border-radius: 15px;
+        padding: 10px;
+      }
+
+      .project-button {
+        width: 95%;
+        /* change width later... */
+        border-radius: 15px;
+        margin: 3%;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: var(--fontsize-lrg);
+        color: white;
+      }
+
+      .project-button:hover,
+      .learn-more-proj:hover {
+        background-color: var(--YOO-Red-Primary);
+        transition: 0.3s;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+
+  <Layout>
+    <div class="title"><h1><b>Introducing Our Teams</b></h1></div>
+    <div class="nav">
+      <button class="lead-button"
+        ><a href="#leadership-section">Leadership</a></button
+      >
+      <button class="com-button"
+        ><a href="#com-section">Communications</a></button
+      >
+      <button class="proj-button"><a href="#proj-section">Projects</a></button>
+    </div>
+    <div class="shapedividers_com-9592"></div>
+
+    <!-- importing the members component for leadership -->
+    <!-- <TeamDisplay /> -->
+
+    <!-- temporary code: -->
+    <div class="leadership" id="leadership-section">
+      <div class="left1">
+        <h2 class="lead-title"><b>Leadership Team</b></h2>
+        <p class="main-description-box-lead">
+          Description of the leadership team... Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Integer sit amet fringilla libero.
+          Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
+          turpis ante.
+          <button class="learn-more-lead">LEARN MORE</button>
+        </p>
+      </div>
+      <div class="right1">
+        <ul class="people-c1">
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/LT-IshitaBarot (Co-chair).JPG" />
+            </div>
+            <p class="description-box-lead">
+              <b>Ishita Barot</b>
+              <br /> Co-chair <br /> [Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/LT-JoshuaCurtis (Co-chair).JPG" />
+            </div>
+            <p class="description-box-lead">
+              <b>Joshua Curtis</b>
+              <br /> Co-chair <br /> [Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/LT-BenSaunders (Treasurer).JPG" />
+            </div>
+            <p class="description-box-lead">
+              <b>Ben Saunders</b><br />Treasurer <br /> [Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img
+                src="/Team + Individual/LT-RashmiMuralidhar (Council Engagement Lead).JPG"
+              />
+            </div>
+            <p class="description-box-lead">
+              <b>Rashmi Muralidhar</b>
+              <br /> Council Engagement Lead <br /> [Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img
+                src="/Team + Individual/LT-ThanishkaSatheeshkumar (Communications Lead).JPG"
+              />
+            </div>
+            <p class="description-box-lead">
+              <b>Thanishka Satheeshkumar</b><br /> Communications Lead <br /> [Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/LT-YixuanZhu (Secretary).JPG" />
+            </div>
+            <p class="description-box-lead">
+              <b>Yixuan Zhu</b>
+              <br />Secretary <br /> [Text]
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="communications" id="com-section">
+      <div class="left2">
+        <ul class="people-c1">
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img
+                src="/Team + Individual/LT-ThanishkaSatheeshkumar (Communications Lead).JPG"
+              />
+            </div>
+            <p class="description-box-coms">
+              <b>Thanishka Satheeshkumar</b>
+              <br />Communications Lead <br />[Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/Comms-SaffronTse.JPG" />
+            </div>
+            <p class="description-box-coms">
+              <b>Saffron Tse</b>
+              <br /><br />[Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/Comms-StellaCasey.JPG" />
+            </div>
+            <p class="description-box-coms">
+              <b>Stella Casey</b>
+              <br /><br />[Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/Comms-Katerina Lontzetidou.JPG" />
+            </div>
+            <p class="description-box-coms">
+              <b>Katerina Lontzetidou</b>
+              <br /><br />[Text]
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="right2">
+        <h2 class="coms-title"><b>Communications Team</b></h2>
+        <p class="main-description-box-coms">
+          Description of the communications team... Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Integer sit amet fringilla libero.
+          Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
+          turpis ante.
+          <button class="learn-more-coms">LEARN MORE</button>
+        </p>
+      </div>
+    </div>
+
+    <div class="projects" id="proj-section">
+      <div class="left1">
+        <h2 class="proj-title"><b>Project Delivery Team</b></h2>
+        <p class="main-description-box-proj">
+          Description of the leadership team... Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Integer sit amet fringilla libero.
+          Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
+          turpis ante.
+          <button class="learn-more-proj">LEARN MORE</button>
+        </p>
+      </div>
+      <div class="right1">
+        <ul class="people-c1">
+          <li class="projects-nav-card">
+            <div class="project-team-nav">
+              <button class="project-button">Team 1</button>
+              <button class="project-button">Team 2</button>
+              <button class="project-button">Team 3</button>
+              <button class="project-button">Team 4</button>
+            </div>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/T1-LeoMorrison.JPG" />
+            </div>
+            <p class="description-box-proj">
+              <b>Leo Morrison</b><br />
+              Team 1 <br />
+              [Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/T1-JamesHarbour.JPG" />
+            </div>
+            <p class="description-box-proj">
+              <b>James Harbour</b><br />
+              Team 1 <br />
+              [Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/T1-TobyLow (TL).JPG" />
+            </div>
+            <p class="description-box-proj">
+              <b>Toby Low</b><br />
+              Team 1 <br />
+              [Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/T1-EllaAitken.jpg" />
+            </div>
+            <p class="description-box-proj">
+              <b>Ella Aitken</b><br />
+              Team 1 <br />
+              [Text]
+            </p>
+          </li>
+          <li class="person-card">
+            <div class="img-wrapper">
+              <img src="/Team + Individual/T1 - OliviaAnderson.JPG" />
+            </div>
+            <p class="description-box-proj">
+              <b>Olivia Anderson</b><br />
+              Team 1 <br />
+              [Text]
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </Layout>
 </html>
