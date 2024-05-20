@@ -17,24 +17,24 @@ import TeamsContainer from "../components/projects page/projects_team_container.
     <title>Projects</title>
   </head>
   <Layout>
-    <img
-        class="hero-bg"
-        alt="abstract background shapes"
-        src="/assets/YOO_index-hero-bg.svg"
-    />
-
-    <section class="general-wrapper spacer-medium">
-      <h3 class="bold-heading text-green">Our projects</h3>
-      <div class="projects-teams">
-        <h5 class="bold-heading text-green-medium">By team</h5>
-        <div class="spacer-small">
-          <TeamsContainer />
+    <main class="projects-page">
+      <img
+          class="projects-bg"
+          alt="abstract background shapes"
+          src="/assets/YOO_index-hero-bg.svg"
+      />
+      <section class="general-wrapper spacer-big">
+        <h3 class="bold-heading text-green">Our projects</h3>
+        <div class="projects-teams">
+          <h5 class="bold-heading text-green-medium">By team</h5>
+          <div class="spacer-small">
+            <TeamsContainer/>
+          </div>
         </div>
-      </div>
+      </section>
 
-    </section>
-
-    <Carousel />
+      <Carousel />
+    </main>
   </Layout>
 
 </html>

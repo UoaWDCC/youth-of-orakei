@@ -2,12 +2,9 @@
 // Projects Page
 import "../../styles/global.css";
 import "../../styles/index.css";
-import TeamDisplay from "../../components/TeamDisplay.astro";
+import "../../styles/projects.css";
 import Layout from "../../layouts/layout.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
-import TeamCard from "../../components/projects page/projects_team_card.astro";
 import Carousel from "../../components/carousel.astro";
-import Container from "../../components/projects page/projects_team_container.astro";
 ---
 
 <html lang="en">
@@ -16,11 +13,22 @@ import Container from "../../components/projects page/projects_team_container.as
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <Layout>
-      <h1 class="h1">Team 1 Projects</h1>
-      <Carousel />
-      <Carousel />
-      <Carousel />
-    </Layout>
+    <title>Team 1</title>
   </head>
+  <Layout>
+    <main class="team-projects-page">
+      <section class="general-wrapper spacer-big">
+        <h3 class="bold-heading text-green">Team 1's projects</h3>
+        <p class="team-projects-members">Member name, Member name, Member name (e.g. Steve, Julie, John)</p>
+
+        <div class="spacer-medium">
+          <p>Content & layout TBD</p>
+        </div>
+      </section>
+      <Carousel />
+      <Carousel />
+      <Carousel />
+    </main>
+
+  </Layout>
 </html>

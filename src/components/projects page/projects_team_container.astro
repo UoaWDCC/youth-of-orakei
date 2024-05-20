@@ -1,20 +1,23 @@
 ---
 import "../../styles/global.css";
 import "../../styles/header.css";
-import "../../styles/teamCard.css";
+import "../../styles/projects.css";
 import TeamCard from "./projects_team_card.astro";
 
 ---
 
 <!doctype html>
-<html lang="en">
-  <body>
-    <div class="grid-container">
-      <TeamCard title="Team 1" desc="Description for Team 1" link="/projects/team1"/>
-      <TeamCard title="Team 2" desc="Description for Team 2" link="/projects/team2"/>
-      <TeamCard title="Team 3" desc="Description for Team 3" link="/projects/team3"/>
-      <TeamCard title="Team 4" desc="Description for Team 4" link="/projects/team4"/>
-
-    </div>
-  </body>
-</html>
+<div class="team-container">
+  <div class="grid-container">
+    <TeamCard title="Team 1"
+              desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere vestibulum turpis non dapibus. Quisque sed turpis vitae tellus blandit tincidunt. Etiam consectetur ex sit amet fermentum consequat. Curabitur mattis augue vitae facilisis ultricies. Quisque auctor blandit nisl, nec imperdiet lorem auctor consectetur."
+              link="/projects/team1"/>
+    <TeamCard title="Team 2"
+              desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere vestibulum turpis non dapibus. Quisque sed turpis vitae tellus blandit tincidunt. Etiam consectetur ex sit amet fermentum consequat. Curabitur mattis augue vitae facilisis ultricies. Quisque auctor blandit nisl, nec imperdiet lorem auctor consectetur."
+              link="/projects/team2"/>
+    <TeamCard title="Team 3" desc="Description for Team 3" link="/projects/"/>
+    <TeamCard title="Team 4" desc="Description for Team 4" link="/projects/"/>
+    <TeamCard title="Team 5" desc="Description for Team 5" link="/projects/"/>
+    <TeamCard title="Team 6" desc="Description for Team 6" link="/projects/"/>
+  </div>
+</div>
