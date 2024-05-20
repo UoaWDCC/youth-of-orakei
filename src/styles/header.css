@@ -3,45 +3,54 @@
     left: 0;
     width: 100%;
     display: flex;
-    padding: 10px 100px; /* 10px top and bottom, 0 left and right */
-    color: #F8F8F8;
-    border-bottom: 3px solid white;
+    padding: 12px 50px; /* 12 top and bottom, 50 left and right */
     align-items: center;
     justify-content: space-between;
-    z-index: 100;
+
+    z-index: 1;
     background-color: white;
+
+    border-bottom: solid 2px var(--YOO-Green-Light);
 }
+
+
 .logo {
-    font-size: 40px;
-    color: #294E03;
-    text-decoration: none;
-    font-family: "Overpass", sans-serif;
-    font-weight: bolder;
-    display: inline-flex;
-    vertical-align: middle;
+    color: var(--YOO-Green-Primary);
 
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    gap: 8px;
+}
+.logo:hover{
+    color: var(--text-active);
 }
 
-.img-logo, .txt-logo{
-    display: inline-flex;
-    vertical-align: middle;
+.txt-logo{
+    font-size: var(--fontsize-h5);
+    font-weight: 800;
 
+    line-height: 1;
+    height: 15px;
 }
+
 .img-logo{
-    width: 80px;
+    width: 70px;
     height: auto;
-    display: inline-flex;
+}
+
+.navbar{
+    display: flex;
+    gap: 48px;
 }
 
 .navbar a{
     position: relative;
-    color: #294E03;
+    color: var(--YOO-Green-Primary);
+
     text-decoration: none;
-    margin-left: 20px;
-    font-size: 18px;
-    margin-left : 40px;
-    font-family: "Overpass", sans-serif;
-    font-weight: bold;
+    font-size: var(--fontsize-lrg);
+    font-weight: 700;
     display: inline-flex;
 }
 
