@@ -21,6 +21,7 @@ pnpm-debug.log*
 .DS_Store
 
 # intellij things
+.idea
 .idea/codeStyles/codeStyleConfig.xml
 .idea/codeStyles/Project.xml
 .idea/misc.xml

@@ -1,0 +1,31 @@
+---
+import "../../styles/global.css";
+import "../../styles/header.css";
+import "../../styles/teamCard.css";
+
+interface Props {
+  title: string;
+  desc: string;
+  link: string;
+}
+
+const { title, desc, link } = Astro.props;
+---
+
+
+<!doctype html>
+<html lang="en">
+  <div class="team-card">
+    <a href={link}>
+      <div>
+        <div class="team-details">
+          <h2>{title}</h2>
+          <p>{desc}</p>
+        </div>
+        <div class="team-image">
+          <p class="placeholder-text">Placeholder image</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</html>
