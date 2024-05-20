@@ -1,66 +1,54 @@
-
-
-
+.projects-teams{
+    padding: 48px 0;
+}
 
 
 /* CARDS */
 
-/* Projects section */
-.team-card{
+.grid-container {
     width: 100%;
-    height: 2px;
-    padding: 2rem;
-    background-color: var(--YOO-Blue-Light);
-    border-radius: var(--common-radius);
 
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-}
-
-/* Events section */
-.index-events{
-    background-color: var(--YOO-Green-Lightest);
-}
-
-.index-events-carousel-wrapper{
-    margin-top: 3rem;
-    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+
+    gap: 30px;
 }
 
-.index-carousel-box{
-    width: 100%;
-    height: 80%;
-    padding: 2rem;
-    background-color: var(--YOO-Blue-Light);
-    border-radius: var(--common-radius);
 
-    display: flex;
-    align-items: center;
-    gap: 3rem;
+/* Cards */
 
+.team-card {
+    height: 350px; /* Adjust height as needed */
+    width: 48%; /* TODO change this for dynamic width */
+
+    background-color: var(--YOO-Green-Lightest);
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
 }
 
-.index-carousel-image{
-    width: 100vw;
+.team-details {
+    padding: 16px 0;
+    color: var(--YOO-Green-Primary);
 }
 
-/* TODO: temporary placeholder color */
-.placeholder{
+.team-image {
+    height: 66.6%; /* Bottom two thirds for image */
+    overflow: hidden;
+    width: 100%;
+    background-color: var(--YOO-Green-Light);
+}
+
+.team-image img {
+    width: 100%;
     height: 100%;
-    border-radius: var(--common-radius);
-    background-color: #d0dae5;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    object-fit: cover;
 }
 
-.placeholder-text{
+.placeholder-text {
     font-size: var(--fontsize-lrg);
     color: var(--text-medium);
+    height: 270px;
+
 }
