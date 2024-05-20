@@ -1,8 +1,11 @@
 ---
 // Projects Page
 import "../styles/global.css";
-import Header from "../components/header.astro";
-import Footer from "../components/footer.astro";
+import "../styles/index.css";
+import "../styles/projects.css";
+import Layout from "../layouts/layout.astro";
+import Carousel from "../components/carousel.astro";
+import TeamsContainer from "../components/projects page/projects_team_container.astro";
 ---
 
 <html lang="en">
@@ -13,9 +16,25 @@ import Footer from "../components/footer.astro";
     <meta name="generator" content={Astro.generator} />
     <title>Projects</title>
   </head>
-  <body>
-    <Header />
-    <h1>Projects</h1>
-    <Footer />
-  </body>
+  <Layout>
+    <main class="projects-page">
+      <img
+          class="projects-bg"
+          alt="abstract background shapes"
+          src="/assets/YOO_index-hero-bg.svg"
+      />
+      <section class="general-wrapper spacer-big">
+        <h3 class="bold-heading text-green">Our projects</h3>
+        <div class="projects-teams">
+          <h5 class="bold-heading text-green-medium">By team</h5>
+          <div class="spacer-small">
+            <TeamsContainer/>
+          </div>
+        </div>
+      </section>
+
+      <Carousel />
+    </main>
+  </Layout>
+
 </html>

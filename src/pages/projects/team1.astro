@@ -1,0 +1,34 @@
+---
+// Projects Page
+import "../../styles/global.css";
+import "../../styles/index.css";
+import "../../styles/projects.css";
+import Layout from "../../layouts/layout.astro";
+import Carousel from "../../components/carousel.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Team 1</title>
+  </head>
+  <Layout>
+    <main class="team-projects-page">
+      <section class="general-wrapper spacer-big">
+        <h3 class="bold-heading text-green">Team 1's projects</h3>
+        <p class="team-projects-members">Member name, Member name, Member name (e.g. Steve, Julie, John)</p>
+
+        <div class="spacer-medium">
+          <p>Content & layout TBD</p>
+        </div>
+      </section>
+      <Carousel />
+      <Carousel />
+      <Carousel />
+    </main>
+
+  </Layout>
+</html>

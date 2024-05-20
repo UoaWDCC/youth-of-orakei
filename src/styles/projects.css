@@ -1,0 +1,93 @@
+.projects-page {
+    /* background-color: var(--YOO-Blue-Light); */
+}
+
+.projects-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    z-index: -1;
+}
+
+.projects-teams{
+    padding: 48px 0;
+}
+
+
+/* CARDS */
+
+.grid-container {
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* Cards */
+.team-card {
+    width: 48%; /* TODO change this for dynamic width */
+
+    padding: 0 32px;
+
+    background-color: var(--YOO-Green-Lightest);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 4px 4px 8px rgba(0, 80, 50, 0.2);
+
+    transition: all 300ms ease-in-out;
+}
+
+.team-card:hover{
+    cursor: pointer;
+    transform: translate(-8px, -8px);
+    transition: all 150ms ease-in-out;
+
+    box-shadow: 14px 14px 16px rgba(0, 120, 50, 0.2); /* Add shadow for depth */
+}
+
+.team-details {
+    padding: 32px 0;
+    color: var(--YOO-Green-Primary);
+}
+
+.team-image-wrapper{
+    /* Full width via negative margin */
+    margin: 0 -32px;
+    height: 200px;
+}
+
+.team-image {
+    width: 100%;
+    background-color: var(--YOO-Green-Light);
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.placeholder-text {
+    font-size: var(--fontsize-lrg);
+    color: var(--text-medium);
+    height: 270px;
+}
+
+
+
+/* TEAM PROJECTS PAGE */
+.team-projects-page{
+    background-color: var(--YOO-Blue-Light);
+}
+
+.team-projects-members{
+    font-size: var(--fontsize-lrg);
+    font-weight: 500;
+
+    color: var(--YOO-Green-Primary);
+}

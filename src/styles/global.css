@@ -86,8 +86,16 @@ h5{
   font-weight: 900;
 }
 
-.section-content{
-  padding: 50px 0;
+.spacer-big{
+  padding: 96px 0 48px;
+}
+
+.spacer-medium{
+  padding: 48px 0;
+}
+
+.spacer-small{
+  padding: 24px 0;
 }
 
 .img-logo{
@@ -101,6 +109,9 @@ h5{
   color: var(--YOO-Green-Dark);
 }
 .text-green{
+  color: var(--YOO-Green-Primary);
+}
+.text-green-medium{
   color: var(--YOO-Green-Medium);
 }
 .text-red{

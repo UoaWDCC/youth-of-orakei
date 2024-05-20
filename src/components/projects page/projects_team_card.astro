@@ -1,0 +1,36 @@
+---
+import "../../styles/global.css";
+import "../../styles/header.css";
+import "../../styles/projects.css";
+
+interface Props {
+  title: string;
+  desc: string;
+  link: string;
+  image: string;
+}
+
+const { title, desc, link , image} = Astro.props;
+---
+
+
+<!doctype html>
+<div class="team-card">
+  <a href={link}>
+    <div>
+      <div class="team-details">
+        <h3 class="bold-heading">{title}</h3>
+        <p>{desc}</p>
+      </div>
+      <div class="team-image-wrapper">
+        <!--
+        TODO image goes here instead of placeholder div:
+        <img class="team-image" alt="whatever" src={image}>
+          -->
+        <div class="team-image">
+          <p class="placeholder-text">Placeholder image</p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
