@@ -1,8 +1,15 @@
+/* Organisations we work with */
+
 .organization {
-    padding: 10px;
+    padding: 24px 0;
     margin: auto;
     text-align: center;
     background-color: var(--YOO-Yellow-Light);
+}
+
+.organization-heading{
+    font-weight: 800;
+    color: var(--YOO-Green-Primary);
 }
 
 .company {
@@ -12,16 +19,9 @@
     justify-content: center;
 }
 
-img {
-    width: 200px;
-    height: auto;
+.organization img {
+    height: 125px;
     margin: auto;
-}
-
-img.footLogo {
-    width: 250px;
-    filter: drop-shadow(3px 6px 5px #a3a3a3);
-
 }
 
 img.soclog{
@@ -30,48 +30,76 @@ img.soclog{
     padding: 3px;
 }
 
+
+
+/* Footer */
+
 .feet {
-    height: 230px;
-    margin: auto;
-    padding: 20px 0px;
+    padding: 12px 50px; /* ideally same as header */
+
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     background-color: white;
+    border-top: solid 2px var(--YOO-Green-Light);
+}
+
+.footer-left{
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo{
+
 }
 
 .logoContainer {
+    padding: 16px 0;
+
     display: flex;
-    width: 20%;
+    width: 250px;
 }
 
 .socials {
-    width: 50%;
-    padding: 20px 0;
+    height: 60%;
     color: #4E4E4E;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .youthFont {
-    padding:12px 0px;
     color: var(--YOO-Green-Primary);
-    font-size: 20px;
+    font-size: var(--fontsize-h5);
+
+    font-weight: 800;
 }
 
 .soclogContainer {
     display: flex;
-    
+    font-size: var(--fontsize-lrg);
 }
 
-.navFeet {
-    width: 30%;
+.socials-subtitle{
+    font-weight: 700;
+    padding-bottom: 8px;
 }
 
-.navFeet ul {
-    padding: 20px;
+.footer-right {
+    margin-right: 100px;
+    height: min-content;
 }
 
-.navFeet ul li {
-    padding: 5px 0px;
+.footer-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    font-weight: 700;
 }
 
-.navFeet ul a:hover {
+.footer-nav a:hover {
     text-decoration: underline;
 }
