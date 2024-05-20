@@ -17,17 +17,10 @@
   padding: 22px;
 }
 
-.right1 {
+.right1,
+.left2 {
   display: flex;
   flex-wrap: wrap;
-  /* flex-direction: column;
-  text-align: center;
-  align-items: center;
-  margin-left: auto; */
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill);
-  grid-gap: 20px;
-  background-color: red; */
 }
 
 .right1 {
@@ -55,8 +48,6 @@
 
 .person-card {
   margin-bottom: 15px;
-  /* width: 40%; */
-  background-color: aqua;
 }
 
 .person-card p {
