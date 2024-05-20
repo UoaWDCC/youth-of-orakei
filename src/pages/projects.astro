@@ -2,6 +2,7 @@
 // Projects Page
 import "../styles/global.css";
 import "../styles/index.css";
+import "../styles/projects.css";
 import Layout from "../layouts/layout.astro";
 import Carousel from "../components/carousel.astro";
 import TeamsContainer from "../components/projects page/projects_team_container.astro";
@@ -13,18 +14,24 @@ import TeamsContainer from "../components/projects page/projects_team_container.
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <Layout>
-      <img
+    <title>Projects</title>
+  </head>
+  <Layout>
+    <img
         class="hero-bg"
         alt="abstract background shapes"
         src="/assets/YOO_index-hero-bg.svg"
-      />
-      <section class="general-wrapper section-content">
-        <h3 class="bold-heading text-blue">Our Projects</h3>
-        <TeamsContainer />
-      </section>
+    />
 
-      <Carousel />
-    </Layout>
-  </head>
+    <section class="general-wrapper section-content">
+      <h3 class="bold-heading text-blue">Our Projects</h3>
+      <div class="projects-teams">
+        <TeamsContainer />
+      </div>
+
+    </section>
+
+    <Carousel />
+  </Layout>
+
 </html>
