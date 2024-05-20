@@ -57,8 +57,10 @@ export async function getAnton(): Promise<any[]> {
  
   const filePath = './src/pages/posts/members.md';
 
-  const extra = "---\nlayout: ../../layouts/MarkdownPostLayout.astro\ntitle: 'Taken from Notion'\nauthor: 'You'\n---"
+  const extra = "---\ntitle: 'Taken from Notion'\nauthor: 'You'\n---"
 
+  // layout: ../../layouts/MarkdownPostLayout.astro\n
+  
   // Write the Markdown content to the file
   fs.writeFile(filePath, extra + "  \n" + full_text, (err) => {
     if (err) {
