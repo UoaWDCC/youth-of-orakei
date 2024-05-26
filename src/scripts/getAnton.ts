@@ -10,7 +10,7 @@ export async function getAnton(): Promise<any[]> {
   const notion = new Client({ auth: import.meta.env.NOTION_TOKEN });
 
   // API call to get all the blocks in an array of JSON
-  (async () => {
+  await (async () => {
     const blockId = import.meta.env.NOTION_PAGE_ID;
     const response = await notion.blocks.children.list({
       block_id: blockId,
@@ -18,57 +18,57 @@ export async function getAnton(): Promise<any[]> {
     });
 
     const blocks = response.results;
-    
+
     var full_text = "";
 
     for (var i = 0; i < blocks.length; i++) {
-        var current_block = blocks[i] as block;
-       
-        // Checks what kind of heading it is and adds to the text
-        if (current_block.type === "heading_1") {
-          full_text += `# ${current_block.heading_1?.rich_text[0].text.content}\n`;
-        } else if (current_block.type === "heading_2") {
-          full_text += `# ${current_block.heading_2?.rich_text[0].text.content}\n`;
-        } else if (current_block.type === "heading_3") {
-          full_text += `# ${current_block.heading_3?.rich_text[0].text.content}\n`;
-        }
-        // Checks if its paragraph
-        else if (current_block.type === "paragraph") {
-          // Loops through the paragraph
-          for (const text of current_block.paragraph?.rich_text || []) {
-            let currentText = text.text.content;
-            // Checks bold + italics and formats it correctly
-            if (text.annotations.bold && text.annotations.italic) {
-              currentText = `***${currentText}***`;
-            } else if (text.annotations.bold) {
-              currentText = `**${currentText}**`;
-            } else if (text.annotations.italic) {
-              currentText = `*${currentText}*`;
-            }
-            // Checks links and formats it correctly
-            if (text.text.link) {
-              currentText = `[${currentText}](${text.text.link.url})`;
-            }
-            full_text += currentText + " ";
+      var current_block = blocks[i] as block;
+
+      // Checks what kind of heading it is and adds to the text
+      if (current_block.type === "heading_1") {
+        full_text += `# ${current_block.heading_1?.rich_text[0].text.content}\n`;
+      } else if (current_block.type === "heading_2") {
+        full_text += `# ${current_block.heading_2?.rich_text[0].text.content}\n`;
+      } else if (current_block.type === "heading_3") {
+        full_text += `# ${current_block.heading_3?.rich_text[0].text.content}\n`;
+      }
+      // Checks if its paragraph
+      else if (current_block.type === "paragraph") {
+        // Loops through the paragraph
+        for (const text of current_block.paragraph?.rich_text || []) {
+          let currentText = text.text.content;
+          // Checks bold + italics and formats it correctly
+          if (text.annotations.bold && text.annotations.italic) {
+            currentText = `***${currentText}***`;
+          } else if (text.annotations.bold) {
+            currentText = `**${currentText}**`;
+          } else if (text.annotations.italic) {
+            currentText = `*${currentText}*`;
           }
+          // Checks links and formats it correctly
+          if (text.text.link) {
+            currentText = `[${currentText}](${text.text.link.url})`;
+          }
+          full_text += currentText + " ";
         }
-        full_text += "\n";
+      }
+      full_text += "\n";
     }
- 
-  const filePath = './src/pages/posts/members.md';
 
-  const extra = "---\ntitle: 'Taken from Notion'\nauthor: 'You'\n---"
+    const filePath = './src/pages/posts/members.md';
 
-  // layout: ../../layouts/MarkdownPostLayout.astro\n
-  
-  // Write the Markdown content to the file
-  fs.writeFile(filePath, extra + "  \n" + full_text, (err) => {
-    if (err) {
-      console.error('Error writing file:', err);
-    } else {
-      console.log('Markdown file written successfully.');
-    }
-  });
+    const extra = "---\ntitle: 'Taken from Notion'\nauthor: 'You'\n---"
+
+    // layout: ../../layouts/MarkdownPostLayout.astro\n
+
+    // Write the Markdown content to the file
+    fs.writeFile(filePath, extra + "  \n" + full_text, (err) => {
+      if (err) {
+        console.error('Error writing file:', err);
+      } else {
+        console.log('Markdown file written successfully.');
+      }
+    });
 
   })();
 
