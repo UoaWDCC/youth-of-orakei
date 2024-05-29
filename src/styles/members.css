@@ -25,8 +25,6 @@
   box-shadow: 3px 3px gray;
 }
 
-
-
 .leadership,
 .lead-button {
   background-color: var(--YOO-Green-Light);
@@ -86,16 +84,6 @@
   }
 }
 
-
-.leadership {
-  width: auto;
-  display: flex;
-  height: auto;
-  padding: 25px;
-  border-radius: 10px;
-  background-color: var(--YOO-Green-Light);
-}
-
 .leadership,
 .communications,
 .projects {
@@ -141,19 +129,23 @@
   background-color: var(--YOO-Red-Light);
 }
 
-
-
 .right1,
 .left2 {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 25px;
-  margin-right: 25px;
-
+  /* display: flex;
+  flex-wrap: wrap; */
+  /* trying to make it fixed 3 columns*/
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
 }
 
 .right1 {
-  flex: 1;
+  margin-left: 3%;
+}
+
+.left2 {
+  margin-right: 3%;
 }
 
 .left1,
