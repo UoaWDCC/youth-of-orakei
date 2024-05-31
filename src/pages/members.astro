@@ -17,6 +17,7 @@ import Layout from "../layouts/layout.astro";
 import TeamDisplay from "../components/TeamDisplayLeft.astro";
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
+import ChangeTeam from "../components/ChangeTeam";
 ---
 
 <html lang="en">
@@ -44,9 +45,10 @@ import TeamDisplayRight from "../components/TeamDisplayRight.astro";
     <!-- importing the left + right components -->
     <TeamDisplayLeft />
     <TeamDisplayRight />
+    <ChangeTeam />
 
     <!-- temporary code: -->
-    <div class="projects" id="proj-section">
+    <!-- <div class="projects" id="proj-section">
       <div class="left1">
         <h2 class="proj-title"><b>Project Delivery Team</b></h2>
         <p class="main-description-box-proj">
@@ -128,7 +130,7 @@ import TeamDisplayRight from "../components/TeamDisplayRight.astro";
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
   </Layout>
 
   <!-- next team...
