@@ -2,8 +2,10 @@ import { Client } from "@notionhq/client";
 import * as fs from "fs";
 import { type block } from "../types/block";
 import type {BlockObjectRequest} from "@notionhq/client/build/src/api-endpoints";
+import {getMembers} from "./getMembers.ts";
+import {getAnton} from "./getAnton.ts";
 
-//
+// define the type of the data that we are going to get from the Notion database
 type MemberDate = {
   team:string;
   desc:string;
@@ -29,9 +31,31 @@ export async function getDetails(): Promise<void>{
     // Query the Notion database
     const query = await notion.databases.query({
       database_id: NOTION_MEMBERS_ID,
-      sorts: [{ property: 'Name', direction: 'ascending' }]
+      sorts: [{property: 'Name', direction: 'ascending'}]
     });
 
-    // iterating through all the pages in the database, and running the get
+    for (const page of query.results){
+      if ('properties ' in page){
+        const title = page.properties.Name?.title[0].plain_text || "Untitled";
+        const pageId = page.id;
 
+        const block = await getMembers();
+        const content= await getAnton(block);
+
+
+      }
+    }
+
+  } catch (error) {
+      console.error('Error querying database:', error);
   }
+
+}
+
+async function fetchPageBlocks(notion : Client, blockID: string) : Promise<block[]>{
+  const blocks: block[] = [];
+
+  do {
+    const response = await notion.bl
+  }
+}

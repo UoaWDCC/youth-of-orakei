@@ -2,28 +2,19 @@ import { Client } from "@notionhq/client";
 import * as fs from "fs";
 import { type block } from "../types/block";
 
-export async function getAnton(): Promise<any[]> {
+type MemberData = {
+    team: string;
+    desc: string;
+    name: string;
+    cover?: string;
+    url?: string;
+}
 
-  if (!import.meta.env.NOTION_TOKEN || !import.meta.env.NOTION_MEMBERS_ID)
-  throw new Error("Missing secret(s)");
-
-  const notion = new Client({ auth: import.meta.env.NOTION_TOKEN });
-
-  // API call to get all the blocks in an array of JSON
-  await (async () => {
-    const blockId = import.meta.env.NOTION_PAGE_ID;
-    const response = await notion.blocks.children.list({
-      block_id: blockId,
-      page_size: 50,
-    });
-
-    const blocks = response.results;
+export async function getAnton(blocks : block[]): Promise<string> {
 
     var full_text = "";
 
-    for (var i = 0; i < blocks.length; i++) {
-      var current_block = blocks[i] as block;
-
+    for (const current_block of blocks) {
       // Checks what kind of heading it is and adds to the text
       if (current_block.type === "heading_1") {
         full_text += `# ${current_block.heading_1?.rich_text[0].text.content}\n`;
@@ -55,23 +46,23 @@ export async function getAnton(): Promise<any[]> {
       full_text += "\n";
     }
 
-    const filePath = './src/pages/posts/members.md';
+  //   const filePath = './src/pages/posts/members.md';
+  //
+  //   const extra = "---\ntitle: 'Taken from Notion'\nauthor: 'You'\n---"
+  //
+  //   // layout: ../../layouts/MarkdownPostLayout.astro\n
+  //
+  //   // Write the Markdown content to the file
+  //   fs.writeFile(filePath, extra + "  \n" + full_text, (err) => {
+  //     if (err) {
+  //       console.error('Error writing file:', err);
+  //     } else {
+  //       console.log('Markdown file written successfully.');
+  //     }
+  //   });
+  //
+  // })();
 
-    const extra = "---\ntitle: 'Taken from Notion'\nauthor: 'You'\n---"
-
-    // layout: ../../layouts/MarkdownPostLayout.astro\n
-
-    // Write the Markdown content to the file
-    fs.writeFile(filePath, extra + "  \n" + full_text, (err) => {
-      if (err) {
-        console.error('Error writing file:', err);
-      } else {
-        console.log('Markdown file written successfully.');
-      }
-    });
-
-  })();
-
-  return [0];
+  return full_text;
 
 }
