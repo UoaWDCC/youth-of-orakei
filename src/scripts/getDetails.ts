@@ -1,12 +1,9 @@
 import { Client } from "@notionhq/client";
 import * as fs from "fs";
 import { type block } from "../types/block";
-import type {BlockObjectRequest} from "@notionhq/client/build/src/api-endpoints";
-import {getMembers} from "./getMembers.ts";
 import {getAnton} from "./getAnton.ts";
 
 
-type Block = BlockObjectRequest;
 
 export async function getDetails(): Promise<void> {
   const NOTION_TOKEN = import.meta.env.NOTION_TOKEN;
@@ -42,7 +39,7 @@ export async function getDetails(): Promise<void> {
 
         // writing markdown file to file path
         fs.writeFileSync(filePath, extra + content);
-        console.log(`markdown file written succesfully for ${title}`);
+        console.log(`markdown file written successfully for ${title}`);
 
       }
     }
