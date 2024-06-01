@@ -5,18 +5,10 @@ import type {BlockObjectRequest} from "@notionhq/client/build/src/api-endpoints"
 import {getMembers} from "./getMembers.ts";
 import {getAnton} from "./getAnton.ts";
 
-// define the type of the data that we are going to get from the Notion database
-type MemberDate = {
-  team:string;
-  desc:string;
-  name:string;
-  cover?:string;
-  url?:string;
-}
 
 type Block = BlockObjectRequest;
 
-export async function getDetails(): Promise<void>{
+export async function getDetails(): Promise<void> {
   const NOTION_TOKEN = import.meta.env.NOTION_TOKEN;
   const NOTION_MEMBERS_ID = import.meta.env.NOTION_MEMBERS_ID;
 
@@ -35,13 +27,22 @@ export async function getDetails(): Promise<void>{
     });
 
     for (const page of query.results){
-      if ('properties ' in page){
-        const title = page.properties.Name?.title[0].plain_text || "Untitled";
+      if ('properties' in page){
+        // @ts-ignore
+        const title = page.properties.Name.title[0].plain_text || "Untitled";
+        console.log(`Fetching data for ${title}`);
         const pageId = page.id;
 
-        const block = await getMembers();
+        const block = await fetchPageBlocks(notion, pageId);
         const content= await getAnton(block);
 
+        // defining file path to save markdown file to
+        const filePath = './src/pages/posts/members.md';
+        const extra = "---\ntitle: 'Taken from Notion'\nauthor: 'You'\n---"
+
+        // writing markdown file to file path
+        fs.writeFileSync(filePath, extra + content);
+        console.log(`markdown file written succesfully for ${title}`);
 
       }
     }
@@ -54,8 +55,17 @@ export async function getDetails(): Promise<void>{
 
 async function fetchPageBlocks(notion : Client, blockID: string) : Promise<block[]>{
   const blocks: block[] = [];
+  let cursor: string | undefined = undefined;
 
   do {
-    const response = await notion.bl
-  }
+    const response = await notion.blocks.children.list({
+      block_id: blockID,
+      start_cursor: cursor,
+      page_size: 50,
+    });
+    blocks.push(...response.results as block[]);
+    cursor = response.next_cursor ?? undefined;
+  } while (cursor);
+
+  return blocks;
 }
