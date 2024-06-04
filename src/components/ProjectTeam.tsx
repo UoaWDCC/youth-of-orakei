@@ -67,7 +67,7 @@ const ProjectTeams = () => {
   const [selectedTeam, setSelectedTeam] = useState('team1'); // Default state is team1
   const [teamNumber, setTeamNumber] = useState(0);
 
-  const handleTeamChange = (t: any) => {
+  const handleTeamChange = (t: string) => {
     console.log(`Changing team to: ${t}`);
     for (let i = 0; i < teamsData.length; i++) {
       if (teamsData[i].teamDetails.teamId == t) {
@@ -87,25 +87,16 @@ const ProjectTeams = () => {
             <a href={`/projects/${selectedTeam}`}>LEARN MORE</a>
           </button>
         </p>
-      </div>
-      <div className="right1">
         <div className="projects-nav-card">
           <div className="project-team-nav">
+          <p className="main-description-box-proj" style={{padding: 0, margin: 0}}>View the teams!</p>
             {teamsData.map((team) =>
-              <div key={team.teamDetails.teamId} className="radio-button">
-                <input
-                  type="radio"
-                  id={team.teamDetails.teamId}
-                  name="team"
-                  value={team.teamDetails.teamId}
-                  checked={selectedTeam === team.teamDetails.teamId}
-                  onChange={() => handleTeamChange(team.teamDetails.teamId)}
-                />
-                <label htmlFor={team.teamDetails.teamId}>{team.teamDetails.teamName}</label>
-              </div>
+              <button className={team.teamDetails.teamId !== selectedTeam ? "project-button" : "project-button project-button-active"} onClick={() => handleTeamChange(team.teamDetails.teamId)}>Team {team.teamDetails.teamName}</button>
             )}
           </div>
         </div>
+      </div>
+      <div className="right1">
         {teamsData[teamNumber].members.map((member, index) => (
           <div key={index} className="person-card">
             <div className="img-wrapper">
