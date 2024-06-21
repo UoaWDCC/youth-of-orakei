@@ -17,7 +17,7 @@ import Layout from "../layouts/layout.astro";
 import TeamDisplay from "../components/TeamDisplayLeft.astro";
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
-import ProjectTeam from "../components/ProjectTeam";
+import ProjectTeam from "../components/ProjectTeam.tsx";
 ---
 
 <html lang="en">
@@ -45,7 +45,7 @@ import ProjectTeam from "../components/ProjectTeam";
     <!-- importing the left + right components -->
     <TeamDisplayLeft />
     <TeamDisplayRight />
-    <ProjectTeam />
+    <ProjectTeam client:only/>
   </Layout>
 
 

@@ -225,12 +225,22 @@
 .learn-more-proj,
 .project-button {
   background-color: var(--YOO-Red-Dark);
+  min-width: 339px;
+}
+
+.project-button-active {
+  background-color: var(--YOO-Red-Primary);
 }
 
 .project-team-nav {
   background-color: var(--YOO-Red-Light);
   border-radius: 15px;
-  padding: 10px;
+  padding: 18px;
+  margin-left: 74px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .project-button {
