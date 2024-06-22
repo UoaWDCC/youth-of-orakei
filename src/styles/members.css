@@ -19,7 +19,7 @@
 .com-button {
   border-radius: 15px;
   padding: 7px;
-  width: 350px;
+  width: 100%;
   font-size: var(--fontsize-h4);
   box-shadow: 3px 3px gray;
 }
@@ -138,14 +138,17 @@
   flex: 1 1 100%;
   width: 100%;
   background-color: aqua;
+  box-sizing: border-box;
+
 }
 
 .right1 {
-  margin-left: 3%;
+  margin-left: 2%;
 }
 
 .left2 {
-  margin-right: 3%;
+  margin-right: 2%;
+  padding-right: 0%;
 }
 
 .left1,
@@ -153,6 +156,7 @@
   flex: 1 1 100%;
   width: 100%;
   background-color: orange;
+  max-width: 33%;
 }
 
 .left1 h2,
@@ -182,6 +186,8 @@
   width: 280px;
   text-align: center;
   background-color: red;
+  box-sizing: border-box;
+
 }
 
 .img-wrapper {
@@ -250,6 +256,35 @@ html {
   scroll-behavior: smooth;
 }
 
+
+/* Adjustments for intermediate screen sizes */
+@media (max-width: 1442px) and (min-width: 1086px) {
+
+  .right1,
+  .left2 {
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+  }
+
+  .person-card {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1085px) and (min-width: 801px) {
+
+  .right1,
+  .left2 {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
+  .person-card {
+    margin: 0 auto;
+  }
+}
+
+
 /* Mobile styles */
 @media (max-width: 800px) {
 
@@ -258,11 +293,29 @@ html {
   .projects {
     display: flex;
     flex-direction: column;
+    margin: 20px 0;
+    width: 100%;
+    /* Ensure full width */
+    padding: 0 15px;
+    /* Prevent overflow */
+    box-sizing: border-box;
+    /* Ensure padding is included in width */
   }
 
   .right1,
   .left2 {
-    grid-template-columns: 1fr;
+    /* grid-template-columns: 1fr; */
+    margin: 0;
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .left1,
+  .right2 {
+    max-width: 100%;
   }
 
   .communications {
