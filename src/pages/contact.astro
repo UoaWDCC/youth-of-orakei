@@ -71,12 +71,46 @@ import Layout from '../layouts/layout.astro'
     margin-right: 0px;
     margin-top: 0px;
     }
+
+    .contact-image-container{
+        display: none;
+    }
+        
+    /* Media query for mobile devices */
+    @media (max-width: 768px) {
+        .contact-wrapper{
+            padding-top: 5%;
+            padding-bottom: 5%;
+        }
+        .content-container {
+            flex-direction: column;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        .image-container {
+            display: none;
+        }
+        form {
+            padding-left: 0;
+        }
+
+        .contact-image-container{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0px;
+            width: 80%;
+        }
+    }
     </style>
 </head>
 
 <Layout>
     <div class="contact-wrapper">
-        <h1>Contact Us</h1>
+        <h1>Contact Us</h1> 
+        <div class="contact-image-container">
+            <img id="contact-image-mobile" src="/Contact Page Images/contact-us-stock-image.png" alt="contact us stock image">
+        </div>
         <div class = "content-container">
             <form>
                 <div class="form-group">
