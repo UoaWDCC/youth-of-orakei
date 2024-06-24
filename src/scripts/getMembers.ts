@@ -2,6 +2,7 @@ import { Client } from "@notionhq/client";
 import type { GetPageResponse } from "@notionhq/client/build/src/api-endpoints";
 import type { memberRow } from "../types/memberRow"
 
+
 type MemberData = {
   team: string;
   desc: string;
@@ -24,14 +25,12 @@ export async function getMembers(): Promise<MemberData[]> {
           direction: 'ascending'
         }]
       });    
-  
-    const members: MemberData[] = query.results.map((row) => {
+      
+    const memberspages = query.results as memberRow[];
+    const members: MemberData[] = memberspages.map((row) => {
       return {
-          //@ts-ignore
           team: row.properties.Team.rich_text[0] ? row.properties.Team.rich_text[0].plain_text : "",
-          //@ts-ignore
           desc: row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "",
-          //@ts-ignore
           name: row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : ""
       };
   });
