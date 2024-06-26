@@ -42,6 +42,8 @@ export default function ImageCarousel() {
 
     return (
         <>
+    {/*
+        <>
         <div className="index-events-carousel-wrapper">
             <div className="index-carousel-button" onClick={() => handleBack()}>
                 <p><b>&lt;</b></p>
@@ -62,7 +64,7 @@ export default function ImageCarousel() {
                     <p className="carousel-paragraph">
                         {images[imgIndex].description}
                     </p>
-                    </div>
+                </div>
             </div>
             <div className="index-carousel-button" onClick={() => handleForward()}>
                 <p><b>&gt;</b></p>
@@ -73,6 +75,28 @@ export default function ImageCarousel() {
                     <button key={index} onClick={() => setImgIndex(index)} className={imgIndex === index ? "image-carousel-indicator" : "image-carousel-indicator image-carousel-indicator-inactive"}></button>
                 ))}
             </span>
+        </>
+            */}
+            <div style={{ width: "100%", height: "100%", position: "relative"}}>
+                <div style={{ width: "100%", height: "100%", display: "flex" }}>
+                    {images.map((event: Events, index: number) => (
+                        <img key={index} src={event.src} alt={event.alt} className={imgIndex === index ? "index-event-image-container" : "index-carousel-image-wrapper-hidden"}/>
+                    ))}
+                </div>
+                <button onClick={() => handleBack()} className="index-carousel-button" style={{ left: 0 }}>
+                    <p><b>&lt;</b></p>
+                </button>
+                <button onClick={() => handleForward()} className="index-carousel-button" style={{ right: 0 }}>
+                    <p><b>&gt;</b></p>
+                </button>
+                <div style={{ position: "absolute", bottom: ".5rem", left: "50%", translate: "-50%" }}>
+                    <span className="image-carousel-indicators" >
+                        {images.map((_: any, index: number) => (
+                            <button key={index} onClick={() => setImgIndex(index)} className={imgIndex === index ? "image-carousel-indicator" : "image-carousel-indicator image-carousel-indicator-inactive"}></button>
+                        ))}
+                    </span>
+                </div>
+            </div>
         </>
     );
 }
