@@ -167,6 +167,17 @@
     transition: scale 100ms ease-in-out;
 }
 
+.index-event-text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: 0 auto;
+}
+
+.index-event-text h2 {
+    background-color: var(--YOO-Green-Light);
+}
+
 .index-carousel-button > * {
     height: 2rem;
     width: 2rem;

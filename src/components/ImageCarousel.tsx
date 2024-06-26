@@ -78,10 +78,14 @@ export default function ImageCarousel() {
         </>
             */}
             <div style={{ width: "100%", height: "100%", position: "relative"}}>
+            
                 <div style={{ width: "100%", height: "100%", display: "flex" }}>
                     {images.map((event: Events, index: number) => (
                         <img key={index} src={event.src} alt={event.alt} className={imgIndex === index ? "index-event-image-container" : "index-carousel-image-wrapper-hidden"}/>
                     ))}
+                </div>
+                <div className="index-event-text" style={{ margin: "auto" }}>
+                    <h2 className="index-heading text-green-dark">Upcoming events</h2>
                 </div>
                 <button onClick={() => handleBack()} className="index-carousel-button" style={{ left: 0 }}>
                     <p><b>&lt;</b></p>
