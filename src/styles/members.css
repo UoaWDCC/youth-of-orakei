@@ -292,11 +292,8 @@ html {
     flex-direction: column;
     margin: 20px 0;
     width: 100%;
-    /* Ensure full width */
-    padding: 0 15px;
-    /* Prevent overflow */
+    padding: 20px;
     box-sizing: border-box;
-    /* Ensure padding is included in width */
   }
 
   .right1,

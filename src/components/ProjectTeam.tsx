@@ -2,8 +2,6 @@ import { useState } from "react";
 import '../styles/global.css';
 import "../styles/members.css";
 
-// type TeamKey = 'team1' | 'team2' | 'team3' | 'team4';
-
 interface TeamMember {
   name: string;
   img: string;

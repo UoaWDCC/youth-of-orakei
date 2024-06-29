@@ -46,7 +46,7 @@ import ProjectTeam from "../components/ProjectTeam.tsx";
     <!-- function for the scroll up button -->
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
-        const myButton = document.getElementById("myBtn");
+        const myButton = document.getElementById("myBtn") as HTMLButtonElement;
 
         window.onscroll = function () {
           scrollFunction();
