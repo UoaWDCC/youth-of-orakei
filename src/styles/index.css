@@ -59,6 +59,11 @@
     font-weight: 800;
 }
 
+.padded-text {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
 /* Index sections (general) */
 .index-section{
     padding: 5rem 0;
@@ -167,15 +172,22 @@
     transition: scale 100ms ease-in-out;
 }
 
-.index-event-text {
+.index-event-title {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: 0 auto;
+    top: 65%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: var(--YOO-Green-Light);
+    border-radius: var(--common-radius);
 }
 
-.index-event-text h2 {
-    background-color: var(--YOO-Green-Light);
+.index-event-description {
+    position: absolute;
+    top: 75%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: var(--YOO-Green-Lightest);
+    border-radius: var(--common-radius);
 }
 
 .index-carousel-button > * {

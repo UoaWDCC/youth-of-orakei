@@ -77,22 +77,28 @@ export default function ImageCarousel() {
             </span>
         </>
             */}
-            <div style={{ width: "100%", height: "100%", position: "relative"}}>
             
+            <div style={{ width: "100%", height: "100%", position: "relative"}}>
                 <div style={{ width: "100%", height: "100%", display: "flex" }}>
                     {images.map((event: Events, index: number) => (
                         <img key={index} src={event.src} alt={event.alt} className={imgIndex === index ? "index-event-image-container" : "index-carousel-image-wrapper-hidden"}/>
                     ))}
                 </div>
-                <div className="index-event-text" style={{ margin: "auto" }}>
-                    <h2 className="index-heading text-green-dark">Upcoming events</h2>
-                </div>
+                
                 <button onClick={() => handleBack()} className="index-carousel-button" style={{ left: 0 }}>
                     <p><b>&lt;</b></p>
                 </button>
                 <button onClick={() => handleForward()} className="index-carousel-button" style={{ right: 0 }}>
                     <p><b>&gt;</b></p>
                 </button>
+                <div className="index-event-details">
+                    <div className="index-event-title" >
+                        <h3 className="carousel-title">{images[imgIndex].title}</h3>
+                    </div>
+                    <div className="index-event-description">
+                        <h5 className="carousel-subtitle">{images[imgIndex].description}</h5>
+                    </div>
+                </div>
                 <div style={{ position: "absolute", bottom: ".5rem", left: "50%", translate: "-50%" }}>
                     <span className="image-carousel-indicators" >
                         {images.map((_: any, index: number) => (
