@@ -16,7 +16,7 @@ export default function ImageCarousel() {
         alt: "Beach clean up", 
         time: "2nd September, 12:30 - 3:30PM",
         title: "Beach Clean Up",
-        description: "Come join us to clean the local beach!"
+        description: "Come join us to clean the local beach and save our environment!"
     }, {
         src: "https://warp-potential-efd.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F66a3164d-3826-4413-80cb-27389de9b881%2F0bafff12-ccdc-4019-aa9c-800f11a7f7e6%2FLife_Skills_Workshop.jpg?table=block&id=14158091-26a6-4e0c-9d72-724df9c28894&spaceId=66a3164d-3826-4413-80cb-27389de9b881&width=2000&userId=&cache=v2",
         alt: "Life skills workshop",

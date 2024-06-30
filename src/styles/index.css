@@ -179,6 +179,7 @@
     padding-right: 10px;
     background-color: var(--YOO-Green-Light);
     border-radius: var(--common-radius);
+    margin-left: 150px;
 }
 
 .index-event-description {
@@ -188,6 +189,8 @@
     padding-right: 10px;
     background-color: var(--YOO-Green-Lightest);
     border-radius: var(--common-radius);
+    max-width: 400px;
+    margin-left: 150px;
 }
 
 .index-carousel-button > * {
