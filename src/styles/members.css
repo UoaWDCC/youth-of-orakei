@@ -18,9 +18,9 @@
 .proj-button,
 .com-button {
   border-radius: 15px;
+  margin: 10px;
   padding: 7px;
-  width: 350px;
-  max-width: 33%;
+  width: 100%;
   font-size: var(--fontsize-h4);
   box-shadow: 3px 3px gray;
 }
@@ -136,23 +136,26 @@
   /* trying to make it fixed 3 columns*/
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  flex: 1 1 100%;
   width: 100%;
+  box-sizing: border-box;
+
 }
 
 .right1 {
-  margin-left: 3%;
+  margin-left: 2%;
 }
 
 .left2 {
-  margin-right: 3%;
+  margin-right: 2%;
+  padding-right: 0%;
 }
 
 .left1,
 .right2 {
-  flex: 0 0 auto;
-  width: 375px;
-  float: left;
+  flex: 1 1 100%;
+  width: 100%;
+  max-width: 33%;
 }
 
 .left1 h2,
@@ -177,29 +180,22 @@
   margin-top: 15px;
 }
 
-.person-card,
-.projects-nav-card {
+.person-card {
   margin: 10px;
   width: 280px;
   text-align: center;
-}
+  box-sizing: border-box;
 
-.projects-nav-card {
-  align-items: center;
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
 }
 
 .img-wrapper {
-  width: 280px;
   width: 100%;
   height: 280px;
 }
 
 .img-wrapper img {
   border-radius: 50%;
-  width: 280px;
+  width: 100%;
   height: 280px;
   object-fit: cover;
   margin: 0 auto;
@@ -225,7 +221,7 @@
 .learn-more-proj,
 .project-button {
   background-color: var(--YOO-Red-Dark);
-  min-width: 339px;
+  width: 100%;
 }
 
 .project-button-active {
@@ -236,11 +232,11 @@
   background-color: var(--YOO-Red-Light);
   border-radius: 15px;
   padding: 18px;
-  margin-left: 74px;
   align-items: center;
   display: flex;
+  width: 100%;
   flex-direction: column;
-  justify-content: center;
+  margin-top: 20px;
 }
 
 .project-button {
@@ -256,4 +252,114 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Hide the scroll-to-top button on desktop view */
+@media (min-width: 801px) {
+  #myBtn {
+    display: none;
+  }
+}
+
+
+
+
+/* Adjustments for intermediate screen sizes */
+@media (max-width: 1442px) and (min-width: 1086px) {
+
+  .right1,
+  .left2 {
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+  }
+
+  .person-card {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1085px) and (min-width: 801px) {
+
+  .right1,
+  .left2 {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
+  .left1 h2,
+  .right2 h2 {
+    font-size: var(--fontsize-h4);
+  }
+
+  .person-card {
+    margin: 0 auto;
+  }
+}
+
+
+/* Mobile styles */
+@media (max-width: 800px) {
+
+  .leadership,
+  .communications,
+  .projects {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .right1,
+  .left2 {
+    /* grid-template-columns: 1fr; */
+    margin: 0;
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .left1,
+  .right2 {
+    max-width: 100%;
+  }
+
+  .communications {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  .communications .right2 {
+    order: 1;
+  }
+
+  .communications .left2 {
+    order: 2;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: 5px solid;
+    border-color: var(--YOO-Blue-Darkest);
+    outline: none;
+    background-color: var(--YOO-Blue-Dark);
+    opacity: calc(80%);
+    color: white;
+    cursor: pointer;
+    padding: 30px;
+    border-radius: 50%;
+  }
 }

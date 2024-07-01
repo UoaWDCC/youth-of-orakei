@@ -2,8 +2,6 @@ import { useState } from "react";
 import '../styles/global.css';
 import "../styles/members.css";
 
-// type TeamKey = 'team1' | 'team2' | 'team3' | 'team4';
-
 interface TeamMember {
   name: string;
   img: string;
@@ -87,13 +85,11 @@ const ProjectTeams = () => {
             <a href={`/projects/${selectedTeam}`}>LEARN MORE</a>
           </button>
         </p>
-        <div className="projects-nav-card">
-          <div className="project-team-nav">
-          <p className="main-description-box-proj" style={{padding: 0, margin: 0}}>View the teams!</p>
-            {teamsData.map((team) =>
-              <button className={team.teamDetails.teamId !== selectedTeam ? "project-button" : "project-button project-button-active"} onClick={() => handleTeamChange(team.teamDetails.teamId)}>Team {team.teamDetails.teamName}</button>
-            )}
-          </div>
+        <div className="project-team-nav">
+          <p className="main-description-box-proj" style={{ padding: 0, margin: 0 }}>View the teams!</p>
+          {teamsData.map((team) =>
+            <button className={team.teamDetails.teamId !== selectedTeam ? "project-button" : "project-button project-button-active"} onClick={() => handleTeamChange(team.teamDetails.teamId)}>Team {team.teamDetails.teamName}</button>
+          )}
         </div>
       </div>
       <div className="right1">

@@ -42,10 +42,42 @@ import ProjectTeam from "../components/ProjectTeam.tsx";
     </div>
     <div class="shapedividers_com-9592"></div>
 
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <!-- function for the scroll up button -->
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const myButton = document.getElementById("myBtn") as HTMLButtonElement;
+
+        window.onscroll = function () {
+          scrollFunction();
+        };
+
+        function scrollFunction() {
+          if (
+            document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20
+          ) {
+            myButton.style.display = "block";
+          } else {
+            myButton.style.display = "none";
+          }
+        }
+
+        myButton.onclick = function () {
+          topFunction();
+        };
+
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+      });
+    </script>
+
     <!-- importing the left + right components -->
     <TeamDisplayLeft />
     <TeamDisplayRight />
-    <ProjectTeam client:only/>
+    <ProjectTeam client:only />
   </Layout>
 
 

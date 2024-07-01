@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root{
+:root {
   /* YOO colors (Change per YOO brand)*/
   --YOO-Green-Primary: #294E03;
   --YOO-Blue-Primary: #A6DFEA;
@@ -13,6 +13,7 @@
   --YOO-Green-Light: #96BF70;
   --YOO-Green-Lightest: #C8E4AE;
   --YOO-Blue-Dark: #55BBCF;
+  --YOO-Blue-Darkest: #06687B;
   --YOO-Blue-Light: #D9EBEF;
   --YOO-Red-Dark: #ce4c4a;
   --YOO-Red-Light: #FFE4E4;
@@ -56,80 +57,88 @@ body {
   font-family: 'Overpass', sans-serif;
 }
 
-h1{
+h1 {
   font-size: var(--fontsize-h1);
 }
 
-h2{
+h2 {
   font-size: var(--fontsize-h2);
 }
 
-h3{
+h3 {
   font-size: var(--fontsize-h3);
 }
 
-h4{
+h4 {
   font-size: var(--fontsize-h4);
 }
 
-h5{
+h5 {
   font-size: var(--fontsize-h5);
 }
 
-.general-wrapper{
+.general-wrapper {
   margin: 0 auto;
   width: clamp(300px, 75%, 1300px);
 }
 
 
-.bold-heading{
+.bold-heading {
   font-weight: 900;
 }
 
-.spacer-big{
+.spacer-big {
   padding: 96px 0 48px;
 }
 
-.spacer-medium{
+.spacer-medium {
   padding: 48px 0;
 }
 
-.spacer-small{
+.spacer-small {
   padding: 24px 0;
 }
 
-.img-logo{
+.img-logo {
   width: 80px;
   height: auto;
   display: inline-flex;
   filter: drop-shadow(3px 6px 5px #a3a3a3);
 }
+
 /* Some quick text color classes */
-.text-green-dark{
+.text-green-dark {
   color: var(--YOO-Green-Dark);
 }
-.text-green{
+
+.text-green {
   color: var(--YOO-Green-Primary);
 }
-.text-green-medium{
+
+.text-green-medium {
   color: var(--YOO-Green-Medium);
 }
-.text-red{
+
+.text-red {
   color: var(--YOO-Red-Dark);
 }
-.text-blue{
+
+.text-blue {
   color: var(--YOO-Blue-Dark);
 }
-.text-yellow{
+
+.text-yellow {
   color: var(--YOO-Yellow-Dark);
 }
-.text-dark{
+
+.text-dark {
   color: var(--text-dark);
 }
-.text-medium{
+
+.text-medium {
   color: var(--text-medium);
 }
-.text-light{
+
+.text-light {
   color: var(--text-light);
 }
-
