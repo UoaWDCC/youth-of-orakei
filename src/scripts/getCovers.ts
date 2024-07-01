@@ -22,11 +22,11 @@ export async function getCovers(): Promise<CoverData[]> {
       });    
 
     const pages = query.results as page[];
-
+    
     const covers: CoverData[] = pages.map((row) => {
       return { 
         name: row.properties ? row.properties.Name.title[0].plain_text : "",
-        cover: row.cover?.external.url
+        cover: row.cover?.type == "external" ? row.cover?.external.url : row.cover?.file.url
       }
     });
 
