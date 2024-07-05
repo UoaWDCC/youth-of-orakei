@@ -30,7 +30,7 @@ export async function getTeamsDescriptions(): Promise<TeamDescriptions[]> {
     const teams: TeamDescriptions[] = teampages.map((row) => {
         return {
           name: row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : "",
-          desc: row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "",
+          description: row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "",
           tags: row.properties.Tags.select.name ?  row.properties.Tags.select.name : "",
       };
   });
