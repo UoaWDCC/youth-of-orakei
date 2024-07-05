@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/layout.astro'
+if (!import.meta.env.WEBFORMS_TOKEN)
+    throw new Error("Missing secret(s)");
+const form_token = import.meta.env.WEBFORMS_TOKEN;
 ---
 <head>
     <meta charset="utf-8" />
@@ -44,6 +47,7 @@ import Layout from '../layouts/layout.astro'
             font-weight: bold;
             border: 2px solid #A4C6B0;
             border-radius: 5px;
+            margin-bottom: 20px;
         }
         input, textarea{
         background-color: #D9EBEF;
@@ -71,6 +75,11 @@ import Layout from '../layouts/layout.astro'
     margin-right: 0px;
     margin-top: 0px;
     }
+
+    .h-captcha {
+            padding-bottom: 30px;
+            padding-left: 5px;
+        }
 
     .contact-image-container{
         display: none;
@@ -101,6 +110,7 @@ import Layout from '../layouts/layout.astro'
             margin-top: 0px;
             width: 80%;
         }
+        
     }
     </style>
 </head>
@@ -112,7 +122,8 @@ import Layout from '../layouts/layout.astro'
             <img id="contact-image-mobile" src="/Contact Page Images/contact-us-stock-image.png" alt="contact us stock image">
         </div>
         <div class = "content-container">
-            <form>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value={form_token}>
                 <div class="form-group">
                     <label for="full-name">Full Name</label> <br>
                     <input type="text" id="full-name" name="full_name"><br>
@@ -132,6 +143,7 @@ import Layout from '../layouts/layout.astro'
                 <div class="form-group">
                     <button type="submit"> Submit</button>
                 </div>
+                <div class="h-captcha" data-captcha="true"></div>
             </form>
 
             <div class="image-container">
@@ -140,4 +152,5 @@ import Layout from '../layouts/layout.astro'
             </div>
         </div>
     </div>
+    <script src="https://web3forms.com/client/script.js" async defer></script>
 </Layout>
