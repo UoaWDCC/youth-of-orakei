@@ -126,19 +126,19 @@ const form_token = import.meta.env.WEBFORMS_TOKEN;
                 <input type="hidden" name="access_key" value={form_token}>
                 <div class="form-group">
                     <label for="full-name">Full Name</label> <br>
-                    <input type="text" id="full-name" name="full_name"><br>
+                    <input type="text" id="full-name" name="Name" required><br>
                 </div>
                 <div class="form-group">
                     <label for="school">School</label><br>
-                    <input type="text" id="school" name="school"><br>
+                    <input type="text" id="school" name="School" required><br>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label><br>
-                    <input type="email" id="email" name="email"><br>
+                    <input type="email" id="email" name="Email" required><br>
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label><br>
-                    <textarea id="message" name="message"></textarea>
+                    <textarea id="message" name="Message" required></textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit"> Submit</button>
