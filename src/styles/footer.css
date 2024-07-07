@@ -24,19 +24,12 @@
     margin: auto;
 }
 
-img.soclog{
-    width: 30px;
-    height:auto;
-    padding: 3px;
-}
-
 
 
 /* Footer */
 
 .feet {
     padding: 12px 50px; /* ideally same as header */
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,55 +44,87 @@ img.soclog{
 }
 
 .footer-logo{
-
+    filter: drop-shadow(3px 6px 5px #a3a3a3);
 }
 
 .logoContainer {
-    padding: 16px 0;
-
+    padding: 10px 0;
     display: flex;
-    width: 250px;
+    width: 200px;   /* Change logo size */
 }
 
-.socials {
+.FeetTitle {
     height: 60%;
     color: #4E4E4E;
-
     display: flex;
     flex-direction: column;
-    gap: 16px;
 }
 
 .youthFont {
     color: var(--YOO-Green-Primary);
-    font-size: var(--fontsize-h5);
-
+    font-size: var(--fontsize-h4);
     font-weight: 800;
 }
 
-.soclogContainer {
-    display: flex;
-    font-size: var(--fontsize-lrg);
+.emailFont {
+    font-size: var(--fontsize-h5);
 }
 
-.socials-subtitle{
-    font-weight: 700;
-    padding-bottom: 8px;
-}
 
 .footer-right {
-    margin-right: 100px;
-    height: min-content;
+    margin-right: 50px;
+    /* height: min-content; */
 }
 
 .footer-nav{
+    padding: 20px;
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-
+    gap: 60px;
+    font-size: var(--fontsize-h5);
     font-weight: 700;
 }
 
 .footer-nav a:hover {
     text-decoration: underline;
+}
+
+.socials-subtitle{
+    font-size: var(--fontsize-h5);
+    font-weight: 700;
+    padding-bottom: 8px;
+}
+
+.soclogContainer {
+    display: flex;
+    gap: 20px;
+}
+
+img.soclog{
+    width: 32px;
+    height:auto;
+    padding: 3px;
+}
+
+@media screen and (max-width: 1342px) {
+    
+    .footer-nav {
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 1252px) {
+    .feet {
+        padding: 12px 50px;
+    }
+    .footer-right {
+      display: none;
+    }
+    .footer-nav {
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        font-size: var(--fontsize-h5);
+        font-weight: 700;
+    }
 }
