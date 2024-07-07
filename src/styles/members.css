@@ -254,15 +254,24 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Hide the scroll-to-top button on desktop view */
-@media (min-width: 801px) {
-  #myBtn {
-    display: none;
-  }
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: 5px solid;
+  border-color: var(--YOO-Blue-Darkest);
+  outline: none;
+  background-color: var(--YOO-Blue-Dark);
+  opacity: calc(80%);
+  color: white;
+  cursor: pointer;
+  padding: 30px;
+  border-radius: 50%;
 }
-
-
-
 
 /* Adjustments for intermediate screen sizes */
 @media (max-width: 1442px) and (min-width: 1086px) {
@@ -345,21 +354,5 @@ html {
     align-items: center;
   }
 
-  #myBtn {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    font-size: 18px;
-    border: 5px solid;
-    border-color: var(--YOO-Blue-Darkest);
-    outline: none;
-    background-color: var(--YOO-Blue-Dark);
-    opacity: calc(80%);
-    color: white;
-    cursor: pointer;
-    padding: 30px;
-    border-radius: 50%;
-  }
+
 }
