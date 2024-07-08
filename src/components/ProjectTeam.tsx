@@ -7,6 +7,7 @@ interface TeamMember {
   img: string;
   id: string;
   text?: string;
+  alt: string;
 }
 
 interface TeamDetails {
@@ -23,40 +24,40 @@ interface Team {
 const teamsData: Team[] = [{
   teamDetails: { teamId: 'team1', teamName: 'The Gaggle', description: 'Description of the projects team...' },
   members: [
-    { name: 'Olivia Anderson', img: '/Team + Individual/T1 - OliviaAnderson.JPG', id: 'team1' },
-    { name: 'Ella Aitken', img: '/Team + Individual/T1-EllaAitken.jpg', id: 'team1' },
-    { name: 'James Harbour', img: '/Team + Individual/T1-JamesHarbour.JPG', id: 'team1' },
-    { name: 'Leo Morrison', img: '/Team + Individual/T1-LeoMorrison.JPG', id: 'team1' },
-    { name: 'Toby Low', img: '/Team + Individual/T1-TobyLow (TL).JPG', id: 'team1' },
+    { name: 'Olivia Anderson', img: '/Team + Individual/T1 - OliviaAnderson.JPG', id: 'team1', alt: 'team-member portrait' },
+    { name: 'Ella Aitken', img: '/Team + Individual/T1-EllaAitken.jpg', id: 'team1', alt: 'team-member portrait' },
+    { name: 'James Harbour', img: '/Team + Individual/T1-JamesHarbour.JPG', id: 'team1', alt: 'team-member portrait' },
+    { name: 'Leo Morrison', img: '/Team + Individual/T1-LeoMorrison.JPG', id: 'team1', alt: 'team-member portrait' },
+    { name: 'Toby Low', img: '/Team + Individual/T1-TobyLow (TL).JPG', id: 'team1', alt: 'team-member portrait' },
   ]
 },
 
 {
   teamDetails: { teamId: 'team2', teamName: 'Schmetterlinge', description: 'Description of the projects team...' },
   members: [
-    { name: 'Enya Grayson', img: '/Team + Individual/T2-EnyaGrayson (TL).JPG', id: 'team2' },
-    { name: 'Paida Patronella', img: '/Team + Individual/T2-PaidaPatronella.JPG', id: 'team2' },
-    { name: 'Sebastian Udema', img: '/Team + Individual/T2-SebastianUdema.JPG', id: 'team2' },
-    { name: 'Will Dickson', img: '/Team + Individual/T2-WillDickson.JPG', id: 'team2' },
+    { name: 'Enya Grayson', img: '/Team + Individual/T2-EnyaGrayson (TL).JPG', id: 'team2', alt: 'team-member portrait' },
+    { name: 'Paida Patronella', img: '/Team + Individual/T2-PaidaPatronella.JPG', id: 'team2', alt: 'team-member portrait' },
+    { name: 'Sebastian Udema', img: '/Team + Individual/T2-SebastianUdema.JPG', id: 'team2', alt: 'team-member portrait' },
+    { name: 'Will Dickson', img: '/Team + Individual/T2-WillDickson.JPG', id: 'team2', alt: 'team-member portrait' },
   ]
 },
 {
   teamDetails: { teamId: 'team3', teamName: 'Fermata', description: 'Description of the projects team...' },
   members: [
-    { name: 'Olivia Wei', img: '/Team + Individual/T3 - OliviaWei.JPG', id: 'team3' },
-    { name: 'Jaimie Cartwright', img: '/Team + Individual/T3-JaimieCartwright (TL).JPG', id: 'team3' },
-    { name: 'Tessa Atkinson', img: '/Team + Individual/T3-TessaAtkinson.JPG', id: 'team3' },
-    { name: 'Shreevali Pawar', img: '/Team + Individual/T3-ShreevaliPawar.JPG', id: 'team3' },
-    { name: 'Tommy Nguyen', img: '/Team + Individual/T3-TommyNguyen.JPG', id: 'team3' },
+    { name: 'Olivia Wei', img: '/Team + Individual/T3 - OliviaWei.JPG', id: 'team3', alt: 'team-member portrait' },
+    { name: 'Jaimie Cartwright', img: '/Team + Individual/T3-JaimieCartwright (TL).JPG', id: 'team3', alt: 'team-member portrait' },
+    { name: 'Tessa Atkinson', img: '/Team + Individual/T3-TessaAtkinson.JPG', id: 'team3', alt: 'team-member portrait' },
+    { name: 'Shreevali Pawar', img: '/Team + Individual/T3-ShreevaliPawar.JPG', id: 'team3', alt: 'team-member portrait' },
+    { name: 'Tommy Nguyen', img: '/Team + Individual/T3-TommyNguyen.JPG', id: 'team3', alt: 'team-member portrait' },
   ]
 }, {
   teamDetails: { teamId: 'team4', teamName: 'Legato', description: 'Description of the projects team...' },
   members: [
-    { name: 'Aaron Leong', img: '/Team + Individual/T4-AaronLeong (TL) .JPG', id: 'team4' },
-    { name: 'David Bergin', img: '/Team + Individual/T4-DavidBergin.JPG', id: 'team4' },
-    { name: 'Dhivya Ramesh', img: '/Team + Individual/T4-DhivyaRamesh.JPG', id: 'team4' },
-    { name: 'Emily Gibb', img: '/Team + Individual/T4-EmilyGibb.JPG', id: 'team4' },
-    { name: 'Jessica Jihyeong Lee', img: '/Team + Individual/T4-Jessica Jihyeong Lee.JPG', id: 'team4' },
+    { name: 'Aaron Leong', img: '/Team + Individual/T4-AaronLeong (TL) .JPG', id: 'team4', alt: 'team-member portrait' },
+    { name: 'David Bergin', img: '/Team + Individual/T4-DavidBergin.JPG', id: 'team4', alt: 'team-member portrait' },
+    { name: 'Dhivya Ramesh', img: '/Team + Individual/T4-DhivyaRamesh.JPG', id: 'team4', alt: 'team-member portrait' },
+    { name: 'Emily Gibb', img: '/Team + Individual/T4-EmilyGibb.JPG', id: 'team4', alt: 'team-member portrait' },
+    { name: 'Jessica Jihyeong Lee', img: '/Team + Individual/T4-Jessica Jihyeong Lee.JPG', id: 'team4', alt: 'team-member portrait' },
   ]
 }
 ]
@@ -96,7 +97,7 @@ const ProjectTeams = () => {
         {teamsData[teamNumber].members.map((member, index) => (
           <div key={index} className="person-card">
             <div className="img-wrapper">
-              <img src={member.img} alt={member.name} />
+              <img src={member.img} alt={member.alt} />
             </div>
             <p className="description-box-proj">
               <b>{member.name}</b><br />
