@@ -6,7 +6,7 @@ type MemberData = {
     team: string;
     desc: string;
     name: string;
-    cover?: string;
+    cover: string;
     url?: string;
 }
 

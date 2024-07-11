@@ -7,7 +7,7 @@ type MemberData = {
   team: string;
   desc: string;
   name: string;
-  cover?: string;
+  cover: string;
   url?: string;
 }
 
@@ -31,7 +31,8 @@ export async function getMembers(): Promise<MemberData[]> {
       return {
           team: row.properties.Team.rich_text[0] ? row.properties.Team.rich_text[0].plain_text : "",
           desc: row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "",
-          name: row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : ""
+          name: row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : "",
+          cover: row.cover?.type == "external" ? row.cover?.external.url : row.cover?.file.url  ?? ""
       };
   });
       

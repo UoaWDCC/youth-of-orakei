@@ -1,10 +1,14 @@
 ---
 import { getMembers } from '../scripts/getMembers';
 let members = await getMembers();
+
+import { sortMembersByTeam } from '../scripts/sortTeams.ts'
+let {leadershipTeam, communicationTeam, projects} = sortMembersByTeam(members)
+console.log(projects)
 //import { getAnton } from '../scripts/getAnton';
 //let anton = await getAnton();
-import { getCovers } from '../scripts/getCovers';
-let covers = await getCovers();
+//import { getCovers } from '../scripts/getCovers';
+//let covers = await getCovers();
 //import { getTeamsDescriptions } from "../scripts/getTeamDescription"
 //let teams = await getTeamsDescriptions();
 
@@ -99,7 +103,7 @@ import MemberDisplay from "../components/MembersDisplay.astro";
     </div> -->
     <div class="members">
       {/* Display members with image, name, team, and desc */}
-      {covers.map((cover, index) => (
+      {members.map((cover, index) => (
         <div class="member">
           <img src={cover.cover} alt={cover.name} />
           <h2>{cover.name}</h2>
