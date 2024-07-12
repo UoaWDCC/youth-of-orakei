@@ -1,9 +1,16 @@
 ---
-const { team, desc, name } = Astro.props;
+import "../styles/global.css";
+import "../styles/members.css";
+const { team, desc, name, cover } = Astro.props;
 ---
 
-<div class="member">
-    <h4>{name}</h4>
-    <p>{team}</p>
-    <p>{desc}</p>
+<div class="person-card">
+  <div class="img-wrapper">
+    <img src={cover} alt={name} />
+  </div>
+  <p class="description-box-coms">
+    <b>{name}</b><br />
+    {team}<br />
+    {desc}
+  </p>
 </div>

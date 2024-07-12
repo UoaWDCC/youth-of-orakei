@@ -1,17 +1,18 @@
 ---
-import { getMembers } from '../scripts/getMembers';
+import { getMembers } from "../scripts/getMembers";
 let members = await getMembers();
 
-import { sortMembersByTeam } from '../scripts/sortTeams.ts'
-let {leadershipTeam, communicationTeam, projects} = sortMembersByTeam(members)
-console.log(projects)
+import { sortMembersByTeam } from "../scripts/sortTeams.ts";
+let { leadershipTeam, communicationTeam, projects } =
+  sortMembersByTeam(members);
+
+console.log(communicationTeam);
 //import { getAnton } from '../scripts/getAnton';
 //let anton = await getAnton();
 //import { getCovers } from '../scripts/getCovers';
 //let covers = await getCovers();
 //import { getTeamsDescriptions } from "../scripts/getTeamDescription"
 //let teams = await getTeamsDescriptions();
-
 
 // Members Page
 import "../styles/global.css";
@@ -26,7 +27,7 @@ import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
 import MemberDisplay from "../components/MembersDisplay.astro";
-
+import MembersDisplay from "../components/MembersDisplay.astro";
 ---
 
 <html lang="en">
@@ -85,7 +86,7 @@ import MemberDisplay from "../components/MembersDisplay.astro";
 
     <!-- importing the left + right components -->
     <TeamDisplayLeft />
-    <TeamDisplayRight />
+    <TeamDisplayRight team={communicationTeam} />
     <ProjectTeam client:only />
 
     <!-- Members Display -->
@@ -103,14 +104,16 @@ import MemberDisplay from "../components/MembersDisplay.astro";
     </div> -->
     <div class="members">
       {/* Display members with image, name, team, and desc */}
-      {members.map((cover, index) => (
-        <div class="member">
-          <img src={cover.cover} alt={cover.name} />
-          <h2>{cover.name}</h2>
-          <p>Team: {members[index].team}</p>
-          <p>Description: {members[index].desc}</p>
-        </div>
-      ))}
+      {
+        members.map((cover, index) => (
+          <MembersDisplay
+            cover={cover.cover}
+            name={cover.name}
+            team={members[index].team}
+            desc={members[index].desc}
+          />
+        ))
+      }
     </div>
   </Layout>
 
