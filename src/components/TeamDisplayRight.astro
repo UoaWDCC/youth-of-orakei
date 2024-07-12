@@ -25,11 +25,11 @@ const { team, cover, name, desc } = Astro.props;
     <div class="communications" id="com-section">
       <div class="left2">
         {
-          team.map((cover, index) => (
+          team.map((cover) => (
             <MembersDisplay
               name={cover.name}
-              team={members[index].team}
-              desc={members[index].desc}
+              team={cover.team}
+              desc={cover.desc}
               cover={cover.cover}
             />
           ))
