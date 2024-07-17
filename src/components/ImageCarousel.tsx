@@ -54,8 +54,8 @@ export default function ImageCarousel() {
                     <h2 className="index-heading text-green-dark" style={{ paddingRight: 15, paddingLeft: 15, margin: "auto" }}>Upcoming events</h2>
                 </div>
                 {/* Please do not remove the 2 divs below lmao */}
-                <div className="index-event-right-corner-element">for the right corner</div>
-                <div className="index-event-left-corner-element">for the left corner</div>
+                <div className="index-event-right-corner-element">c</div>
+                <div className="index-event-left-corner-element">c</div>
                 <button onClick={() => handleBack()} className="index-carousel-button index-carousel-button-left" style={{ left: 10 }}>
                     <ArrowBackIosIcon style={{ width: 50, height: 50 }} />
                 </button>
