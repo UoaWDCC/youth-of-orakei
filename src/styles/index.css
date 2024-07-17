@@ -246,7 +246,8 @@
 }
 
 .index-event-title {
-    margin-right: 90px;
+    margin-right: 70px;
+    min-width: 290px;
 }
 
 .index-event-description {
