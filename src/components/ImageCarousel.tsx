@@ -53,6 +53,7 @@ export default function ImageCarousel() {
                 <div className="index-event-text">
                     <h2 className="index-heading text-green-dark" style={{ paddingRight: 15, paddingLeft: 15, margin: "auto" }}>Upcoming events</h2>
                 </div>
+                {/* Please do not remove the 2 divs below lmao */}
                 <div className="index-event-right-corner-element">for the right corner</div>
                 <div className="index-event-left-corner-element">for the left corner</div>
                 <button onClick={() => handleBack()} className="index-carousel-button index-carousel-button-left" style={{ left: 10 }}>
