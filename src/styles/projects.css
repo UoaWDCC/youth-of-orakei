@@ -1,19 +1,65 @@
 .projects-page {
     /* background-color: var(--YOO-Blue-Light); */
+} 
+
+.recent-projects-banner{
+    width: 100%;
+    height: 225px;
+    background-color: var(--YOO-Blue-Light);
+    z-index: -1;
+    padding: 10% 10% 5% 5%
 }
 
-.projects-bg{
-    position: absolute;
+.past-projects-banner{
     width: 100%;
-    height: 100%;
-
+    height: 70px;
+    background-color: var(--YOO-Green-Light);
     z-index: -1;
+    padding: 1% 2% 5% 5%;
+    align-content: center;
+}
+
+.past-project-container{
+    width: 100%;
+    height: fit-content;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+}
+
+.past-project-header{
+    width: fit-content;
+    color: white;
+    text-decoration: underline;
+    margin: 3% 0 0 5%;
+    padding: 1%;
+}
+
+.past-project-info{
+    width: fit-content;
+    font-size: 24px;
+    color: white;
+    padding: 1%;
+    margin-left: 5%;
+}
+
+.past-project-team{
+    text-decoration: underline;
+    margin-top: 1%;
+}
+
+.past-project-date{
+    margin-top: 50%;
+}
+
+.past-project-description{
+    margin-top: 1%;
+    margin-bottom: 3%;
 }
 
 .projects-teams{
     padding: 48px 0;
 }
-
 
 /* CARDS */
 
