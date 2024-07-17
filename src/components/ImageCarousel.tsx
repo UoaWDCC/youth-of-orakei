@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "../styles/index.css";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 interface Events {
     src: string,
@@ -79,17 +81,21 @@ export default function ImageCarousel() {
             */}
             
             <div style={{ width: "100%", height: "100%", position: "relative"}}>
-                <div style={{ width: "100%", height: "100%", display: "flex" }}>
+                <div className="index-event-img" style={{ width: "100%", height: "100%", display: "flex" }}>
                     {images.map((event: Events, index: number) => (
-                        <img key={index} src={event.src} alt={event.alt} className={imgIndex === index ? "index-event-image-container" : "index-carousel-image-wrapper-hidden"}/>
+                        <img key={index} src={event.src} alt={event.alt} style={{ opacity: 0.85, objectFit: "cover" }} className={imgIndex === index ? "index-event-image-container" : "index-carousel-image-wrapper-hidden"}/>
                     ))}
                 </div>
-                
+                <div className="index-event-text">
+                    <h2 className="index-heading text-green-dark" style={{ paddingRight: 15, paddingLeft: 15 }}>Upcoming events</h2>
+                </div>
+                <div className="index-event-right-corner-element">This is just for the corner</div>
+                <div className="index-event-left-corner-element">This is just for the left corner</div>
                 <button onClick={() => handleBack()} className="index-carousel-button" style={{ left: 0 }}>
-                    <p><b>&lt;</b></p>
+                    <ArrowBackIosIcon style={{ width: 50, height: 50 }} />
                 </button>
                 <button onClick={() => handleForward()} className="index-carousel-button" style={{ right: 0 }}>
-                    <p><b>&gt;</b></p>
+                    <ArrowForwardIosIcon style={{ width: 50, height: 50 }} />
                 </button>
                 <div className="index-event-details">
                     <div className="index-event-title" >

@@ -130,6 +130,49 @@
 
 
 /* Events section */
+.index-event-text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: 0 auto;
+    display: flex;
+    height: 80px;
+    width: 700px;
+    justify-content: center;
+    background-color: var(--YOO-Green-Light);
+    border-bottom-right-radius: var(--common-radius);
+}
+
+.index-event-right-corner-element {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    margin-left: 700px;
+    height: 50px;
+    color: transparent;
+    border-top-left-radius: var(--common-radius);
+    box-shadow: -15px 0px var(--YOO-Green-Light);
+}
+
+.index-event-left-corner-element {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    margin-top: 80px;
+    height: 50px;
+    color: transparent;
+    border-top-left-radius: var(--common-radius);
+    box-shadow: 0px -25px var(--YOO-Green-Light);
+}
+
+.index-event-text h2 {
+    margin: auto;
+}
+
 .index-image-carousel-container {
     max-width: 100%;
     width: 100%;
@@ -174,23 +217,27 @@
 
 .index-event-title {
     position: absolute;
-    top: 65%;
-    padding-left: 10px;
-    padding-right: 10px;
+    top: 75%;
+    padding-left: 15px;
+    padding-right: 15px;
     background-color: var(--YOO-Green-Light);
-    border-radius: var(--common-radius);
+    border-radius: var(--common-radius) var(--common-radius) 0% 0%;
     margin-left: 150px;
+}
+
+.index-event-img {
+    background-color: rgba(0, 0, 0, .5);
 }
 
 .index-event-description {
     position: absolute;
-    top: 75%;
-    padding-left: 10px;
-    padding-right: 10px;
+    top: 83%;
+    padding-left: 15px;
+    padding-right: 15px;
     background-color: var(--YOO-Green-Lightest);
-    border-radius: var(--common-radius);
     max-width: 400px;
     margin-left: 150px;
+    border-radius: 0% var(--common-radius) var(--common-radius) var(--common-radius);
 }
 
 .index-carousel-button > * {
