@@ -75,7 +75,7 @@ export default function ImageCarousel() {
                         <h5>{images[imgIndex].description}</h5>
                     </div>
                 </div>
-                <div style={{ position: "absolute", bottom: "1rem", left: "50%", translate: "-50%" }}>
+                <div style={{ position: "absolute", bottom: "1.3rem", left: "50%", translate: "-50%" }}>
                     <span className="image-carousel-indicators" >
                         {images.map((_: any, index: number) => (
                             <button key={index} onClick={() => setImgIndex(index)} className={imgIndex === index ? "image-carousel-indicator" : "image-carousel-indicator image-carousel-indicator-inactive"}></button>

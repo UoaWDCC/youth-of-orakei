@@ -164,6 +164,9 @@
     color: transparent;
     border-top-left-radius: var(--common-radius);
     box-shadow: -15px 0px var(--YOO-Green-Lightest);
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .index-event-left-corner-element {
@@ -177,6 +180,9 @@
     color: transparent;
     border-top-left-radius: var(--common-radius);
     box-shadow: 0px -25px var(--YOO-Green-Lightest);
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .index-image-carousel-container {
