@@ -2,14 +2,7 @@
 import "../styles/global.css";
 
 import MembersDisplay from "./MembersDisplay.astro";
-
-import { getMembers } from "../scripts/getMembers";
-let members = await getMembers();
-
-import { sortMembersByTeam } from "../scripts/sortTeams.ts";
-let { leadershipTeam, communicationTeam, projects } =
-  sortMembersByTeam(members);
-const { team, cover, name, desc } = Astro.props;
+const { team } = Astro.props;
 ---
 
 <html lang="en">
@@ -41,44 +34,6 @@ const { team, cover, name, desc } = Astro.props;
             ),
           )
         }
-        <!-- <div class="person-card">
-          <div class="img-wrapper">
-            <img
-              src="/Team + Individual/LT-ThanishkaSatheeshkumar (Communications Lead).JPG"
-            />
-          </div>
-          <p class="description-box-coms">
-            <b>Thanishka Satheeshkumar</b>
-            <br />Communications Lead <br />[Text]
-          </p>
-        </div>
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img src="/Team + Individual/Comms-SaffronTse.JPG" />
-          </div>
-          <p class="description-box-coms">
-            <b>Saffron Tse</b>
-            <br /><br />[Text]
-          </p>
-        </div>
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img src="/Team + Individual/Comms-StellaCasey.JPG" />
-          </div>
-          <p class="description-box-coms">
-            <b>Stella Casey</b>
-            <br /><br />[Text]
-          </p>
-        </div>
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img src="/Team + Individual/Comms-Katerina Lontzetidou.JPG" />
-          </div>
-          <p class="description-box-coms">
-            <b>Katerina Lontzetidou</b>
-            <br /><br />[Text]
-          </p>
-        </div> -->
       </div>
       <div class="right2">
         <h2 class="coms-title"><b>Communications Team</b></h2>

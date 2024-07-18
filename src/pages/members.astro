@@ -6,7 +6,7 @@ import { sortMembersByTeam } from "../scripts/sortTeams.ts";
 let { leadershipTeam, communicationTeam, projects } =
   sortMembersByTeam(members);
 
-// console.log(communicationTeam);
+console.log(communicationTeam);
 //import { getAnton } from '../scripts/getAnton';
 //let anton = await getAnton();
 //import { getCovers } from '../scripts/getCovers';
@@ -103,14 +103,14 @@ import MembersDisplay from "../components/MembersDisplay.astro";
       ))}
     </div> -->
     <div class="members">
-      {/* Display members with image, name, team, and desc */}
+      {/* Display specific project team by index */}
       {
-        members.map((cover, index) => (
+        projects[3].members.map((member) => (
           <MembersDisplay
-            cover={cover.cover}
-            name={cover.name}
-            team={members[index].team}
-            desc={members[index].desc}
+            cover={member.cover}
+            name={member.name}
+            team={member.team}
+            desc={member.desc}
           />
         ))
       }

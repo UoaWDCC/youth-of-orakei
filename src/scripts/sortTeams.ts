@@ -6,10 +6,20 @@ type MemberData = {
   url?: string;
 }
 
+type TeamDetails = {
+  teamName: string;
+  description: string;
+  teamId: string;
+};
+
 export function sortMembersByTeam(members: MemberData[]) {
   const leadershipTeam: MemberData[] = [];
   const communicationTeam: MemberData[] = [];
-  const projectsMap: { [projectName: string]: MemberData[] } = {};
+  // const projectsMap: { [projectName: string]: MemberData[] } = {};
+  const projectsMap: { [projectName: string]: { teamDetails: TeamDetails; members: MemberData[] } } = {};
+  const projectIdMap: { [projectName: string]: number } = {};
+  let nextProjectId = 0; // Start ID counter at 0
+
   members.forEach(member => {
     if (member.team === "Leadership Team") {
       leadershipTeam.push(member);
@@ -18,9 +28,13 @@ export function sortMembersByTeam(members: MemberData[]) {
     } else if (member.team.startsWith("Projects:")) {
       const projectName = member.team.replace("Projects: ", "");
       if (!projectsMap[projectName]) {
-        projectsMap[projectName] = [];
+        projectsMap[projectName] = {
+          teamDetails: { teamName: projectName, description: member.desc, teamId: nextProjectId.toString() },
+          members: []
+        };
+        nextProjectId++;
       }
-      projectsMap[projectName].push(member);
+      projectsMap[projectName].members.push(member);
     }
   });
 
