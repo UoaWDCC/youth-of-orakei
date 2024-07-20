@@ -40,14 +40,15 @@ export default function ImageCarousel() {
     const handleForward = () => {
         setImgIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
     }
+    console.log(imgIndex)
 
 
     return (
         <>  
             <div style={{ width: "100%", height: "100%", position: "relative", padding: "10px"}}>
-                <div className="index-event-img" style={{ width: "100%", height: "100%", display: "flex" }}>
+                <div className="index-event-img" style={{ width: "100%", height: "100%", display: "flex", overflow: "hidden" }}>
                     {images.map((event: Events, index: number) => (
-                        <img key={index} src={event.src} alt={event.alt} className={imgIndex === index ? "index-event-image-container" : "index-carousel-image-wrapper-hidden"}/>
+                        <img key={index} src={event.src} alt={event.alt} className="index-event-image-container" style={{ translate: `${-100 * imgIndex}%` }}/>
                     ))}
                 </div>
                 <div className="index-event-text">
