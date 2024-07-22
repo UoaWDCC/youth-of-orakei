@@ -89,7 +89,8 @@ import PersonCard from "../components/PersonCard.tsx";
     <TeamDisplayLeft team={leadershipTeam} />
     <TeamDisplayRight team={communicationTeam} />
     <!-- <ProjectTeam client:only /> -->
-    <ProjectTeam team={projects} />
+    <!-- <ProjectTeam team={projects} /> -->
+    <ProjectTeam client:load />
     <div class="members">
       {/* Display specific project team by index */}
       {
