@@ -1,7 +1,5 @@
 ---
 import Layout from '../layouts/layout.astro'
-if (!import.meta.env.WEBFORMS_TOKEN)
-    throw new Error("Missing secret(s)");
 const form_token = import.meta.env.WEBFORMS_TOKEN;
 ---
 <head>
