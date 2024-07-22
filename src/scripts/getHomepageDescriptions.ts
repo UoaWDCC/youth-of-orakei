@@ -1,10 +1,9 @@
 import {Client} from "@notionhq/client";
 import {getAnton} from "./getAnton.ts";
 import {fetchPageBlocks} from "./fetchPageBlocks.ts";
-import {text} from "node:stream/consumers";
 
 export async function getHomepageDescriptions(): Promise<any> {
-    const descriptions: string[] = []
+    let descriptions = new Map<string, string>();
 
     const NOTION_TOKEN = import.meta.env.NOTION_TOKEN;
     // todo: change the database_id to the homepage database
@@ -16,8 +15,6 @@ export async function getHomepageDescriptions(): Promise<any> {
 
     // create a new Notion client with the token
     const notion = new Client({auth: NOTION_TOKEN });
-    let hasMore = true;
-    let startCursor = undefined;
     // create a query to get the database with the specified ID
     try {
         const query = await notion.databases.query({
@@ -27,19 +24,22 @@ export async function getHomepageDescriptions(): Promise<any> {
                 direction: 'ascending'
             }]
         });
+
         // going through all the pages in the database
-        for (const page of query.results){
+        for (const page of query.results) {
             if ('properties' in page){
                 // @ts-ignore
                 // retrieving the title of page, e.g 'What we do'
-                const title = String((page.properties.Name.title[0] && page.properties.Name.title[0].plain_text) || "Untitled");
+                const title: string  = String((page.properties.Name.title[0] && page.properties.Name.title[0].plain_text) || "Untitled");
                 // retrieve the contents of the page, using the getAnton function
-                const pageId = page.id;
+                const pageId : string  = page.id;
 
                 const block = await fetchPageBlocks(notion, pageId);
-                descriptions.push(await getAnton(block));
+                descriptions.set(title,  (await getAnton(block)));
             }
+
         }
+
     } catch (error) {
         console.error(error);
         return [];
