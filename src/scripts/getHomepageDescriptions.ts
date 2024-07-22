@@ -1,13 +1,10 @@
 import {Client} from "@notionhq/client";
 import {getAnton} from "./getAnton.ts";
 import {fetchPageBlocks} from "./fetchPageBlocks.ts";
-type map {
-    [key: String]: any;
-};
-
+import {text} from "node:stream/consumers";
 
 export async function getHomepageDescriptions(): Promise<any> {
-    const map = {}
+    const descriptions: string[] = []
 
     const NOTION_TOKEN = import.meta.env.NOTION_TOKEN;
     // todo: change the database_id to the homepage database
@@ -19,7 +16,8 @@ export async function getHomepageDescriptions(): Promise<any> {
 
     // create a new Notion client with the token
     const notion = new Client({auth: NOTION_TOKEN });
-
+    let hasMore = true;
+    let startCursor = undefined;
     // create a query to get the database with the specified ID
     try {
         const query = await notion.databases.query({
@@ -29,7 +27,6 @@ export async function getHomepageDescriptions(): Promise<any> {
                 direction: 'ascending'
             }]
         });
-
         // going through all the pages in the database
         for (const page of query.results){
             if ('properties' in page){
@@ -40,12 +37,12 @@ export async function getHomepageDescriptions(): Promise<any> {
                 const pageId = page.id;
 
                 const block = await fetchPageBlocks(notion, pageId);
-                map[title] = await getAnton(block);
+                descriptions.push(await getAnton(block));
             }
         }
     } catch (error) {
         console.error(error);
         return [];
     }
-    return map;
+    return descriptions;
 }
