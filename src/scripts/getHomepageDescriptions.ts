@@ -1,24 +1,29 @@
-import { Client } from "@notionhq/client";
-import * as fs from "fs";
-import { type block } from "../types/block";
+import {Client} from "@notionhq/client";
 import {getAnton} from "./getAnton.ts";
 import {fetchPageBlocks} from "./fetchPageBlocks.ts";
+type map {
+    [key: String]: any;
+};
 
 
-export async function getHomepageDescriptions(blocks : block[]): Promise<any> {
+export async function getHomepageDescriptions(): Promise<any> {
+    const map = {}
+
+    const NOTION_TOKEN = import.meta.env.NOTION_TOKEN;
+    // todo: change the database_id to the homepage database
+    const NOTION_HOMEPAGE_ID = import.meta.env.NOTION_MEMBERS_ID
 
     // try importing the NOTION_TOKEN and NOTION_MEMBERS_ID from the .env file, throw an error if they are not found
-    if (!import.meta.env.NOTION_TOKEN || !import.meta.env.NOTION_MEMBERS_ID)
+    if (!NOTION_TOKEN || !NOTION_HOMEPAGE_ID)
         throw new Error("Missing secret(s)");
 
     // create a new Notion client with the token
-    const notion = new Client({ auth: import.meta.env.NOTION_TOKEN });
+    const notion = new Client({auth: NOTION_TOKEN });
 
     // create a query to get the database with the specified ID
     try {
         const query = await notion.databases.query({
-            // todo: change the database_id to the homepage database
-            database_id: import.meta.env.NOTION_MEMBERS_ID,
+            database_id: NOTION_HOMEPAGE_ID,
             sorts: [{
                 property: 'Name',
                 direction: 'ascending'
@@ -30,16 +35,17 @@ export async function getHomepageDescriptions(blocks : block[]): Promise<any> {
             if ('properties' in page){
                 // @ts-ignore
                 // retrieving the title of page, e.g 'What we do'
-                const title = page.properties.Name.title[0].plain_text || "Untitled";
+                const title = String((page.properties.Name.title[0] && page.properties.Name.title[0].plain_text) || "Untitled");
                 // retrieve the contents of the page, using the getAnton function
                 const pageId = page.id;
 
                 const block = await fetchPageBlocks(notion, pageId);
-                const content= await getAnton(block);
+                map[title] = await getAnton(block);
             }
         }
     } catch (error) {
         console.error(error);
         return [];
     }
+    return map;
 }
