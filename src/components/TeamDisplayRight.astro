@@ -1,7 +1,9 @@
 ---
 import "../styles/global.css";
 
-import MembersDisplay from "./MembersDisplay.astro";
+// import MembersDisplay from "./MembersDisplay.astro";
+import PersonCard from "./PersonCard.tsx";
+
 const { team } = Astro.props;
 ---
 
@@ -18,21 +20,14 @@ const { team } = Astro.props;
     <div class="communications" id="com-section">
       <div class="left2">
         {
-          team.map(
-            (cover: {
-              name: String;
-              team: String;
-              desc: String;
-              cover: any;
-            }) => (
-              <MembersDisplay
-                name={cover.name}
-                team={cover.team}
-                desc={cover.desc}
-                cover={cover.cover}
-              />
-            ),
-          )
+          team.map((cover: { name: any; team: any; desc: any; cover: any }) => (
+            <PersonCard
+              name={cover.name}
+              team={cover.team}
+              desc={cover.desc}
+              cover={cover.cover}
+            />
+          ))
         }
       </div>
       <div class="right2">

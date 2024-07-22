@@ -6,7 +6,7 @@ import { sortMembersByTeam } from "../scripts/sortTeams.ts";
 let { leadershipTeam, communicationTeam, projects } =
   sortMembersByTeam(members);
 
-console.log(communicationTeam);
+console.log(projects);
 //import { getAnton } from '../scripts/getAnton';
 //let anton = await getAnton();
 //import { getCovers } from '../scripts/getCovers';
@@ -27,7 +27,8 @@ import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
 import MemberDisplay from "../components/MembersDisplay.astro";
-import MembersDisplay from "../components/MembersDisplay.astro";
+// import MembersDisplay from "../components/MembersDisplay.astro";
+import PersonCard from "../components/PersonCard.tsx";
 ---
 
 <html lang="en">
@@ -87,26 +88,13 @@ import MembersDisplay from "../components/MembersDisplay.astro";
     <!-- importing the left + right components -->
     <TeamDisplayLeft team={leadershipTeam} />
     <TeamDisplayRight team={communicationTeam} />
-    <ProjectTeam client:only />
-
-    <!-- Members Display -->
-    <!-- <div class="members">
-      {covers.map(cover => (
-        <img src={cover.cover} alt={cover.name} />
-      ))}
-      {members.map(member => (
-        <MemberDisplay 
-          name={member.name} 
-          team={member.team}
-          desc={member.desc} 
-        />
-      ))}
-    </div> -->
+    <!-- <ProjectTeam client:only /> -->
+    <ProjectTeam team={projects} />
     <div class="members">
       {/* Display specific project team by index */}
       {
         projects[3].members.map((member) => (
-          <MembersDisplay
+          <PersonCard
             cover={member.cover}
             name={member.name}
             team={member.team}

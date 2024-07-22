@@ -6,14 +6,14 @@ const { team, desc, name, cover } = Astro.props;
 const getClassName = (team: string) => {
   switch (team) {
     case "Leadership Team":
-      return 'description-box-lead';
-    case 'Communication Team':
-      return 'description-box-coms';
+      return "description-box-lead";
+    case "Communication Team":
+      return "description-box-coms";
     case "Projects: Fermata":
     case "Projects: Legato":
     case "Projects: Schmetterlinge":
     case "Projects: The Gaggle":
-      return 'description-box-proj';
+      return "description-box-proj";
     // default:
     //   return 'description-box-proj';
   }
@@ -32,14 +32,3 @@ const className = getClassName(team);
     {desc}
   </p>
 </div>
-
-<!-- <div class="person-card">
-  <div class="img-wrapper">
-    <img src={cover} alt={name} />
-  </div>
-  <p class="description-box-coms">
-    <b>{name}</b><br />
-    {team}<br />
-    {desc}
-  </p>
-</div> -->

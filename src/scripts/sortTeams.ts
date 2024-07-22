@@ -17,8 +17,7 @@ export function sortMembersByTeam(members: MemberData[]) {
   const communicationTeam: MemberData[] = [];
   // const projectsMap: { [projectName: string]: MemberData[] } = {};
   const projectsMap: { [projectName: string]: { teamDetails: TeamDetails; members: MemberData[] } } = {};
-  const projectIdMap: { [projectName: string]: number } = {};
-  let nextProjectId = 0; // Start ID counter at 0
+  let nextProjectId = 1; // Start ID counter at 0
 
   members.forEach(member => {
     if (member.team === "Leadership Team") {
@@ -29,7 +28,7 @@ export function sortMembersByTeam(members: MemberData[]) {
       const projectName = member.team.replace("Projects: ", "");
       if (!projectsMap[projectName]) {
         projectsMap[projectName] = {
-          teamDetails: { teamName: projectName, description: member.desc, teamId: nextProjectId.toString() },
+          teamDetails: { teamName: projectName, description: member.desc, teamId: "team" + nextProjectId.toString() },
           members: []
         };
         nextProjectId++;
