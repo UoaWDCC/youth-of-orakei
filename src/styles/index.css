@@ -261,12 +261,12 @@
 
 .index-event-title {
     margin-right: 70px;
-    min-width: 290px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .index-event-description {
-    margin-left: 90px;
-    max-width: 400px;
+    margin-left: 90px;  
 }
 
 .image-carousel-indicators {
