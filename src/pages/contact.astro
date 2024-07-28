@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/layout.astro'
-const form_token = import.meta.env.WEBFORMS_TOKEN;
+const form_token = import.meta.env.WEBFORMS_TOKEN || 'fallback-string';
 ---
 <head>
     <meta charset="utf-8" />
