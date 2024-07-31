@@ -13,12 +13,6 @@ let { leadershipTeam, communicationTeam, projects } =
 
 console.log(projects);
 
-//(property) team: {
-//   teamDetails: TeamDetails;
-//   members: MemberData[];
-// }[]
-// type Props = { team: Array<Array<String>> };
-
 const ProjectTeams = () => {
   const [selectedTeam, setSelectedTeam] = useState(projects[0].teamDetails.teamId); // Default state is team1
   const [teamNumber, setTeamNumber] = useState(0);
