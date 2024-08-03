@@ -1,5 +1,5 @@
 .projects-page {
-    /* background-color: var(--YOO-Blue-Light); */
+    background-color: var(--YOO-Green-Lightest);
 } 
 
 .recent-projects-banner{
@@ -12,10 +12,10 @@
 
 .past-projects-banner{
     width: 100%;
-    height: 70px;
-    background-color: var(--YOO-Green-Light);
+    height: 200px;
+    background-color: var(--YOO-Green-Lightest);
     z-index: -1;
-    padding: 1% 2% 5% 5%;
+    padding-left: 5%;
     align-content: center;
 }
 

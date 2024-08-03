@@ -6,6 +6,7 @@ import "../styles/projects.css";
 import Layout from "../layouts/layout.astro";
 import Carousel from "../components/carousel.astro";
 import PastProjectsList from "../components/projects page/PastProjectsList";
+import ImageCarousel from "../components/ImageCarousel";
 ---
 
 <html lang="en">
@@ -18,12 +19,9 @@ import PastProjectsList from "../components/projects page/PastProjectsList";
   </head>
   <Layout>
     <main class="projects-page">
-        <div class="recent-projects-banner">
-          <h3 class="bold-heading text-green">Our Recent Projects</h3>
-        </div>
-        <Carousel />
+        <ImageCarousel client:only />
         <div class="past-projects-banner">
-          <h3 class="bold-heading text-green">Our Past Projects</h3>
+          <h2 class="bold-heading text-green">Our Past Projects</h2>
         </div>
           <PastProjectsList />
     </main>

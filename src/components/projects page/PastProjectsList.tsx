@@ -21,11 +21,11 @@ export default function PastProjectsList() {
       team: "Team 1",
     },
     {
-      src: "https://warp-potential-efd.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F66a3164d-3826-4413-80cb-27389de9b881%2F0bafff12-ccdc-4019-aa9c-800f11a7f7e6%2FLife_Skills_Workshop.jpg?table=block&id=14158091-26a6-4e0c-9d72-724df9c28894&spaceId=66a3164d-3826-4413-80cb-27389de9b881&width=2000&userId=&cache=v2",
-      alt: "Life skills workshop",
+      src: "https://warp-potential-efd.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F66a3164d-3826-4413-80cb-27389de9b881%2Fe92b70e9-b1c3-49ab-aabc-0f75c374e182%2FArt_Showcase.jpeg?table=block&id=00793dc9-da43-4cea-8cde-33ddeb2c23f3&spaceId=66a3164d-3826-4413-80cb-27389de9b881&width=2000&userId=&cache=v2",
+      alt: "Art Showcase",
       time: "2nd August, 12:30 - 3:30PM",
-      title: "Life Skills Workshop",
-      description: "Come learn about life skills!",
+      title: "Art Showcase",
+      description: "Come along and view some fine art! Maybe even meet some new friends!",
       team: "Team 2",
     },
     {
@@ -45,16 +45,16 @@ export default function PastProjectsList() {
 
         switch (index % 3) {
           case 0:
-            headerColour = `var(--YOO-Blue-Dark)`;
-            infoColour = `var(--YOO-Blue-Primary)`;
+            headerColour = `var(--YOO-Green-Primary)`;
+            infoColour = `var(--YOO-Green-Medium)`;
             break;
           case 1:
             headerColour = `var(--YOO-Red-Dark)`;
             infoColour = `var(--YOO-Red-Primary)`;
             break;
           case 2:
-            headerColour = `var(--YOO-Green-Primary)`;
-            infoColour = `var(--YOO-Green-Medium)`;
+            headerColour = `var(--YOO-Blue-Dark)`;
+            infoColour = `var(--YOO-Blue-Primary)`;
             break;
           default:
             break;
