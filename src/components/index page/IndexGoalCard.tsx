@@ -2,7 +2,7 @@ import styles from './index.module.css'
 
 const IndexGoalCard = ({styleColor, children}: { styleColor:string, children:string }) => {
 
-    let variant = {}
+    let variant = {};
 
     switch(styleColor) {
         case "blue":

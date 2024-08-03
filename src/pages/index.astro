@@ -3,13 +3,14 @@
 // Homepage
 import "../styles/global.css";
 import "../styles/index.css";
+import styles from "../components/index page/index.module.css"
 
 import Layout from '../layouts/layout.astro';
 import ImageCarousel from "../components/ImageCarousel";
 import IndexImage from "../components/index page/IndexImage";
 import IndexAbout from "../components/index page/IndexAbout";
 import IndexGoals from "../components/index page/IndexGoals";
-import IndexHeading from "../components/index page/IndexHeading";
+import IndexHero from "../components/index page/IndexHero";
 
 ---
 
@@ -23,28 +24,22 @@ import IndexHeading from "../components/index page/IndexHeading";
 	</head>
 	<Layout>
 		<img class="index-bg" alt = "abstract background shapes" src="/assets/YOO_index-hero-bg-2.svg" style={{top: "-100px"}}>
-		<div class="general-wrapper">
-			<section class="index-section hero">
-				<div class="hero-text">
-					<p class="hero-subheading">Youth of Ōrākei</p>
-					<h1 class="hero-heading">Empowering and engaging Ōrākei youth to promote their wellbeing</h1>
-					<p class="hero-desc">We’re the Youth of Ōrākei, a group of 26 young leaders (aged 12-24) from the Ōrākei Local Board area who are determined to make a positive impact in our community.</p>
-				</div>
-			</section>
-		</div>
+		<section class="index-section">
+			<IndexHero/>
+		</section>
 
-		<IndexImage source="/Team + Individual/Whole Council.JPG" desc="A group photo of YOO."></IndexImage>
+		<IndexImage source="/Team + Individual/Whole Council.JPG" desc="A group photo of YOO."/>
 
 		<img class="index-bg" alt = "abstract background shapes" src="/assets/YOO_index-hero-bg-2.svg">
 
 		<section class="index-section">
-			<IndexAbout></IndexAbout>
+			<IndexAbout/>
 		</section>
 
-		<IndexImage source="/Past Events/Quiz Night.jpg" desc="Some YOO members at a quiz night event"></IndexImage>
+		<IndexImage source="/Past Events/Quiz Night.jpg" desc="Some YOO members at a quiz night event"/>
 
 		<section class="index-section">
-			<IndexGoals></IndexGoals>
+			<IndexGoals/>
 		</section>
 
 		<section class="index-events">
