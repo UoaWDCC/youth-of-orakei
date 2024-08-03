@@ -66,42 +66,22 @@ export default function PastProjectsList() {
             <img key={index} src={project.src} alt={project.alt} style={{ height: "1000px", objectFit: "cover", borderRadius: "25px" }}/>
 
             <div className="project-text" style={{ backgroundColor: headerColour }}>
-              <div className="project-title">
-                <h2 className="index-heading text-green-dark">{project.title}</h2>
+              <div className="project-title-time">
+                <div className="project-title">
+                  <h3 className="index-heading text-green-dark">{project.title}</h3>
+                </div>
+                <div className="project-date" >
+                  <h4>{project.time}</h4>
+                </div>
               </div>
-              <div className="project-date" >
-                <h3>{project.time}</h3>
+
+              <div className="project-desc">
+                <h5>{project.description}</h5>
               </div>
             </div>
             <div className="project-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
             <div className="project-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
 
-
-
-            {/* <h3
-              className="past-project-header bold-heading"
-              style={{ backgroundColor: headerColour }}
-            >
-              {project.title}
-            </h3>
-            <h4
-              className="past-project-info past-project-team"
-              style={{ backgroundColor: infoColour }}
-            >
-              {project.team}
-            </h4>
-            <h4
-              className="past-project-info past-project-date"
-              style={{ backgroundColor: infoColour }}
-            >
-              {project.time}
-            </h4>
-            <h4
-              className="past-project-info past-project-description"
-              style={{ backgroundColor: infoColour }}
-            >
-              {project.description}
-            </h4> */}
           </div>
         );
       })}
