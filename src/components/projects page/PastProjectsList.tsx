@@ -64,6 +64,12 @@ export default function PastProjectsList() {
         return (
           <div className="past-project-container" style={{ backgroundColor: headerColour, position: "relative", padding: "10px" }}>
             <img key={index} src={project.src} alt={project.alt} style={{ height: "1000px", objectFit: "cover", borderRadius: "25px" }}/>
+            
+            <div className="project-team" style={{ backgroundColor: headerColour }}>
+              <h2 className="index-heading text-green-dark">{project.team}</h2>
+            </div>
+            <div className="project-team-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }} >corn</div>
+            <div className="project-team-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }} >corn</div>
 
             <div className="project-text" style={{ backgroundColor: headerColour }}>
               <div className="project-title-time">

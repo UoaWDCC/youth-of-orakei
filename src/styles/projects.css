@@ -56,7 +56,6 @@
     margin-left: 40%;
     margin-bottom: 10px;
     height: 60px;
-    box-shadow: -15px 0px var(--YOO-Green-Lightest);
     background-color: transparent;
     border-bottom-left-radius: var(--common-radius);
     white-space: nowrap;
@@ -70,7 +69,6 @@
     bottom: 0;
     margin-bottom: 150px;
     height: 60px;
-    box-shadow: -15px 0px var(--YOO-Green-Lightest);
     background-color: transparent;
     border-bottom-left-radius: var(--common-radius);
     white-space: nowrap;
@@ -79,6 +77,42 @@
     text-indent: 100%;
 }
 
+.project-team {
+    position: absolute;
+    top: 0;
+    padding: 20px 10px 10px 10px;
+    width: 10%;
+    height: 8%;
+    text-align: center;
+    border-bottom-right-radius: var(--common-radius);
+}
+
+.project-team-right-corner-element {
+    position: absolute;
+    top: 0;
+    margin-left: 10%;
+    margin-top: 10px;
+    height: 50px;
+    background-color: transparent;
+    border-top-left-radius: var(--common-radius);
+    white-space: nowrap;
+    overflow: hidden;
+    color: transparent;
+    text-indent: 100%;
+}
+
+.project-team-left-corner-element {
+    position: absolute;
+    top: 0;
+    margin-top: 80px;
+    height: 50px;
+    background-color: transparent;
+    border-top-left-radius: var(--common-radius);
+    white-space: nowrap;
+    overflow: hidden;
+    color: transparent;
+    text-indent: 100%;
+}
 
 /* CARDS */
 
