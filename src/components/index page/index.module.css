@@ -13,7 +13,7 @@
 .heading{
     margin: 0;
     width: fit-content;
-    padding: 9px 28px 3px;
+    padding: 6px 28px 0;
 
     background-color: #F1FFF6;
     border-radius: 16px;
@@ -75,13 +75,32 @@
 }
 
 .goal{
+    position: relative;
+
     width: 100%;
     height: 172px;
     padding: 24px 48px;
 
     box-shadow: 4px 4px 7px -2px hsl(188deg 100% 16% / 0.15), 12px 12px 18px -3px hsl(188deg 100% 16% / 0.15);
     border-radius: 16px;
+
+    overflow: hidden;
 }
 .goal h4{
     font-weight: 700;
+}
+
+.goalBg{
+    position: absolute;
+
+    width: 75%;
+
+    right: 0;
+    bottom: 0;
+}
+
+.goalPlaceholder{
+    position: absolute;
+    right: 64px;
+    opacity: 0.5;
 }

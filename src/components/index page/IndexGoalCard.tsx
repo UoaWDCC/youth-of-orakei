@@ -26,6 +26,8 @@ const IndexGoalCard = ({styleColor, children}: { styleColor:string, children:str
 
     return (
         <div className={styles.goal} style={{...variant}}>
+            <img className={styles.goalBg} alt = "abstract background goal shapes" src="/assets/YOO_index-goals-bg.svg"/>
+            <p className={styles.goalPlaceholder}>placeholder: icons here or something?</p>
             <h4>
                 {children}
             </h4>
