@@ -1,5 +1,6 @@
 import "../../styles/projects.css";
 import "../../styles/global.css";
+import { relative } from "path";
 
 interface Events {
   src: string;
@@ -45,15 +46,15 @@ export default function PastProjectsList() {
 
         switch (index % 3) {
           case 0:
-            headerColour = `var(--YOO-Green-Primary)`;
+            headerColour = `var(--YOO-Green-Lightest)`;
             infoColour = `var(--YOO-Green-Medium)`;
             break;
           case 1:
-            headerColour = `var(--YOO-Red-Dark)`;
+            headerColour = `var(--YOO-Red-Primary)`;
             infoColour = `var(--YOO-Red-Primary)`;
             break;
           case 2:
-            headerColour = `var(--YOO-Blue-Dark)`;
+            headerColour = `var(--YOO-Blue-Primary)`;
             infoColour = `var(--YOO-Blue-Primary)`;
             break;
           default:
@@ -61,8 +62,23 @@ export default function PastProjectsList() {
         }
 
         return (
-          <div className="past-project-container" style={{backgroundImage: `url(${project.src})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
-            <h3
+          <div className="past-project-container" style={{ backgroundColor: headerColour, position: "relative", padding: "10px" }}>
+            <img key={index} src={project.src} alt={project.alt} style={{ height: "1000px", objectFit: "cover", borderRadius: "25px" }}/>
+
+            <div className="project-text" style={{ backgroundColor: headerColour }}>
+              <div className="project-title">
+                <h2 className="index-heading text-green-dark">{project.title}</h2>
+              </div>
+              <div className="project-date" >
+                <h3>{project.time}</h3>
+              </div>
+            </div>
+            <div className="project-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
+            <div className="project-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
+
+
+
+            {/* <h3
               className="past-project-header bold-heading"
               style={{ backgroundColor: headerColour }}
             >
@@ -85,7 +101,7 @@ export default function PastProjectsList() {
               style={{ backgroundColor: infoColour }}
             >
               {project.description}
-            </h4>
+            </h4> */}
           </div>
         );
       })}

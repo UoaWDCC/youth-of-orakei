@@ -52,7 +52,7 @@ export default function ImageCarousel() {
                     ))}
                 </div>
                 <div className="index-event-text">
-                    <h2 className="index-heading text-green-dark" style={{ paddingRight: 15, paddingLeft: 15, margin: "auto" }}>Upcoming events</h2>
+                    <h2 className="index-heading text-green-dark" style={{ paddingRight: 15, paddingLeft: 15, margin: "auto", fontSize: "2.4vw" }}>Upcoming events</h2>
                 </div>
                 {/* Please do not remove the 2 divs below lmao */}
                 <div className="index-event-right-corner-element">corn</div>
