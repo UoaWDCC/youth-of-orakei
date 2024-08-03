@@ -104,3 +104,14 @@
     right: 64px;
     opacity: 0.5;
 }
+
+
+/* TODO Mobile responsiveness - below is just placeholder stuff */
+@media (max-width: 850px) {
+    .about{
+        flex-direction: column;
+    }
+    .goalPlaceholder{
+        display: none;
+    }
+}

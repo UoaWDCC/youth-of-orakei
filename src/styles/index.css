@@ -138,6 +138,8 @@
 /* Events section */
 .index-events{
     background-color: var(--YOO-Green-Lightest);
+    width: 100%;
+    overflow: hidden;
 }
 
 .index-event-img img {

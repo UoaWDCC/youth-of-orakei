@@ -93,3 +93,11 @@
     opacity: 0.75;
     transition: all 200ms;
 }
+
+
+/* TODO Navbar mobile */
+@media (max-width: 850px) {
+    .links{
+        display: none;
+    }
+}
