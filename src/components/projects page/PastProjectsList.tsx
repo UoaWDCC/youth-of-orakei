@@ -51,11 +51,11 @@ export default function PastProjectsList() {
             break;
           case 1:
             headerColour = `var(--YOO-Red-Primary)`;
-            infoColour = `var(--YOO-Red-Primary)`;
+            infoColour = `var(--YOO-Red-Dark)`;
             break;
           case 2:
             headerColour = `var(--YOO-Blue-Primary)`;
-            infoColour = `var(--YOO-Blue-Primary)`;
+            infoColour = `var(--YOO-Blue-Darkest)`;
             break;
           default:
             break;
@@ -65,8 +65,8 @@ export default function PastProjectsList() {
           <div className="past-project-container" style={{ backgroundColor: headerColour, position: "relative", padding: "10px" }}>
             <img key={index} src={project.src} alt={project.alt} style={{ height: "1000px", objectFit: "cover", borderRadius: "25px" }}/>
             
-            <div className="project-team" style={{ backgroundColor: headerColour }}>
-              <h2 className="index-heading text-green-dark">{project.team}</h2>
+            <div className="project-team" style={{ backgroundColor: headerColour, color: infoColour }}>
+              <h2 className="index-heading">{project.team}</h2>
             </div>
             <div className="project-team-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }} >corn</div>
             <div className="project-team-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }} >corn</div>
@@ -77,12 +77,12 @@ export default function PastProjectsList() {
                   <h3 className="index-heading text-green-dark">{project.title}</h3>
                 </div>
                 <div className="project-date" >
-                  <h4>{project.time}</h4>
+                  <h4 style={{ fontWeight: 700, color: infoColour }}>{project.time}</h4>
                 </div>
               </div>
 
               <div className="project-desc">
-                <h5>{project.description}</h5>
+                <h5 style={{ color: `var(--text-medium)` }}>{project.description}</h5>
               </div>
             </div>
             <div className="project-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
