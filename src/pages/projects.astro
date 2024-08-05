@@ -5,7 +5,8 @@ import "../styles/index.css";
 import "../styles/projects.css";
 import Layout from "../layouts/layout.astro";
 import Carousel from "../components/carousel.astro";
-import TeamsContainer from "../components/projects page/projects_team_container.astro";
+import PastProjectsList from "../components/projects page/PastProjectsList";
+import ImageCarousel from "../components/ImageCarousel";
 ---
 
 <html lang="en">
@@ -18,22 +19,15 @@ import TeamsContainer from "../components/projects page/projects_team_container.
   </head>
   <Layout>
     <main class="projects-page">
-      <img
-          class="projects-bg"
-          alt="abstract background shapes"
-          src="/assets/YOO_index-hero-bg.svg"
-      />
-      <section class="general-wrapper spacer-big">
-        <h3 class="bold-heading text-green">Our projects</h3>
-        <div class="projects-teams">
-          <h5 class="bold-heading text-green-medium">By team</h5>
-          <div class="spacer-small">
-            <TeamsContainer/>
-          </div>
+        <ImageCarousel client:only />
+        <div class="past-projects-banner">
+          <h2 class="bold-heading text-green">Our Past Projects</h2>
         </div>
-      </section>
-
-      <Carousel />
+        <section class="index-events">
+          <div class="index-image-carousel-container">
+            <PastProjectsList />
+          </div>
+        </section>
     </main>
   </Layout>
 

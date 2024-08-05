@@ -48,11 +48,11 @@ export default function ImageCarousel() {
             <div style={{ width: "100%", height: "100%", position: "relative", padding: "10px"}}>
                 <div className="index-event-img" style={{ width: "100%", height: "100%", display: "flex", overflow: "hidden" }}>
                     {images.map((event: Events, index: number) => (
-                        <img key={index} src={event.src} alt={event.alt} className="index-event-image-container" style={{ translate: `${-100 * imgIndex}%`, opacity: 0.7 }}/>
+                        <img key={index} src={event.src} alt={event.alt} className="index-event-image-container" style={{ translate: `${-100 * imgIndex}%`, opacity: 0.7, aspectRatio: "14/6" }}/>
                     ))}
                 </div>
                 <div className="index-event-text">
-                    <h2 className="index-heading text-green-dark" style={{ paddingRight: 15, paddingLeft: 15, margin: "auto" }}>Upcoming events</h2>
+                    <h2 className="index-heading text-green-dark" style={{ paddingRight: 15, paddingLeft: 15, margin: "auto", fontSize: "2.4vw" }}>Upcoming events</h2>
                 </div>
                 {/* Please do not remove the 2 divs below lmao */}
                 <div className="index-event-right-corner-element">corn</div>
