@@ -1,5 +1,10 @@
 ---
 import "../styles/global.css";
+
+// import MembersDisplay from "./MembersDisplay.astro";
+import PersonCard from "./PersonCard.tsx";
+
+const { team } = Astro.props;
 ---
 
 <html lang="en">
@@ -14,44 +19,16 @@ import "../styles/global.css";
   <body>
     <div class="communications" id="com-section">
       <div class="left2">
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img
-              src="/Team + Individual/LT-ThanishkaSatheeshkumar (Communications Lead).JPG"
+        {
+          team.map((cover: { name: any; team: any; desc: any; cover: any }) => (
+            <PersonCard
+              name={cover.name}
+              team={cover.team}
+              desc={cover.desc}
+              cover={cover.cover}
             />
-          </div>
-          <p class="description-box-coms">
-            <b>Thanishka Satheeshkumar</b>
-            <br />Communications Lead <br />[Text]
-          </p>
-        </div>
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img src="/Team + Individual/Comms-SaffronTse.JPG" />
-          </div>
-          <p class="description-box-coms">
-            <b>Saffron Tse</b>
-            <br /><br />[Text]
-          </p>
-        </div>
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img src="/Team + Individual/Comms-StellaCasey.JPG" />
-          </div>
-          <p class="description-box-coms">
-            <b>Stella Casey</b>
-            <br /><br />[Text]
-          </p>
-        </div>
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img src="/Team + Individual/Comms-Katerina Lontzetidou.JPG" />
-          </div>
-          <p class="description-box-coms">
-            <b>Katerina Lontzetidou</b>
-            <br /><br />[Text]
-          </p>
-        </div>
+          ))
+        }
       </div>
       <div class="right2">
         <h2 class="coms-title"><b>Communications Team</b></h2>

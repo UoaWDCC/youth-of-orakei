@@ -1,5 +1,15 @@
 ---
 import "../styles/global.css";
+import MembersDisplay from "./MembersDisplay.astro";
+
+import { getMembers } from "../scripts/getMembers";
+let members = await getMembers();
+
+import { sortMembersByTeam } from "../scripts/sortTeams.ts";
+let { leadershipTeam, communicationTeam, projects } =
+  sortMembersByTeam(members);
+const { team, cover, name, desc } = Astro.props;
+let leadership = "Leadership Team";
 ---
 
 <html lang="en">
@@ -24,7 +34,15 @@ import "../styles/global.css";
         </p>
       </div>
       <div class="right1">
-        <div class="person-card">
+        {team.map((cover: { name: any; team: any; desc: any; cover: any; }) => (
+        <MembersDisplay
+          name={cover.name}
+          team={cover.team}
+          desc={cover.desc}
+          cover={cover.cover}
+        />))
+        }
+        <!-- <div class="person-card">
           <div class="img-wrapper">
             <img src="/Team + Individual/LT-IshitaBarot (Co-chair).JPG" />
           </div>
@@ -33,6 +51,7 @@ import "../styles/global.css";
             <br /> Co-chair <br /> [Text]
           </p>
         </div>
+
         <div class="person-card">
           <div class="img-wrapper">
             <img src="/Team + Individual/LT-JoshuaCurtis (Co-chair).JPG" />
@@ -79,7 +98,7 @@ import "../styles/global.css";
             <b>Yixuan Zhu</b>
             <br />Secretary <br /> [Text]
           </p>
-        </div>
+        </div> -->
       </div>
     </div>
   </body>
