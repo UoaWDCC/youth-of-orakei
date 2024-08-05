@@ -1,35 +1,32 @@
-:root{
-    --index-hero-height: 50rem;
-}
-
-.hero{
-    width: 100%;
-    height: var(--index-hero-height);
-}
-
-.hero-bg{
+/* Background shapes */
+.index-bg{
     position: absolute;
     width: 100%;
-    height: var(--index-hero-height);
-    
+
+    /* Hardcoded :( */
+    height: 2865px;
+
     z-index: -10;
 }
 
-.hero-content{
+.hero{
     display: flex;
     flex-direction: column;
     gap: 3rem;
-
-    padding: 5rem 0;
 }
 
 .hero-text{
     max-width: 80ch;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .hero-subheading{
-    margin: 1rem 0;
+    margin: 1rem 0 0;
 
+    font-size: var(--fontsize-h5);
     font-weight: 700;
     color: var(--YOO-Green-Medium);
 }
@@ -39,6 +36,15 @@
     font-weight: 900;
     color: var(--YOO-Green-Primary);
     line-height: 1.1;
+}
+
+.hero-desc{
+    max-width: 90%;
+
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--YOO-Green-Primary);
+    line-height: 1.3;
 }
 
 .hero-image{
@@ -66,7 +72,7 @@
 
 /* Index sections (general) */
 .index-section{
-    padding: 5rem 0;
+    padding: 6rem 0;
 }
 
 .index-subheading{
@@ -132,6 +138,8 @@
 /* Events section */
 .index-events{
     background-color: var(--YOO-Green-Lightest);
+    width: 100%;
+    overflow: hidden;
 }
 
 .index-event-img img {
