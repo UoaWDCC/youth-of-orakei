@@ -7,6 +7,7 @@ import Layout from "../layouts/layout.astro";
 import Carousel from "../components/carousel.astro";
 import PastProjectsList from "../components/projects page/PastProjectsList";
 import ImageCarousel from "../components/ImageCarousel";
+import IndexHeading from "../components/index page/IndexHeading";
 ---
 
 <html lang="en">
@@ -20,8 +21,8 @@ import ImageCarousel from "../components/ImageCarousel";
   <Layout>
     <main class="projects-page">
         <ImageCarousel client:only />
-        <div class="past-projects-banner">
-          <h2 class="bold-heading text-green">Our Past Projects</h2>
+        <div class="past-projects-banner" style="background-image: url('/assets/YOO_index-hero-bg-2.svg'); background-size: cover;">
+          <IndexHeading>Our Past Projects</IndexHeading>
         </div>
         <section class="index-events">
           <div class="index-image-carousel-container">

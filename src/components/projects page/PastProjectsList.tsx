@@ -50,11 +50,11 @@ export default function PastProjectsList() {
             infoColour = `var(--YOO-Green-Medium)`;
             break;
           case 1:
-            headerColour = `var(--YOO-Red-Primary)`;
+            headerColour = `var(--YOO-Red-Light)`;
             infoColour = `var(--YOO-Red-Dark)`;
             break;
           case 2:
-            headerColour = `var(--YOO-Blue-Primary)`;
+            headerColour = `var(--YOO-Blue-Light)`;
             infoColour = `var(--YOO-Blue-Darkest)`;
             break;
           default:
@@ -77,7 +77,7 @@ export default function PastProjectsList() {
                   <h3 className="index-heading text-green-dark">{project.title}</h3>
                 </div>
                 <div className="project-date" >
-                  <h4 style={{ fontWeight: 700, color: infoColour }}>{project.time}</h4>
+                  <h5 style={{ fontWeight: 700, color: infoColour }}>{project.time}</h5>
                 </div>
               </div>
 
