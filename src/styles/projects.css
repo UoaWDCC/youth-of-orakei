@@ -1,19 +1,118 @@
 .projects-page {
-    /* background-color: var(--YOO-Blue-Light); */
-}
+    background-color: var(--YOO-Green-Lightest);
+} 
 
-.projects-bg{
-    position: absolute;
+.recent-projects-banner{
     width: 100%;
-    height: 100%;
-
+    height: 225px;
+    background-color: var(--YOO-Blue-Light);
     z-index: -1;
+    padding: 10% 10% 5% 5%
 }
 
-.projects-teams{
-    padding: 48px 0;
+.past-projects-banner{
+    width: 100%;
+    height: 200px;
+    background-color: var(--YOO-Green-Lightest);
+    z-index: -1;
+    padding-left: 5%;
+    align-content: center;
 }
 
+.past-project-container{
+    width: 100%;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-text {
+    position: absolute;
+    bottom: 0;
+    width: 40%;
+    height: 150px;
+    padding: 20px;
+    padding-left: 30px;
+    border-top-right-radius: var(--common-radius);
+    display: flex;
+}
+
+.project-title-time {
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+}
+
+.project-desc {
+    max-width: 40%;
+    border-left: 2px solid var(--text-light);
+    padding-left: 10px;
+    overflow: auto;
+}
+
+.project-right-corner-element {
+    position: absolute;
+    bottom: 0;
+    margin-left: 40%;
+    margin-bottom: 10px;
+    height: 60px;
+    background-color: transparent;
+    border-bottom-left-radius: var(--common-radius);
+    white-space: nowrap;
+    overflow: hidden;
+    color: transparent;
+    text-indent: 100%;
+}
+
+.project-left-corner-element {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 150px;
+    height: 60px;
+    background-color: transparent;
+    border-bottom-left-radius: var(--common-radius);
+    white-space: nowrap;
+    overflow: hidden;
+    color: transparent;
+    text-indent: 100%;
+}
+
+.project-team {
+    position: absolute;
+    top: 0;
+    padding: 20px 10px 10px 10px;
+    width: 15%;
+    height: 8%;
+    text-align: center;
+    border-bottom-right-radius: var(--common-radius);
+}
+
+.project-team-right-corner-element {
+    position: absolute;
+    top: 0;
+    margin-left: 15%;
+    margin-top: 10px;
+    height: 50px;
+    background-color: transparent;
+    border-top-left-radius: var(--common-radius);
+    white-space: nowrap;
+    overflow: hidden;
+    color: transparent;
+    text-indent: 100%;
+}
+
+.project-team-left-corner-element {
+    position: absolute;
+    top: 0;
+    margin-top: 80px;
+    height: 50px;
+    background-color: transparent;
+    border-top-left-radius: var(--common-radius);
+    white-space: nowrap;
+    overflow: hidden;
+    color: transparent;
+    text-indent: 100%;
+}
 
 /* CARDS */
 

@@ -5,6 +5,7 @@ This is the global layout, reflecting the common components to all pages (header
 ---
 import "../styles/global.css";
 import Header from "../components/header.astro";
+import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/footer.astro";
 import { ViewTransitions } from "astro:transitions";
 ---
@@ -25,7 +26,8 @@ import { ViewTransitions } from "astro:transitions";
 		<link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<Header />
+		<!--<Header />-->
+		<Navbar />
 		<main>
 			<slot />
 		</main>

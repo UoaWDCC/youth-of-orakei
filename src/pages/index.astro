@@ -3,9 +3,15 @@
 // Homepage
 import "../styles/global.css";
 import "../styles/index.css";
+import styles from "../components/index page/index.module.css"
 
 import Layout from '../layouts/layout.astro';
 import ImageCarousel from "../components/ImageCarousel";
+import IndexImage from "../components/index page/IndexImage";
+import IndexAbout from "../components/index page/IndexAbout";
+import IndexGoals from "../components/index page/IndexGoals";
+import IndexHero from "../components/index page/IndexHero";
+
 ---
 
 <html lang="en">
@@ -14,80 +20,31 @@ import ImageCarousel from "../components/ImageCarousel";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Homepage</title>
+		<title>Youth of Ōrākei | Home</title>
 	</head>
 	<Layout>
-		<div class="hero">
-			<img class="hero-bg" alt = "abstract background shapes" src="/assets/YOO_index-hero-bg.svg">
-			<div class="general-wrapper">
-				<div class="hero-content">
-					<div class="hero-text">
-						<p class="hero-subheading">Youth of Ōrākei</p>
-						<h1 class="hero-heading">Empowering and engaging Ōrākei youth to promote their wellbeing</h1>
-					</div>
-					<div class="hero-image">
-						<img alt="A group photo of YOO"  src="/Past Events/QuizEx_Long.jpg">
-					</div>
-				</div>
-			</div>
-		</div>
+		<img class="index-bg" alt = "abstract background shapes" src="/assets/YOO_index-hero-bg-2.svg" style={{top: "-100px"}}>
 		<section class="index-section">
-			<div class="general-wrapper">
-				<h3 class="index-heading text-blue">About us</h3>
-				<div class="index-about">
-					<div class="index-about-section">
-						<div class="index-about-text">
-							<h4 class="index-subheading">Who we are</h4>
-							<p>
-								A group of 26 young leaders (aged 12-24) from the Ōrākei Local Board area who are determined to make a positive impact in our community. As a group we help provide a voice to the youth in our community. The youth council is supported by the Ōrākei Local Board.
-							</p>
-						</div>
-						<div class="index-about-image">
-							<div class="placeholder">
-								<p class="placeholder-text"><img class="about-image" src="/Past Events/Student Leadership Conference_Closer.jpg"></p>
-							</div>
-						</div>
-					</div>
-					<div class="index-about-section">
-						<div class="index-about-image">
-							<div class="placeholder">
-								<p class="placeholder-text"><img class="about-image" src="/Past Events/Beach Clean-up.jpg"></p>
-							</div>
-						</div>
-						<div class="index-about-text">
-							<h4 class="index-subheading">What we do</h4>
-							<p>
-								The Youth of Ōrākei not only organises and supports events, but they equip and engage youth. But it is also our priority to give a voice to the youth in the community for the future of Ōrākei and wider Auckland by advising and submitting on council policies.
-							</p>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
+			<IndexHero/>
 		</section>
 
-		<section class="index-section index-goals">
-			<div class="general-wrapper">
-				<h3 class="index-heading text-green-dark">Our goals</h3>
-				<p class="text-medium">(super random placeholder design at the moment)</p>
-				<div class="index-goals-headlines">
-					<div class="index-goals-line">
+		<IndexImage source="/Team + Individual/Whole Council.JPG" desc="A group photo of YOO."/>
 
-					</div>
-					<div class="index-goals-text">
-						<p class="index-goals-headline text-blue">Support</p>
-						<p class="index-goals-headline text-green">Connect</p>
-						<p class="index-goals-headline text-red">Empower</p>
-					</div>
-				</div>
-			</div>
+		<img class="index-bg" alt = "abstract background shapes" src="/assets/YOO_index-hero-bg-2.svg">
+
+		<section class="index-section">
+			<IndexAbout/>
 		</section>
 
-		<section class="index-section index-events">
-			<div class="general-wrapper">
-				<h3 class="index-heading text-green-dark">Upcoming events</h3>
-					<ImageCarousel  client:only />
+		<IndexImage source="/Past Events/Quiz Night.jpg" desc="Some YOO members at a quiz night event"/>
+
+		<section class="index-section">
+			<IndexGoals/>
+		</section>
+
+		<section class="index-events">
+			 <div class="index-image-carousel-container"> 
+				<ImageCarousel  client:only />
 			</div>
 		</section>
 	</Layout>
