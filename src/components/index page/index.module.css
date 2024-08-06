@@ -20,6 +20,15 @@
     }
 }
 
+@keyframes silly-anim{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
 :root{
     --introTransitionTiming: cubic-bezier(0, 0.2, 0.2, 1);
 }
@@ -168,7 +177,7 @@
     position: relative;
 
     width: 100%;
-    height: 172px;
+    min-height: 172px;
     padding: 24px 48px;
 
     box-shadow: 4px 4px 7px -2px hsl(188deg 100% 16% / 0.15), 12px 12px 18px -3px hsl(188deg 100% 16% / 0.15);
@@ -203,6 +212,13 @@
     position: absolute;
     right: 64px;
     opacity: 0.5;
+}
+
+.goalText{
+    margin-top: 8px;
+
+    font-weight: 500;
+    max-width: 75%;
 }
 
 

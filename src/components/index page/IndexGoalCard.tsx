@@ -1,6 +1,12 @@
 import styles from './index.module.css'
 
-const IndexGoalCard = ({styleColor, children}: { styleColor:string, children:string }) => {
+type props = {
+    styleColor: string,
+    children: string,
+    title: string
+}
+
+const IndexGoalCard = ({styleColor, children, title}: props) => {
 
     let variant = {};
 
@@ -26,12 +32,13 @@ const IndexGoalCard = ({styleColor, children}: { styleColor:string, children:str
 
     return (
         <div className={styles.goal} style={{...variant}}>
-            <img className={styles.goalBg} alt = "abstract background goal shapes" src="/assets/YOO_index-goals-bg.svg"/>
-            <p className={styles.goalPlaceholder}>placeholder: icons here or something?</p>
+            <img className={styles.goalBg} alt="abstract background goal shapes" src="/assets/YOO_index-goals-bg.svg"/>
             <h4>
-                {children}
+                {title}
             </h4>
-
+            <p className={styles.goalText}>
+                {children}
+            </p>
         </div>
     );
 };
