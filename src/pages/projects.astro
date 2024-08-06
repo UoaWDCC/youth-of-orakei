@@ -8,6 +8,8 @@ import Carousel from "../components/carousel.astro";
 import PastProjectsList from "../components/projects page/PastProjectsList";
 import ImageCarousel from "../components/ImageCarousel";
 import IndexHeading from "../components/index page/IndexHeading";
+
+import BlobBackground from "../components/BlobBackground/BlobBackground";
 ---
 
 <html lang="en">
@@ -21,7 +23,8 @@ import IndexHeading from "../components/index page/IndexHeading";
   <Layout>
     <main class="projects-page">
         <ImageCarousel client:only />
-        <div class="past-projects-banner" style="background-image: url('/assets/YOO_index-hero-bg-2.svg'); background-size: cover;">
+        <BlobBackground/>
+        <div class="past-projects-banner">
           <IndexHeading>Our Past Projects</IndexHeading>
         </div>
         <section class="index-events">

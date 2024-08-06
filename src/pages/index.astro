@@ -12,6 +12,8 @@ import IndexAbout from "../components/index page/IndexAbout";
 import IndexGoals from "../components/index page/IndexGoals";
 import IndexHero from "../components/index page/IndexHero";
 
+import BlobBackground from "../components/BlobBackground/BlobBackground";
+
 ---
 
 <html lang="en">
@@ -23,14 +25,14 @@ import IndexHero from "../components/index page/IndexHero";
 		<title>Youth of Ōrākei | Home</title>
 	</head>
 	<Layout>
-		<img class="index-bg" alt = "abstract background shapes" src="/assets/YOO_index-hero-bg-2.svg" style={{top: "-100px"}}>
+		<BlobBackground zIndexVal="-10" offset="-100"/>
 		<section class="index-section">
 			<IndexHero/>
 		</section>
 
 		<IndexImage source="/Team + Individual/Whole Council.JPG" desc="A group photo of YOO."/>
 
-		<img class="index-bg" alt = "abstract background shapes" src="/assets/YOO_index-hero-bg-2.svg">
+		<BlobBackground zIndexVal="-10"/>
 
 		<section class="index-section">
 			<IndexAbout/>
