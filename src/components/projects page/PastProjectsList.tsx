@@ -18,7 +18,7 @@ export default function PastProjectsList() {
       alt: "Beach clean up",
       time: "2nd September, 12:30 - 3:30PM",
       title: "Beach Clean Up",
-      description: "Come join us to clean the local beach!",
+      description: "Come join us to clean the local beach and save the environment!",
       team: "Team 1",
     },
     {
@@ -36,7 +36,7 @@ export default function PastProjectsList() {
       title: "Quiz Night",
       description: "Come learn about quizzes",
       team: "Team 3",
-    },
+    }
   ];
 
   return (
@@ -63,15 +63,30 @@ export default function PastProjectsList() {
 
         return (
           <div className="past-project-container" style={{ backgroundColor: headerColour, position: "relative", padding: "10px" }}>
-            <img key={index} src={project.src} alt={project.alt} style={{ height: "1000px", objectFit: "cover", borderRadius: "25px" }}/>
-            
+            <div className="index-event-img">
+            <img key={index} src={project.src} alt={project.alt} style={{ height: "1000px", width: "100%", objectFit: "cover", borderRadius: "var(--common-radius)", opacity: "0.8" }}/>
+            </div>
             <div className="project-team" style={{ backgroundColor: headerColour, color: infoColour }}>
               <h2 className="index-heading">{project.team}</h2>
             </div>
             <div className="project-team-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }} >corn</div>
             <div className="project-team-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }} >corn</div>
 
-            <div className="project-text" style={{ backgroundColor: headerColour }}>
+
+            <div className="index-event-details">
+              <div>
+                  <div>
+                      <h5>{project.time}</h5>
+                  </div>
+                  <div className="index-event-title">
+                      <h2><b>{project.title}</b></h2>
+                  </div>
+              </div>
+              <div className="index-event-description">
+                  <h5>{project.description}</h5>
+              </div>
+            </div>
+            {/* <div className="project-text" style={{ backgroundColor: headerColour }}>
               <div className="project-title-time">
                 <div className="project-title">
                   <h3 className="index-heading text-green-dark">{project.title}</h3>
@@ -86,7 +101,7 @@ export default function PastProjectsList() {
               </div>
             </div>
             <div className="project-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
-            <div className="project-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
+            <div className="project-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div> */}
 
           </div>
         );
