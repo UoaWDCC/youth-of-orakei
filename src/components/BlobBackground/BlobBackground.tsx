@@ -2,8 +2,8 @@ import styles from './blobbackground.module.css'
 import zIndex from "@mui/material/styles/zIndex";
 
 type props = {
-    offset: number,
-    zIndexVal: number
+    offset?: string,
+    zIndexVal?: string
 }
 
 /*
@@ -14,7 +14,7 @@ Offset (e.g. -100): the absolute positioning offset in pixels (passing -100 will
 ZIndexVal (e.g. -10): the z-index for the background. Keep at 0 unless you've got other z positioned elements and you need to make sure it's behind them.
  */
 
-const BlobBackground = ({offset, zIndexVal = 0}: props) => {
+const BlobBackground = ({offset, zIndexVal = "0"}: props) => {
 
     const offsetStyle = offset ? {top: `${offset}px`} : undefined
 
