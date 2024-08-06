@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: space-between;
 
-    background-color: hsl(120deg 50% 90% / 0.35);
+    background-color: hsl(120deg 50% 100% / 0.3);
     backdrop-filter: blur(8px);
 
     border-bottom: solid 3px hsl(120deg 30% 65% / 0.5);
@@ -43,7 +43,7 @@
 
 .logoImg{
     width: 70px;
-    height: auto;
+    height: 49px;
 }
 
 .links{
