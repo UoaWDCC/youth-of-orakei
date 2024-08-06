@@ -1,0 +1,9 @@
+.blobBg{
+    position: absolute;
+    width: 100%;
+
+    /* Hardcoded :( */
+    height: 2865px;
+
+    pointer-events: none;
+}
