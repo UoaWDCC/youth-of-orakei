@@ -142,3 +142,32 @@ h5 {
 .text-light {
   color: var(--text-light);
 }
+
+/* Really silly animations */
+@keyframes silly-anim{
+  0%{
+    transform: rotate(0);
+  }
+  25%{
+    transform: rotate(90deg) scale(0.5);
+    filter: blur(8px);
+  }
+  50%{
+    transform: rotate(180deg);
+    filter: blur(0);
+  }
+  75%{
+    transform: rotate(270deg) scale(1.5);
+    filter: blur(8px);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+.silly-anim{
+  animation: silly-anim 1s infinite both linear !important;
+  animation-play-state: paused !important;
+}
+.silly-anim:hover{
+  animation-play-state: running !important;
+}

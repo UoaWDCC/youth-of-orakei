@@ -31,7 +31,7 @@ const IndexGoalCard = ({styleColor, children, title}: props) => {
     }
 
     return (
-        <div className={styles.goal} style={{...variant}}>
+        <div className={`goalCard ${styles.goal}`} style={{...variant}}>
             <img className={styles.goalBg} alt="abstract background goal shapes" src="/assets/YOO_index-goals-bg.svg"/>
             <h4>
                 {title}
