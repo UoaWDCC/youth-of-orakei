@@ -73,7 +73,7 @@ const Navbar = () => {
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
-    }, []);
+    }, [silly]);
 
     return (
         <header className={styles.nav}>
