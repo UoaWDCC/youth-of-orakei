@@ -20,4 +20,5 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_MEMBERS_ID: ${{ secrets.NOTION_MEMBERS_ID }}
           ANTON: ${{ secrets.ANTON }}
+          AntonVar: ${{ vars.AntonVar}}
 
