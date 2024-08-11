@@ -19,4 +19,5 @@ jobs:
           NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_MEMBERS_ID: ${{ secrets.NOTION_MEMBERS_ID }}
+          ANTON: ${{ secrets.ANTON }}
 
