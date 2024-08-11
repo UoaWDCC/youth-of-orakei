@@ -20,6 +20,15 @@ jobs:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only --config fly.staging.toml
+  test-vars:
+    name: Test Var
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "the name is ${{ secrets.ANTON }}"
+      - run: echo "the name is ${{ vars.ANTONVAR }}"  
+   
+        
+
         
      
     
