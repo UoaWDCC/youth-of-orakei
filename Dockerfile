@@ -15,10 +15,14 @@ ARG YARN_VERSION=1.22.19
 RUN npm install -g yarn@$YARN_VERSION --force
 
 # Define arguments for build time
-ARG key_name
+ARG NOTION_MEMBERS_ID
+ARG NOTION_TOKEN
+ARG ANTON
 
-# Set build time environment variables
-ENV key_name=${key_name}
+# Set build-time environment variables
+ENV NOTION_MEMBERS_ID=${NOTION_MEMBERS_ID}
+ENV NOTION_TOKEN=${NOTION_TOKEN}
+ENV ANTON=${ANTON}
 
 # Throw-away build stage to reduce size of final image
 FROM base as build

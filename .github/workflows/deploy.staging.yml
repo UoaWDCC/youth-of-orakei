@@ -40,6 +40,13 @@ jobs:
         - name: setup flyctl
           uses: superfly/flyctl-actions/setup-flyctl@master
 
+        - name: Build Docker image
+          run: |
+            docker build --build-arg NOTION_MEMBERS_ID=${{ secrets.NOTION_MEMBERS_ID }} \
+                          --build-arg NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} \
+                          --build-arg ANTON=${{ secrets.ANTON }} \
+                          -t your-image-name .
+
         - name: Fly deploy
           run: flyctl deploy --remote-only --config fly.staging.toml
     
