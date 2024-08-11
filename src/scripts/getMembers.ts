@@ -12,10 +12,8 @@ type MemberData = {
 }
 
 export async function getMembers(): Promise<MemberData[]> {
-
-    console.log(process.env.ANTON)
-    if (!process.env.NOTION_TOKEN || !process.env.NOTION_MEMBERS_ID)
-    throw new Error("Missing secret(s)");
+      if (!process.env.NOTION_TOKEN || !process.env.NOTION_MEMBERS_ID)
+      throw new Error("Missing secret(s)");
 
     const notion = new Client({ auth: process.env.NOTION_TOKEN });
 

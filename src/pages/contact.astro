@@ -1,7 +1,14 @@
 ---
 import Layout from '../layouts/layout.astro'
-const form_token = import.meta.env.WEBFORMS_TOKEN || 'fallback-string';
+
+// Function to retrieve the ANTON environment variable
+function getAntonEnvVariable() {
+  return process.env.ANTON || 'ANTON environment variable not set';
+}
+
+const antonValue = getAntonEnvVariable();
 ---
+
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -121,7 +128,6 @@ const form_token = import.meta.env.WEBFORMS_TOKEN || 'fallback-string';
         </div>
         <div class = "content-container">
             <form action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value={form_token}>
                 <div class="form-group">
                     <label for="full-name">Full Name</label> <br>
                     <input type="text" id="full-name" name="Name" required><br>
@@ -149,6 +155,7 @@ const form_token = import.meta.env.WEBFORMS_TOKEN || 'fallback-string';
                 <img id="pattern" src="/Contact Page Images/bottom-right-pattern.png"alt = "pattern">
             </div>
         </div>
+        <p>{antonValue}</p> <!-- Display the ANTON environment variable -->
     </div>
     <script src="https://web3forms.com/client/script.js" async defer></script>
 </Layout>
