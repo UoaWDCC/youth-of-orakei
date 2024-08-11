@@ -44,7 +44,7 @@ jobs:
           run: 
             flyctl secrets set NOTION_MEMBERS_ID=${{ secrets.NOTION_MEMBERS_ID }} \
                             NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} \
-                            ANTON=${{ secrets.ANTON }}
+                            ANTON=${{ secrets.ANTON }} -a wdcc-youth-of-orakei-staging
 
         - name: Fly deploy
           run: flyctl deploy --remote-only --config fly.staging.toml
