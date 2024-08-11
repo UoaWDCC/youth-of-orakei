@@ -6,28 +6,34 @@ on:
       - ORAKEI-Anton-Test-Deploy
 
 jobs:
-  deploy-web:
-    name: Deploy Web
-    runs-on: ubuntu-latest
-    env:
-          FLY_API_TOKEN: ${{ secrets.FLY_STAGING_API_TOKEN }}
-          NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_MEMBERS_ID: ${{ secrets.NOTION_MEMBERS_ID }}
-          ANTON: ${{ secrets.ANTON }}
-          AntonVar: ${{ vars.ANTONVAR }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only --config fly.staging.toml
   test-vars:
     name: Test Var
     runs-on: ubuntu-latest
     steps:
-      - run: echo "the name is ${{ secrets.ANTON }}"
-      - run: echo "the name is ${{ vars.ANTONVAR }}"  
-   
-        
+      - name: Test ANTON Secret
+        run: echo "the name is ${{ secrets.ANTON }}"
+
+      - name: Test NOTION_MEMBERS_ID Secret
+        run: echo "Notion Members ID is ${{ secrets.NOTION_MEMBERS_ID }}"
+
+      - name: Test NOTION_TOKEN Secret
+        run: echo "Notion Token is ${{ secrets.NOTION_TOKEN }}"
+
+  # deploy-web:
+    #   name: Deploy Web
+    #   runs-on: ubuntu-latest
+    #   env:
+    #         FLY_API_TOKEN: ${{ secrets.FLY_STAGING_API_TOKEN }} 
+    #         NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
+    #         NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+            # NOTION_MEMBERS_ID: ${{ secrets.NOTION_MEMBERS_ID }}
+    #         ANTON: ${{ secrets.ANTON }}
+    #         AntonVar: ${{ vars.ANTONVAR }}
+    #   steps:
+    #     - uses: actions/checkout@v3
+    #     - uses: superfly/flyctl-actions/setup-flyctl@master
+    #     - run: flyctl deploy --remote-only --config fly.staging.toml
+    
 
         
      
