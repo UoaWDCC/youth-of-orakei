@@ -9,6 +9,7 @@ jobs:
   test-vars:
     name: Test Var
     runs-on: ubuntu-latest
+    environment: Notion
     steps:
       - name: Test ANTON Secret
         run: echo "the name is ${{ secrets.ANTON }}"
@@ -18,6 +19,8 @@ jobs:
 
       - name: Test NOTION_TOKEN Secret
         run: echo "Notion Token is ${{ secrets.NOTION_TOKEN }}"
+      - name: Test NOTION_TOKEN Secret
+        run: echo "Notion Token is ${{ vars.ANTONVAR }}"
 
   # deploy-web:
     #   name: Deploy Web
