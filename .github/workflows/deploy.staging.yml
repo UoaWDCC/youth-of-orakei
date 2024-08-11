@@ -6,21 +6,21 @@ on:
       - ORAKEI-Anton-Test-Deploy
 
 jobs:
-  # test-vars:
-  #   name: Test Var
-  #   runs-on: ubuntu-latest
-  #   environment: Notion
-  #   steps:
-  #     - name: Test ANTON Secret
-  #       run: echo "the name is ${{ secrets.ANTON }}"
+  test-vars:
+    name: Test Var
+    runs-on: ubuntu-latest
+    environment: Notion
+    steps:
+      - name: Test ANTON Secret
+        run: echo "the name is ${{ secrets.ANTON }}"
 
-  #     - name: Test NOTION_MEMBERS_ID Secret
-  #       run: echo "Notion Members ID is ${{ secrets.NOTION_MEMBERS_ID }}"
+      - name: Test NOTION_MEMBERS_ID Secret
+        run: echo "Notion Members ID is ${{ secrets.NOTION_MEMBERS_ID }}"
 
-  #     - name: Test NOTION_TOKEN Secret
-  #       run: echo "Notion Token is ${{ secrets.NOTION_TOKEN }}"
-  #     - name: Test NOTION_TOKEN Secret
-  #       run: echo "Notion Token is ${{ vars.ANTONVAR }}"
+      - name: Test NOTION_TOKEN Secret
+        run: echo "Notion Token is ${{ secrets.NOTION_TOKEN }}"
+      - name: Test NOTION_TOKEN Secret
+        run: echo "Notion Token is ${{ vars.ANTONVAR }}"
 
   deploy-web:
       name: Deploy Web
@@ -35,7 +35,7 @@ jobs:
       steps:
         - name: Set Fly.io secrets
           run: 
-            flyctl secrets set NOTION_MEMBERS_ID=${{ secrets.NOTION_MEMBERS_ID }} \
+            fly secrets set NOTION_MEMBERS_ID=${{ secrets.NOTION_MEMBERS_ID }} \
                             NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} \
                             ANTON=${{ secrets.ANTON }}
                             
