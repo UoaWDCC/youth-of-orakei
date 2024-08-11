@@ -33,17 +33,18 @@ jobs:
             ANTON: ${{ secrets.ANTON }}
             AntonVar: ${{ vars.ANTONVAR }}
       steps:
-        - name: Set Fly.io secrets
-          run: 
-            fly secrets set NOTION_MEMBERS_ID=${{ secrets.NOTION_MEMBERS_ID }} \
-                            NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} \
-                            ANTON=${{ secrets.ANTON }}
                             
         - name: actions checkout v3
           uses: actions/checkout@v3
 
-        - name: setup actions
+        - name: setup flyctl
           uses: superfly/flyctl-actions/setup-flyctl@master
+
+        - name: Set Fly.io secrets
+          run: 
+            flyctl secrets set NOTION_MEMBERS_ID=${{ secrets.NOTION_MEMBERS_ID }} \
+                            NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} \
+                            ANTON=${{ secrets.ANTON }}
 
         - name: Fly deploy
           run: flyctl deploy --remote-only --config fly.staging.toml
