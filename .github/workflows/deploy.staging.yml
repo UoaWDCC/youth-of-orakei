@@ -43,7 +43,7 @@ jobs:
       
 
         - name: Fly deploy
-          run: flyctl deploy ---build-arg ANTON = ${{ secrets.ANTON }} -remote-only --config fly.staging.toml
+          run: flyctl deploy --build-arg ANTON=${{ secrets.ANTON }} -remote-only --config fly.staging.toml
     
 
         
