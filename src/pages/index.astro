@@ -15,6 +15,9 @@ import IndexHero from "../components/index page/IndexHero";
 import BlobBackground from "../components/BlobBackground/BlobBackground";
 import React from "react";
 
+import { getHomepageDescriptions } from "../scripts/getHomepageDescriptions";
+let descriptions = await getHomepageDescriptions()
+console.log(descriptions)
 ---
 
 <html lang="en">

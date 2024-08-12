@@ -1,7 +1,7 @@
 import { Client } from "@notionhq/client";
 import * as fs from "fs";
 import { type block } from "../types/block";
-import {getAnton} from "./getAnton.ts";
+import {getAnton} from "./getAntonMarkDown.ts";
 import {fetchPageBlocks} from "./fetchPageBlocks.ts";
 
 
