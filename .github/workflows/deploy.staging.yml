@@ -27,6 +27,7 @@ jobs:
       runs-on: ubuntu-latest
       environment: Notion
       env:
+        # This is probably not needed I just have it here for testing - Anton
             FLY_API_TOKEN: ${{ secrets.FLY_STAGING_API_TOKEN }} 
             NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
             NOTION_MEMBERS_ID: ${{ secrets.NOTION_MEMBERS_ID }}
@@ -43,7 +44,7 @@ jobs:
       
 
         - name: Fly deploy
-          run: flyctl deploy --build-arg ANTON=${{ secrets.ANTON }} --remote-only --config fly.staging.toml
+          run: flyctl deploy --build-arg NOTION_MEMBERS_ID=${{ secrets.NOTION_MEMBERS_ID }}  --build-arg ANTON=${{ secrets.ANTON }} --build-arg NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} --remote-only --config fly.staging.toml
     
 
         
