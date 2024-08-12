@@ -17,7 +17,11 @@ import React from "react";
 
 import { getHomepageDescriptions } from "../scripts/getHomepageDescriptions";
 let descriptions = await getHomepageDescriptions()
-console.log(descriptions)
+
+const aboutContent = descriptions.get("About Us")
+
+console.log(aboutContent)
+
 ---
 
 <html lang="en">
@@ -40,7 +44,7 @@ console.log(descriptions)
 		<BlobBackground zIndexVal="-10"/>
 
 		<section class="index-section">
-			<IndexAbout/>
+			<IndexAbout content={aboutContent}/>
 		</section>
 
 		<IndexImage source="/Past Events/Quiz Night.jpg" desc="Some YOO members at a quiz night event"/>

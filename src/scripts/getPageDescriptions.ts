@@ -1,7 +1,7 @@
 import { Client } from "@notionhq/client";
 import type { block } from "../types/block";
 
-export async function getAnton(blocks: block[]): Promise<{ subheadings: string[], paragraphs: string[] }> {
+export async function getPage(blocks: block[]): Promise<{ subheadings: string[], paragraphs: string[] }> {
     const subheadings: string[] = [];
     const paragraphs: string[] = [];
 
