@@ -6,12 +6,42 @@ on:
       - main
 
 jobs:
-  deploy-web:
-    name: Deploy Web
+  test-vars:
+    name: Test Var
     runs-on: ubuntu-latest
+    environment: Notion
     steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl --build-arg key_name="${{ secrets.key_name }}" deploy --remote-only --config fly.staging.toml 
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_STAGING_API_TOKEN }}
+      - name: Test ANTON Secret
+        run: echo "the name is ${{ secrets.ANTON }}"
+
+      - name: Test NOTION_MEMBERS_ID Secret
+        run: echo "Notion Members ID is ${{ secrets.NOTION_MEMBERS_ID }}"
+
+      - name: Test NOTION_TOKEN Secret
+        run: echo "Notion Token is ${{ secrets.NOTION_TOKEN }}"
+      - name: Test NOTION_TOKEN Secret
+        run: echo "Notion Token is ${{ vars.ANTONVAR }}"
+
+  deploy-web:
+      name: Deploy Web
+      runs-on: ubuntu-latest
+      environment: Notion
+      env:
+        # This is probably not needed I just have it here for testing - Anton
+            FLY_API_TOKEN: ${{ secrets.FLY_STAGING_API_TOKEN }} 
+            NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+            NOTION_MEMBERS_ID: ${{ secrets.NOTION_MEMBERS_ID }}
+            ANTON: ${{ secrets.ANTON }}
+         
+      steps:
+                            
+        - name: actions checkout v3
+          uses: actions/checkout@v3
+
+        - name: setup flyctl
+          uses: superfly/flyctl-actions/setup-flyctl@master
+
+      
+
+        - name: Fly deploy
+          run: flyctl deploy --build-arg NOTION_MEMBERS_ID=${{ secrets.NOTION_MEMBERS_ID }}  --build-arg ANTON=${{ secrets.ANTON }} --build-arg NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} --remote-only --config fly.staging.toml
