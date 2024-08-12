@@ -1,6 +1,6 @@
 import { Client } from "@notionhq/client";
 import { fetchPageBlocks } from "./fetchPageBlocks.ts";
-import { getAnton } from "./getAnton.ts";
+import { getAnton } from "./getPage.ts";
 export async function getHomepageDescriptions(): Promise<Map<string, { heading: string, subheadings: string[], paragraphs: string[] }>> {
     let descriptions = new Map<string, { heading: string, subheadings: string[], paragraphs: string[] }>();
 
