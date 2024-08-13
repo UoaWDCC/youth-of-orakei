@@ -5,9 +5,9 @@ import {fetchPageBlocks} from "./fetchPageBlocks.ts";
 export async function getHomepageDescriptions(): Promise<any> {
     let descriptions = new Map<string, string>();
 
-    const NOTION_TOKEN = import.meta.env.NOTION_TOKEN;
+    const NOTION_TOKEN = process.env.NOTION_TOKEN;
     // todo: change the database_id to the homepage database
-    const NOTION_HOMEPAGE_ID = import.meta.env.NOTION_MEMBERS_ID
+    const NOTION_HOMEPAGE_ID = process.env.NOTION_MEMBERS_ID
 
     // try importing the NOTION_TOKEN and NOTION_MEMBERS_ID from the .env file, throw an error if they are not found
     if (!NOTION_TOKEN || !NOTION_HOMEPAGE_ID)

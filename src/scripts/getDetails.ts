@@ -7,8 +7,8 @@ import {fetchPageBlocks} from "./fetchPageBlocks.ts";
 
 
 export async function getDetails(): Promise<void> {
-  const NOTION_TOKEN = import.meta.env.NOTION_TOKEN;
-  const NOTION_MEMBERS_ID = import.meta.env.NOTION_MEMBERS_ID;
+  const NOTION_TOKEN = process.env.NOTION_TOKEN;
+  const NOTION_MEMBERS_ID = process.env.NOTION_MEMBERS_ID;
 
   if (!NOTION_TOKEN || !NOTION_MEMBERS_ID) {
     throw new Error("Missing secret(s)");

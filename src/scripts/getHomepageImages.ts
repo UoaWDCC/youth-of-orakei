@@ -1,8 +1,8 @@
 import {Client} from "@notionhq/client";
 import type {page} from "../types/page.ts";
 
-const NOTION_TOKEN = import.meta.env.NOTION_TOKEN;
-const NOTION_HOMEPAGE_ID = import.meta.env.NOTION_HOMEPAGE_ID;
+const NOTION_TOKEN = process.env.NOTION_TOKEN;
+const NOTION_HOMEPAGE_ID = process.env.NOTION_HOMEPAGE_ID;
 
 type HomepageData = {
     name: string;
