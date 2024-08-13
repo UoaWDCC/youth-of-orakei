@@ -8,13 +8,13 @@ type CoverData = {
 
 export async function getCovers(): Promise<CoverData[]> {
 
-    if (!import.meta.env.NOTION_TOKEN || !import.meta.env.NOTION_MEMBERS_ID)
+    if (!process.env.NOTION_TOKEN || !process.env.NOTION_MEMBERS_ID)
     throw new Error("Missing secret(s)");
 
-    const notion = new Client({ auth: import.meta.env.NOTION_TOKEN });
+    const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
     const query = await notion.databases.query({
-        database_id: import.meta.env.NOTION_MEMBERS_ID,
+        database_id: process.env.NOTION_MEMBERS_ID,
         sorts: [{
           property: 'Name',
           direction: 'ascending'

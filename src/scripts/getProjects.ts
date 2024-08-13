@@ -11,13 +11,13 @@ type ProjectData = {
 
 export async function getProjects(): Promise<ProjectData[]> {
 
-    if (!import.meta.env.NOTION_TOKEN || !import.meta.env.NOTION_PROJECTS_ID)
+    if (!process.env.NOTION_TOKEN || !process.env.NOTION_PROJECTS_ID)
     throw new Error("Missing secret(s)");
 
-    const notion = new Client({ auth: import.meta.env.NOTION_TOKEN });
+    const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
     const query = await notion.databases.query({
-        database_id: import.meta.env.NOTION_PROJECTS_ID,
+        database_id: process.env.NOTION_PROJECTS_ID,
         sorts: [{
           property: 'Name',
           direction: 'ascending'

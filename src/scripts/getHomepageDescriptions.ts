@@ -6,10 +6,11 @@ import { getPage } from "./getPageDescriptions.ts";
 export async function getHomepageDescriptions(): Promise<Map<string, { heading: string, subheadings: string[], paragraphs: string[] }>> {
     let descriptions = new Map<string, { heading: string, subheadings: string[], paragraphs: string[] }>();
 
-    const NOTION_TOKEN = import.meta.env.NOTION_TOKEN;
-    const NOTION_HOMEPAGE_ID = import.meta.env.NOTION_HOMEPAGE_ID;
+    const NOTION_TOKEN = process.env.NOTION_TOKEN;
+    const NOTION_HOMEPAGE_ID = process.env.NOTION_MEMBERS_ID
 
     if (!NOTION_TOKEN || !NOTION_HOMEPAGE_ID) throw new Error("Missing secret(s)");
+
 
     const notion = new Client({ auth: NOTION_TOKEN });
 
