@@ -1,28 +1,35 @@
 import styles from './index.module.css'
 import IndexHeading from "./IndexHeading.tsx";
 
-const IndexAbout = () => {
+type IndexAboutProps = {
+    content?: {
+        heading: string;
+        subheadings: string[];
+        paragraphs: string[];
+    };
+};
+
+const IndexAbout = ({ content }: IndexAboutProps) => {
+    if (!content) {
+        return <div>No content available</div>;
+    }
+
     return (
         <div className="general-wrapper">
             <div className={styles.about}>
                 <div className={styles.left}>
-                    <IndexHeading>About us</IndexHeading>
-                    <div className={styles.aboutContent}>
-                        <h5>Who we are</h5>
-                        <p>A group of 26 young leaders (aged 12-24) from the Ōrākei Local Board area who are determined to make a positive impact in our community. As a group we help provide a voice to the youth in our community. The youth council is supported by the Ōrākei Local Board.</p>
-                    </div>
-                    <div className={styles.aboutContent}>
-                        <h5>What we do</h5>
-                        <p>
-                            The Youth of Ōrākei not only organises and supports events, but they equip and engage youth. But it is also our priority to give a voice to the youth in the community for the future of Ōrākei and wider Auckland by advising and submitting on council policies.
-                        </p>
-                    </div>
+                    <IndexHeading>{content.heading}</IndexHeading>
+                    {content.subheadings.map((subheading, index) => (
+                        <div key={index} className={styles.aboutContent}>
+                            <h5>{subheading}</h5>
+                            <p>{content.paragraphs[index] || ''}</p>
+                        </div>
+                    ))}
                 </div>
                 <div className={styles.right}>
-                    <img className={styles.sideImage} src="/Past Events/Beach Clean-up.jpg"></img>
+                    <img className={styles.sideImage} src="/Past Events/Beach Clean-up.jpg" alt="Beach Clean-up" />
                 </div>
             </div>
-
         </div>
     );
 };
