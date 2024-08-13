@@ -15,6 +15,13 @@ import IndexHero from "../components/index page/IndexHero";
 import BlobBackground from "../components/BlobBackground/BlobBackground";
 import React from "react";
 
+import { getHomepageDescriptions } from "../scripts/getHomepageDescriptions";
+let descriptions = await getHomepageDescriptions()
+
+const aboutContent = descriptions.get("About Us")
+const heroContent = descriptions.get("Hero")
+const goalContent = descriptions.get("Goals")
+
 ---
 
 <html lang="en">
@@ -29,7 +36,7 @@ import React from "react";
 	<Layout>
 		<BlobBackground zIndexVal="-10" offset="-100"/>
 		<section class="index-section">
-			<IndexHero/>
+			<IndexHero content={heroContent}/>
 		</section>
 
 		<IndexImage source="/Team + Individual/Whole Council.JPG" desc="A group photo of YOO."/>
@@ -37,13 +44,13 @@ import React from "react";
 		<BlobBackground zIndexVal="-10"/>
 
 		<section class="index-section">
-			<IndexAbout/>
+			<IndexAbout content={aboutContent}/>
 		</section>
 
 		<IndexImage source="/Past Events/Quiz Night.jpg" desc="Some YOO members at a quiz night event"/>
 
 		<section class="index-section">
-			<IndexGoals/>
+			<IndexGoals content={goalContent}/>
 		</section>
 
 		<section class="index-events">

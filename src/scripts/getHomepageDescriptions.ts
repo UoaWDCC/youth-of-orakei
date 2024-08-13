@@ -1,48 +1,49 @@
-import {Client} from "@notionhq/client";
-import {getAnton} from "./getAnton.ts";
-import {fetchPageBlocks} from "./fetchPageBlocks.ts";
+import { Client } from "@notionhq/client";
+import { fetchPageBlocks } from "./fetchPageBlocks.ts";
+import { getPage } from "./getPageDescriptions.ts";
 
-export async function getHomepageDescriptions(): Promise<any> {
-    let descriptions = new Map<string, string>();
+
+export async function getHomepageDescriptions(): Promise<Map<string, { heading: string, subheadings: string[], paragraphs: string[] }>> {
+    let descriptions = new Map<string, { heading: string, subheadings: string[], paragraphs: string[] }>();
 
     const NOTION_TOKEN = process.env.NOTION_TOKEN;
-    // todo: change the database_id to the homepage database
     const NOTION_HOMEPAGE_ID = process.env.NOTION_MEMBERS_ID
 
-    // try importing the NOTION_TOKEN and NOTION_MEMBERS_ID from the .env file, throw an error if they are not found
-    if (!NOTION_TOKEN || !NOTION_HOMEPAGE_ID)
-        throw new Error("Missing secret(s)");
+    if (!NOTION_TOKEN || !NOTION_HOMEPAGE_ID) throw new Error("Missing secret(s)");
 
-    // create a new Notion client with the token
-    const notion = new Client({auth: NOTION_TOKEN });
-    // create a query to get the database with the specified ID
+
+    const notion = new Client({ auth: NOTION_TOKEN });
+
     try {
         const query = await notion.databases.query({
             database_id: NOTION_HOMEPAGE_ID,
-            sorts: [{
-                property: 'Name',
-                direction: 'ascending'
-            }]
+            sorts: [{ property: 'Name', direction: 'ascending' }]
         });
 
-        // going through all the pages in the database
         for (const page of query.results) {
-            if ('properties' in page){
-                // @ts-ignore
-                // retrieving the title of page, e.g 'What we do'
-                const title: string  = String((page.properties.Name.title[0] && page.properties.Name.title[0].plain_text) || "Untitled");
-                // retrieve the contents of the page, using the getAnton function
-                const pageId : string  = page.id;
+            if ('properties' in page) {
+                const nameProperty = page.properties.Name;
+                if (nameProperty.type === 'title' && Array.isArray(nameProperty.title) && nameProperty.title.length > 0) {
+                    const title: string = (nameProperty.title[0] as { plain_text: string }).plain_text;
+                    const pageId: string = page.id;
+                    const blocks = await fetchPageBlocks(notion, pageId);
+                    const { subheadings, paragraphs } = await getPage(blocks);
 
-                const block = await fetchPageBlocks(notion, pageId);
-                descriptions.set(title,  (await getAnton(block)));
+                    descriptions.set(title, {
+                        heading: title,
+                        subheadings,
+                        paragraphs
+                    });
+                } else {
+                    console.warn(`Page with ID ${page.id} has no title.`);
+                }
             }
-
         }
 
     } catch (error) {
         console.error(error);
-        return [];
+        return new Map();
     }
+
     return descriptions;
 }
