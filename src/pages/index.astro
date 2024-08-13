@@ -20,6 +20,7 @@ let descriptions = await getHomepageDescriptions()
 
 const aboutContent = descriptions.get("About Us")
 const heroContent = descriptions.get("Hero")
+const goalContent = descriptions.get("Goals")
 
 ---
 
@@ -35,7 +36,7 @@ const heroContent = descriptions.get("Hero")
 	<Layout>
 		<BlobBackground zIndexVal="-10" offset="-100"/>
 		<section class="index-section">
-			<IndexHero/>
+			<IndexHero content={heroContent}/>
 		</section>
 
 		<IndexImage source="/Team + Individual/Whole Council.JPG" desc="A group photo of YOO."/>
@@ -49,7 +50,7 @@ const heroContent = descriptions.get("Hero")
 		<IndexImage source="/Past Events/Quiz Night.jpg" desc="Some YOO members at a quiz night event"/>
 
 		<section class="index-section">
-			<IndexGoals/>
+			<IndexGoals content={goalContent}/>
 		</section>
 
 		<section class="index-events">
