@@ -7,7 +7,7 @@ export async function getHomepageDescriptions(): Promise<Map<string, { heading: 
     let descriptions = new Map<string, { heading: string, subheadings: string[], paragraphs: string[] }>();
 
     const NOTION_TOKEN = process.env.NOTION_TOKEN;
-    const NOTION_HOMEPAGE_ID = process.env.NOTION_MEMBERS_ID
+    const NOTION_HOMEPAGE_ID = process.env.NOTION_HOMEPAGE_ID
 
     if (!NOTION_TOKEN || !NOTION_HOMEPAGE_ID) throw new Error("Missing secret(s)");
 
