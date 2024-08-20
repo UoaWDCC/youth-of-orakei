@@ -22,9 +22,11 @@ const aboutContent = descriptions.get("About Us")
 const heroContent = descriptions.get("Hero")
 const goalContent = descriptions.get("Goals")
 const carousel1 = descriptions.get("Carousel Item #1")
-const carousel2 = descriptions.get("Carousel Item #1")
-const carousel3 = descriptions.get("Carousel Item #1")
-const carouselProjects = {carousel1, carousel2, carousel3}
+const carousel2 = descriptions.get("Carousel Item #2")
+const carousel3 = descriptions.get("Carousel Item #3")
+const carouselContent = [carousel1, carousel2, carousel3].filter((item): item is NonNullable<typeof item> => item !== undefined); // temp fix 
+console.log(carouselContent)
+
 ---
 
 <html lang="en">
@@ -58,7 +60,7 @@ const carouselProjects = {carousel1, carousel2, carousel3}
 
 		<section class="index-events">
 			 <div class="index-image-carousel-container"> 
-				<ImageCarousel content={} client:only />
+				<ImageCarousel carousels={carouselContent} client:only />
 			</div>
 		</section>
 	</Layout>
