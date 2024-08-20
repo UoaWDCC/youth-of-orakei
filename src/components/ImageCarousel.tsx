@@ -11,7 +11,16 @@ interface Events {
     description: string
 }
 
-export default function ImageCarousel() {
+type CarouselProps = {
+    content?: {
+        heading: string;
+        subheadings: string[];
+        paragraphs: string[];
+        images: string[];
+    };
+};
+
+export default function ImageCarousel({content} : CarouselProps) {
 
     const images: Events[] = [{
         src: "https://warp-potential-efd.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F66a3164d-3826-4413-80cb-27389de9b881%2Ffc1e99e1-fb4b-4074-89a2-fd1d188aa411%2FBeach_Clean-up.jpg?table=block&id=f75a6e96-82dc-4dc7-ad9f-d63ff136aa47&spaceId=66a3164d-3826-4413-80cb-27389de9b881&width=2000&userId=&cache=v2", 

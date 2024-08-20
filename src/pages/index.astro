@@ -21,7 +21,10 @@ let descriptions = await getHomepageDescriptions()
 const aboutContent = descriptions.get("About Us")
 const heroContent = descriptions.get("Hero")
 const goalContent = descriptions.get("Goals")
-
+const carousel1 = descriptions.get("Carousel Item #1")
+const carousel2 = descriptions.get("Carousel Item #1")
+const carousel3 = descriptions.get("Carousel Item #1")
+const carouselProjects = 
 ---
 
 <html lang="en">
@@ -55,7 +58,7 @@ const goalContent = descriptions.get("Goals")
 
 		<section class="index-events">
 			 <div class="index-image-carousel-container"> 
-				<ImageCarousel  client:only />
+				<ImageCarousel content={} client:only />
 			</div>
 		</section>
 	</Layout>
