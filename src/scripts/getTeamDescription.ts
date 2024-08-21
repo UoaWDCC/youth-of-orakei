@@ -10,14 +10,15 @@ type TeamDescriptions = {
 }
 
 export async function getTeamsDescriptions(): Promise<TeamDescriptions[]> {
-
-    if (!process.env.NOTION_TOKEN || !process.env.NOTION_TEAMS_ID)
+    const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
+    const NOTION_TEAMS_ID = process.env.NOTION_TEAMS_ID || import.meta.env.NOTION_TEAMS_ID;
+    if (!NOTION_TOKEN || !NOTION_TEAMS_ID)
     throw new Error("Missing secret(s)");
 
-    const notion = new Client({ auth: process.env.NOTION_TOKEN });
+    const notion = new Client({ auth: NOTION_TOKEN });
 
     const query = await notion.databases.query({
-        database_id: process.env.NOTION_TEAMS_ID,
+        database_id: NOTION_TEAMS_ID,
         sorts: [{
           property: 'Name',
           direction: 'ascending'
