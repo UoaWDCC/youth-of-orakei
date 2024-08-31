@@ -64,7 +64,7 @@ export default function PastProjectsList() {
         return (
           <div className="past-project-container" style={{ backgroundColor: headerColour, position: "relative", padding: "10px" }}>
             <div className="index-event-img">
-            <img key={index} src={project.src} alt={project.alt} style={{ height: "1000px", width: "100%", objectFit: "cover", borderRadius: "var(--common-radius)", opacity: "0.8" }}/>
+              <img key={index} src={project.src} alt={project.alt} style={{ height: "1000px", width: "100%", objectFit: "cover", borderRadius: "var(--common-radius)", opacity: "0.8" }} />
             </div>
             <div className="project-team" style={{ backgroundColor: headerColour, color: infoColour }}>
               <h2 className="index-heading">{project.team}</h2>
@@ -75,34 +75,17 @@ export default function PastProjectsList() {
 
             <div className="index-event-details">
               <div>
-                  <div>
-                      <h5>{project.time}</h5>
-                  </div>
-                  <div className="index-event-title">
-                      <h2><b>{project.title}</b></h2>
-                  </div>
+                <div>
+                  <h5>{project.time}</h5>
+                </div>
+                <div className="index-event-title">
+                  <h2><b>{project.title}</b></h2>
+                </div>
               </div>
               <div className="index-event-description">
-                  <h5>{project.description}</h5>
+                <h5>{project.description}</h5>
               </div>
             </div>
-            {/* <div className="project-text" style={{ backgroundColor: headerColour }}>
-              <div className="project-title-time">
-                <div className="project-title">
-                  <h3 className="index-heading text-green-dark">{project.title}</h3>
-                </div>
-                <div className="project-date" >
-                  <h5 style={{ fontWeight: 700, color: infoColour }}>{project.time}</h5>
-                </div>
-              </div>
-
-              <div className="project-desc">
-                <h5 style={{ color: `var(--text-medium)` }}>{project.description}</h5>
-              </div>
-            </div>
-            <div className="project-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
-            <div className="project-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div> */}
-
           </div>
         );
       })}

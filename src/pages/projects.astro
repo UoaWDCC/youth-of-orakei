@@ -1,5 +1,12 @@
 ---
 // Projects Page
+import { getProjects } from "../scripts/getProjects.ts";
+let projects = await getProjects();
+
+// import { sortProjectByTeam } from "../scripts/sortProjects.ts";
+// let { leadershipTeam, communicationTeam, projects } =
+//   sortProjectByTeam(projects);
+
 import "../styles/global.css";
 import "../styles/index.css";
 import "../styles/projects.css";
@@ -22,17 +29,16 @@ import BlobBackground from "../components/BlobBackground/BlobBackground";
   </head>
   <Layout>
     <main class="projects-page">
-        <ImageCarousel client:only />
-        <BlobBackground/>
-        <div class="past-projects-banner">
-          <IndexHeading>Our Past Projects</IndexHeading>
+      <ImageCarousel client:only />
+      <BlobBackground />
+      <div class="past-projects-banner">
+        <IndexHeading>Our Past Projects</IndexHeading>
+      </div>
+      <section class="index-events">
+        <div class="index-image-carousel-container">
+          <PastProjectsList />
         </div>
-        <section class="index-events">
-          <div class="index-image-carousel-container">
-            <PastProjectsList />
-          </div>
-        </section>
+      </section>
     </main>
   </Layout>
-
 </html>
