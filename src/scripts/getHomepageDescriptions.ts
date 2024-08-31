@@ -2,15 +2,13 @@ import { Client } from "@notionhq/client";
 import { fetchPageBlocks } from "./fetchPageBlocks.ts";
 import { getPage } from "./getPageDescriptions.ts";
 
+export async function getHomepageDescriptions(): Promise<Map<string, { heading: string, subheadings: string[], paragraphs: string[], images: string[] }>> {
+    let descriptions = new Map<string, { heading: string, subheadings: string[], paragraphs: string[], images: string[] }>();
 
-export async function getHomepageDescriptions(): Promise<Map<string, { heading: string, subheadings: string[], paragraphs: string[] }>> {
-    let descriptions = new Map<string, { heading: string, subheadings: string[], paragraphs: string[] }>();
-
-    const NOTION_TOKEN = process.env.NOTION_TOKEN;
-    const NOTION_HOMEPAGE_ID = process.env.NOTION_MEMBERS_ID
+    const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
+    const NOTION_HOMEPAGE_ID = process.env.NOTION_HOMEPAGE_ID || import.meta.env.NOTION_HOMEPAGE_ID;
 
     if (!NOTION_TOKEN || !NOTION_HOMEPAGE_ID) throw new Error("Missing secret(s)");
-
 
     const notion = new Client({ auth: NOTION_TOKEN });
 
@@ -27,12 +25,13 @@ export async function getHomepageDescriptions(): Promise<Map<string, { heading: 
                     const title: string = (nameProperty.title[0] as { plain_text: string }).plain_text;
                     const pageId: string = page.id;
                     const blocks = await fetchPageBlocks(notion, pageId);
-                    const { subheadings, paragraphs } = await getPage(blocks);
+                    const { subheadings, paragraphs, images } = await getPage(blocks);
 
                     descriptions.set(title, {
                         heading: title,
                         subheadings,
-                        paragraphs
+                        paragraphs,
+                        images
                     });
                 } else {
                     console.warn(`Page with ID ${page.id} has no title.`);
