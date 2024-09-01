@@ -1,41 +1,12 @@
 import "../../styles/projects.css";
 import "../../styles/global.css";
 import type { projectData } from "../../types/projectData.ts";
-// import { relative } from "path";
 
 type PastProjectsListProps = {
   projects: projectData[];
 };
 
 export default function PastProjectsList({ projects }: PastProjectsListProps) {
-
-  // const projects: Events[] = [
-  //   {
-  //     src: "https://warp-potential-efd.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F66a3164d-3826-4413-80cb-27389de9b881%2Ffc1e99e1-fb4b-4074-89a2-fd1d188aa411%2FBeach_Clean-up.jpg?table=block&id=f75a6e96-82dc-4dc7-ad9f-d63ff136aa47&spaceId=66a3164d-3826-4413-80cb-27389de9b881&width=2000&userId=&cache=v2",
-  //     alt: "Beach clean up",
-  //     time: "2nd September, 12:30 - 3:30PM",
-  //     title: "Beach Clean Up",
-  //     description: "Come join us to clean the local beach and save the environment!",
-  //     team: "Team 1",
-  //   },
-  //   {
-  //     src: "https://warp-potential-efd.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F66a3164d-3826-4413-80cb-27389de9b881%2Fe92b70e9-b1c3-49ab-aabc-0f75c374e182%2FArt_Showcase.jpeg?table=block&id=00793dc9-da43-4cea-8cde-33ddeb2c23f3&spaceId=66a3164d-3826-4413-80cb-27389de9b881&width=2000&userId=&cache=v2",
-  //     alt: "Art Showcase",
-  //     time: "2nd August, 12:30 - 3:30PM",
-  //     title: "Art Showcase",
-  //     description: "Come along and view some fine art! Maybe even meet some new friends!",
-  //     team: "Team 2",
-  //   },
-  //   {
-  //     src: "https://warp-potential-efd.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F66a3164d-3826-4413-80cb-27389de9b881%2F116150f7-853a-4482-a616-8581c1161b83%2FQuiz_Night.jpg?table=block&id=5a11c339-08bc-4587-9417-2c3cb9ea858f&spaceId=66a3164d-3826-4413-80cb-27389de9b881&width=2000&userId=&cache=v2",
-  //     alt: "Quiz night",
-  //     time: "2nd July 12:30 - 3:30PM",
-  //     title: "Quiz Night",
-  //     description: "Come learn about quizzes",
-  //     team: "Team 3",
-  //   }
-  // ];
-
   return (
     <div>
       {projects.map((project, index) => {
@@ -59,21 +30,20 @@ export default function PastProjectsList({ projects }: PastProjectsListProps) {
         }
 
         return (
-          <div className="past-project-container" style={{ backgroundColor: headerColour, position: "relative", padding: "10px" }}>
+          <div key={index} className="past-project-container" style={{ backgroundColor: headerColour, position: "relative", padding: "10px" }}>
             <div className="index-event-img">
-              <img key={index} src={project.src} alt={project.alt} style={{ height: "1000px", width: "100%", objectFit: "cover", borderRadius: "var(--common-radius)", opacity: "0.8" }} />
+              <img src={project.cover} alt={project.alt} style={{ height: "1000px", width: "100%", objectFit: "cover", borderRadius: "var(--common-radius)", opacity: "0.8" }} />
             </div>
             <div className="project-team" style={{ backgroundColor: headerColour, color: infoColour }}>
               <h2 className="index-heading">{project.team}</h2>
             </div>
-            <div className="project-team-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }} >corn</div>
-            <div className="project-team-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }} >corn</div>
-
+            <div className="project-team-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
+            <div className="project-team-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
 
             <div className="index-event-details">
               <div>
                 <div>
-                  <h5>{project.time}</h5>
+                  <h5>{project.date}</h5>
                 </div>
                 <div className="index-event-title">
                   <h2><b>{project.title}</b></h2>

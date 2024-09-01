@@ -4,10 +4,10 @@ import type { projectRow } from "../types/projectRow";
 import type { multiselect } from "../types/multiselect";
 
 type ProjectData = {
-  name: string;
+  name: string; //aka project title
   date: string;
   desc: string;
-  cover: string;
+  cover: string; //aka src
   team: string;
   tags?: string[];
 }
@@ -26,7 +26,7 @@ export async function getProjects(): Promise<ProjectData[]> {
     database_id: NOTION_PROJECTS_ID,
     sorts: [{
       property: 'Date',
-      direction: 'ascending'
+      direction: 'descending'
     }]
   });
 

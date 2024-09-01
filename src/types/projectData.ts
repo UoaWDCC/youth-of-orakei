@@ -1,9 +1,10 @@
 // src/types/projectData.ts
 export type projectData = {
-  src: string;
+  cover: string;
   alt: string;
-  time: string;
+  date: string;
   title: string;
   description: string;
   team: string;
+  tags?: string[];
 };
