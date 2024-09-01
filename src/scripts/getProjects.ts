@@ -4,10 +4,10 @@ import type { projectRow } from "../types/projectRow";
 import type { multiselect } from "../types/multiselect";
 
 type ProjectData = {
-  name: string; //aka project title
+  title: string;
   date: string;
-  desc: string;
-  cover: string; //aka src
+  description: string;
+  cover: string;
   team: string;
   tags?: string[];
 }
@@ -33,9 +33,9 @@ export async function getProjects(): Promise<ProjectData[]> {
   const projectsRows = query.results as projectRow[];
   const projects: ProjectData[] = projectsRows.map((row) => {
     return {
-      name: row.properties.Name.title[0]?.plain_text || "",  // Safely accessing 'Name'
+      title: row.properties.Name.title[0]?.plain_text || "",  // Safely accessing 'Name'
       date: row.properties.Date?.date?.start || "",  // Safely accessing 'Date'
-      desc: row.properties.Description?.rich_text[0]?.plain_text || "",  // Safely accessing 'Description'
+      description: row.properties.Description?.rich_text[0]?.plain_text || "",  // Safely accessing 'Description'
       cover: row.cover?.type === "external" ? row.cover.external.url : row.cover?.file?.url || "",  // Safely accessing 'cover'
       team: row.properties.Team?.rich_text[0]?.plain_text || "",  // Safely accessing 'Team'
       tags: row.properties.Tags?.multi_select.map((tag) => tag.name) || []  // Safely accessing 'Tags'
