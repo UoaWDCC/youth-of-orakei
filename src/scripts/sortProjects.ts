@@ -6,7 +6,7 @@ type ProjectData = {
   url?: string;
 }
 
-export function sortMembersByTeam(projects: ProjectData[]) {
+export function sortProjectsByTeam(projects: ProjectData[]) {
   const team1: ProjectData[] = [];
   const team2: ProjectData[] = [];
   const team3: ProjectData[] = [];
@@ -24,6 +24,7 @@ export function sortMembersByTeam(projects: ProjectData[]) {
       team4.push(project);
     }
   });
+
 
   return { team1, team2, team3, team4 };
 }

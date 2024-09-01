@@ -3,9 +3,8 @@
 import { getProjects } from "../scripts/getProjects.ts";
 let projects = await getProjects();
 
-// import { sortProjectByTeam } from "../scripts/sortProjects.ts";
-// let { leadershipTeam, communicationTeam, projects } =
-//   sortProjectByTeam(projects);
+// import { sortProjectsByTeam } from "../scripts/sortProjects.ts";
+// let { team1, team2, team3, team4 } = sortProjectsByTeam(projects);
 
 import "../styles/global.css";
 import "../styles/index.css";
@@ -36,7 +35,7 @@ import BlobBackground from "../components/BlobBackground/BlobBackground";
       </div>
       <section class="index-events">
         <div class="index-image-carousel-container">
-          <PastProjectsList />
+          <PastProjectsList client:only="react" projects={projects} />
         </div>
       </section>
     </main>

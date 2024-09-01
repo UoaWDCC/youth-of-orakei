@@ -25,7 +25,7 @@ export async function getProjects(): Promise<ProjectData[]> {
   const query = await notion.databases.query({
     database_id: NOTION_PROJECTS_ID,
     sorts: [{
-      property: 'Name',
+      property: 'Date',
       direction: 'ascending'
     }]
   });
