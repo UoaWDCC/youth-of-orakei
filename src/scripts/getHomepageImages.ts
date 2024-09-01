@@ -6,7 +6,7 @@ type HomepageData = {
     name: string;
     cover: string | undefined;
 }
-export async function getHomepageImages(): Promise<any> {\
+export async function getHomepageImages(): Promise<any> {
     const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
     const NOTION_HOMEPAGE_ID = process.env.NOTION_HOMEPAGE_ID || import.meta.env.NOTION_HOMEPAGE_ID;
 
