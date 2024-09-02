@@ -34,13 +34,13 @@ export async function getProjects(): Promise<ProjectData[]> {
   const projectsRows = query.results as projectRow[];
   const projects: ProjectData[] = projectsRows.map((row) => {
     return {
-      title: row.properties.Name.title[0]?.plain_text || "",  // Safely accessing 'Name'
-      date: row.properties.Date?.date?.start || "",  // Safely accessing 'Date'
-      description: row.properties.Description?.rich_text[0]?.plain_text || "",  // Safely accessing 'Description'
-      cover: row.cover?.type === "external" ? row.cover.external.url : row.cover?.file?.url || "",  // Safely accessing 'cover'
-      team: row.properties.Team?.rich_text[0]?.plain_text || "",  // Safely accessing 'Team'
-      tags: row.properties.Tags?.multi_select.map((tag) => tag.name) || [],  // Safely accessing 'Tags'
-      id: row.id || ""
+      title: row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : "",
+      date: row.properties.Date.date ? row.properties.Date.date.start : "",
+      description:  row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "",
+      cover: row.cover?.type == "external" ? row.cover?.external.url : row.cover?.file.url  ?? "",
+      team: row.properties.Team.rich_text[0] ? row.properties.Team.rich_text[0].plain_text : "",
+      tags: row.properties.Tags.multi_select.map((tag) => tag.name),
+      id: row.id || "" 
     };
   });
 
