@@ -21,8 +21,7 @@ type CarouselProps = {
 };
 
 export default function ImageCarousel({ carousels }: CarouselProps) {
-
-
+    // Generate events array from the carousels prop
     const events: Events[] = carousels?.map((carousel) => ({
         src: carousel.images[0], 
         alt: carousel.subheadings[0],
@@ -32,15 +31,16 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
     })) || [];
 
     const [imgIndex, setImgIndex] = useState<number>(0);
+
     const handleBack = () => {
         setImgIndex((prevIndex) => (prevIndex === 0 ? events.length - 1 : prevIndex - 1));
-    }
+    };
 
     const handleForward = () => {
         setImgIndex((prevIndex) => (prevIndex === events.length - 1 ? 0 : prevIndex + 1));
-    }
-    console.log(imgIndex)
+    };
 
+    console.log(imgIndex);
 
     return (
         <>  
@@ -56,10 +56,10 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
                 {/* Please do not remove the 2 divs below lmao */}
                 <div className="index-event-right-corner-element">corn</div>
                 <div className="index-event-left-corner-element">corn</div>
-                <button onClick={() => handleBack()} className="index-carousel-button index-carousel-button-left" style={{ left: 10 }}>
+                <button onClick={handleBack} className="index-carousel-button index-carousel-button-left" style={{ left: 10 }}>
                     <ArrowBackIosIcon style={{ width: 50, height: 50 }} />
                 </button>
-                <button onClick={() => handleForward()} className="index-carousel-button index-carousel-button-right" style={{ right: 10 }}>
+                <button onClick={handleForward} className="index-carousel-button index-carousel-button-right" style={{ right: 10 }}>
                     <ArrowForwardIosIcon style={{ width: 50, height: 50 }} />
                 </button>
                 <div className="index-event-details">
@@ -76,8 +76,8 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
                     </div>
                 </div>
                 <div style={{ position: "absolute", bottom: "1.3rem", left: "50%", translate: "-50%" }}>
-                    <span className="image-carousel-indicators" >
-                        {events.map((_: any, index: number) => (
+                    <span className="image-carousel-indicators">
+                        {events.map((_, index: number) => (
                             <button key={index} onClick={() => setImgIndex(index)} className={imgIndex === index ? "image-carousel-indicator" : "image-carousel-indicator image-carousel-indicator-inactive"}></button>
                         ))}
                     </span>

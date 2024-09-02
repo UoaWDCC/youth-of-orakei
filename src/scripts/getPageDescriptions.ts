@@ -1,7 +1,7 @@
 import { Client } from "@notionhq/client";
 import type { block } from "../types/block";
 
-export async function getPage(blocks: block[]): Promise<{ subheadings: string[], paragraphs: string[] }> {
+export async function getPage(blocks: block[]): Promise<{ subheadings: string[], paragraphs: string[], images: string[] }> {
     const subheadings: string[] = [];
     const paragraphs: string[] = [];
     const images: string[] = [];
@@ -38,7 +38,6 @@ export async function getPage(blocks: block[]): Promise<{ subheadings: string[],
             }
             paragraphs.push(paragraphText.trim());
         }
-
         // Handle images
         else if (current_block.type === "image" && current_block.image) {
             let imageUrl = "";
