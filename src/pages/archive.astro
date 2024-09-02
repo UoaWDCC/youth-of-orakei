@@ -1,0 +1,72 @@
+---
+import "../styles/global.css";
+import "../styles/index.css";
+import Layout from '../layouts/layout.astro';
+import { NotionAPI } from 'notion-client';
+import NotionPage from '../components/NotionPage';
+import IndexHeading from "../components/index page/IndexHeading";
+
+const notion = new NotionAPI();
+const pageId = '7bc7f1106e404a4dad6c055c9579726d';
+const recordMap = await notion.getPage(pageId);
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  <title>Archive Page</title>
+  <style>
+
+    .contact-wrapper {
+          padding: 20px;
+          position: relative;
+          overflow: hidden;
+          background-image: url('/assets/YOO_index-hero-bg-2.svg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+        }
+
+    /* .contact-wrapper {
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      background-image: 
+        url('/assets/YOO_index-hero-bg-2.svg');
+      background-repeat: repeat;
+      background-size: 2500px 10000px;
+    } */
+
+    .notion-wrapper {
+      overflow-x: auto;
+    }
+
+    .heading-wrapper {
+          margin-top: 40px; 
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+  </style>
+</head>
+
+<body>
+  <Layout>
+    <div class="contact-wrapper">
+      <div class="heading-wrapper">
+        <IndexHeading>Archive of Past Members and Projects</IndexHeading>
+      </div>
+      <div class="notion-wrapper">
+        <NotionPage recordMap={recordMap} />
+      </div>
+    </div>
+  </Layout>
+</body>
+
+</html>
+
