@@ -21,26 +21,36 @@ const recordMap = await notion.getPage(pageId);
   <style>
 
     .contact-wrapper {
+          padding: 20px;
+          position: relative;
+          overflow: hidden;
+          background-image: url('/assets/YOO_index-hero-bg-2.svg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+        }
+
+    /* .contact-wrapper {
       padding: 20px;
       position: relative;
       overflow: hidden;
       background-image: 
         url('/assets/YOO_index-hero-bg-2.svg');
       background-repeat: repeat;
-      background-size: 4000px 10000px;
-    }
+      background-size: 2500px 10000px;
+    } */
 
     .notion-wrapper {
       overflow-x: auto;
     }
 
-.heading-wrapper {
-      margin-top: 40px; 
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    .heading-wrapper {
+          margin-top: 40px; 
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 
   </style>
 </head>
