@@ -29,6 +29,7 @@ import ProjectTeam from "../components/ProjectTeam.tsx";
 import MemberDisplay from "../components/MembersDisplay.astro";
 // import MembersDisplay from "../components/MembersDisplay.astro";
 import PersonCard from "../components/PersonCard.tsx";
+import BlobBackground from "../components/BlobBackground/BlobBackground";
 ---
 
 <html lang="en">
@@ -41,17 +42,18 @@ import PersonCard from "../components/PersonCard.tsx";
   </head>
 
   <Layout>
-    <div class="title"><h1><b>Introducing Our Teams</b></h1></div>
+    <BlobBackground zIndexVal="-10" offset="-100"/>
+    <BlobBackground zIndexVal="-10" offset="900"/>
     <div class="nav">
       <button class="lead-button"
-        ><a href="#leadership-section">Leadership</a></button
+        ><a href="#leadership-section">LEADERSHIP</a></button
       >
       <button class="com-button"
-        ><a href="#com-section">Communications</a></button
+        ><a href="#com-section">COMMUNICATIONS</a></button
       >
-      <button class="proj-button"><a href="#proj-section">Projects</a></button>
+      <button class="proj-button"><a href="#proj-section">PROJECTS</a></button>
     </div>
-    <div class="shapedividers_com-9592"></div>
+    <!-- <div class="shapedividers_com-9592"></div> -->
 
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
     <!-- function for the scroll up button -->

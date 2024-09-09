@@ -8,10 +8,10 @@
 }
 
 .nav {
+  padding-top: 50px;
   text-align: center;
   display: flex;
   justify-content: space-evenly;
-  background-color: var(--YOO-Green-Lightest);
 }
 
 .lead-button,
@@ -21,7 +21,8 @@
   margin: 10px;
   padding: 7px;
   width: 100%;
-  font-size: var(--fontsize-h4);
+  font-size: var(--fontsize-h3);
+  font-weight: bold;
   box-shadow: 3px 3px gray;
 }
 
@@ -40,6 +41,10 @@
   background-color: var(--YOO-Blue-Primary);
 }
 
+.com-button {
+  color: var(--YOO-Blue-Darkest);
+}
+
 .com-button:hover {
   background-color: var(--YOO-Blue-Light);
   transition: 0.3s;
@@ -48,6 +53,10 @@
 .projects,
 .proj-button {
   background-color: var(--YOO-Red-Primary);
+}
+
+.proj-button {
+  color: var(--YOO-Red-Dark);
 }
 
 .proj-button:hover {
