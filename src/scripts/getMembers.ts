@@ -12,31 +12,31 @@ type MemberData = {
 }
 
 export async function getMembers(): Promise<MemberData[]> {
-    const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
-    const NOTION_MEMBERS_ID = process.env.NOTION_MEMBERS_ID || import.meta.env.NOTION_MEMBERS_ID;
+  const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
+  const NOTION_MEMBERS_ID = process.env.NOTION_MEMBERS_ID || import.meta.env.NOTION_MEMBERS_ID;
 
-    if (!NOTION_TOKEN || !NOTION_MEMBERS_ID)
+  if (!NOTION_TOKEN || !NOTION_MEMBERS_ID)
     throw new Error("Missing secret(s)");
 
-    const notion = new Client({ auth: NOTION_TOKEN});
+  const notion = new Client({ auth: NOTION_TOKEN });
 
-    const query = await notion.databases.query({
-        database_id: NOTION_MEMBERS_ID,
-        sorts: [{
-          property: 'Name',
-          direction: 'ascending'
-        }]
-      });    
-      
-    const memberspages = query.results as memberRow[];
-    const members: MemberData[] = memberspages.map((row) => {
-      return {
-          team: row.properties.Team.rich_text[0] ? row.properties.Team.rich_text[0].plain_text : "",
-          desc: row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "",
-          name: row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : "",
-          cover: row.cover?.type == "external" ? row.cover?.external.url : row.cover?.file.url  ?? ""
-      };
+  const query = await notion.databases.query({
+    database_id: NOTION_MEMBERS_ID,
+    sorts: [{
+      property: 'Name',
+      direction: 'ascending'
+    }]
   });
-      
-    return members;
+
+  const memberspages = query.results as memberRow[];
+  const members: MemberData[] = memberspages.map((row) => {
+    return {
+      team: row.properties.Team.rich_text[0] ? row.properties.Team.rich_text[0].plain_text : "",
+      desc: row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "",
+      name: row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : "",
+      cover: row.cover?.type == "external" ? row.cover?.external.url : row.cover?.file.url ?? ""
+    };
+  });
+
+  return members;
 }

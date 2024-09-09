@@ -40,7 +40,43 @@ import PersonCard from "../components/PersonCard.tsx";
     <title>Astro</title>
   </head>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const response = await fetch("/api/downloadMemberImages");
+        const text = await response.text();
+        const statusElement = document.getElementById("status");
+        if (statusElement !== null) {
+          statusElement.textContent = text;
+        }
+
+        if (response.ok) {
+          // Show the image if download was successful
+          const imageElement = document.getElementById(
+            "downloaded-image",
+          ) as HTMLImageElement;
+          if (imageElement !== null) {
+            imageElement.src = "/webb3.jpg";
+            imageElement.style.display = "block";
+          }
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        const statusElement = document.getElementById("status");
+        if (statusElement !== null) {
+          statusElement.textContent = "Failed to download image.";
+        }
+      }
+    });
+  </script>
   <Layout>
+    <!--<p id="status">  -->
+    <img
+      id="downloaded-image"
+      src=""
+      alt="Downloaded Image"
+      style="display: none;"
+    />
     <div class="title"><h1><b>Introducing Our Teams</b></h1></div>
     <div class="nav">
       <button class="lead-button"
@@ -92,7 +128,7 @@ import PersonCard from "../components/PersonCard.tsx";
     <!-- <ProjectTeam team={projects} /> -->
     <!-- <ProjectTeam client:load /> -->
     <!-- <ProjectTeam client:visible /> -->
-   <!--  <div class="members">
+    <!--  <div class="members">
       {/* Display specific project team by index */}
       {
         projects[3].members.map((member) => (
