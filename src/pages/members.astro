@@ -40,10 +40,14 @@ import BlobBackground from "../components/BlobBackground/BlobBackground";
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-
+  <section class="section-background">
   <Layout>
-    <BlobBackground zIndexVal="-10" offset="-100"/>
-    <BlobBackground zIndexVal="-10" offset="900"/>
+  
+      
+    <!-- <BlobBackground zIndexVal="-10" offset="-100"/>
+    <BlobBackground zIndexVal="-10" offset="900"/> -->
+    
+    <object data="..\public\assets\YOO_members_bg.svg"> </object>
     <div class="nav">
       <button class="lead-button"
         ><a href="#leadership-section">LEADERSHIP</a></button
@@ -107,5 +111,7 @@ import BlobBackground from "../components/BlobBackground/BlobBackground";
         ))
       }
     </div> -->
+  
   </Layout>
+</section>
 </html>
