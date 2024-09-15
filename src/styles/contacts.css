@@ -1,0 +1,8 @@
+.contacts-wrapper{
+    position: relative;
+    overflow: hidden;
+
+    /*Silly navbar background workaround*/
+    margin-top: -100px;
+}
+
