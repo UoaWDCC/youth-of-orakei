@@ -6,3 +6,27 @@
     margin-top: -100px;
 }
 
+.contacts-content{
+    padding: 14rem 0;
+
+    display: flex;
+    gap: 64px;
+}
+
+.contacts-left{
+    flex: 1.2;
+
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.contacts-right{
+    flex: 0.8;
+}
+
+.contacts-card{
+    padding: 36px;
+    border-radius: 16px;
+    background: rgba(241, 255, 246, 0.65);
+}
