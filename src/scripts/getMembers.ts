@@ -37,6 +37,6 @@ export async function getMembers(): Promise<MemberData[]> {
           cover: row.cover?.type == "external" ? row.cover?.external.url : row.cover?.file.url  ?? ""
       };
   });
-      
-    return members;
+
+  return members;
 }

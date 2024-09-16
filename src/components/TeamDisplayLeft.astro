@@ -34,71 +34,16 @@ let leadership = "Leadership Team";
         </p>
       </div>
       <div class="right1">
-        {team.map((cover: { name: any; team: any; desc: any; cover: any; }) => (
-        <MembersDisplay
-          name={cover.name}
-          team={cover.team}
-          desc={cover.desc}
-          cover={cover.cover}
-        />))
+        {
+          team.map((cover: { name: any; team: any; desc: any; cover: any }) => (
+            <MembersDisplay
+              name={cover.name}
+              team={cover.team}
+              desc={cover.desc}
+              cover={cover.cover}
+            />
+          ))
         }
-        <!-- <div class="person-card">
-          <div class="img-wrapper">
-            <img src="/Team + Individual/LT-IshitaBarot (Co-chair).JPG" />
-          </div>
-          <p class="description-box-lead">
-            <b>Ishita Barot</b>
-            <br /> Co-chair <br /> [Text]
-          </p>
-        </div>
-
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img src="/Team + Individual/LT-JoshuaCurtis (Co-chair).JPG" />
-          </div>
-          <p class="description-box-lead">
-            <b>Joshua Curtis</b>
-            <br /> Co-chair <br /> [Text]
-          </p>
-        </div>
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img src="/Team + Individual/LT-BenSaunders (Treasurer).JPG" />
-          </div>
-          <p class="description-box-lead">
-            <b>Ben Saunders</b><br />Treasurer <br /> [Text]
-          </p>
-        </div>
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img
-              src="/Team + Individual/LT-RashmiMuralidhar (Council Engagement Lead).JPG"
-            />
-          </div>
-          <p class="description-box-lead">
-            <b>Rashmi Muralidhar</b>
-            <br /> Council Engagement Lead <br /> [Text]
-          </p>
-        </div>
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img
-              src="/Team + Individual/LT-ThanishkaSatheeshkumar (Communications Lead).JPG"
-            />
-          </div>
-          <p class="description-box-lead">
-            <b>Thanishka Satheeshkumar</b><br /> Communications Lead <br /> [Text]
-          </p>
-        </div>
-        <div class="person-card">
-          <div class="img-wrapper">
-            <img src="/Team + Individual/LT-YixuanZhu (Secretary).JPG" />
-          </div>
-          <p class="description-box-lead">
-            <b>Yixuan Zhu</b>
-            <br />Secretary <br /> [Text]
-          </p>
-        </div> -->
       </div>
     </div>
   </body>

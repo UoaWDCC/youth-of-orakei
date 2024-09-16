@@ -5,24 +5,11 @@ let members = await getMembers();
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
 let { leadershipTeam, communicationTeam, projects } =
   sortMembersByTeam(members);
-//import { getAnton } from '../scripts/getAnton';
-//let anton = await getAnton();
-//import { getCovers } from '../scripts/getCovers';
-//let covers = await getCovers();
-//import { getTeamsDescriptions } from "../scripts/getTeamDescription"
-//let teams = await getTeamsDescriptions();
-//import {getProjects} from "../scripts/getProjects"
-//let projects = getProjects()
-
-// Members Page
 import "../styles/global.css";
 import "../styles/members.css";
 
-import Header from "../components/header.astro";
-import Footer from "../components/footer.astro";
 import Layout from "../layouts/layout.astro";
 
-import TeamDisplay from "../components/TeamDisplayLeft.astro";
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";

@@ -10,7 +10,7 @@ export async function getHomepageDescriptions(): Promise<Map<string, { heading: 
 
     if (!NOTION_TOKEN || !NOTION_HOMEPAGE_ID) throw new Error("Missing secret(s)");
 
-    const notion = new Client({ auth: NOTION_TOKEN });
+  const notion = new Client({ auth: NOTION_TOKEN });
 
     try {
         const query = await notion.databases.query({
