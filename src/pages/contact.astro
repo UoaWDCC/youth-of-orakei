@@ -125,14 +125,14 @@ const form_token = import.meta.env.WEBFORMS_TOKEN || 'fallback-string';
                 <div class="contacts-left">
                     <IndexHeading>Contact us</IndexHeading>
                     <div class="contacts-card">
-                        <form action="https://api.web3forms.com/submit" method="POST">
+                        <form action="https://api.web3forms.com/submit" method="POST" class="form-wrapper">
                             <input type="hidden" name="access_key" value={form_token}>
                             <div class="form-group">
-                                <label for="full-name">Full Name</label> <br>
+                                <label for="full-name">Your name</label> <br>
                                 <input type="text" id="full-name" name="Name" required><br>
                             </div>
                             <div class="form-group">
-                                <label for="school">School</label><br>
+                                <label for="school">School or organisation <em>(optional)</em></label><br>
                                 <input type="text" id="school" name="School" required><br>
                             </div>
                             <div class="form-group">
@@ -143,17 +143,16 @@ const form_token = import.meta.env.WEBFORMS_TOKEN || 'fallback-string';
                                 <label for="message">Message</label><br>
                                 <textarea id="message" name="Message" required></textarea>
                             </div>
+                            <div class="h-captcha" data-captcha="true"></div>
                             <div class="form-group">
                                 <button type="submit"> Submit</button>
                             </div>
-                            <div class="h-captcha" data-captcha="true"></div>
                         </form>
                     </div>
                 </div>
                 <div class="contacts-right">
                     <div class="image-container">
                         <img id="contact-image" src="/Contact Page Images/contact-us-stock-image.png" alt="contact us stock image">
-                        <img id="pattern" src="/Contact Page Images/bottom-right-pattern.png"alt = "pattern">
                     </div>
                 </div>
             </div>
