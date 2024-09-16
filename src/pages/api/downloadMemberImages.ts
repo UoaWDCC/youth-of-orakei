@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import axios from 'axios';
+import sharp from 'sharp'; // Import sharp for image processing
 import { getMembers } from '../../scripts/getMembers';
-
+import sanitizeFilename from '../../utils/sanitizeFilename';
 interface Member {
     team: string;
     name: string;
@@ -13,6 +14,7 @@ interface Member {
 function extractMembersWithCover(members: any[]) {
     return members.filter((member) => member.cover);
 }
+
 
 async function ensureDirectoryExists(directoryPath: string): Promise<void> {
     if (!fs.existsSync(directoryPath)) {
@@ -43,39 +45,43 @@ export async function GET() {
 
     const members = extractMembersWithCover(await getMembers()); // Extract image URLs from the get Members
 
-
     try {
-        // Generate the list of valid image filenames
+        // Generate the list of valid image filenames (with .webp extension)
         const validImageNames = members.map((member: Member) => {
-            return `${member.team.replace(/ /g, '_')}_${member.name.replace(/ /g, '_')}.jpg`;
+            const sanitizedFileName = sanitizeFilename(`${member.team}_${member.name}`); // Sanitize the filename
+            return `${sanitizedFileName}.webp`;
         });
 
         await cleanupOldImages(membersFolderPath, validImageNames);
 
-        const downloadPromises = members.map(async (member, index) => {
-            const imageName = `${member.team.replace(/ /g, '_')}_${member.name.replace(/ /g, '_')}.jpg`; // Unique filename for each image
+        const downloadPromises = members.map(async (member) => {
+            const sanitizedFileName = sanitizeFilename(`${member.team}_${member.name}`);
+            const imageName = `${sanitizedFileName}.webp`; // Unique filename for each image
             const imagePath = path.join(membersFolderPath, imageName);
 
             if (members.length === 0) {
                 return new Response('No members with cover images found.', { status: 404 });
             }
 
+            // Check if the WebP image already exists
             if (!fs.existsSync(imagePath)) {
                 const response = await axios({
                     url: member.cover,
                     method: 'GET',
-                    responseType: 'stream',
+                    responseType: 'arraybuffer', // Download the image as an array buffer
                 });
 
-                // Save the image to the public folder
-                response.data.pipe(fs.createWriteStream(imagePath));
-                return new Promise((resolve, reject) => {
-                    response.data.on('end', () => {
-                        console.log(`Image ${imageName} downloaded and saved.`);
-                        resolve(`Image ${imageName} downloaded and saved.`);
-                    });
-                    response.data.on('error', reject);
-                });
+                // Convert and compress the image to WebP format
+                const compressedImageBuffer = await sharp(response.data)
+                    .webp({ quality: 80 }) // Set quality to control compression level
+                    .resize({ width: 500 }) // Optionally resize the image to a max width
+                    .toBuffer();
+
+                // Save the compressed WebP image to the public folder
+                fs.writeFileSync(imagePath, new Uint8Array(compressedImageBuffer)); // Cast Buffer to Uint8Array
+                console.log(`Image ${imageName} downloaded, converted to WebP, and saved.`);
+
+                return `Image ${imageName} downloaded, converted to WebP, and saved.`;
             } else {
                 console.log(`Image ${imageName} already exists.`);
                 return `Image ${imageName} already exists.`;
@@ -85,11 +91,11 @@ export async function GET() {
         // Wait for all downloads to complete
         const results = await Promise.all(downloadPromises);
 
-        console.log('All images downloaded and saved.');
+        console.log('All images downloaded, converted to WebP, and saved.');
 
         return new Response(results.join('\n'), { status: 200 });
     } catch (error) {
-        console.error('Error downloading images:', error);
-        return new Response('Failed to download some images.', { status: 500 });
+        console.error('Error downloading or processing images:', error);
+        return new Response('Failed to download or process some images.', { status: 500 });
     }
 }

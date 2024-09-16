@@ -1,10 +1,12 @@
 ---
 import "../styles/global.css";
-
-// import MembersDisplay from "./MembersDisplay.astro";
 import PersonCard from "./PersonCard.tsx";
-
+import sanitizeFilename from "../utils/sanitizeFilename"; // Import the sanitizeFilename function
+import getSanitizedImagePath from "../utils/getSanitizedImagePath";
 const { team } = Astro.props;
+
+// Function to generate the sanitized image path
+
 ---
 
 <html lang="en">
@@ -25,7 +27,7 @@ const { team } = Astro.props;
               name={cover.name}
               team={cover.team}
               desc={cover.desc}
-              cover={cover.cover}
+              cover={getSanitizedImagePath(cover.team, cover.name)} 
             />
           ))
         }
