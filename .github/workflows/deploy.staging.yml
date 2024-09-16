@@ -3,15 +3,51 @@ name: Fly Deploy Staging
 on:
   push:
     branches:
-      - main
+      - ORAKEI-Staging
 
-jobs:
-  deploy-web:
-    name: Deploy Web
+jobs: # remove these tests in production - Anton
+  test-vars:
+    name: Test Var
     runs-on: ubuntu-latest
+    environment: Notion
     steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only --config fly.staging.toml
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_STAGING_API_TOKEN }}
+      - name: Test ANTON Secret
+        run: echo "the name is ${{ secrets.ANTON }}"
+      - name: Test NOTION_MEMBERS_ID Secret
+        run: echo "Notion Members ID is ${{ secrets.NOTION_MEMBERS_ID }}"
+      - name: Test NOTION_TOKEN Secret
+        run: echo "Notion Token is ${{ secrets.NOTION_TOKEN }}"
+      - name: Test NOTION_TOKEN Secret
+        run: echo "Notion Token is ${{ vars.ANTONVAR }}"
+      - name: Test NOTION_HOMEPAGE Secret
+        run: echo "Notion Homepage is ${{ secrets.NOTION_HOMEPAGE_ID}}"
+      - name: Test NOTION_HOMEPAGE Secret
+        run: echo "Notion NOTION_TEAMS_ID is ${{ secrets.NOTION_TEAMS_ID}}"
+      - name: Test NOTION_PROJECTS_ID Secret
+        run: echo "Notion Homepage is ${{ secrets.NOTION_PROJECTS_ID}}"
+
+  deploy-web:
+      name: Deploy Web
+      runs-on: ubuntu-latest
+      environment: Notion
+      env:
+        # This is probably not needed I just have it here for testing - Anton
+            FLY_API_TOKEN: ${{ secrets.FLY_STAGING_API_TOKEN }} 
+            ANTON: ${{ secrets.ANTON }}
+            AntonVar: ${{ vars.ANTONVAR }}
+            NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+            NOTION_MEMBERS_ID: ${{ secrets.NOTION_MEMBERS_ID }}
+            NOTION_HOMEPAGE_ID: ${{ secrets.NOTION_HOMEPAGE_ID}}
+            NOTION_TEAMS_ID: ${{ secrets.NOTION_TEAMS_ID }}
+            WEBFORMS_TOKEN: ${{ secrets.WEBFORMS_TOKEN }}
+            NOTION_PROJECTS_ID: ${{ secrets.NOTION_PROJECTS_ID}}
+      steps:
+                            
+        - name: actions checkout v3
+          uses: actions/checkout@v3
+
+        - name: setup flyctl
+          uses: superfly/flyctl-actions/setup-flyctl@master
+
+        - name: Fly deploy
+          run: flyctl deploy --build-arg ANTON=${{ secrets.ANTON }} --build-arg WEBFORMS_TOKEN=${{ secrets.WEBFORMS_TOKEN }} --build-arg NOTION_MEMBERS_ID=${{ secrets.NOTION_MEMBERS_ID }} --build-arg NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} --build-arg NOTION_PROJECTS_ID=${{ secrets.NOTION_PROJECTS_ID }} --build-arg NOTION_TEAMS_ID=${{ secrets.NOTION_TEAMS_ID}} --build-arg NOTION_HOMEPAGE_ID=${{ secrets.NOTION_HOMEPAGE_ID}} --remote-only --config fly.staging.toml

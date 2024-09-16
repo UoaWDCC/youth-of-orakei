@@ -9,7 +9,6 @@ type MemberData = {
 type TeamDetails = {
   teamName: string;
   description: string;
-  // teamId: string;
   teamId: string;
 };
 

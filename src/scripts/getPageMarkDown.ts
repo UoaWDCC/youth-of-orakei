@@ -2,14 +2,6 @@ import { Client } from "@notionhq/client";
 import * as fs from "fs";
 import { type block } from "../types/block";
 
-type MemberData = {
-    team: string;
-    desc: string;
-    name: string;
-    cover: string;
-    url?: string;
-}
-
 export async function getAnton(blocks : block[]): Promise<string> {
 
     var full_text = "";

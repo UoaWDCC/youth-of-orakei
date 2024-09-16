@@ -3,8 +3,9 @@ import Layout from '../layouts/layout.astro'
 import '../styles/contacts.css';
 import IndexHeading from "../components/index page/IndexHeading";
 import BlobBackground from "../components/BlobBackground/BlobBackground";
-const form_token = import.meta.env.WEBFORMS_TOKEN || 'fallback-string';
+const form_token = process.env.WEBFORMS_TOKEN || 'fallback-string';
 ---
+  
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
