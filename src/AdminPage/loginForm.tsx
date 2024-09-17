@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import "./loginForm.css"
 const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -70,34 +70,38 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleLogin}>
+    <div className='w-dvw h-dvh flex justify-center items-center bg-[#C8E4AE]'>
+      <div className='flex flex-col'>
+      <form onSubmit={handleLogin} className='mb-2'>
         <label htmlFor="password">Enter Password:</label>
         <input
           type="password"
           id="password"
           name="password"
           required
-          onChange={(e) => setPassword(e.target.value)} // Update state on change
+          onChange={(e) => setPassword(e.target.value)} 
+          className='border rounded-lg mx-2'
         />
-        <button type="submit">Login</button>
+        <button type="submit" className='bg-[#294E03] px-3 py-1 rounded-full text-white font-semibold'>Login</button>
         {errorMessage && <p>{errorMessage}</p>}
       </form>
 
       <div id="refresh-section" style={{ display: 'none' }}>
-        <button onClick={handleRefresh}>Refresh</button>
-        <form onSubmit={handlePasswordChange}>
-          <label htmlFor="new-password">New Password:</label>
-          <input
-            type="password"
-            id="new-password"
-            name="new-password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
-          <button type="submit">Change Password</button>
-        </form>
+          <form onSubmit={handlePasswordChange}>
+              <label htmlFor="new-password">New Password:</label>
+                <input
+                type="password"
+                id="new-password"
+                name="new-password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                required
+                className='border rounded-lg mx-2'
+                />
+            <button type="submit" className='bg-[#294E03] px-3 py-1 rounded-full text-white font-semibold'>Change Password</button>
+          </form>
+          <button onClick={handleRefresh}>Refresh</button>
+        </div>
       </div>
     </div>
   );

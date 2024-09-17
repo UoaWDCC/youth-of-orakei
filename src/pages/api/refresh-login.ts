@@ -17,7 +17,7 @@ interface NotionPassword {
 export const POST: APIRoute = async ({ request }) => {
     const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
     const NOTION_REFRESH_ID = process.env.NOTION_REFRESH_ID || import.meta.env.NOTION_REFRESH_ID;
-
+    const SALT_ROUNDS = 10
     if (!NOTION_TOKEN || !NOTION_REFRESH_ID) {
         return new Response(JSON.stringify({ error: "Missing secret(s)" }), { status: 500 });
     }
