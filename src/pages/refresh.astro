@@ -1,27 +1,5 @@
 ---
-// src/pages/refresh.astro
-
-import { getMembers } from '../scripts/getMembers';
-import { getProjects } from '../scripts/getProjects';
-import { getHomepageDescriptions } from '../scripts/getHomepageDescriptions';
-
-await getMembers();
-await getProjects();
-await getHomepageDescriptions();
-
-const redirect = '/';
-const status = 302; 
-
+import LoginForm from "../components/loginForm"
 ---
+<LoginForm client:only/>
 
-<html>
-  <head>
-    <meta http-equiv="refresh" content={`0; url=${redirect}`} />
-    <script>
-      window.location.href = '/';
-    </script>
-  </head>
-  <body>
-    <p>Redirecting...</p>
-  </body>
-</html>
