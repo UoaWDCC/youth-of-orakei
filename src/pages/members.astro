@@ -1,34 +1,16 @@
 ---
-import { getMembers } from "../scripts/getMembers";
-import members from "../../public/membersData.json"
 
+import members from "../../public/membersData.json"
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
 let { leadershipTeam, communicationTeam, projects } =
   sortMembersByTeam(members);
-//import { getAnton } from '../scripts/getAnton';
-//let anton = await getAnton();
-//import { getCovers } from '../scripts/getCovers';
-//let covers = await getCovers();
-//import { getTeamsDescriptions } from "../scripts/getTeamDescription"
-//let teams = await getTeamsDescriptions();
-//import {getProjects} from "../scripts/getProjects"
-//let projects = getProjects()
-
-// Members Page
 import "../styles/global.css";
 import "../styles/members.css";
 
-import Header from "../components/header.astro";
-import Footer from "../components/footer.astro";
 import Layout from "../layouts/layout.astro";
-
-import TeamDisplay from "../components/TeamDisplayLeft.astro";
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
-import MemberDisplay from "../components/MembersDisplay.astro";
-// import MembersDisplay from "../components/MembersDisplay.astro";
-import PersonCard from "../components/PersonCard.tsx";
 ---
 
 <html lang="en">
@@ -39,38 +21,7 @@ import PersonCard from "../components/PersonCard.tsx";
     <meta name="generator" content={Astro.generator} />
     <title>Members Page</title>
   </head>
-
-  <!-- <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-      try {
-        const response = await fetch("/api/downloadMemberImages");
-        const text = await response.text();
-        const statusElement = document.getElementById("status");
-        if (statusElement !== null) {
-          statusElement.textContent = text;
-        }
-
-        if (response.ok) {
-          // Show the image if download was successful
-          const imageElement = document.getElementById(
-            "downloaded-image",
-          ) as HTMLImageElement;
-          if (imageElement !== null) {
-            imageElement.src = "/webb3.jpg";
-            imageElement.style.display = "block";
-          }
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        const statusElement = document.getElementById("status");
-        if (statusElement !== null) {
-          statusElement.textContent = "Failed to download image.";
-        }
-      }
-    });
-  </script> -->
   <Layout>
-    <!--<p id="status">  -->
     <img
       id="downloaded-image"
       src=""
@@ -120,26 +71,8 @@ import PersonCard from "../components/PersonCard.tsx";
         }
       });
     </script>
-
-    <!-- importing the left + right components -->
     <TeamDisplayLeft team={leadershipTeam} />
     <TeamDisplayRight team={communicationTeam} />
     <ProjectTeam client:only="react" projects={projects} />
-    <!-- <ProjectTeam team={projects} /> -->
-    <!-- <ProjectTeam client:load /> -->
-    <!-- <ProjectTeam client:visible /> -->
-    <!--  <div class="members">
-      {/* Display specific project team by index */}
-      {
-        projects[3].members.map((member) => (
-          <PersonCard
-            cover={member.cover}
-            name={member.name}
-            team={member.team}
-            desc={member.desc}
-          />
-        ))
-      }
-    </div> -->
   </Layout>
 </html>

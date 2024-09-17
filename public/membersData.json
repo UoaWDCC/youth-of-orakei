@@ -15,31 +15,31 @@
     "team": "Projects: Fermata",
     "desc": "Team Lead",
     "name": "Aaron",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/781230ca-9778-4006-b44f-4642c7996973/T4-AaronLeong_%28TL%29__%281%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=d39c3b11277db864dd440182f74ee0f8cf4839cd9fe37d74bfccf79fd609b314&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_fermata_aaron.webp"
   },
   {
     "team": "Houston",
     "desc": "Developer",
     "name": "Anna",
-    "cover": "https://www.notion.so/images/page-cover/met_william_morris_1877_willow.jpg"
+    "cover": "/members/houston_anna.webp"
   },
   {
     "team": "Projects: Fermata",
     "desc": "Developer",
     "name": "Anton",
-    "cover": "https://www.notion.so/images/page-cover/webb3.jpg"
+    "cover": "/members/projects_fermata_anton.webp"
   },
   {
     "team": "",
     "desc": "",
     "name": "asdf",
-    "cover": "https://www.notion.so/images/page-cover/met_william_morris_1877_willow.jpg"
+    "cover": "/members/_asdf.webp"
   },
   {
     "team": "",
     "desc": "",
     "name": "asdf",
-    "cover": "https://www.notion.so/images/page-cover/met_georges_seurat_1884.jpg"
+    "cover": "/members/_asdf.webp"
   },
   {
     "team": "Houston",
@@ -51,109 +51,109 @@
     "team": "Leadership Team",
     "desc": "Treasurer",
     "name": "Ben",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/9ac4704d-0614-4047-ad4e-695fdf178478/LT-BenSaunders_%28Treasurer%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=614d15f0b07b8fd1b097d30c5cc31cb35808c3d82d93829bea8aa54398a0cb33&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/leadership_team_ben.webp"
   },
   {
     "team": "Houston",
     "desc": "Exec & Tech Lead",
     "name": "Chris",
-    "cover": "https://www.notion.so/images/page-cover/webb1.jpg"
+    "cover": "/members/houston_chris.webp"
   },
   {
     "team": "Projects: Fermata",
     "desc": "Project Member",
     "name": "David",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/58edaa56-94c8-40f7-b022-762252038780/T4-DavidBergin_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=cff94d6595ed90064e74eefd17d1db165aa72268c630e51ae7b20826505dd028&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_fermata_david.webp"
   },
   {
     "team": "Projects: Fermata",
     "desc": "Project Member",
     "name": "Dhivya",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/2c5c7a61-1d92-4db7-826c-1e050ad47676/T4-DhivyaRamesh_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=40c356a41ccd3762b8cdf26fe756f28d3e4ce1908fbd3f0588dbc8f0297df985&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_fermata_dhivya.webp"
   },
   {
     "team": "Projects: Legato",
     "desc": "Project Member",
     "name": "Ella",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/b79e1938-f80e-4f39-b6e1-652a607eedde/T1-EllaAitken_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=981e0e4f8263cd3bc74a5276cf7b0ec2123a727a338ca2d519133c1241810100&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_legato_ella.webp"
   },
   {
     "team": "Projects: Fermata",
     "desc": "Project Member",
     "name": "Emily",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/6ee767a4-6e90-45b4-8f13-ae981402faa0/T4-EmilyGibb_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=abba9de6e2fb857610ef5e0b1ea18f43938add8b1227c84dd1490204d661fd0e&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_fermata_emily.webp"
   },
   {
     "team": "Houston",
     "desc": "Developer",
     "name": "Emmanuel",
-    "cover": "https://www.notion.so/images/page-cover/met_william_morris_1878.jpg"
+    "cover": "/members/houston_emmanuel.webp"
   },
   {
     "team": "Projects: Schmetterlinge",
     "desc": "Team Lead",
     "name": "Enya",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/908d9c94-98f2-4d6d-a962-7be2bbc183a2/T2-EnyaGrayson_%28TL%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=f27b2c8904d4f4ee792d82c97ad77839fb3096bed65554252a9a6649616fa885&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_schmetterlinge_enya.webp"
   },
   {
     "team": "Leadership Team",
     "desc": "Co-chair",
     "name": "Ishita",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/4fc6c994-a453-49c4-a864-5a328e9933b0/LT-IshitaBarot_%28Co-chair%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=5fdfaad71cf79e71bd895d62abdd65a1fe7b919bc2903ff3bc3361d243ed78e9&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/leadership_team_ishita.webp"
   },
   {
     "team": "Projects: Legato",
     "desc": "Project Member",
     "name": "James",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/b26a4aaf-127e-403f-b1f3-2a6c07fb203f/T1-JamesHarbour_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=b8c41160503049e80064b3b67418d1052bbdee0dd245454d9e997b195e348f01&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_legato_james.webp"
   },
   {
     "team": "Projects: The Gaggle",
     "desc": "Team Lead",
     "name": "Jamie",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/a21f8cdf-b718-4185-819b-e9c338d2e518/T3-JaimieCartwright_%28TL%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=a93384c0da4681c7d4eac7abbf3175677d2f31ba7fd794a663d3b8c89700aec6&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_the_gaggle_jamie.webp"
   },
   {
     "team": "Projects: Fermata",
     "desc": "Project Member",
     "name": "Jessica",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/b8735912-9574-4e94-ad2b-64aed2a5473a/T4-Jessica_Jihyeong_Lee_%281%29.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=a5cd2ad206e22dfb496d98c1c45243f5a25412105a97dce145d6c815d9888255&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_fermata_jessica.webp"
   },
   {
     "team": "Leadership Team",
     "desc": "Co-chair",
     "name": "Joshua (Left)",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/f720575f-9815-4954-a001-0dab3ad20599/LT-JoshuaCurtis_%28Co-chair%29.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=681e6a9ab4ef7414986e9624bc5639a387ba4e334b91f9f3e3a54c4e31d2cd0b&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/leadership_team_joshua_(left).webp"
   },
   {
     "team": "Communication Team",
     "desc": "Communications Member",
     "name": "Katerina",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/b12e4ed0-a0b0-4751-87bb-358a952182b1/Comms-Katerina_Lontzetidou_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=e6c0152cdb33b6f967b8a9661bcd8ffa4fa6bd20805007a79e8a8e1c87b21084&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/communication_team_katerina.webp"
   },
   {
     "team": "Projects: Legato",
     "desc": "Project Member",
     "name": "Leo",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/0d30a939-3f73-4b15-aa69-c820f5288084/T1-LeoMorrison_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=70f14ab5a9397ecddd59d9c04f977b750ff8676e02c3dd1deecef4ea57b82dd8&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_legato_leo.webp"
   },
   {
     "team": "Projects: Schmetterlinge",
     "desc": "Project Member",
     "name": "Olivia",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/caea647e-e131-4c9b-a788-9d6e065a9667/T1_-_OliviaAnderson_%281%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=ed2123d834a8ce77889702894e51d6693ce6dbd01d7b60b0db9c1df7bbaa1f7d&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_schmetterlinge_olivia.webp"
   },
   {
     "team": "Projects: Legato",
     "desc": "Project Member",
     "name": "Olivia",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/78d3ce16-4a8b-401d-8c35-ba567b725908/T1_-_OliviaAnderson_%281%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=0a79620f837abc2e037c983c666c999b92e052bf69875df1649abf46c92d2bff&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_legato_olivia.webp"
   },
   {
     "team": "Projects: The Gaggle",
     "desc": "Project Member",
     "name": "Olivia",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/b0693b95-c802-47ef-8ed6-ef7f747c696f/T3_-_OliviaWei_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=7f04e7efc82d0cf306a8d2f8b2bb66e44ae0989e58b4bee54f72d84dae9e5e6a&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_the_gaggle_olivia.webp"
   },
   {
     "team": "Houston",
@@ -165,73 +165,73 @@
     "team": "Projects: Schmetterlinge",
     "desc": "Project Member",
     "name": "Paidashe",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/668531ae-f4b3-4819-bc7f-6b4b3b3423e2/T2-PaidaPatronella_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=17e3fea5565e8044c5757fc618d32ce879811cc2719a126929ceb0ace8de7248&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_schmetterlinge_paidashe.webp"
   },
   {
     "team": "Leadership Team",
     "desc": "Council Engagement Lead",
     "name": "Rashmi",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/211c9f90-ce7b-493c-98e7-a3c42ebe1835/LT-RashmiMuralidhar_%28Council_Engagement_Lead%29_%281%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=18c8020e0930ffc6f3cd3d8700bd4acb7648965b374b3cb272169ad3d03083c4&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/leadership_team_rashmi.webp"
   },
   {
     "team": "Communication Team",
     "desc": "Communications Member",
     "name": "Saffron",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/0267d4f7-5187-4b4d-a9ec-a7dfbfb562c9/Comms-SaffronTse_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=1d091740684cd5119c35de5cca4f53d75be60cd82366760ff15bd8d8cecbc256&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/communication_team_saffron.webp"
   },
   {
     "team": "Projects: Schmetterlinge",
     "desc": "Project Member",
     "name": "Sebastian",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/dc05ad1f-dd7e-4e3e-b0f6-4757737f34de/T2-SebastianUdema_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=9e094b943f1284d02f8ea1f26b9859346c9f961922697734cfa1de583cedeb24&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_schmetterlinge_sebastian.webp"
   },
   {
     "team": "Projects: The Gaggle",
     "desc": "Project Member",
     "name": "Shreevali",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/5493ecea-7f21-448c-b92a-fd77b640fca0/T3-ShreevaliPawar_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=01fcf4c4270cb2c0a8ce6d1bca65fefd13a39b406bb5b674da6f0122d3af7ddb&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_the_gaggle_shreevali.webp"
   },
   {
     "team": "Communication Team",
     "desc": "Communications Member",
     "name": "Stella",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/fdd07875-d3cc-4477-a2c2-1daeb9df309a/Comms-StellaCasey_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=09f60b2b1afbc5f79d70dd844fa605aefcc080c97aea06f5aae323174e0893c0&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/communication_team_stella.webp"
   },
   {
     "team": "Projects: The Gaggle",
     "desc": "Project Member",
     "name": "Tessa",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/2375d6f1-2de9-48c8-a064-453a8a713c6f/T3-TessaAtkinson_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=05af61597bf332e372b3aefecb26c2ac1fd1b93b34934d574c5aba900647dc46&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_the_gaggle_tessa.webp"
   },
   {
     "team": "Communication Team",
     "desc": "Communications Lead",
     "name": "Thanishka",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/b7eaa55a-927f-47b4-9619-0a48e0aad5a0/LT-ThanishkaSatheeshkumar_%28Communications_Lead%29_%282%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=27eccd5b0f59eaf3a638952bb075fb546ea94a91936c330c74404bf6d400ddae&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/communication_team_thanishka.webp"
   },
   {
     "team": "Leadership Team",
     "desc": "Communications Lead",
     "name": "Thanishka",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/c624a19d-326e-4084-9d31-a8fc1a24eda2/LT-ThanishkaSatheeshkumar_%28Communications_Lead%29_%281%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=00516cbaa5558a43f2840bc75e383f7eb65409ef4cbbf09152a14b86a8bb2d6e&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/leadership_team_thanishka.webp"
   },
   {
     "team": "Projects: Legato",
     "desc": "Team Lead",
     "name": "Toby",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/54643873-a95f-4301-84ca-6fb8ee0b6633/T1-TobyLow_%28TL%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=e9518c4a157d74717e0e77e697c396ad18e2775d7d190752435592236934b97c&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_legato_toby.webp"
   },
   {
     "team": "Projects: The Gaggle",
     "desc": "Project Member",
     "name": "Tommy",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/71b91ce9-011d-41c1-8cc6-35bdf3bfe285/T3-TommyNguyen_%281%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=50ec4e758ceb71c18d27f1b964c092ced5246d267cbb812403cfc37eac96d31f&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_the_gaggle_tommy.webp"
   },
   {
     "team": "Projects: Schmetterlinge",
     "desc": "Project Member",
     "name": "William",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/e2f14033-5d5e-4239-95c7-f9d975d68492/T2-WillDickson_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=f3885d8a45523ac4bb9c4803b5fe01f584e76f5df0ec801888d82b4138c5204c&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/projects_schmetterlinge_william.webp"
   },
   {
     "team": "Houston",
@@ -243,12 +243,12 @@
     "team": "Leadership Team",
     "desc": "Secretary",
     "name": "Yixuan",
-    "cover": "https://prod-files-secure.s3.us-west-2.amazonaws.com/66a3164d-3826-4413-80cb-27389de9b881/c3f3f4ce-ca12-4fcd-b089-9e6cf79f29fb/LT-YixuanZhu_%28Secretary%29_converted.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240917%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240917T044720Z&X-Amz-Expires=3600&X-Amz-Signature=461cb8858a84bd0bfe09a84fab5b9743a2bebbef0eeeb47df582de9bfc0d82b7&X-Amz-SignedHeaders=host&x-id=GetObject"
+    "cover": "/members/leadership_team_yixuan.webp"
   },
   {
     "team": "",
     "desc": "",
     "name": "zzz",
-    "cover": "https://www.notion.so/images/page-cover/rijksmuseum_avercamp_1608.jpg"
+    "cover": "/members/_zzz.webp"
   }
 ]

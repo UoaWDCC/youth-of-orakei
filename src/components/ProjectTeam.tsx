@@ -60,13 +60,10 @@ const ProjectTeams = ({ projects }: ProjectTeamsProps) => {
       </div>
       <div className="right1">
         {projects[teamNumber].members.map((member) => {
-          const sanitizedFileName = sanitizeFilename(`${member.team}_${member.name}.webp`);
-          const localImagePath = `/members/${sanitizedFileName}`; // Ensure the path matches the stored image path
-
           return (
             <PersonCard
               key={member.name}
-              cover={localImagePath}
+              cover={member.cover}
               name={member.name}
               team={member.team}
               desc={member.desc}

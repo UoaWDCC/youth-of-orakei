@@ -1,12 +1,7 @@
 ---
 import "../styles/global.css";
 import PersonCard from "./PersonCard.tsx";
-import sanitizeFilename from "../utils/sanitizeFilename"; // Import the sanitizeFilename function
-import getSanitizedImagePath from "../utils/getSanitizedImagePath";
 const { team } = Astro.props;
-
-// Function to generate the sanitized image path
-
 ---
 
 <html lang="en">
@@ -22,12 +17,12 @@ const { team } = Astro.props;
     <div class="communications" id="com-section">
       <div class="left2">
         {
-          team.map((cover: { name: any; team: any; desc: any; cover: any }) => (
+          team.map((member: { name: any; team: any; desc: any; cover: any }) => (
             <PersonCard
-              name={cover.name}
-              team={cover.team}
-              desc={cover.desc}
-              cover={getSanitizedImagePath(cover.team, cover.name)} 
+              name={member.name}
+              team={member.team}
+              desc={member.desc}
+              cover={member.cover} 
             />
           ))
         }
