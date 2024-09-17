@@ -1,6 +1,6 @@
 ---
 import { getMembers } from "../scripts/getMembers";
-let members = await getMembers();
+import members from "../../public/membersData.json"
 
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
 let { leadershipTeam, communicationTeam, projects } =
@@ -40,7 +40,7 @@ import PersonCard from "../components/PersonCard.tsx";
     <title>Members Page</title>
   </head>
 
-  <script>
+  <!-- <script>
     document.addEventListener("DOMContentLoaded", async () => {
       try {
         const response = await fetch("/api/downloadMemberImages");
@@ -68,7 +68,7 @@ import PersonCard from "../components/PersonCard.tsx";
         }
       }
     });
-  </script>
+  </script> -->
   <Layout>
     <!--<p id="status">  -->
     <img

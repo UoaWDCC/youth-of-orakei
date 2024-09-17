@@ -73,7 +73,7 @@ export async function GET() {
 
                 // Convert and compress the image to WebP format
                 const compressedImageBuffer = await sharp(response.data)
-                    .webp({ quality: 80 }) // Set quality to control compression level
+                    .webp({ quality: 60 }) // Set quality to control compression level
                     .resize({ width: 500 }) // Optionally resize the image to a max width
                     .toBuffer();
 
