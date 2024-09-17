@@ -1,4 +1,5 @@
 import { Client } from "@notionhq/client";
+import bcrypt from 'bcrypt';
 import { getMembers } from "../../scripts/getMembers.ts";
 import { getProjects } from "../../scripts/getProjects.ts";
 import { getHomepageDescriptions } from "../../scripts/getHomepageDescriptions.ts";
@@ -10,6 +11,8 @@ interface NotionPassword {
     newPassword?: string; 
     action: 'login' | 'refresh' | 'change-password';
 }
+
+ 
 
 export const POST: APIRoute = async ({ request }) => {
     const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
@@ -34,22 +37,43 @@ export const POST: APIRoute = async ({ request }) => {
             return new Response(JSON.stringify({ error: "Password not found in Notion database" }), { status: 500 });
         }
 
-        // Note: Change 'title' to 'text' for title property
         const notionPassword = passwords[0].properties.Password.title[0]?.text.content;
 
+        if (!notionPassword) {
+            return new Response(JSON.stringify({ error: "No password stored in Notion database" }), { status: 500 });
+        }
+
         if (action === 'login') {
-            if (password === notionPassword) {
-                // Respond with success for login
+            if (!password) {
+                return new Response(JSON.stringify({ error: "Password is required" }), { status: 400 });
+            }
+            
+            const isMatch = await bcrypt.compare(password, notionPassword);
+            console.log("Login password match result:", isMatch); // Debug logging
+            
+            if (isMatch) {
                 return new Response(JSON.stringify({ success: true }), { status: 200 });
             } else {
                 return new Response(JSON.stringify({ success: false, message: "Invalid password" }), { status: 401 });
             }
         } else if (action === 'refresh') {
-            if (password === notionPassword) {
-                await getMembers();
-                await getProjects();
-                await getHomepageDescriptions();
-                return new Response(JSON.stringify({ success: true }), { status: 200 });
+            if (!password) {
+                return new Response(JSON.stringify({ error: "Password is required" }), { status: 400 });
+            }
+            
+            const isMatch = await bcrypt.compare(password, notionPassword);
+            console.log("Refresh password match result:", isMatch); // Debug logging
+            
+            if (isMatch) {
+                try {
+                    await getMembers();
+                    await getProjects();
+                    await getHomepageDescriptions();
+                    return new Response(JSON.stringify({ success: true }), { status: 200 });
+                } catch (err) {
+                    console.error("Error during refresh data:", err);
+                    return new Response(JSON.stringify({ error: "Failed to refresh data" }), { status: 500 });
+                }
             } else {
                 return new Response(JSON.stringify({ success: false, message: "Invalid password" }), { status: 401 });
             }
@@ -58,15 +82,16 @@ export const POST: APIRoute = async ({ request }) => {
                 return new Response(JSON.stringify({ error: "New password is required" }), { status: 400 });
             }
             
-            // Update the password in Notion
+            const newHashedPassword = await bcrypt.hash(newPassword, SALT_ROUNDS);
+            
             await notion.pages.update({
-                page_id: passwords[0].id,
+                page_id: passwords[0].id as string,
                 properties: {
                     Password: {
                         title: [
                             {
                                 text: {
-                                    content: newPassword,
+                                    content: newHashedPassword,
                                 },
                             },
                         ],

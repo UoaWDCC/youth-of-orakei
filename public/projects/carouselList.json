@@ -1,18 +1,5 @@
 [
   {
-    "heading": "YOO meeting",
-    "subheadings": [
-      "YOO meeting"
-    ],
-    "paragraphs": [
-      "2nd July 12:30 - 3:30PM",
-      "This is a description about quizzes at YOO. Quizzes are good to learn from."
-    ],
-    "images": [
-      "/projects/carousel_content_3_image_0.webp"
-    ]
-  },
-  {
     "heading": "Quiz Night",
     "subheadings": [
       "Quiz Night"
@@ -36,6 +23,19 @@
     ],
     "images": [
       "/projects/carousel_content_1_image_0.webp"
+    ]
+  },
+  {
+    "heading": "YOO meeting",
+    "subheadings": [
+      "YOO meeting"
+    ],
+    "paragraphs": [
+      "2nd July 12:30 - 3:30PM",
+      "This is a description about quizzes at YOO. Quizzes are good to learn from."
+    ],
+    "images": [
+      "/projects/carousel_content_3_image_0.webp"
     ]
   }
 ]

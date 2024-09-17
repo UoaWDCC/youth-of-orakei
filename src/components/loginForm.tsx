@@ -3,12 +3,12 @@ import { useState } from 'react';
 const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [password, setPassword] = useState(''); // Add state for password
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const password = formData.get('password') as string;
-    console.log("hello");
 
     const response = await fetch('/api/refresh-login', {
       method: 'POST',
@@ -28,9 +28,14 @@ const LoginForm = () => {
   };
 
   const handleRefresh = async () => {
+    if (!password) {
+      setErrorMessage('Password is required to refresh.');
+      return;
+    }
+
     const response = await fetch('/api/refresh-login', {
       method: 'POST',
-      body: JSON.stringify({ action: 'refresh' }),
+      body: JSON.stringify({ action: 'refresh', password }), // Include password in request
       headers: {
         'Content-Type': 'application/json',
       },
@@ -68,7 +73,13 @@ const LoginForm = () => {
     <div>
       <form onSubmit={handleLogin}>
         <label htmlFor="password">Enter Password:</label>
-        <input type="password" id="password" name="password" required />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          onChange={(e) => setPassword(e.target.value)} // Update state on change
+        />
         <button type="submit">Login</button>
         {errorMessage && <p>{errorMessage}</p>}
       </form>
