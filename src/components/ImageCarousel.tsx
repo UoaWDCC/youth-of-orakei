@@ -21,7 +21,7 @@ type CarouselProps = {
 };
 
 export default function ImageCarousel({ carousels }: CarouselProps) {
-    // Generate events array from the carousels prop
+    console.log(carousels)
     const events: Events[] = carousels?.map((carousel) => ({
         src: carousel.images[0], 
         alt: carousel.subheadings[0],
@@ -39,8 +39,6 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
     const handleForward = () => {
         setImgIndex((prevIndex) => (prevIndex === events.length - 1 ? 0 : prevIndex + 1));
     };
-
-    console.log(imgIndex);
 
     return (
         <>  
