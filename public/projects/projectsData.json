@@ -1,0 +1,169 @@
+[
+  {
+    "title": "propject 4",
+    "date": "2024-09-24",
+    "description": "desc",
+    "cover": "",
+    "team": "tean 43",
+    "tags": [
+      "volunteering"
+    ],
+    "id": "10339839-0b9f-8011-971c-c5ae9a87cce2"
+  },
+  {
+    "title": "Board Game Night",
+    "date": "2024-06-09",
+    "description": "Placeholder project description.",
+    "cover": "/projects/board_game_night_cover.webp",
+    "team": "Team 2",
+    "tags": [
+      "games"
+    ],
+    "id": "3d6b89d6-e7e5-4a71-a315-90ec000ba0d3"
+  },
+  {
+    "title": "Quizex - Quiz Night",
+    "date": "2024-05-18",
+    "description": "Placeholder project description.",
+    "cover": "/projects/quizex_-_quiz_night_cover.webp",
+    "team": "Team 3",
+    "tags": [
+      "games"
+    ],
+    "id": "0fe7cf87-01e8-40e8-af75-dbcd12df8bda"
+  },
+  {
+    "title": "Beach clean up",
+    "date": "2024-05-13",
+    "description": "Come join us to clean the local beach and save our environment!",
+    "cover": "/projects/beach_clean_up_cover.webp",
+    "team": "Team 4",
+    "tags": [
+      "volunteering"
+    ],
+    "id": "f75a6e96-82dc-4dc7-ad9f-d63ff136aa47"
+  },
+  {
+    "title": "Kahoot Night",
+    "date": "2024-05-11",
+    "description": "Placeholder project description.",
+    "cover": "/projects/kahoot_night_cover.webp",
+    "team": "Team 1",
+    "tags": [
+      "games"
+    ],
+    "id": "7e15c320-90b6-4bfb-bb75-c18222fb157b"
+  },
+  {
+    "title": "Kahoot Games Night",
+    "date": "2024-05-05",
+    "description": "Placeholder project description.",
+    "cover": "/projects/kahoot_games_night_cover.webp",
+    "team": "Team 2",
+    "tags": [
+      "games"
+    ],
+    "id": "256fe646-3750-48d1-9cbf-30e8ea05cd33"
+  },
+  {
+    "title": "Orakei Youth Expo",
+    "date": "2023-12-09",
+    "description": "Placeholder project description.",
+    "cover": "/projects/orakei_youth_expo_cover.webp",
+    "team": "Team 3",
+    "tags": [
+      "volunteering",
+      "educational"
+    ],
+    "id": "ab70378e-268f-4791-b9ac-6a286c88ff3c"
+  },
+  {
+    "title": "Film Festival",
+    "date": "2023-09-30",
+    "description": "Placeholder project description.",
+    "cover": "/projects/film_festival_cover.webp",
+    "team": "Team 4",
+    "tags": [
+      "art",
+      "music"
+    ],
+    "id": "dde22970-d29c-4bc8-af59-e445a4026bfe"
+  },
+  {
+    "title": "Music Showcase",
+    "date": "2023-09-17",
+    "description": "Placeholder project description.",
+    "cover": "/projects/music_showcase_cover.webp",
+    "team": "Team 1",
+    "tags": [
+      "music"
+    ],
+    "id": "dbd309c6-55ec-4149-bd83-2cc4761e4e85"
+  },
+  {
+    "title": "Sportathon",
+    "date": "2023-09-02",
+    "description": "Placeholder project description.",
+    "cover": "/projects/sportathon_cover.webp",
+    "team": "Team 2",
+    "tags": [
+      "games",
+      "sports"
+    ],
+    "id": "6cf27617-6cee-4af5-a1ba-c0b7cecf81f0"
+  },
+  {
+    "title": "",
+    "date": "",
+    "description": "",
+    "cover": "",
+    "team": "",
+    "tags": [],
+    "id": "10339839-0b9f-8032-a51d-e9a191b15227"
+  },
+  {
+    "title": "Careers Workshop",
+    "date": "",
+    "description": "Placeholder project description.",
+    "cover": "/projects/careers_workshop_cover.webp",
+    "team": "Team 3",
+    "tags": [
+      "educational"
+    ],
+    "id": "78294581-4f99-4efa-9d4c-f88a00f6e2ae"
+  },
+  {
+    "title": "Student Leadership Conference",
+    "date": "",
+    "description": "Placeholder project description.",
+    "cover": "/projects/student_leadership_conference_cover.webp",
+    "team": "Team 2",
+    "tags": [
+      "educational",
+      "volunteering"
+    ],
+    "id": "9d0e4b44-04e2-41ae-9388-5bd07d91551c"
+  },
+  {
+    "title": "Life Skills Workshop",
+    "date": "",
+    "description": "Placeholder project description.",
+    "cover": "/projects/life_skills_workshop_cover.webp",
+    "team": "Team 4",
+    "tags": [
+      "educational"
+    ],
+    "id": "3d447c69-eb7b-41ce-a0f3-3651620873fe"
+  },
+  {
+    "title": "Quiz Night",
+    "date": "",
+    "description": "Placeholder project description.",
+    "cover": "/projects/quiz_night_cover.webp",
+    "team": "Team 1",
+    "tags": [
+      "games"
+    ],
+    "id": "5a11c339-08bc-4587-9417-2c3cb9ea858f"
+  }
+]
