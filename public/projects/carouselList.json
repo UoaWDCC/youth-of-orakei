@@ -1,5 +1,18 @@
 [
   {
+    "heading": "Quiz Night",
+    "subheadings": [
+      "Quiz Night"
+    ],
+    "paragraphs": [
+      "2nd July 12:30 - 3:30PM",
+      "This is a description about quizzes at YOO. Quizzes are good to learn from."
+    ],
+    "images": [
+      "/projects/carousel_content_2_image_0.webp"
+    ]
+  },
+  {
     "heading": "Art Gallery",
     "subheadings": [
       "Art Gallery"
@@ -23,19 +36,6 @@
     ],
     "images": [
       "/projects/carousel_content_3_image_0.webp"
-    ]
-  },
-  {
-    "heading": "Quiz Night",
-    "subheadings": [
-      "Quiz Night"
-    ],
-    "paragraphs": [
-      "2nd July 12:30 - 3:30PM",
-      "This is a description about quizzes at YOO. Quizzes are good to learn from."
-    ],
-    "images": [
-      "/projects/carousel_content_2_image_0.webp"
     ]
   }
 ]
