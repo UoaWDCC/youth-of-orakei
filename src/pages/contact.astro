@@ -1,152 +1,161 @@
 ---
 import Layout from '../layouts/layout.astro'
+import '../styles/contacts.css';
+import IndexHeading from "../components/index page/IndexHeading";
+import BlobBackground from "../components/BlobBackground/BlobBackground";
 const form_token = process.env.WEBFORMS_TOKEN || 'fallback-string';
 ---
+  
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Contact Page</title>
-    <style>
-        .contact-wrapper {
-            background-color: var(--YOO-Green-Lightest);
-        }
-        .content-container{
-            display: flex;
-            justify-content: center;
-            column-gap: 40px;
-        }
-        h1 {
-            font-size: 35px;
-            font-weight: bolder;
-            padding:2%;
-            margin-left: 4%;
-            padding-bottom: 0px;
-        }
-        label {
-            font-size: 18px;
-            font-weight: 700;
-        }
-        form{
-            padding-left: 10%;
-            flex: 2;
-        }
-        .form-group{
-            padding: 1%;
-        }
-        img{
-            width: 500px;
-            margin-top: 8%;
-        }
-        button{
-            background-color: #D9EBEF;
-            padding: 5px;
-            font-weight: bold;
-            border: 2px solid #A4C6B0;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        input, textarea{
-        background-color: #D9EBEF;
-        width: 100%;
-        padding: 1%;
-        font-size: 15px;
-        border: 2px solid #A4C6B0;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
+    <!--<style>-->
+    <!--    .contact-wrapper {-->
+    <!--        background-color: var(&#45;&#45;YOO-Green-Lightest);-->
+    <!--    }-->
+    <!--    .content-container{-->
+    <!--        display: flex;-->
+    <!--        justify-content: center;-->
+    <!--        column-gap: 40px;-->
+    <!--    }-->
+    <!--    h1 {-->
+    <!--        font-size: 35px;-->
+    <!--        font-weight: bolder;-->
+    <!--        padding:2%;-->
+    <!--        margin-left: 4%;-->
+    <!--        padding-bottom: 0px;-->
+    <!--    }-->
+    <!--    label {-->
+    <!--        font-size: 18px;-->
+    <!--        font-weight: 700;-->
+    <!--    }-->
+    <!--    form{-->
+    <!--        padding-left: 10%;-->
+    <!--        flex: 2;-->
+    <!--    }-->
+    <!--    .form-group{-->
+    <!--        padding: 1%;-->
+    <!--    }-->
+    <!--    img{-->
+    <!--        width: 500px;-->
+    <!--        margin-top: 8%;-->
+    <!--    }-->
+    <!--    button{-->
+    <!--        background-color: #D9EBEF;-->
+    <!--        padding: 5px;-->
+    <!--        font-weight: bold;-->
+    <!--        border: 2px solid #A4C6B0;-->
+    <!--        border-radius: 5px;-->
+    <!--        margin-bottom: 20px;-->
+    <!--    }-->
+    <!--    input, textarea{-->
+    <!--    background-color: #D9EBEF;-->
+    <!--    width: 100%;-->
+    <!--    padding: 1%;-->
+    <!--    font-size: 15px;-->
+    <!--    border: 2px solid #A4C6B0;-->
+    <!--    border-radius: 5px;-->
+    <!--    box-sizing: border-box;-->
+    <!--    }-->
 
-        textarea#message {
-        height: 200px;
-    }
+    <!--        textarea#message {-->
+    <!--        height: 200px;-->
+    <!--    }-->
 
-    .image-container{
-        flex: 1;
-    }
+    <!--    .image-container{-->
+    <!--        flex: 1;-->
+    <!--    }-->
 
-    #contact-image{
-        margin-top: 0px;
-    }
+    <!--    #contact-image{-->
+    <!--        margin-top: 0px;-->
+    <!--    }-->
 
-    #pattern{
-    margin-right: 0px;
-    margin-top: 0px;
-    }
+    <!--    #pattern{-->
+    <!--    margin-right: 0px;-->
+    <!--    margin-top: 0px;-->
+    <!--    }-->
 
-    .h-captcha {
-            padding-bottom: 30px;
-            padding-left: 5px;
-        }
+    <!--    .h-captcha {-->
+    <!--            padding-bottom: 30px;-->
+    <!--            padding-left: 5px;-->
+    <!--        }-->
 
-    .contact-image-container{
-        display: none;
-    }
-        
-    /* Media query for mobile devices */
-    @media (max-width: 768px) {
-        .contact-wrapper{
-            padding-top: 5%;
-            padding-bottom: 5%;
-        }
-        .content-container {
-            flex-direction: column;
-            padding-left: 5%;
-            padding-right: 5%;
-        }
-        .image-container {
-            display: none;
-        }
-        form {
-            padding-left: 0;
-        }
+    <!--    .contact-image-container{-->
+    <!--        display: none;-->
+    <!--    }-->
+    <!--        -->
+    <!--    /* Media query for mobile devices */-->
+    <!--    @media (max-width: 768px) {-->
+    <!--        .contact-wrapper{-->
+    <!--            padding-top: 5%;-->
+    <!--            padding-bottom: 5%;-->
+    <!--        }-->
+    <!--        .content-container {-->
+    <!--            flex-direction: column;-->
+    <!--            padding-left: 5%;-->
+    <!--            padding-right: 5%;-->
+    <!--        }-->
+    <!--        .image-container {-->
+    <!--            display: none;-->
+    <!--        }-->
+    <!--        form {-->
+    <!--            padding-left: 0;-->
+    <!--        }-->
 
-        .contact-image-container{
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 0px;
-            width: 80%;
-        }
-        
-    }
-    </style>
+    <!--        .contact-image-container{-->
+    <!--            display: block;-->
+    <!--            margin-left: auto;-->
+    <!--            margin-right: auto;-->
+    <!--            margin-top: 0px;-->
+    <!--            width: 80%;-->
+    <!--        }-->
+    <!--        -->
+    <!--    }-->
+    <!--</style>-->
 </head>
 
 <Layout>
-    <div class="contact-wrapper">
-        <h1>Contact Us</h1> 
-        <div class="contact-image-container">
-            <img id="contact-image-mobile" src="/Contact Page Images/contact-us-stock-image.png" alt="contact us stock image">
-        </div>
-        <div class = "content-container">
-            <form action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value={form_token}>
-                <div class="form-group">
-                    <label for="full-name">Full Name</label> <br>
-                    <input type="text" id="full-name" name="Name" required><br>
-                </div>
-                <div class="form-group">
-                    <label for="school">School</label><br>
-                    <input type="text" id="school" name="School" required><br>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label><br>
-                    <input type="email" id="email" name="Email" required><br>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label><br>
-                    <textarea id="message" name="Message" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit"> Submit</button>
-                </div>
-                <div class="h-captcha" data-captcha="true"></div>
-            </form>
+    <div class="contacts-wrapper">
+        <BlobBackground zIndexVal="-10" offset="-100"/>
 
-            <div class="image-container">
-                <img id="contact-image" src="/Contact Page Images/contact-us-stock-image.png" alt="contact us stock image">
-                <img id="pattern" src="/Contact Page Images/bottom-right-pattern.png"alt = "pattern">
+        <div class="general-wrapper">
+            <div class="contacts-content">
+                <div class="contacts-left">
+                    <IndexHeading>Contact us</IndexHeading>
+                    <div class="contacts-card">
+                        <form action="https://api.web3forms.com/submit" method="POST" class="form-wrapper">
+                            <input type="hidden" name="access_key" value={form_token}>
+                            <div class="form-group">
+                                <label for="full-name">Your name</label> <br>
+                                <input type="text" id="full-name" name="Name" required><br>
+                            </div>
+                            <div class="form-group">
+                                <label for="school">School or organisation <em>(optional)</em></label><br>
+                                <input type="text" id="school" name="School" required><br>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label><br>
+                                <input type="email" id="email" name="Email" required><br>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label><br>
+                                <textarea id="message" name="Message" required></textarea>
+                            </div>
+                            <div class="h-captcha" data-captcha="true"></div>
+                            <div class="form-group">
+                                <button type="submit"> Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="contacts-right">
+                    <div class="image-container">
+                        <img id="contact-image" src="/Contact Page Images/contact-us-stock-image.png" alt="contact us stock image">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

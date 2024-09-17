@@ -11,6 +11,10 @@ import Layout from "../layouts/layout.astro";
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
+import MemberDisplay from "../components/MembersDisplay.astro";
+// import MembersDisplay from "../components/MembersDisplay.astro";
+import PersonCard from "../components/PersonCard.tsx";
+import BlobBackground from "../components/BlobBackground/BlobBackground";
 ---
 
 <html lang="en">
@@ -21,24 +25,24 @@ import ProjectTeam from "../components/ProjectTeam.tsx";
     <meta name="generator" content={Astro.generator} />
     <title>Members Page</title>
   </head>
+  <section class="section-background">
   <Layout>
-    <img
-      id="downloaded-image"
-      src=""
-      alt="Downloaded Image"
-      style="display: none;"
-    />
-    <div class="title"><h1><b>Introducing Our Teams</b></h1></div>
+  
+      
+    <!-- <BlobBackground zIndexVal="-10" offset="-100"/>
+    <BlobBackground zIndexVal="-10" offset="900"/> -->
+    
+    <object data="..\public\assets\YOO_members_bg.svg"> </object>
     <div class="nav">
       <button class="lead-button"
-        ><a href="#leadership-section">Leadership</a></button
+        ><a href="#leadership-section">LEADERSHIP</a></button
       >
       <button class="com-button"
-        ><a href="#com-section">Communications</a></button
+        ><a href="#com-section">COMMUNICATIONS</a></button
       >
-      <button class="proj-button"><a href="#proj-section">Projects</a></button>
+      <button class="proj-button"><a href="#proj-section">PROJECTS</a></button>
     </div>
-    <div class="shapedividers_com-9592"></div>
+    <!-- <div class="shapedividers_com-9592"></div> -->
 
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
     <!-- function for the scroll up button -->
@@ -74,5 +78,23 @@ import ProjectTeam from "../components/ProjectTeam.tsx";
     <TeamDisplayLeft team={leadershipTeam} />
     <TeamDisplayRight team={communicationTeam} />
     <ProjectTeam client:only="react" projects={projects} />
+    <!-- <ProjectTeam team={projects} /> -->
+    <!-- <ProjectTeam client:load /> -->
+    <!-- <ProjectTeam client:visible /> -->
+   <!--  <div class="members">
+      {/* Display specific project team by index */}
+      {
+        projects[3].members.map((member) => (
+          <PersonCard
+            cover={member.cover}
+            name={member.name}
+            team={member.team}
+            desc={member.desc}
+          />
+        ))
+      }
+    </div> -->
+  
   </Layout>
+</section>
 </html>

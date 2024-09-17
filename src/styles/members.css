@@ -8,10 +8,11 @@
 }
 
 .nav {
+  padding: 0px 50px;
+  padding-top: 60px;
   text-align: center;
   display: flex;
   justify-content: space-evenly;
-  background-color: var(--YOO-Green-Lightest);
 }
 
 .lead-button,
@@ -21,8 +22,9 @@
   margin: 10px;
   padding: 7px;
   width: 100%;
-  font-size: var(--fontsize-h4);
-  box-shadow: 3px 3px gray;
+  font-size: var(--fontsize-h3);
+  font-weight: bold;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .leadership,
@@ -32,7 +34,8 @@
 
 .lead-button:hover {
   background-color: var(--YOO-Green-Lightest);
-  transition: 0.3s;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.01);
 }
 
 .communications,
@@ -40,9 +43,14 @@
   background-color: var(--YOO-Blue-Primary);
 }
 
+.com-button {
+  color: var(--YOO-Blue-Darkest);
+}
+
 .com-button:hover {
   background-color: var(--YOO-Blue-Light);
   transition: 0.3s;
+  transform: scale(1.01);
 }
 
 .projects,
@@ -50,9 +58,14 @@
   background-color: var(--YOO-Red-Primary);
 }
 
+.proj-button {
+  color: var(--YOO-Red-Dark);
+}
+
 .proj-button:hover {
   background-color: var(--YOO-Red-Light);
   transition: 0.3s;
+  transform: scale(1.01);
 }
 
 /* cloud svg: */
@@ -76,6 +89,14 @@
   background-size: 320% 70px;
   background-position: 33% 0%;
   background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100.86 4.15"><path fill="%23c8e4ae" d="M0 0v3.5a9.07 9.07 0 0 0 9.37-1.67 9.07 9.07 0 0 0 12.1 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.06 0 9.07 9.07 0 0 0 12.11 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 12.09 0 9.07 9.07 0 0 0 12.08 0 9.07 9.07 0 0 0 6.86 2.28V.01z"/></svg>');
+}
+
+.section-background {
+  background-image: url('../public/assets/YOO_members_bg.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  background-position: 0px -140px; /*HARD CODED */
 }
 
 @media (min-width: 2100px) {
