@@ -381,7 +381,7 @@ html {
     align-items: center;
   }
 
-/* TeamDropdown Styles */
+  /* TeamDropdown Styles */
 
 .menu-container {
   position: relative;
@@ -439,14 +439,6 @@ html {
   background-color: transparent;
 }
 
-}
-
-/* Hide dropdown on desktop */
-.dropdown-mobile-only {
-  display: none;
-}
-
-@media (max-width: 800px) {
   /* Show the dropdown only on mobile */
   .dropdown-mobile-only {
     display: block;
@@ -490,6 +482,7 @@ html {
     height: 100%;
     object-fit: cover;
   }
+
 }
 
 /* Show buttons on desktop */
