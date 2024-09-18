@@ -1,5 +1,4 @@
 import { Client } from "@notionhq/client";
-import bcrypt from 'bcrypt';
 import { getMembers } from "../../scripts/getMembers.ts";
 import { getProjects } from "../../scripts/getProjects.ts";
 import { getHomepageDescriptions } from "../../scripts/getHomepageDescriptions.ts";
@@ -12,12 +11,10 @@ interface NotionPassword {
     action: 'login' | 'refresh' | 'change-password';
 }
 
- 
-
 export const POST: APIRoute = async ({ request }) => {
     const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
     const NOTION_REFRESH_ID = process.env.NOTION_REFRESH_ID || import.meta.env.NOTION_REFRESH_ID;
-    const SALT_ROUNDS = 10
+    
     if (!NOTION_TOKEN || !NOTION_REFRESH_ID) {
         return new Response(JSON.stringify({ error: "Missing secret(s)" }), { status: 500 });
     }
@@ -48,10 +45,7 @@ export const POST: APIRoute = async ({ request }) => {
                 return new Response(JSON.stringify({ error: "Password is required" }), { status: 400 });
             }
             
-            const isMatch = await bcrypt.compare(password, notionPassword);
-            console.log("Login password match result:", isMatch); // Debug logging
-            
-            if (isMatch) {
+            if (password === notionPassword) {
                 return new Response(JSON.stringify({ success: true }), { status: 200 });
             } else {
                 return new Response(JSON.stringify({ success: false, message: "Invalid password" }), { status: 401 });
@@ -61,10 +55,7 @@ export const POST: APIRoute = async ({ request }) => {
                 return new Response(JSON.stringify({ error: "Password is required" }), { status: 400 });
             }
             
-            const isMatch = await bcrypt.compare(password, notionPassword);
-            console.log("Refresh password match result:", isMatch); // Debug logging
-            
-            if (isMatch) {
+            if (password === notionPassword) {
                 try {
                     await getMembers();
                     await getProjects();
@@ -82,8 +73,6 @@ export const POST: APIRoute = async ({ request }) => {
                 return new Response(JSON.stringify({ error: "New password is required" }), { status: 400 });
             }
             
-            const newHashedPassword = await bcrypt.hash(newPassword, SALT_ROUNDS);
-            
             await notion.pages.update({
                 page_id: passwords[0].id as string,
                 properties: {
@@ -91,7 +80,7 @@ export const POST: APIRoute = async ({ request }) => {
                         title: [
                             {
                                 text: {
-                                    content: newHashedPassword,
+                                    content: newPassword, // Store new plaintext password
                                 },
                             },
                         ],
