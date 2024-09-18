@@ -45,7 +45,7 @@ const LoginForm = () => {
       <div className="flex flex-col">
         {!loggedIn ? (
           <form id="login-form" onSubmit={handleLogin} className="mb-2">
-            <label htmlFor="password">Enter Password:</label>
+            <label htmlFor="password" className='mr-2 font-semibold'>Enter Password:</label>
             <input
               type="password"
               id="password"

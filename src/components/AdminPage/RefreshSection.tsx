@@ -60,7 +60,7 @@ const RefreshSection = ({
     <div className="flex flex-col items-center">
       <p className="text-xl font-bold mb-2">Logged in</p>
       <form id="change-password-form" onSubmit={handlePasswordChange} className="flex items-center mb-2">
-        <label htmlFor="new-password" className="mr-2 font-semibold">New Password:</label>
+        <label htmlFor="new-password" className="mr-2 font-semibold">New Password: (Optional)</label>
         <input
           type="password"
           id="new-password"
