@@ -4,6 +4,7 @@ import "../styles/members.css";
 // import MembersDisplay from "../components/MembersDisplay.astro";
 import PersonCard from "./PersonCard.tsx";
 import type { memberData } from "../types/memberData.ts";
+import sanitizeFilename from "../utils/sanitizeFilename.ts";
 
 type TeamDetails = {
   teamName: string;
@@ -21,11 +22,10 @@ type ProjectTeamsProps = {
 };
 
 const ProjectTeams = ({ projects }: ProjectTeamsProps) => {
-  const [selectedTeam, setSelectedTeam] = useState(projects[0].teamDetails.teamId); // Default state is team1
+  const [selectedTeam, setSelectedTeam] = useState(projects[0].teamDetails.teamId);
   const [teamNumber, setTeamNumber] = useState(0);
 
   const handleTeamChange = (t: string) => {
-    console.log(`Changing team to: ${t}`);
     for (let i = 0; i < projects.length; i++) {
       if (projects[i].teamDetails.teamId === t) {
         setSelectedTeam(t);
@@ -33,6 +33,7 @@ const ProjectTeams = ({ projects }: ProjectTeamsProps) => {
       }
     }
   };
+
 
   return (
     <div className="projects" id="proj-section">
@@ -58,15 +59,17 @@ const ProjectTeams = ({ projects }: ProjectTeamsProps) => {
         </div>
       </div>
       <div className="right1">
-        {projects[teamNumber].members.map((member) => (
-          <PersonCard
-            key={member.name}
-            cover={member.cover}
-            name={member.name}
-            team={member.team}
-            desc={member.desc}
-          />
-        ))}
+        {projects[teamNumber].members.map((member) => {
+          return (
+            <PersonCard
+              key={member.name}
+              cover={member.cover}
+              name={member.name}
+              team={member.team}
+              desc={member.desc}
+            />
+          );
+        })}
       </div>
     </div>
   );

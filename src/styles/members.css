@@ -92,7 +92,7 @@
 }
 
 .section-background {
-  background-image: url('../public/assets/YOO_members_bg.svg');
+  background-image: url('/assets/YOO_members_bg.svg');
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;

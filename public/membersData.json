@@ -1,0 +1,254 @@
+[
+  {
+    "team": "Houston",
+    "desc": "Developer",
+    "name": "✨ andrew ✨",
+    "cover": ""
+  },
+  {
+    "team": "Houston",
+    "desc": "Developer",
+    "name": "⭐Kimberley⭐🐮",
+    "cover": ""
+  },
+  {
+    "team": "Projects: Fermata",
+    "desc": "Team Lead",
+    "name": "Aaron",
+    "cover": "/members/projects_fermata_aaron.webp"
+  },
+  {
+    "team": "Houston",
+    "desc": "Developer",
+    "name": "Anna",
+    "cover": "/members/houston_anna.webp"
+  },
+  {
+    "team": "Projects: Fermata",
+    "desc": "Developer",
+    "name": "Anton",
+    "cover": "/members/projects_fermata_anton.webp"
+  },
+  {
+    "team": "",
+    "desc": "",
+    "name": "asdf",
+    "cover": "/members/_asdf.webp"
+  },
+  {
+    "team": "",
+    "desc": "",
+    "name": "asdf",
+    "cover": "/members/_asdf.webp"
+  },
+  {
+    "team": "Houston",
+    "desc": "Developer",
+    "name": "Becky Pog",
+    "cover": ""
+  },
+  {
+    "team": "Leadership Team",
+    "desc": "Treasurer",
+    "name": "Ben",
+    "cover": "/members/leadership_team_ben.webp"
+  },
+  {
+    "team": "Houston",
+    "desc": "Exec & Tech Lead",
+    "name": "Chris",
+    "cover": "/members/houston_chris.webp"
+  },
+  {
+    "team": "Projects: Fermata",
+    "desc": "Project Member",
+    "name": "David",
+    "cover": "/members/projects_fermata_david.webp"
+  },
+  {
+    "team": "Projects: Fermata",
+    "desc": "Project Member",
+    "name": "Dhivya",
+    "cover": "/members/projects_fermata_dhivya.webp"
+  },
+  {
+    "team": "Projects: Legato",
+    "desc": "Project Member",
+    "name": "Ella",
+    "cover": "/members/projects_legato_ella.webp"
+  },
+  {
+    "team": "Projects: Fermata",
+    "desc": "Project Member",
+    "name": "Emily",
+    "cover": "/members/projects_fermata_emily.webp"
+  },
+  {
+    "team": "Houston",
+    "desc": "Developer",
+    "name": "Emmanuel",
+    "cover": "/members/houston_emmanuel.webp"
+  },
+  {
+    "team": "Projects: Schmetterlinge",
+    "desc": "Team Lead",
+    "name": "Enya",
+    "cover": "/members/projects_schmetterlinge_enya.webp"
+  },
+  {
+    "team": "Leadership Team",
+    "desc": "Co-chair",
+    "name": "Ishita",
+    "cover": "/members/leadership_team_ishita.webp"
+  },
+  {
+    "team": "Projects: Legato",
+    "desc": "Project Member",
+    "name": "James",
+    "cover": "/members/projects_legato_james.webp"
+  },
+  {
+    "team": "Projects: The Gaggle",
+    "desc": "Team Lead",
+    "name": "Jamie",
+    "cover": "/members/projects_the_gaggle_jamie.webp"
+  },
+  {
+    "team": "Projects: Fermata",
+    "desc": "Project Member",
+    "name": "Jessica",
+    "cover": "/members/projects_fermata_jessica.webp"
+  },
+  {
+    "team": "Leadership Team",
+    "desc": "Co-chair",
+    "name": "Joshua (Left)",
+    "cover": "/members/leadership_team_joshua_(left).webp"
+  },
+  {
+    "team": "Communication Team",
+    "desc": "Communications Member",
+    "name": "Katerina",
+    "cover": "/members/communication_team_katerina.webp"
+  },
+  {
+    "team": "Projects: Legato",
+    "desc": "Project Member",
+    "name": "Leo",
+    "cover": "/members/projects_legato_leo.webp"
+  },
+  {
+    "team": "Projects: Schmetterlinge",
+    "desc": "Project Member",
+    "name": "Olivia",
+    "cover": "/members/projects_schmetterlinge_olivia.webp"
+  },
+  {
+    "team": "Projects: Legato",
+    "desc": "Project Member",
+    "name": "Olivia",
+    "cover": "/members/projects_legato_olivia.webp"
+  },
+  {
+    "team": "Projects: The Gaggle",
+    "desc": "Project Member",
+    "name": "Olivia",
+    "cover": "/members/projects_the_gaggle_olivia.webp"
+  },
+  {
+    "team": "Houston",
+    "desc": "Developer",
+    "name": "Owen",
+    "cover": ""
+  },
+  {
+    "team": "Projects: Schmetterlinge",
+    "desc": "Project Member",
+    "name": "Paidashe",
+    "cover": "/members/projects_schmetterlinge_paidashe.webp"
+  },
+  {
+    "team": "Leadership Team",
+    "desc": "Council Engagement Lead",
+    "name": "Rashmi",
+    "cover": "/members/leadership_team_rashmi.webp"
+  },
+  {
+    "team": "Communication Team",
+    "desc": "Communications Member",
+    "name": "Saffron",
+    "cover": "/members/communication_team_saffron.webp"
+  },
+  {
+    "team": "Projects: Schmetterlinge",
+    "desc": "Project Member",
+    "name": "Sebastian",
+    "cover": "/members/projects_schmetterlinge_sebastian.webp"
+  },
+  {
+    "team": "Projects: The Gaggle",
+    "desc": "Project Member",
+    "name": "Shreevali",
+    "cover": "/members/projects_the_gaggle_shreevali.webp"
+  },
+  {
+    "team": "Communication Team",
+    "desc": "Communications Member",
+    "name": "Stella",
+    "cover": "/members/communication_team_stella.webp"
+  },
+  {
+    "team": "Projects: The Gaggle",
+    "desc": "Project Member",
+    "name": "Tessa",
+    "cover": "/members/projects_the_gaggle_tessa.webp"
+  },
+  {
+    "team": "Communication Team",
+    "desc": "Communications Lead",
+    "name": "Thanishka",
+    "cover": "/members/communication_team_thanishka.webp"
+  },
+  {
+    "team": "Leadership Team",
+    "desc": "Communications Lead",
+    "name": "Thanishka",
+    "cover": "/members/leadership_team_thanishka.webp"
+  },
+  {
+    "team": "Projects: Legato",
+    "desc": "Team Lead",
+    "name": "Toby",
+    "cover": "/members/projects_legato_toby.webp"
+  },
+  {
+    "team": "Projects: The Gaggle",
+    "desc": "Project Member",
+    "name": "Tommy",
+    "cover": "/members/projects_the_gaggle_tommy.webp"
+  },
+  {
+    "team": "Projects: Schmetterlinge",
+    "desc": "Project Member",
+    "name": "William",
+    "cover": "/members/projects_schmetterlinge_william.webp"
+  },
+  {
+    "team": "Houston",
+    "desc": "Project Manager",
+    "name": "Yash the mekanic",
+    "cover": ""
+  },
+  {
+    "team": "Leadership Team",
+    "desc": "Secretary",
+    "name": "Yixuan",
+    "cover": "/members/leadership_team_yixuan.webp"
+  },
+  {
+    "team": "",
+    "desc": "",
+    "name": "zzz",
+    "cover": "/members/_zzz.webp"
+  }
+]

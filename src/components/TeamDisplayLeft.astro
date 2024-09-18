@@ -1,15 +1,7 @@
 ---
 import "../styles/global.css";
 import MembersDisplay from "./MembersDisplay.astro";
-
-import { getMembers } from "../scripts/getMembers";
-let members = await getMembers();
-
-import { sortMembersByTeam } from "../scripts/sortTeams.ts";
-let { leadershipTeam, communicationTeam, projects } =
-  sortMembersByTeam(members);
-const { team, cover, name, desc } = Astro.props;
-let leadership = "Leadership Team";
+const { team } = Astro.props;
 ---
 
 <html lang="en">
@@ -34,16 +26,14 @@ let leadership = "Leadership Team";
         </p>
       </div>
       <div class="right1">
-        {
-          team.map((cover: { name: any; team: any; desc: any; cover: any }) => (
-            <MembersDisplay
-              name={cover.name}
-              team={cover.team}
-              desc={cover.desc}
-              cover={cover.cover}
-            />
-          ))
-        }
+        {team.map((member: { name: any; team: any; desc: any; cover: any; }) => (
+          <MembersDisplay
+            name={member.name}
+            team={member.team}
+            desc={member.desc}
+            cover={member.cover} 
+          />
+        ))}
       </div>
     </div>
   </body>
