@@ -48,8 +48,8 @@ export async function getHomepageDescriptions(): Promise<void> {
     if (!NOTION_TOKEN || !NOTION_HOMEPAGE_ID) throw new Error("Missing secret(s)");
 
     const notion = new Client({ auth: NOTION_TOKEN });
-    const publicFolderPath = path.join(process.cwd(), 'public');
-    const homepageFolderPath = path.join(publicFolderPath, 'homepage');
+    const homepageFolderPath = path.join('/data', 'homepage');
+   
 
     // Ensure the 'homepage' directory exists
     await ensureDirectoryExists(homepageFolderPath);

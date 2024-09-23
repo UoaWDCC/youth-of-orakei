@@ -21,3 +21,7 @@ primary_region = 'syd'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+
+[mounts]
+  source = "local_data"
+  destination = "/data"

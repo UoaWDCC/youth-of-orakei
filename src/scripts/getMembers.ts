@@ -61,9 +61,8 @@ export async function getMembers(): Promise<Member[]> {
         };
     });
 
-    const publicFolderPath = path.join(process.cwd(), 'public');
-    const membersFolderPath = path.join(publicFolderPath, 'members'); // Path for storing member images
-    const jsonFilePath = path.join(membersFolderPath, 'membersData.json'); // Path for storing members data in JSON
+    const membersFolderPath = path.join('/data', 'members'); // Store images in Fly.io volume
+    const jsonFilePath = path.join(membersFolderPath, 'membersData.json'); // Path for storing members data in JSONath for storing members data in JSON
 
     // Ensure the 'members' directory exists
     await ensureDirectoryExists(membersFolderPath);

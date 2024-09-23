@@ -58,8 +58,7 @@ export async function getProjects(): Promise<{ projects: ProjectData[], carousel
   }
 
   const notion = new Client({ auth: NOTION_TOKEN });
-  const publicFolderPath = path.join(process.cwd(), 'public');
-  const projectsFolderPath = path.join(publicFolderPath, 'projects');
+  const projectsFolderPath = path.join('/data', 'projects');
 
   await ensureDirectoryExists(projectsFolderPath);
 
@@ -124,7 +123,7 @@ export async function getProjects(): Promise<{ projects: ProjectData[], carousel
   fs.writeFileSync(projectsJsonPath, JSON.stringify(filteredProjects, null, 2));
   console.log(`Projects data saved to ${projectsJsonPath}`);
 
-  const carouselJsonPath = path.join(projectsFolderPath, 'carouselList.json');
+ const carouselJsonPath = path.join(projectsFolderPath, 'carouselList.json');
   fs.writeFileSync(carouselJsonPath, JSON.stringify(carouselList, null, 2));
   console.log(`Carousel list data saved to ${carouselJsonPath}`);
 
