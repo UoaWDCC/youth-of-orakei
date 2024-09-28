@@ -2,8 +2,13 @@
   background-color: var(--YOO-Green-Lightest);
 }
 
+.index-event-img {
+  height: auto;
+  width: 100%;
+}
+
 .index-event-img img {
-  height: 1000px;
+  height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: var(--common-radius);
@@ -29,7 +34,7 @@
 
 .past-project-container {
   width: 100%;
-  min-height: 700px;
+  /* min-height: 700px; */
   display: flex;
   flex-direction: column;
 }
@@ -243,5 +248,9 @@
     overflow: hidden;
     color: transparent;
     text-indent: 100%;
+  }
+
+  .index-event-img {
+    height: auto;
   }
 }
