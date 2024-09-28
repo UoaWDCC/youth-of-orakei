@@ -1,21 +1,36 @@
 ---
-
+import "../styles/global.css";
+import "../styles/members.css";
+import Layout from "../layouts/layout.astro";
 import members from "../../public/members/membersData.json"
+import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
+import TeamDisplayRight from "../components/TeamDisplayRight.astro";
+import ProjectTeam from "../components/ProjectTeam.tsx";
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
 import { getTeamsDescriptions } from "../scripts/getTeamDescription";
+
 let { teamsDict, projects } =
-  sortMembersByTeam(members);
+    sortMembersByTeam(members);
 let teamDescription = await getTeamsDescriptions();
 console.log(teamsDict);
 console.log(teamDescription);
 
-import "../styles/global.css";
-import "../styles/members.css";
+function mapTeamWithDesc(teams: any, teamDescription: any) {
+  return Object.keys(teams)
+      .map(teamName => {
+        const description = teamDescription.find(desc => desc.name === teamName);
+        if (teamDescription) {
+          return {
+            teamName,
+            members: teams[teamName],
+            description: teamDescription.description
+          };
+        }
+        return null;
+      })
+      .filter(Boolean);
+}
 
-import Layout from "../layouts/layout.astro";
-import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
-import TeamDisplayRight from "../components/TeamDisplayRight.astro";
-import ProjectTeam from "../components/ProjectTeam.tsx";
 ---
 
 <html lang="en">
