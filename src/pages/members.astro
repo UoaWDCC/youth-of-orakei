@@ -12,18 +12,16 @@ import { getTeamsDescriptions } from "../scripts/getTeamDescription";
 let { teamsDict, projects } =
     sortMembersByTeam(members);
 let teamDescription = await getTeamsDescriptions();
-console.log(teamsDict);
-console.log(teamDescription);
 
 function mapTeamWithDesc(teams: any, teamDescription: any) {
   return Object.keys(teams)
       .map(teamName => {
         const description = teamDescription.find((desc: any) => desc.name === teamName);
-        if (teamDescription) {
+        if (description) {
           return {
             teamName,
             members: teams[teamName],
-            description: teamDescription.description
+            description: description.description
           };
         }
         return null;
@@ -31,6 +29,7 @@ function mapTeamWithDesc(teams: any, teamDescription: any) {
       .filter(Boolean);
 }
 console.log(mapTeamWithDesc(teamsDict, teamDescription));
+let teamWithDesc = mapTeamWithDesc(teamsDict, teamDescription);
 ---
 
 <html lang="en">
@@ -91,9 +90,11 @@ console.log(mapTeamWithDesc(teamsDict, teamDescription));
         }
       });
     </script>
-    {Object.keys(teamsDict).forEach((teamName: string) => {
-
-    })}
+    {teamWithDesc.map((team, index: number) => (
+      index % 2 === 0 ?
+          <TeamDisplayLeft teamName={team.teamName} team={team.members} teamDescription={team.description} /> :
+          <TeamDisplayRight teamName={team.teamName} team={team.members} teamDescription={team.description} />
+    ))}
     <ProjectTeam client:only="react" projects={projects} />
   
   </Layout>

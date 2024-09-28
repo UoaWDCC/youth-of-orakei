@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import MembersDisplay from "./MembersDisplay.astro";
-const { team } = Astro.props;
+const { teamName, team, teamDescription } = Astro.props;
 ---
 
 <html lang="en">
@@ -16,13 +16,9 @@ const { team } = Astro.props;
   <body>
     <div class="leadership" id="leadership-section">
       <div class="left1">
-        <h2 class="lead-title"><b>Leadership Team</b></h2>
+        <h2 class="lead-title"><b>{teamName}</b></h2>
         <p class="main-description-box-lead">
-          Description of the leadership team... Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Integer sit amet fringilla libero.
-          Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
-          turpis ante.
+          {teamDescription}
         </p>
       </div>
       <div class="right1">
