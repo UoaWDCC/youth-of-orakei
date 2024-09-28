@@ -32,7 +32,7 @@ export default function PastProjectsList({ projects }: PastProjectsListProps) {
         return (
           <div key={index} className="past-project-container" style={{ backgroundColor: headerColour, position: "relative", padding: "10px" }}>
             <div className="index-event-img">
-              <img src={project.cover} alt={project.alt} style={{ height: "1000px", width: "100%", objectFit: "cover", borderRadius: "var(--common-radius)", opacity: "0.8" }} />
+              <img src={project.cover} alt={project.alt} />
             </div>
             <div className="project-team" style={{ backgroundColor: headerColour, color: infoColour }}>
               <h2 className="index-heading">{project.team}</h2>

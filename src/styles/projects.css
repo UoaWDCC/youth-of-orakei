@@ -2,6 +2,14 @@
   background-color: var(--YOO-Green-Lightest);
 }
 
+.index-event-img img {
+  height: 1000px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--common-radius);
+  opacity: 0.8;
+}
+
 .recent-projects-banner {
   width: 100%;
   height: 225px;
@@ -210,10 +218,10 @@
 
 
   .project-right-corner-element {
-    /* position: absolute; */
+    position: absolute;
     bottom: 0;
-    /* margin-left: 170px; */
-    margin-left: 30%;
+    margin-left: 170px;
+    /* margin-left: 30%; */
     margin-bottom: 10px;
     background-color: transparent;
     border-bottom-left-radius: var(--common-radius);
