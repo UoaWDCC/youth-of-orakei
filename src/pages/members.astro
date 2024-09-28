@@ -4,6 +4,8 @@ import members from "../../public/members/membersData.json"
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
 let { leadershipTeam, communicationTeam, projects } =
   sortMembersByTeam(members);
+const memberData = [leadershipTeam, communicationTeam];
+
 import "../styles/global.css";
 import "../styles/members.css";
 
@@ -75,25 +77,12 @@ import BlobBackground from "../components/BlobBackground/BlobBackground";
         }
       });
     </script>
-    <TeamDisplayLeft team={leadershipTeam} />
-    <TeamDisplayRight team={communicationTeam} />
+    {memberData.map((team, index) => (
+        index % 2 == 0 ?
+            <TeamDisplayLeft team={team} key={index} /> :
+            <TeamDisplayRight team={team} key={index} />
+    ))}
     <ProjectTeam client:only="react" projects={projects} />
-    <!-- <ProjectTeam team={projects} /> -->
-    <!-- <ProjectTeam client:load /> -->
-    <!-- <ProjectTeam client:visible /> -->
-   <!--  <div class="members">
-      {/* Display specific project team by index */}
-      {
-        projects[3].members.map((member) => (
-          <PersonCard
-            cover={member.cover}
-            name={member.name}
-            team={member.team}
-            desc={member.desc}
-          />
-        ))
-      }
-    </div> -->
   
   </Layout>
 </section>
