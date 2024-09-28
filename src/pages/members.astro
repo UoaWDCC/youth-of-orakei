@@ -18,7 +18,7 @@ console.log(teamDescription);
 function mapTeamWithDesc(teams: any, teamDescription: any) {
   return Object.keys(teams)
       .map(teamName => {
-        const description = teamDescription.find(desc => desc.name === teamName);
+        const description = teamDescription.find((desc: any) => desc.name === teamName);
         if (teamDescription) {
           return {
             teamName,
@@ -30,7 +30,7 @@ function mapTeamWithDesc(teams: any, teamDescription: any) {
       })
       .filter(Boolean);
 }
-
+console.log(mapTeamWithDesc(teamsDict, teamDescription));
 ---
 
 <html lang="en">
