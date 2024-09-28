@@ -2,9 +2,12 @@
 
 import members from "../../public/members/membersData.json"
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
-let { leadershipTeam, communicationTeam, projects } =
+import { getTeamsDescriptions } from "../scripts/getTeamDescription";
+let { teamsDict, projects } =
   sortMembersByTeam(members);
-const memberData = [leadershipTeam, communicationTeam];
+let teamDescription = await getTeamsDescriptions();
+console.log(teamsDict);
+console.log(teamDescription);
 
 import "../styles/global.css";
 import "../styles/members.css";
@@ -13,10 +16,6 @@ import Layout from "../layouts/layout.astro";
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
-import MemberDisplay from "../components/MembersDisplay.astro";
-// import MembersDisplay from "../components/MembersDisplay.astro";
-import PersonCard from "../components/PersonCard.tsx";
-import BlobBackground from "../components/BlobBackground/BlobBackground";
 ---
 
 <html lang="en">
@@ -77,11 +76,9 @@ import BlobBackground from "../components/BlobBackground/BlobBackground";
         }
       });
     </script>
-    {memberData.map((team, index) => (
-        index % 2 == 0 ?
-            <TeamDisplayLeft team={team} key={index} /> :
-            <TeamDisplayRight team={team} key={index} />
-    ))}
+    {Object.keys(teamsDict).forEach((teamName: string) => {
+
+    })}
     <ProjectTeam client:only="react" projects={projects} />
   
   </Layout>

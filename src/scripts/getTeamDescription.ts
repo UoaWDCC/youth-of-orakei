@@ -34,7 +34,7 @@ export async function getTeamsDescriptions(): Promise<TeamDescriptions[]> {
           description: row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "",
           tags: row.properties.Tags.select.name ?  row.properties.Tags.select.name : "",
       };
-  });
+    });
   
     return teams;
 }
