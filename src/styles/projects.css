@@ -4,6 +4,8 @@
 
 .index-event-img {
   height: auto;
+  max-height: 1000px;
+  min-height: 400px;
   width: 100%;
 }
 
@@ -251,6 +253,15 @@
   }
 
   .index-event-img {
-    height: auto;
+    height: 350px;
+    width: 100%;
+  }
+
+  .index-event-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--common-radius);
+    opacity: 0.8;
   }
 }
