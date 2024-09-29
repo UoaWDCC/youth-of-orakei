@@ -9,14 +9,34 @@ import ProjectTeam from "../components/ProjectTeam.tsx";
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
 import { getTeamsDescriptions } from "../scripts/getTeamDescription";
 
+type MemberData = {
+  team: string;
+  desc: string;
+  name: string;
+  cover: string;
+  url?: string;
+}
+
+type TeamDescriptions = {
+  name: string;
+  description?: string;
+  tags?: string;
+}
+
+type Team = {
+  teamName: string;
+  members: MemberData[];
+  description: string | undefined;
+}
+
 let { teamsDict, projects } =
     sortMembersByTeam(members);
-let teamDescription = await getTeamsDescriptions();
+let teamDescription: TeamDescriptions[] = await getTeamsDescriptions();
 
-function mapTeamWithDesc(teams: any, teamDescription: any) {
+function mapTeamWithDesc(teams: {[teamName: string]: MemberData[]}, teamDescription: TeamDescriptions[]) {
   return Object.keys(teams)
       .map(teamName => {
-        const description = teamDescription.find((desc: any) => desc.name === teamName);
+        const description = teamDescription.find((desc: TeamDescriptions) => desc.name === teamName);
         if (description) {
           return {
             teamName,
@@ -28,7 +48,7 @@ function mapTeamWithDesc(teams: any, teamDescription: any) {
       })
       .filter(Boolean);
 }
-console.log(mapTeamWithDesc(teamsDict, teamDescription));
+
 let teamWithDesc = mapTeamWithDesc(teamsDict, teamDescription);
 ---
 
@@ -90,7 +110,7 @@ let teamWithDesc = mapTeamWithDesc(teamsDict, teamDescription);
         }
       });
     </script>
-    {teamWithDesc.map((team, index: number) => (
+    {teamWithDesc.map((team: Team, index: number) => (
       index % 2 === 0 ?
           <TeamDisplayLeft teamName={team.teamName} team={team.members} teamDescription={team.description} /> :
           <TeamDisplayRight teamName={team.teamName} team={team.members} teamDescription={team.description} />

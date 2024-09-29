@@ -5,7 +5,7 @@ import type { teamRow } from "../types/teamRow"
 
 type TeamDescriptions = {
   name: string;
-  desc?: string;
+  description?: string;
   tags?: string;
 }
 
