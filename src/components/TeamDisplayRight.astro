@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import PersonCard from "./PersonCard.tsx";
+import MembersDisplay from "./MembersDisplay.astro";
 const { teamName, team, teamDescription } = Astro.props;
 ---
 
@@ -22,7 +23,8 @@ const { teamName, team, teamDescription } = Astro.props;
               name={member.name}
               team={member.team}
               desc={member.desc}
-              cover={member.cover} 
+              cover={member.cover}
+              color={"--YOO-Blue-Light"}
             />
           ))
         }

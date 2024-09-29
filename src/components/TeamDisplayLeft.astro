@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import MembersDisplay from "./MembersDisplay.astro";
+import PersonCard from "./PersonCard.tsx";
 const { teamName, team, teamDescription } = Astro.props;
 ---
 
@@ -23,11 +24,12 @@ const { teamName, team, teamDescription } = Astro.props;
       </div>
       <div class="right1">
         {team.map((member: { name: any; team: any; desc: any; cover: any; }) => (
-          <MembersDisplay
+          <PersonCard
             name={member.name}
             team={member.team}
             desc={member.desc}
-            cover={member.cover} 
+            cover={member.cover}
+            color={"--YOO-Green-Lightest"}
           />
         ))}
       </div>
