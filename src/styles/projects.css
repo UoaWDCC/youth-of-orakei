@@ -264,4 +264,16 @@
   .index-event-img img {
     height: 100%;
   }
+
+  .index-event-details h5 {
+    font-size: var(--fontsize-h6);
+  }
+
+  .index-event-title h2 {
+    font-size: var(--fontsize-h5);
+  }
+
+  .index-event-description h5 {
+    font-size: var(--fontsize-reg);
+  }
 }
