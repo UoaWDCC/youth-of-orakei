@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import "../styles/global.css";
 import "../styles/members.css";
 
@@ -27,11 +27,27 @@ const getClassName = (team: string) => {
 
 const PersonCard: React.FC<PersonCardProps> = ({ team, desc, name, cover }) => {
   const className = getClassName(team);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const response = await fetch(`/api/images/${cover}`);
+        if (!response.ok) throw new Error('Image not found');
+        const blob = await response.blob();
+        setImageSrc(URL.createObjectURL(blob));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchImage();
+  }, [cover]);
 
   return (
     <div className="person-card">
       <div className="img-wrapper">
-        <img src={cover} alt={name} />
+        {imageSrc ? <img src={imageSrc} alt={name} /> : <p>Loading...</p>} {/* Show loading state */}
       </div>
       <p className={className}>
         <b>{name}</b><br />

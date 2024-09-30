@@ -112,8 +112,10 @@ export async function getMembers(): Promise<Member[]> {
                 console.log(`Image ${imageName} downloaded and saved.`);
             }
 
-            // Update the member's cover to point to the local file path
-            member.cover = `/api/members/${imageName}`;
+          
+            member.cover = `${sanitizedFileName}.webp`; // Only the file name, no path
+
+
         } catch (err) {
             console.error(`Failed to download or process image for ${member.name}:`, err);
         }
