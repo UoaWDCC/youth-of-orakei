@@ -7,6 +7,7 @@
   max-height: 1000px;
   min-height: 400px;
   width: 100%;
+  object-fit: cover;
 }
 
 .index-event-img img {
@@ -235,7 +236,6 @@
   .index-heading {
     font-size: var(--fontsize-h4);
   }
-
 
   .project-team-right-corner-element {
     content: "";
