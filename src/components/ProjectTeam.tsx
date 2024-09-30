@@ -67,6 +67,7 @@ const ProjectTeams = ({ projects }: ProjectTeamsProps) => {
               name={member.name}
               team={member.team}
               desc={member.desc}
+              color={"--YOO-Red-Light"}
             />
           );
         })}
