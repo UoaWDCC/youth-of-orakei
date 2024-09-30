@@ -1,9 +1,8 @@
 ---
 
-import members from "../../data/members/membersData.json"
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
-let { leadershipTeam, communicationTeam, projects } =
-  sortMembersByTeam(members);
+import path from "path"
+import fs from "fs"
 import "../styles/global.css";
 import "../styles/members.css";
 
@@ -11,6 +10,20 @@ import Layout from "../layouts/layout.astro";
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
+
+// Dynamically read membersData.json from the Fly.io volume
+const membersFilePath = path.join("/data/members", "membersData.json");
+let members;
+try {
+  const data = fs.readFileSync(membersFilePath, "utf-8");
+  members = JSON.parse(data);
+} catch (err) {
+  console.error("Error reading members data:", err);
+  members = [];  // Fallback to empty array or handle the error appropriately
+}
+
+let { leadershipTeam, communicationTeam, projects } =
+  sortMembersByTeam(members);
 ---
 
 <html lang="en">

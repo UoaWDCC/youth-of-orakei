@@ -3,7 +3,7 @@ import path from 'path';
 import axios from 'axios';
 import sharp from 'sharp';
 import sanitizeFilename from '../utils/sanitizeFilename';
-import { Client } from "@notionhq/client"; // Notion API client
+import { Client } from "@notionhq/client";
 import type { memberRow } from "../types/memberRow";
 
 interface Member {
@@ -15,22 +15,30 @@ interface Member {
 
 // Helper function to ensure the directory exists
 async function ensureDirectoryExists(directoryPath: string): Promise<void> {
-    if (!fs.existsSync(directoryPath)) {
-        fs.mkdirSync(directoryPath, { recursive: true });
-        console.log(`Directory ${directoryPath} created.`);
+    try {
+        if (!fs.existsSync(directoryPath)) {
+            fs.mkdirSync(directoryPath, { recursive: true });
+            console.log(`Directory ${directoryPath} created.`);
+        }
+    } catch (err) {
+        console.error(`Failed to create directory ${directoryPath}:`, err);
     }
 }
 
 // Helper function to clean up old images not part of the current member list
 async function cleanupOldImages(membersFolderPath: string, validImageNames: string[]): Promise<void> {
-    const files = fs.readdirSync(membersFolderPath);
-    files.forEach((file: string) => {
-        if (!validImageNames.includes(file)) {
-            const filePath = path.join(membersFolderPath, file);
-            fs.unlinkSync(filePath);
-            console.log(`Deleted old image: ${file}`);
-        }
-    });
+    try {
+        const files = fs.readdirSync(membersFolderPath);
+        files.forEach((file: string) => {
+            if (!validImageNames.includes(file)) {
+                const filePath = path.join(membersFolderPath, file);
+                fs.unlinkSync(filePath);
+                console.log(`Deleted old image: ${file}`);
+            }
+        });
+    } catch (err) {
+        console.error(`Failed to clean up old images:`, err);
+    }
 }
 
 // Main function to get members, update covers, and return the sanitized members data
@@ -54,15 +62,15 @@ export async function getMembers(): Promise<Member[]> {
     const memberspages = query.results as memberRow[];
     const members: Member[] = memberspages.map((row) => {
         return {
-            team: row.properties.Team.rich_text[0] ? row.properties.Team.rich_text[0].plain_text : "",
-            desc: row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "",
-            name: row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : "",
-            cover: row.cover?.type == "external" ? row.cover?.external.url : row.cover?.file.url ?? ""
+            team: row.properties.Team.rich_text[0]?.plain_text ?? "",
+            desc: row.properties.Description.rich_text[0]?.plain_text ?? "",
+            name: row.properties.Name.title[0]?.plain_text ?? "",
+            cover: row.cover?.type === "external" ? row.cover?.external.url : row.cover?.file.url ?? ""
         };
     });
 
-    const membersFolderPath = path.join(process.cwd(), 'data/members'); 
-    const jsonFilePath = path.join(membersFolderPath, 'membersData.json'); // Path for storing members data in JSONath for storing members data in JSON
+    const membersFolderPath = path.join("/data", 'members'); // Using absolute path for Fly.io volume
+    const jsonFilePath = path.join(membersFolderPath, 'membersData.json'); // Path for storing members data in JSON
 
     // Ensure the 'members' directory exists
     await ensureDirectoryExists(membersFolderPath);
@@ -85,26 +93,30 @@ export async function getMembers(): Promise<Member[]> {
         const imageName = `${sanitizedFileName}.webp`;
         const imagePath = path.join(membersFolderPath, imageName);
 
-        // Check if the image already exists, if not download and convert
-        if (!fs.existsSync(imagePath)) {
-            const response = await axios({
-                url: member.cover,
-                method: 'GET',
-                responseType: 'arraybuffer',
-            });
+        try {
+            // Check if the image already exists, if not download and convert
+            if (!fs.existsSync(imagePath)) {
+                const response = await axios({
+                    url: member.cover,
+                    method: 'GET',
+                    responseType: 'arraybuffer',
+                });
 
-            // Convert to WebP format and save locally
-            const compressedImageBuffer = await sharp(response.data)
-                .webp({ quality: 60 })
-                .resize({ width: 500 })
-                .toBuffer();
+                // Convert to WebP format and save locally
+                const compressedImageBuffer = await sharp(response.data)
+                    .webp({ quality: 60 })
+                    .resize({ width: 500 })
+                    .toBuffer();
 
-            fs.writeFileSync(imagePath, new Uint8Array(compressedImageBuffer));
-            console.log(`Image ${imageName} downloaded and saved.`);
+                fs.writeFileSync(imagePath, new Uint8Array(compressedImageBuffer));
+                console.log(`Image ${imageName} downloaded and saved.`);
+            }
+
+            // Update the member's cover to point to the local file path
+            member.cover = `/members/${imageName}`;
+        } catch (err) {
+            console.error(`Failed to download or process image for ${member.name}:`, err);
         }
-
-        // Update the member's cover to point to the local file path
-        member.cover = `/members/${imageName}`;
     });
 
     // Wait for all images to be downloaded and processed
@@ -113,8 +125,12 @@ export async function getMembers(): Promise<Member[]> {
     console.log('All images downloaded and processed.');
 
     // Write members to a JSON file
-    fs.writeFileSync(jsonFilePath, JSON.stringify(members, null, 2));
-    console.log(`Members data saved to ${jsonFilePath}`);
+    try {
+        fs.writeFileSync(jsonFilePath, JSON.stringify(members, null, 2));
+        console.log(`Members data saved to ${jsonFilePath}`);
+    } catch (err) {
+        console.error(`Failed to save members data to JSON file:`, err);
+    }
 
     // Return the updated members array
     return members;
