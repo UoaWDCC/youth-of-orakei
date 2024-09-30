@@ -162,6 +162,12 @@
     "cover": "/members/projects_schmetterlinge_paidashe.webp"
   },
   {
+    "team": "Projects: Fermata",
+    "desc": "Project Member",
+    "name": "pog",
+    "cover": ""
+  },
+  {
     "team": "Leadership Team",
     "desc": "Council Engagement Lead",
     "name": "Rashmi",
@@ -246,9 +252,9 @@
     "cover": "/members/leadership_team_yixuan.webp"
   },
   {
-    "team": "",
-    "desc": "",
-    "name": "zzz",
-    "cover": "/members/_zzz.webp"
+    "team": "Yas team",
+    "desc": "Member",
+    "name": "yues",
+    "cover": ""
   }
 ]
