@@ -58,7 +58,7 @@ export async function getProjects(): Promise<{ projects: ProjectData[], carousel
   }
 
   const notion = new Client({ auth: NOTION_TOKEN });
-  const projectsFolderPath = path.join('/data', 'projects');
+  const projectsFolderPath = path.join(process.cwd(), 'data/projects');
 
   await ensureDirectoryExists(projectsFolderPath);
 
