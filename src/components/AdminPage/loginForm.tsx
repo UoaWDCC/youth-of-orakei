@@ -4,7 +4,6 @@ import RefreshSection from './RefreshSection';
 
 const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
-  const [newPassword, setNewPassword] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -62,10 +61,7 @@ const LoginForm = () => {
           </form>
         ) : (
           <RefreshSection
-            newPassword={newPassword}
-            setNewPassword={setNewPassword}
             setErrorMessage={setErrorMessage}
-            handleKeyDown={handleKeyDown}
             password={password}
           />
         )}

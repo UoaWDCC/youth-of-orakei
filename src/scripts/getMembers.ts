@@ -113,7 +113,7 @@ export async function getMembers(): Promise<Member[]> {
             }
 
             // Update the member's cover to point to the local file path
-            member.cover = `/members/${imageName}`;
+            member.cover = `/api/members/${imageName}`;
         } catch (err) {
             console.error(`Failed to download or process image for ${member.name}:`, err);
         }

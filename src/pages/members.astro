@@ -87,23 +87,6 @@ let { leadershipTeam, communicationTeam, projects } =
     <TeamDisplayLeft team={leadershipTeam} />
     <TeamDisplayRight team={communicationTeam} />
     <ProjectTeam client:only="react" projects={projects} />
-    <!-- <ProjectTeam team={projects} /> -->
-    <!-- <ProjectTeam client:load /> -->
-    <!-- <ProjectTeam client:visible /> -->
-   <!--  <div class="members">
-      {/* Display specific project team by index */}
-      {
-        projects[3].members.map((member) => (
-          <PersonCard
-            cover={member.cover}
-            name={member.name}
-            team={member.team}
-            desc={member.desc}
-          />
-        ))
-      }
-    </div> -->
-  
   </Layout>
 </section>
 </html>
