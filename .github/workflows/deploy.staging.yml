@@ -53,7 +53,8 @@ jobs: # remove these tests in production - Anton
 
         - name: Create Fly volume (if not exists)
           run: |
-            flyctl volumes create wdcc_orakei_staging_storage --region syd --size 1
+            flyctl volumes create wdcc_orakei_staging_storage --region syd --size 1 --app wdcc-youth-of-orakei-staging
+
 
         - name: Fly deploy
           run: flyctl deploy --build-arg ANTON=${{ secrets.ANTON }} --build-arg WEBFORMS_TOKEN=${{ secrets.WEBFORMS_TOKEN }} --build-arg NOTION_MEMBERS_ID=${{ secrets.NOTION_MEMBERS_ID }} --build-arg NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} --build-arg NOTION_PROJECTS_ID=${{ secrets.NOTION_PROJECTS_ID }} --build-arg NOTION_TEAMS_ID=${{ secrets.NOTION_TEAMS_ID}} --build-arg NOTION_HOMEPAGE_ID=${{ secrets.NOTION_HOMEPAGE_ID}} --build-arg NOTION_REFRESH_ID=${{ secrets.NOTION_REFRESH_ID}} --remote-only --config fly.staging.toml
