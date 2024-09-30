@@ -10,6 +10,7 @@ New navbar (see header.astro in components folder for previous version)
 const Navbar = () => {
     const [silly, setSilly] = React.useState(false);
     const [typedText, setTypedText] = React.useState('');
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
     const sillyHandler = () => {
         if (!silly) {
@@ -20,6 +21,10 @@ const Navbar = () => {
         else {
             setSilly(false);
         }
+    }
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen); // Toggle the mobile menu
     }
 
     /* Adds the silly rotation animation to selected elements. The code is kinda scrappy for it lol */
@@ -85,6 +90,20 @@ const Navbar = () => {
                 />
                 <span className={styles.logoText}>Youth of Ōrākei</span>
             </a>
+
+            {/* Hamburger menu for mobile view */}
+            <button className={styles.hamburger} onClick={toggleMobileMenu}>
+                <span className={styles.hamburgerIcon}></span>
+            </button>
+
+            {/* Mobile menu */}
+            <nav className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.open : ''}`}>
+                <a href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
+                <a href="/projects" onClick={() => setIsMobileMenuOpen(false)}>Projects</a>
+                <a href="/members" onClick={() => setIsMobileMenuOpen(false)}>Members</a>
+                <a href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
+            </nav>
+
             <nav className={styles.links}>
                 <a href="/">Home</a>
                 <a href="/projects">Projects</a>
