@@ -10,6 +10,14 @@
     pointer-events: none;
 }
 
+.index-wrapper{
+    position: relative;
+    overflow: hidden;
+
+    margin-top: -100px;
+    padding-top: 100px;
+}
+
 .hero{
     display: flex;
     flex-direction: column;
