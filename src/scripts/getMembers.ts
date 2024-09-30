@@ -1,48 +1,42 @@
-import fs from 'fs';
-import path from 'path';
 import axios from 'axios';
 import sharp from 'sharp';
-import sanitizeFilename from '../utils/sanitizeFilename';
-import { Client } from "@notionhq/client";
+import { PrismaClient } from '@prisma/client';
 import type { memberRow } from "../types/memberRow";
+import { Client } from "@notionhq/client";
+
+const prisma = new PrismaClient();
 
 interface Member {
     team: string;
     name: string;
     desc: string;
-    cover: string; // This will store the local file path
+    cover: string; // This will store the compressed image binary data as a buffer
 }
 
-// Helper function to ensure the directory exists
-async function ensureDirectoryExists(directoryPath: string): Promise<void> {
+// Helper function to download and compress image to a buffer
+async function downloadAndCompressImage(imageUrl: string): Promise<Buffer> {
     try {
-        if (!fs.existsSync(directoryPath)) {
-            fs.mkdirSync(directoryPath, { recursive: true });
-            console.log(`Directory ${directoryPath} created.`);
-        }
-    } catch (err) {
-        console.error(`Failed to create directory ${directoryPath}:`, err);
-    }
-}
-
-// Helper function to clean up old images not part of the current member list
-async function cleanupOldImages(membersFolderPath: string, validImageNames: string[]): Promise<void> {
-    try {
-        const files = fs.readdirSync(membersFolderPath);
-        files.forEach((file: string) => {
-            if (!validImageNames.includes(file)) {
-                const filePath = path.join(membersFolderPath, file);
-                fs.unlinkSync(filePath);
-                console.log(`Deleted old image: ${file}`);
-            }
+        const response = await axios({
+            url: imageUrl,
+            method: 'GET',
+            responseType: 'arraybuffer',
         });
+
+        // Compress the image to WebP format in memory (not writing to disk)
+        const compressedImageBuffer = await sharp(response.data)
+            .webp({ quality: 60 })
+            .resize({ width: 500 })
+            .toBuffer();
+
+        return compressedImageBuffer;
     } catch (err) {
-        console.error(`Failed to clean up old images:`, err);
+        console.error(`Failed to download or process image:`, err);
+        throw err;
     }
 }
 
-// Main function to get members, update covers, and return the sanitized members data
-export async function getMembers(): Promise<Member[]> {
+// Main function to get members, compress images, and save to the database
+export async function getMembers(): Promise<void> {
     const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
     const NOTION_MEMBERS_ID = process.env.NOTION_MEMBERS_ID || import.meta.env.NOTION_MEMBERS_ID;
 
@@ -69,71 +63,36 @@ export async function getMembers(): Promise<Member[]> {
         };
     });
 
-    const membersFolderPath = path.join("/data", 'members'); // Using absolute path for Fly.io volume
-    const jsonFilePath = path.join(membersFolderPath, 'membersData.json'); // Path for storing members data in JSON
-
-    // Ensure the 'members' directory exists
-    await ensureDirectoryExists(membersFolderPath);
-
     // Filter members that have cover images
     const membersWithCover = members.filter(member => member.cover);
 
-    // Generate the list of valid image filenames
-    const validImageNames = membersWithCover.map((member) => {
-        const sanitizedFileName = sanitizeFilename(`${member.team}_${member.name}`);
-        return `${sanitizedFileName}.webp`;
-    });
-
-    // Clean up old images not in the current list
-    await cleanupOldImages(membersFolderPath, validImageNames);
-
-    // Process each member's cover image
-    const downloadPromises = membersWithCover.map(async (member) => {
-        const sanitizedFileName = sanitizeFilename(`${member.team}_${member.name}`);
-        const imageName = `${sanitizedFileName}.webp`;
-        const imagePath = path.join(membersFolderPath, imageName);
-
+    // Loop through each member, download, compress the image, then store in the database
+    for (const member of membersWithCover) {
         try {
-            // Check if the image already exists, if not download and convert
-            if (!fs.existsSync(imagePath)) {
-                const response = await axios({
-                    url: member.cover,
-                    method: 'GET',
-                    responseType: 'arraybuffer',
-                });
+            // Download and compress the image into a buffer
+            const compressedImageBuffer = await downloadAndCompressImage(member.cover);
 
-                // Convert to WebP format and save locally
-                const compressedImageBuffer = await sharp(response.data)
-                    .webp({ quality: 60 })
-                    .resize({ width: 500 })
-                    .toBuffer();
+            // Save the member to the database using Prisma, storing the image data as binary (buffer)
+            await prisma.member.upsert({
+                where: { name: member.name },
+                update: {
+                    team: member.team,
+                    description: member.desc,
+                    cover: compressedImageBuffer, // Store binary image data
+                },
+                create: {
+                    team: member.team,
+                    name: member.name,
+                    description: member.desc,
+                    cover: compressedImageBuffer, // Store binary image data
+                }
+            });
 
-                fs.writeFileSync(imagePath, new Uint8Array(compressedImageBuffer));
-                console.log(`Image ${imageName} downloaded and saved.`);
-            }
-
-          
-            member.cover = `${sanitizedFileName}.webp`; // Only the file name, no path
-
-
+            console.log(`Member ${member.name} saved to the database with compressed image.`);
         } catch (err) {
-            console.error(`Failed to download or process image for ${member.name}:`, err);
+            console.error(`Failed to process member ${member.name}:`, err);
         }
-    });
-
-    // Wait for all images to be downloaded and processed
-    await Promise.all(downloadPromises);
-
-    console.log('All images downloaded and processed.');
-
-    // Write members to a JSON file
-    try {
-        fs.writeFileSync(jsonFilePath, JSON.stringify(members, null, 2));
-        console.log(`Members data saved to ${jsonFilePath}`);
-    } catch (err) {
-        console.error(`Failed to save members data to JSON file:`, err);
     }
 
-    // Return the updated members array
-    return members;
+    console.log('All members data and images saved to the database.');
 }
