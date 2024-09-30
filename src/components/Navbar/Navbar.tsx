@@ -1,7 +1,9 @@
 import styles from './nav.module.css'
 import React from "react";
-import { Simulate } from "react-dom/test-utils";
+import {Simulate} from "react-dom/test-utils";
+import {Bars3Icon, XMarkIcon} from "@heroicons/react/20/solid";
 import toggle = Simulate.toggle;
+
 
 /*
 New navbar (see header.astro in components folder for previous version)
@@ -17,8 +19,7 @@ const Navbar = () => {
             if (confirm("You've found the silly animation mode toggle! \nActivating this mode causes rapid, possibly flashing motion. You can turn it off any time by clicking the same button. \n\nWould you like to continue?")) {
                 setSilly(true);
             }
-        }
-        else {
+        } else {
             setSilly(false);
         }
     }
@@ -93,7 +94,11 @@ const Navbar = () => {
 
             {/* Hamburger menu for mobile view */}
             <button className={styles.hamburger} onClick={toggleMobileMenu}>
-                <span className={styles.hamburgerIcon}></span>
+                {isMobileMenuOpen ? (
+                    <XMarkIcon className="h-6 w-6" />
+                ) : (
+                    <Bars3Icon className="h-6 w-6" />
+                )}
             </button>
 
             {/* Mobile menu */}

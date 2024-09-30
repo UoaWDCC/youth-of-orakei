@@ -111,14 +111,71 @@
 
 
 /* TODO Navbar mobile */
+
 @media (max-width: 850px) {
-    .links{
-        display: none;
-    }
-    .menuToggleButton{
+    .hamburger {
         display: block;
     }
-    .mobileMenu{
+    .links {
         display: none;
     }
 }
+
+.hamburger {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburgerIcon {
+    width: 25px;
+    height: 2px;
+    background-color: black;
+    position: relative;
+}
+
+.hamburgerIcon::before,
+.hamburgerIcon::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background-color: black;
+}
+
+.hamburgerIcon::before {
+    top: -8px;
+}
+
+.hamburgerIcon::after {
+    bottom: -8px;
+}
+
+.mobileMenu {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+}
+
+.mobileMenu.open {
+    display: flex;
+}
+.mobileMenu a {
+    text-decoration: none;
+    padding: 0.5rem 0;
+    color: black;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.mobileMenu a:hover {
+    color: #007bff;
+}
+
+
