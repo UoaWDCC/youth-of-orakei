@@ -3,6 +3,13 @@ import { PrismaClient } from '@prisma/client';
 // Initialize Prisma Client
 const prisma = new PrismaClient();
 
+// Define the structure of the team with tags included
+type TeamWithTags = {
+  name: string;
+  description: string | null;
+  tags: { name: string }[]; // Array of tag objects with 'name' field
+};
+
 type TeamDescriptions = {
   name: string;
   description?: string;
@@ -10,29 +17,28 @@ type TeamDescriptions = {
 };
 
 export async function serveTeamDescriptions(): Promise<TeamDescriptions[]> {
-  let teamDescriptions: TeamDescriptions[] = []; // Explicitly type the result variable
+  let teamDescriptions: TeamDescriptions[] = [];
 
   try {
-    // Fetch team descriptions with their related tags
+  
     const descriptions = await prisma.teamDescription.findMany({
       include: {
-        tags: true, // Fetch related tags
+        tags: true, 
       },
-    });
+    }) as TeamWithTags[]; 
 
-    // Map the results to the TeamDescriptions type
+  
     teamDescriptions = descriptions.map((team) => ({
       name: team.name,
-      description: team.description ?? undefined, // Handle null values for description
-      tags: team.tags.map((tag) => tag.name) || [], // Convert tag objects to an array of tag names
+      description: team.description ?? undefined, 
+      tags: team.tags?.map((tag) => tag.name) || [], 
     }));
 
   } catch (err) {
     console.error("Error fetching team descriptions:", err);
-    teamDescriptions = []; // Fallback to an empty array in case of error
+    teamDescriptions = []; 
   } finally {
-    // Close Prisma Client connection
-    await prisma.$disconnect();
+    await prisma.$disconnect(); 
   }
 
   return teamDescriptions;
