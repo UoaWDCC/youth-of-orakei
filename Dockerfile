@@ -45,31 +45,37 @@ ENV SERVICE_KEY=${SERVICE_KEY}
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
-# Install packages needed to build node modules
+# Install packages needed to build node modules and for Prisma (including OpenSSL)
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
+    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3 openssl
 
 # Install node modules
-COPY --link package.json yarn.lock ./
+COPY --link package.json yarn.lock ./ 
 RUN yarn install --frozen-lockfile --production=false
 
 # Copy application code
 COPY --link . .
 
-RUN npx prisma generate
+# Generate Prisma client and run migrations
+RUN npx prisma generate && \
+    npx prisma migrate deploy && \
+    npx prisma migrate status
+
 # Build application
 RUN yarn run build
-RUN npx prisma migrate deploy
-RUN npx prisma migrate status
 
-# Remove development dependencies
+# Remove development dependencies to keep the final image small
 RUN yarn install --production=true
 
 # Final stage for app image
 FROM base
 
+# Install OpenSSL in the final image (since Prisma needs it to run)
+RUN apt-get update -qq && apt-get install --no-install-recommends -y openssl
+
 # Copy built application
 COPY --from=build /app/dist /app/dist
+
 # Copy node modules
 COPY --from=build /app/node_modules /app/node_modules
 

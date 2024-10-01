@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "test": "vitest",
-    "build": "astro check && astro build ",
+    "build": "npx prisma generate && astro check && astro build ",
     "preview": "astro preview",
     "astro": "astro"
   },
