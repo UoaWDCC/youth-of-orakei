@@ -1,8 +1,8 @@
 import { Client } from "@notionhq/client";
-// import { updateMembers } from "../../scripts/updateMembers.ts";
-// import { updateProjects } from "../../scripts/updateProjects.ts";
-// import { updateTeamsDescriptions } from "../../scripts/updateTeamDescription.ts";
-// import { updateHomepageDescriptions } from "../../scripts/updateHomepageDescriptions.ts";
+import { updateMembers } from "../../scripts/updateMembers.ts";
+import { updateProjects } from "../../scripts/updateProjects.ts";
+import { updateTeamsDescriptions } from "../../scripts/updateTeamDescription.ts";
+import { updateHomepageDescriptions } from "../../scripts/updateHomepageDescriptions.ts";
 import type { APIRoute } from 'astro';
 import type { passwordRow } from "../../types/passwordRow.ts";
 
@@ -58,10 +58,10 @@ export const POST: APIRoute = async ({ request }) => {
             
             if (password === notionPassword) {
                 try {
-                    // await updateMembers();
-                    // await updateProjects();
-                    // await updateHomepageDescriptions();
-                    // await updateTeamsDescriptions();
+                    await updateMembers();
+                    await updateProjects();
+                    await updateHomepageDescriptions();
+                    await updateTeamsDescriptions();
                     return new Response(JSON.stringify({ success: true }), { status: 200 });
                 } catch (err) {
                     console.error("Error during refresh data:", err);
