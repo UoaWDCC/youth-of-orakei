@@ -5,7 +5,7 @@ import axios from 'axios';
 import sharp from "sharp";
 import { supabase } from '../lib/supabaseClient'; // Adjust import based on your project structure
 import { supabaseUrl } from '../lib/supabaseClient';
-import {prisma} from "../lib/prisma.ts";
+import { prisma } from "../lib/prisma.ts";
 // Function to sanitize file names
 function sanitizeFileName(fileName: string): string {
     return fileName.replace(/[^a-z0-9-_.]/gi, '-'); // Replace invalid characters with hyphen

@@ -56,8 +56,11 @@ RUN yarn install --frozen-lockfile --production=false
 # Copy application code
 COPY --link . .
 
+RUN npx prisma generate
 # Build application
 RUN yarn run build
+RUN npx prisma migrate deploy
+RUN npx prisma migrate status
 
 # Remove development dependencies
 RUN yarn install --production=true

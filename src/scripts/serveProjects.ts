@@ -1,4 +1,4 @@
-import {prisma} from "../lib/prisma"
+import { prisma } from "../lib/prisma"
 // Define the CarouselItem type
 type CarouselItem = {
   heading: string;
