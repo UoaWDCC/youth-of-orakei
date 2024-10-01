@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client';
-import type { TeamDescription, TeamTag } from '@prisma/client'; // Use type-only import
 
 // Initialize Prisma Client
 const prisma = new PrismaClient();
@@ -15,17 +14,17 @@ export async function serveTeamDescriptions(): Promise<TeamDescriptions[]> {
 
   try {
     // Fetch team descriptions with their related tags
-    const descriptions: (TeamDescription & { tags: TeamTag[] })[] = await prisma.teamDescription.findMany({
+    const descriptions = await prisma.teamDescription.findMany({
       include: {
         tags: true, // Fetch related tags
       },
     });
 
     // Map the results to the TeamDescriptions type
-    teamDescriptions = descriptions.map((team: TeamDescription & { tags: TeamTag[] }) => ({
+    teamDescriptions = descriptions.map((team) => ({
       name: team.name,
       description: team.description ?? undefined, // Handle null values for description
-      tags: team.tags.map((tag: TeamTag) => tag.name) || [], // Convert tag objects to an array of tag names
+      tags: team.tags.map((tag) => tag.name) || [], // Convert tag objects to an array of tag names
     }));
 
   } catch (err) {
