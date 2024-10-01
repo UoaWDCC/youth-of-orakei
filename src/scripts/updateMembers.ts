@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { Client } from "@notionhq/client";
 import { PrismaClient } from '@prisma/client';
+import { supabase } from '../lib/supabaseClient';
+import { supabaseUrl } from '../lib/supabaseClient';
 import type { memberRow } from "../types/memberRow";
 
 const prisma = new PrismaClient();
@@ -10,6 +12,33 @@ interface Member {
     name: string;
     desc: string;
     cover: string | null; // URL of the cover image
+}
+
+// Function to download image from URL
+async function downloadImage(url: string): Promise<Buffer> {
+    const response = await axios.get(url, { responseType: 'arraybuffer' });
+    return Buffer.from(response.data, 'binary');
+}
+
+// Function to upload image to Supabase Storage
+async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Promise<string> {
+    const { data, error } = await supabase.storage.from('images').upload(filePath, imageBuffer);
+
+    if (error) {
+        throw new Error(`Failed to upload image: ${error.message}`);
+    }
+
+    // Return the public URL of the uploaded image
+    return `${supabaseUrl}/storage/v1/object/public/images/${filePath}`;
+}
+
+// Function to delete an image from Supabase Storage
+async function deleteImageFromSupabase(filePath: string): Promise<void> {
+    const { error } = await supabase.storage.from('images').remove([filePath]);
+    
+    if (error) {
+        console.error(`Failed to delete image: ${error.message}`);
+    }
 }
 
 // Main function to get members, update covers, and return the updated members data
@@ -41,6 +70,12 @@ export async function updateMembers(): Promise<Member[]> {
 
     // Process each member
     for (const member of members) {
+        if (member.cover) {
+            const imageBuffer = await downloadImage(member.cover); // Download image
+            const filePath = `members/${member.team}/${member.name.replace(/\s+/g, '-')}.jpg`; // Generate file path
+            member.cover = await uploadImageToSupabase(imageBuffer, filePath); // Upload to Supabase and get new URL
+        }
+
         // Check if the member already exists based on both name and team
         const existingMember = await prisma.member.findFirst({
             where: {
@@ -55,7 +90,7 @@ export async function updateMembers(): Promise<Member[]> {
                 where: { id: existingMember.id },
                 data: {
                     description: member.desc,
-                    cover: member.cover // Store the cover URL
+                    cover: member.cover // Store the Supabase URL
                 }
             });
             console.log(`Member ${member.name} updated in the database.`);
@@ -66,7 +101,7 @@ export async function updateMembers(): Promise<Member[]> {
                     team: member.team,
                     name: member.name,
                     description: member.desc,
-                    cover: member.cover // Store the cover URL
+                    cover: member.cover // Store the Supabase URL
                 }
             });
             console.log(`Member ${member.name} saved to the database.`);
@@ -83,6 +118,12 @@ export async function updateMembers(): Promise<Member[]> {
         );
 
         if (!existsInNotion) {
+           
+            if (existingMember.cover) {
+                const filePath = `members/${existingMember.team}/${existingMember.name.replace(/\s+/g, '-')}.jpg`; // Generate the file path
+                await deleteImageFromSupabase(filePath); // Delete image
+            }
+
             await prisma.member.delete({
                 where: { id: existingMember.id }
             });
@@ -92,5 +133,5 @@ export async function updateMembers(): Promise<Member[]> {
 
     console.log('All members processed.');
 
-    return members; // Optionally, return the updated members array
+    return members; 
 }
