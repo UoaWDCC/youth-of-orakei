@@ -1,13 +1,12 @@
 import { Client } from "@notionhq/client";
 import { fetchPageBlocks } from "./fetchPageBlocks.ts";
 import { getPage } from "./getPageDescriptions.ts";
-import { PrismaClient } from '@prisma/client';
 import axios from 'axios';
 import sharp from "sharp";
 import { supabase } from '../lib/supabaseClient';
 import { supabaseUrl } from '../lib/supabaseClient';
 
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma"
 
 type Description = {
     heading: string;

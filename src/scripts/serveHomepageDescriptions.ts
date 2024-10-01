@@ -1,7 +1,5 @@
 // src/lib/fetchHomepageDescriptions.ts
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma";
 
 /**
  * Fetches homepage descriptions from the Prisma database.

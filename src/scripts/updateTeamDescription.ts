@@ -1,7 +1,6 @@
 import { Client } from "@notionhq/client";
-import { PrismaClient } from '@prisma/client'; // Import PrismaClient
 import type { teamRow } from "../types/teamRow";
-
+import prisma from "../lib/prisma";
 type TeamDescriptions = {
     name: string;
     description?: string;
@@ -14,7 +13,7 @@ export async function updateTeamsDescriptions(): Promise<void> {
     if (!NOTION_TOKEN || !NOTION_TEAMS_ID) throw new Error("Missing secret(s)");
 
     const notion = new Client({ auth: NOTION_TOKEN });
-    const prisma = new PrismaClient();
+
 
     const query = await notion.databases.query({
         database_id: NOTION_TEAMS_ID,

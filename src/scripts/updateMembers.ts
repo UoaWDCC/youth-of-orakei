@@ -1,13 +1,10 @@
 import axios from 'axios';
 import sharp from "sharp";
 import { Client } from "@notionhq/client";
-import { PrismaClient } from '@prisma/client';
 import { supabase } from '../lib/supabaseClient';
 import { supabaseUrl } from '../lib/supabaseClient';
 import type { memberRow } from "../types/memberRow";
-
-const prisma = new PrismaClient();
-
+import prisma from "../lib/prisma"
 interface Member {
     team: string;
     name: string;

@@ -1,7 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-
-// Initialize Prisma Client
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma"
 
 // Define the structure of the team with tags included
 type TeamWithTags = {

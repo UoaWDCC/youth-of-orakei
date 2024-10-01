@@ -1,8 +1,8 @@
 import { Client } from "@notionhq/client";
-// import { updateMembers } from "../../scripts/updateMembers.ts";
-// import { updateProjects } from "../../scripts/updateProjects.ts";
-// import { updateTeamsDescriptions } from "../../scripts/updateTeamDescription.ts";
-// import { updateHomepageDescriptions } from "../../scripts/updateHomepageDescriptions.ts";
+import { updateMembers } from "../../scripts/updateMembers.ts";
+import { updateProjects } from "../../scripts/updateProjects.ts";
+import { updateTeamsDescriptions } from "../../scripts/updateTeamDescription.ts";
+import { updateHomepageDescriptions } from "../../scripts/updateHomepageDescriptions.ts";
 import type { APIRoute } from 'astro';
 import type { passwordRow } from "../../types/passwordRow.ts";
 

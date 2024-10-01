@@ -1,8 +1,7 @@
 // scripts/fetchMembers.ts
-import { PrismaClient } from '@prisma/client';
 import type { memberData } from '../types/memberData';
+import prisma from "../lib/prisma"
 
-const prisma = new PrismaClient();
 
 /**
  * Fetches members from the database.

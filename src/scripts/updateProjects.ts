@@ -1,11 +1,11 @@
 import { Client } from "@notionhq/client";
-import { PrismaClient } from '@prisma/client'; // Import PrismaClient
+
 import type { projectRow } from '../types/projectRow.ts';
 import axios from 'axios';
 import sharp from "sharp";
 import { supabase } from '../lib/supabaseClient'; // Adjust import based on your project structure
 import { supabaseUrl } from '../lib/supabaseClient';
-
+import prisma from "../lib/prisma.ts";
 // Function to sanitize file names
 function sanitizeFileName(fileName: string): string {
     return fileName.replace(/[^a-z0-9-_.]/gi, '-'); // Replace invalid characters with hyphen
@@ -43,7 +43,7 @@ export async function updateProjects(): Promise<void> {
     }
 
     const notion = new Client({ auth: NOTION_TOKEN });
-    const prisma = new PrismaClient(); // Initialize Prisma Client
+    
 
     try {
         const query = await notion.databases.query({
