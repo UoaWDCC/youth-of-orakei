@@ -108,13 +108,17 @@ export const POST: APIRoute = async ({ request }) => {
                 sendLog(controller, "Starting refresh process");
 
                 sendLog(controller, "Getting members");
-                await getMembers();
+                await updateMembers();
 
                 sendLog(controller, "Getting projects");
-                await getProjects();
+                await updateProjects();
 
                 sendLog(controller, "Getting homepage descriptions");
-                await getHomepageDescriptions();
+                await updateHomepageDescriptions();
+
+                sendLog(controller, "Getting team descriptions");
+                await updateTeamsDescriptions();
+
 
                 sendLog(controller, "Refresh process completed");
                 controller.close();

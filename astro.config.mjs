@@ -12,7 +12,7 @@ export default defineConfig({
     mode: 'standalone',
   }),
   server: ({ command }) => ({
-    port: command === 'dev' ? 4321 : 80,
+    port: command === 'dev' ? 4321 : 3000,
     host: '0.0.0.0',
   }),
 });
