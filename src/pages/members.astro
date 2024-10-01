@@ -2,7 +2,6 @@
 
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
 import path from "path"
-import fs from "fs"
 import "../styles/global.css";
 import "../styles/members.css";
 import {fetchMembers} from "../scripts/serveMembers"
@@ -11,8 +10,7 @@ import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
 
-// Dynamically read membersData.json from the Fly.io volume
-const membersFilePath = path.join("/data/members", "membersData.json");
+
 let members = await fetchMembers(); // Call the new function
 
 let { leadershipTeam, communicationTeam, projects } =
