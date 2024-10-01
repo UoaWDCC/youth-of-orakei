@@ -1,19 +1,6 @@
 import { Client } from "@notionhq/client";
 import { PrismaClient } from '@prisma/client'; // Import PrismaClient
-import { fetchPageBlocks } from "./fetchPageBlocks.ts";
-import { getPage } from "./getPageDescriptions.ts";
 import type { projectRow } from '../types/projectRow.ts';
-import sanitizeFilename from '../utils/sanitizeFilename.ts';
-
-type ProjectData = {
-  title: string;
-  date: string;
-  description: string;
-  cover: string;
-  team: string;
-  tags: string[];
-  id: string;
-}
 
 export async function updateProjects(): Promise<void> {
   const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
@@ -36,7 +23,8 @@ export async function updateProjects(): Promise<void> {
 
     const projectPromises = projectsRows.map(async (row) => {
       const title = row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : "";
-      const date = row.properties.Date.date ? row.properties.Date.date.start : "";
+      const dateStr = row.properties.Date.date ? row.properties.Date.date.start : "";
+      const date = dateStr ? new Date(dateStr) : null; // Convert string to Date object
       const description = row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "";
       const coverUrl = row.cover?.type === "external" ? row.cover?.external.url : row.cover?.file.url ?? "";
       const team = row.properties.Team.rich_text[0] ? row.properties.Team.rich_text[0].plain_text : "";
@@ -50,9 +38,9 @@ export async function updateProjects(): Promise<void> {
         title,
         date,
         description,
-        cover: coverPath, // Updated to point to the cover URL
+        cover: coverPath, 
         team,
-        tags, // No need for type assertion here
+        tags,
         id
       };
     });
@@ -63,10 +51,10 @@ export async function updateProjects(): Promise<void> {
     // Store projects in the Prisma database
     for (const project of projects) {
       await prisma.project.upsert({
-        where: { id: project.id }, // Use the project's ID for uniqueness
+        where: { id: project.id },
         create: {
           title: project.title,
-          date: project.date,
+          date: project.date, 
           description: project.description,
           cover: project.cover,
           team: project.team,
@@ -96,6 +84,6 @@ export async function updateProjects(): Promise<void> {
   } catch (error) {
     console.error("Error retrieving or processing projects:", error);
   } finally {
-    await prisma.$disconnect(); // Ensure to disconnect the Prisma client
+    await prisma.$disconnect();
   }
 }

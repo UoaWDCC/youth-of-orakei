@@ -7,10 +7,8 @@ import PastProjectsList from "../components/projects page/PastProjectsList";
 import ImageCarousel from "../components/ImageCarousel";
 import IndexHeading from "../components/index page/IndexHeading";
 import BlobBackground from "../components/BlobBackground/BlobBackground";
-
-// Read the JSON files from the public folder
-import projects from "../../data/projects/projectsData.json"
-import carouselList from "../../data/projects/carouselList.json"
+import { serveProjects } from "../scripts/serveProjects";
+const { projects, carouselList } = await serveProjects();
 ---
 
 <html lang="en">
