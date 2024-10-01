@@ -4,6 +4,7 @@ import RefreshSection from './RefreshSection';
 
 const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
+  const [newPassword, setNewPassword] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -19,8 +20,8 @@ const LoginForm = () => {
         'Content-Type': 'application/json',
       },
     });
+
     const result = await response.json();
-    console.log(result)
     if (result.success) {
       setPassword(enteredPassword); // Store the password after login
       setLoggedIn(true); // Hide login form and show "Logged in"
@@ -61,7 +62,10 @@ const LoginForm = () => {
           </form>
         ) : (
           <RefreshSection
+            newPassword={newPassword}
+            setNewPassword={setNewPassword}
             setErrorMessage={setErrorMessage}
+            handleKeyDown={handleKeyDown}
             password={password}
           />
         )}
