@@ -1,5 +1,7 @@
 import type { memberData } from "../types/memberData";
 
+
+
 type TeamDetails = {
   teamName: string;
   description: string;
