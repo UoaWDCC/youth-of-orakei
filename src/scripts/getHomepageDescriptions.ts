@@ -1,12 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-import axios from 'axios';
-import sharp from 'sharp';
 import { Client } from "@notionhq/client";
 import { fetchPageBlocks } from "./fetchPageBlocks.ts";
 import { getPage } from "./getPageDescriptions.ts";
-import sanitizeFilename from '../utils/sanitizeFilename.ts';
+import { PrismaClient } from '@prisma/client';
 
+const prisma = new PrismaClient();
 
 type Description = {
     heading: string;
@@ -14,31 +11,6 @@ type Description = {
     paragraphs: string[];
     images: string[];
 };
-
-async function ensureDirectoryExists(directoryPath: string): Promise<void> {
-    if (!fs.existsSync(directoryPath)) {
-        fs.mkdirSync(directoryPath, { recursive: true });
-        console.log(`Directory ${directoryPath} created.`);
-    }
-}
-
-async function downloadAndProcessImage(imageUrl: string, folderPath: string, fileName: string): Promise<string> {
-    const imagePath = path.join(folderPath, `${fileName}.webp`);
-    
-    // Check if the image already exists
-    if (!fs.existsSync(imagePath)) {
-        const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-        const compressedImageBuffer = await sharp(response.data)
-            .webp({ quality: 80 })
-            .toBuffer();
-        fs.writeFileSync(imagePath, new Uint8Array(compressedImageBuffer));
-        console.log(`Image ${fileName}.webp downloaded, compressed, and saved.`);
-    } else {
-        console.log(`Image ${fileName}.webp already exists.`);
-    }
-
-    return `/homepage/${fileName}.webp`; // Return the public path for the image
-}
 
 export async function getHomepageDescriptions(): Promise<void> {
     const descriptions: Record<string, Description> = {};
@@ -49,11 +21,6 @@ export async function getHomepageDescriptions(): Promise<void> {
     if (!NOTION_TOKEN || !NOTION_HOMEPAGE_ID) throw new Error("Missing secret(s)");
 
     const notion = new Client({ auth: NOTION_TOKEN });
-    const homepageFolderPath = path.join(process.cwd(), "data/homepage");
-   
-
-    // Ensure the 'homepage' directory exists
-    await ensureDirectoryExists(homepageFolderPath);
 
     try {
         const query = await notion.databases.query({
@@ -70,30 +37,37 @@ export async function getHomepageDescriptions(): Promise<void> {
                     const blocks = await fetchPageBlocks(notion, pageId);
                     const { subheadings, paragraphs, images } = await getPage(blocks);
 
-                    // Process and store images
-                    const sanitizedTitle = sanitizeFilename(title);
-                    const processedImages = await Promise.all(
-                        images.map((url, idx) =>
-                            downloadAndProcessImage(url, homepageFolderPath, `${sanitizedTitle}_image_${idx}`)
-                        )
-                    );
+                    // Upsert the homepage description into the database
+                    await prisma.homepageDescription.upsert({
+                        where: { heading: title },
+                        update: {
+                            subheadings,
+                            paragraphs,
+                            images, // Directly store the Notion image URLs
+                        },
+                        create: {
+                            heading: title,
+                            subheadings,
+                            paragraphs,
+                            images, // Directly store the Notion image URLs
+                        },
+                    });
 
                     descriptions[title] = {
                         heading: title,
                         subheadings,
                         paragraphs,
-                        images: processedImages // Store local paths of images
+                        images, // Store the Notion image URLs
                     };
                 }
             }
         }
 
-        // Save the descriptions to a JSON file
-        const jsonFilePath = path.join(homepageFolderPath, 'homepageData.json');
-        fs.writeFileSync(jsonFilePath, JSON.stringify(descriptions, null, 2));
-        console.log(`Homepage descriptions saved to ${jsonFilePath}`);
+      
 
     } catch (error) {
         console.error("Error retrieving or processing homepage descriptions:", error);
+    } finally {
+        await prisma.$disconnect(); // Disconnect Prisma client
     }
 }

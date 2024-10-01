@@ -1,8 +1,5 @@
-import fs from 'fs';
-import path from 'path';
-import axios from 'axios';
-import sharp from 'sharp';
 import { Client } from "@notionhq/client";
+import { PrismaClient } from '@prisma/client'; // Import PrismaClient
 import { fetchPageBlocks } from "./fetchPageBlocks.ts";
 import { getPage } from "./getPageDescriptions.ts";
 import type { projectRow } from '../types/projectRow.ts';
@@ -14,42 +11,11 @@ type ProjectData = {
   description: string;
   cover: string;
   team: string;
-  tags: string[]; // Make tags required as an empty array
+  tags: string[];
   id: string;
 }
 
-type CarouselItem = {
-  heading: string;
-  subheadings: string[];
-  paragraphs: string[];
-  images: string[];
-};
-
-async function ensureDirectoryExists(directoryPath: string): Promise<void> {
-  if (!fs.existsSync(directoryPath)) {
-    fs.mkdirSync(directoryPath, { recursive: true });
-    console.log(`Directory ${directoryPath} created.`);
-  }
-}
-
-async function downloadAndProcessImage(imageUrl: string, folderPath: string, fileName: string): Promise<string> {
-  const imagePath = path.join(folderPath, `${fileName}.webp`);
-  
-  if (!fs.existsSync(imagePath)) {
-    const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-    const compressedImageBuffer = await sharp(response.data)
-      .webp({ quality: 80 })
-      .toBuffer();
-    fs.writeFileSync(imagePath, new Uint8Array(compressedImageBuffer));
-    console.log(`Image ${fileName}.webp downloaded, compressed, and saved.`);
-  } else {
-    console.log(`Image ${fileName}.webp already exists.`);
-  }
-
-  return `/projects/${fileName}.webp`; // Return the public path for the image
-}
-
-export async function getProjects(): Promise<{ projects: ProjectData[], carouselList: CarouselItem[] }> {
+export async function getProjects(): Promise<void> {
   const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
   const NOTION_PROJECTS_ID = process.env.NOTION_PROJECTS_ID || import.meta.env.NOTION_PROJECTS_ID;
 
@@ -58,77 +24,78 @@ export async function getProjects(): Promise<{ projects: ProjectData[], carousel
   }
 
   const notion = new Client({ auth: NOTION_TOKEN });
-  const projectsFolderPath = path.join(process.cwd(), 'data/projects');
+  const prisma = new PrismaClient(); // Initialize Prisma Client
 
-  await ensureDirectoryExists(projectsFolderPath);
+  try {
+    const query = await notion.databases.query({
+      database_id: NOTION_PROJECTS_ID,
+      sorts: [{ property: 'Date', direction: 'descending' }]
+    });
 
-  const query = await notion.databases.query({
-    database_id: NOTION_PROJECTS_ID,
-    sorts: [{ property: 'Date', direction: 'descending' }]
-  });
+    const projectsRows = query.results as projectRow[];
 
-  const projectsRows = query.results as projectRow[];
-  const carouselList: CarouselItem[] = [];
+    const projectPromises = projectsRows.map(async (row) => {
+      const title = row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : "";
+      const date = row.properties.Date.date ? row.properties.Date.date.start : "";
+      const description = row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "";
+      const coverUrl = row.cover?.type === "external" ? row.cover?.external.url : row.cover?.file.url ?? "";
+      const team = row.properties.Team.rich_text[0] ? row.properties.Team.rich_text[0].plain_text : "";
+      const tags = row.properties.Tags?.multi_select.map((tag) => tag.name) || []; // Ensure tags is always an array
+      const id = row.id || "";
 
-  const projectPromises = projectsRows.map(async (row) => {
-    const title = row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : "";
-    const date = row.properties.Date.date ? row.properties.Date.date.start : "";
-    const description = row.properties.Description.rich_text[0] ? row.properties.Description.rich_text[0].plain_text : "";
-    const coverUrl = row.cover?.type === "external" ? row.cover?.external.url : row.cover?.file.url ?? "";
-    const team = row.properties.Team.rich_text[0] ? row.properties.Team.rich_text[0].plain_text : "";
-    const tags = row.properties.Tags?.multi_select.map((tag) => tag.name) || []; // Ensure tags is always an array
-    const id = row.id || "";
+      // Prepare cover path to be stored directly in the database
+      const coverPath = coverUrl ? coverUrl : "";
 
-    let coverPath = "";
+      return {
+        title,
+        date,
+        description,
+        cover: coverPath, // Updated to point to the cover URL
+        team,
+        tags, // No need for type assertion here
+        id
+      };
+    });
 
-    if (coverUrl) {
-      coverPath = await downloadAndProcessImage(coverUrl, projectsFolderPath, sanitizeFilename(title) + "_cover");
-    }
+    // Await all async operations
+    const projects = await Promise.all(projectPromises);
 
-    if (title.toLowerCase().includes("carousel content")) {
-      const pageId: string = id;
-      const blocks = await fetchPageBlocks(notion, pageId);
-      const { subheadings, paragraphs, images } = await getPage(blocks);
-
-      carouselList.push({
-        heading: subheadings[0],
-        subheadings,
-        paragraphs,
-        images: await Promise.all(
-          images.map((url, idx) =>
-            downloadAndProcessImage(url, projectsFolderPath, `${sanitizeFilename(title)}_image_${idx}`)
-          )
-        )
+    // Store projects in the Prisma database
+    for (const project of projects) {
+      await prisma.project.upsert({
+        where: { id: project.id }, // Use the project's ID for uniqueness
+        create: {
+          title: project.title,
+          date: project.date,
+          description: project.description,
+          cover: project.cover,
+          team: project.team,
+          tags: {
+            connectOrCreate: project.tags.map(tag => ({
+              where: { name: tag },
+              create: { name: tag },
+            })),
+          },
+        },
+        update: {
+          title: project.title,
+          date: project.date,
+          description: project.description,
+          cover: project.cover,
+          team: project.team,
+          tags: {
+            set: project.tags.map(tag => ({
+              name: tag,
+            })),
+          },
+        },
       });
-
-      return null; // Filter out carousel content from main projects list
     }
 
-    return {
-      title,
-      date,
-      description,
-      cover: coverPath, // Updated to point to the local path
-      team,
-      tags, // No need for type assertion here
-      id
-    };
-  });
-
-  // Filter out null values and await all async operations
-  const filteredProjects = (await Promise.all(projectPromises)).filter((project): project is ProjectData => project !== null);
-
-  // Save the projects and carousel list to JSON files
-  const projectsJsonPath = path.join(projectsFolderPath, 'projectsData.json');
-  fs.writeFileSync(projectsJsonPath, JSON.stringify(filteredProjects, null, 2));
-  console.log(`Projects data saved to ${projectsJsonPath}`);
-
- const carouselJsonPath = path.join(projectsFolderPath, 'carouselList.json');
-  fs.writeFileSync(carouselJsonPath, JSON.stringify(carouselList, null, 2));
-  console.log(`Carousel list data saved to ${carouselJsonPath}`);
-
-  return {
-    projects: filteredProjects,
-    carouselList
-  };
+    console.log("Projects data uploaded to Prisma database.");
+  } catch (error) {
+    console.error("Error retrieving or processing projects:", error);
+  } finally {
+    await prisma.$disconnect(); // Ensure to disconnect the Prisma client
+  }
 }

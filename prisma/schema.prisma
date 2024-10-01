@@ -23,3 +23,13 @@ model Member {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model HomepageDescription {
+  id          Int      @id @default(autoincrement())
+  heading     String   @unique // Add this line to make heading unique
+  subheadings String[]
+  paragraphs  String[]
+  images      String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

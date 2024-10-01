@@ -4,7 +4,6 @@ import "../styles/members.css";
 // import MembersDisplay from "../components/MembersDisplay.astro";
 import PersonCard from "./PersonCard.tsx";
 import type { memberData } from "../types/memberData.ts";
-import sanitizeFilename from "../utils/sanitizeFilename.ts";
 
 type TeamDetails = {
   teamName: string;
