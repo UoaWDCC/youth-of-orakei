@@ -1,6 +1,6 @@
 // scripts/fetchMembers.ts
 import type { memberData } from '../types/memberData';
-import prisma from "../lib/prisma"
+import {prisma} from "../lib/prisma"
 
 
 /**

@@ -6,7 +6,7 @@ import sharp from "sharp";
 import { supabase } from '../lib/supabaseClient';
 import { supabaseUrl } from '../lib/supabaseClient';
 
-import prisma from "../lib/prisma"
+import {prisma} from "../lib/prisma"
 
 type Description = {
     heading: string;
@@ -132,7 +132,5 @@ export async function updateHomepageDescriptions(): Promise<void> {
         }
     } catch (error) {
         console.error("Error retrieving or processing homepage descriptions:", error);
-    } finally {
-        await prisma.$disconnect(); 
-    }
+    } 
 }

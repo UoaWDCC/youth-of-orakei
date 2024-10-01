@@ -1,4 +1,4 @@
-import prisma from "../lib/prisma"
+import {prisma} from "../lib/prisma"
 // Define the CarouselItem type
 type CarouselItem = {
   heading: string;
@@ -46,7 +46,5 @@ export async function serveProjects(): Promise<{ projects: any[], carouselList: 
   } catch (error) {
     console.error("Error fetching projects and carousel list:", error);
     throw error;
-  } finally {
-    await prisma.$disconnect();
-  }
+  } 
 }

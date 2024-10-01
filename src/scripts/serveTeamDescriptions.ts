@@ -1,4 +1,4 @@
-import prisma from "../lib/prisma"
+import {prisma} from "../lib/prisma"
 
 // Define the structure of the team with tags included
 type TeamWithTags = {
@@ -34,9 +34,7 @@ export async function serveTeamDescriptions(): Promise<TeamDescriptions[]> {
   } catch (err) {
     console.error("Error fetching team descriptions:", err);
     teamDescriptions = []; 
-  } finally {
-    await prisma.$disconnect(); 
-  }
+  } 
 
   return teamDescriptions;
 }

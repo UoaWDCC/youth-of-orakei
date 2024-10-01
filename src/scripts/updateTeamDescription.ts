@@ -1,6 +1,6 @@
 import { Client } from "@notionhq/client";
 import type { teamRow } from "../types/teamRow";
-import prisma from "../lib/prisma";
+import {prisma} from "../lib/prisma";
 type TeamDescriptions = {
     name: string;
     description?: string;
@@ -67,5 +67,4 @@ export async function updateTeamsDescriptions(): Promise<void> {
     }
 
     console.log("Team descriptions uploaded to Prisma database.");
-    await prisma.$disconnect();
 }

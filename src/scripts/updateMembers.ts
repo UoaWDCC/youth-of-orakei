@@ -4,7 +4,7 @@ import { Client } from "@notionhq/client";
 import { supabase } from '../lib/supabaseClient';
 import { supabaseUrl } from '../lib/supabaseClient';
 import type { memberRow } from "../types/memberRow";
-import prisma from "../lib/prisma"
+import {prisma} from "../lib/prisma"
 interface Member {
     team: string;
     name: string;
