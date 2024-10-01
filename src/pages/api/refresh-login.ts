@@ -58,10 +58,10 @@ export const POST: APIRoute = async ({ request }) => {
             
             if (password === notionPassword) {
                 try {
-                    // await updateMembers();
-                    // await updateProjects();
-                    // await updateHomepageDescriptions();
-                    // await updateTeamsDescriptions();
+                    await updateMembers();
+                    await updateProjects();
+                    await updateHomepageDescriptions();
+                    await updateTeamsDescriptions();
                     return new Response(JSON.stringify({ success: true }), { status: 200 });
                 } catch (err) {
                     console.error("Error during refresh data:", err);
