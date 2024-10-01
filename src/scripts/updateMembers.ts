@@ -1,4 +1,5 @@
 import axios from 'axios';
+import sharp from "sharp";
 import { Client } from "@notionhq/client";
 import { PrismaClient } from '@prisma/client';
 import { supabase } from '../lib/supabaseClient';
@@ -20,9 +21,31 @@ async function downloadImage(url: string): Promise<Buffer> {
     return Buffer.from(response.data, 'binary');
 }
 
+
 // Function to upload image to Supabase Storage
 async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Promise<string> {
-    const { data, error } = await supabase.storage.from('images').upload(filePath, imageBuffer);
+    // Convert image to WebP format and compress it
+    const compressedImageBuffer = await sharp(imageBuffer)
+        .toFormat('webp', { quality: 35 }) 
+        .toBuffer();
+
+    // Check if the file already exists
+    const { data: existingFiles, error: listError } = await supabase.storage.from('images').list(filePath.split('/')[0]); // List files in the folder
+
+    if (listError) {
+        throw new Error(`Failed to list files: ${listError.message}`);
+    }
+
+    // If the file already exists, remove it before uploading
+    if (existingFiles.some(file => file.name === filePath.split('/')[1])) {
+        const { error: deleteError } = await supabase.storage.from('images').remove([filePath]);
+        if (deleteError) {
+            throw new Error(`Failed to delete existing image: ${deleteError.message}`);
+        }
+    }
+
+    // Now upload the new image
+    const { data, error } = await supabase.storage.from('images').upload(filePath, compressedImageBuffer);
 
     if (error) {
         throw new Error(`Failed to upload image: ${error.message}`);
@@ -31,6 +54,7 @@ async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Pro
     // Return the public URL of the uploaded image
     return `${supabaseUrl}/storage/v1/object/public/images/${filePath}`;
 }
+
 
 // Function to delete an image from Supabase Storage
 async function deleteImageFromSupabase(filePath: string): Promise<void> {
@@ -72,7 +96,7 @@ export async function updateMembers(): Promise<Member[]> {
     for (const member of members) {
         if (member.cover) {
             const imageBuffer = await downloadImage(member.cover); // Download image
-            const filePath = `members/${member.team}/${member.name.replace(/\s+/g, '-')}.jpg`; // Generate file path
+            const filePath = `members/${member.team}/${member.name.replace(/\s+/g, '-')}.webp`; // Generate file path with .webp extension
             member.cover = await uploadImageToSupabase(imageBuffer, filePath); // Upload to Supabase and get new URL
         }
 
@@ -85,6 +109,9 @@ export async function updateMembers(): Promise<Member[]> {
         });
 
         if (existingMember) {
+            // Store the current cover URL before updating
+            const currentCover = existingMember.cover;
+
             // Update existing member
             await prisma.member.update({
                 where: { id: existingMember.id },
@@ -94,6 +121,12 @@ export async function updateMembers(): Promise<Member[]> {
                 }
             });
             console.log(`Member ${member.name} updated in the database.`);
+
+            // Check if the cover URL has changed
+            if (currentCover && currentCover !== member.cover) {
+                const oldFilePath = `members/${existingMember.team}/${existingMember.name.replace(/\s+/g, '-')}.webp`; // Generate the old file path
+                await deleteImageFromSupabase(oldFilePath); // Delete old image
+            }
         } else {
             // Create a new member
             await prisma.member.create({
@@ -118,9 +151,8 @@ export async function updateMembers(): Promise<Member[]> {
         );
 
         if (!existsInNotion) {
-           
             if (existingMember.cover) {
-                const filePath = `members/${existingMember.team}/${existingMember.name.replace(/\s+/g, '-')}.jpg`; // Generate the file path
+                const filePath = `members/${existingMember.team}/${existingMember.name.replace(/\s+/g, '-')}.webp`; // Generate the file path
                 await deleteImageFromSupabase(filePath); // Delete image
             }
 
