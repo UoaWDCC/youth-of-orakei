@@ -27,8 +27,8 @@ export async function serveTeamDescriptions(): Promise<TeamDescriptions[]> {
     // Map the results to the TeamDescriptions type
     teamDescriptions = descriptions.map((team) => ({
       name: team.name,
-      description: team.description || undefined,
-      tags: team.tags.map((tag) => tag.name) || undefined, // Convert tag objects to an array of tag names
+      description: team.description ?? undefined, // Handle null values for description
+      tags: team.tags.map((tag) => tag.name) || [], // Convert tag objects to an array of tag names
     }));
 
   } catch (err) {
