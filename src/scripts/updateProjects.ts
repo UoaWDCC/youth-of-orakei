@@ -3,10 +3,10 @@ import { Client } from "@notionhq/client";
 import type { projectRow } from '../types/projectRow.ts';
 import axios from 'axios';
 import sharp from "sharp";
-import { supabase } from '../lib/supabaseClient'; // Adjust import based on your project structure
+import { supabase } from '../lib/supabaseClient'; 
 import { supabaseUrl } from '../lib/supabaseClient';
 import { prisma } from "../lib/prisma.ts";
-// Function to sanitize file names
+
 function sanitizeFileName(fileName: string): string {
     return fileName.replace(/[^a-z0-9-_.]/gi, '-'); // Replace invalid characters with hyphen
 }
@@ -18,12 +18,25 @@ async function downloadImage(url: string): Promise<Buffer> {
 }
 
 // Function to upload image to Supabase Storage
+async function deleteImageFromSupabase(filePath: string): Promise<void> {
+    const { error } = await supabase.storage.from('images').remove([filePath]);
+
+    if (error) {
+        console.error(`Failed to delete image: ${error.message}`);
+    }
+}
+
+// Function to upload image to Supabase Storage
 async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Promise<string> {
     // Convert image to WebP format and compress it
     const compressedImageBuffer = await sharp(imageBuffer)
-        .toFormat('webp', { quality: 30 }) 
+        .toFormat('webp', { quality: 30 })
         .toBuffer();
 
+    // Attempt to delete the existing image first
+    await deleteImageFromSupabase(filePath);
+
+    // Upload the new image to Supabase
     const { data, error } = await supabase.storage.from('images').upload(filePath, compressedImageBuffer);
 
     if (error) {
@@ -34,6 +47,7 @@ async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Pro
     return `${supabaseUrl}/storage/v1/object/public/images/${filePath}`;
 }
 
+// Update the updateProjects function as needed
 export async function updateProjects(): Promise<void> {
     const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
     const NOTION_PROJECTS_ID = process.env.NOTION_PROJECTS_ID || import.meta.env.NOTION_PROJECTS_ID;
@@ -43,7 +57,6 @@ export async function updateProjects(): Promise<void> {
     }
 
     const notion = new Client({ auth: NOTION_TOKEN });
-    
 
     try {
         const query = await notion.databases.query({
