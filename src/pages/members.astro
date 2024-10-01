@@ -1,7 +1,6 @@
 ---
 
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
-import path from "path"
 import "../styles/global.css";
 import "../styles/members.css";
 import {fetchMembers} from "../scripts/serveMembers"
@@ -9,17 +8,9 @@ import Layout from "../layouts/layout.astro";
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
-import { getTeamsDescriptions } from "../scripts/getTeamDescription";
-let members = await fetchMembers(); // Call the new function
+import type {TeamDescriptions} from "../types/teamDescriptions"
+import {serveTeamDescriptions} from "../scripts/serveTeamDescriptions"
 import type { memberData } from "../types/memberData";
-
-
-
-type TeamDescriptions = {
-  name: string;
-  description?: string;
-  tags?: string;
-}
 
 type Team = {
   teamName: string;
@@ -27,9 +18,11 @@ type Team = {
   description: string | undefined;
 }
 
+let members = await fetchMembers(); 
+
 let { teamsDict, projects } =
     sortMembersByTeam(members);
-let teamDescription: TeamDescriptions[] = await getTeamsDescriptions();
+let teamDescription: TeamDescriptions[] = await serveTeamDescriptions()
 
 function mapTeamWithDesc(teams: {[teamName: string]: memberData[]}, teamDescription: TeamDescriptions[]) {
   return Object.keys(teams)

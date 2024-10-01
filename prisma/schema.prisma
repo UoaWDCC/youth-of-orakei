@@ -49,5 +49,22 @@ model Project {
 model Tag {
   id       Int       @id @default(autoincrement()) // Auto-generated unique tag ID
   name     String    @unique
-  projects Project[] @relation("ProjectToTag") // Many-to-many relation with Project
+  projects Project[] @relation("ProjectToTag")
+}
+
+// schema.prisma
+
+model TeamDescription {
+  id          Int       @id @default(autoincrement()) // Unique identifier for each team description
+  name        String    @unique // Name of the team (must be unique)
+  description String? // Description of the team (optional)
+  tags        TeamTag[] @relation("TeamDescriptionTags") // Many-to-many relationship with TeamTag
+  createdAt   DateTime  @default(now()) // Timestamp when the record was created
+  updatedAt   DateTime  @updatedAt // Timestamp when the record was last updated
+}
+
+model TeamTag {
+  id               Int               @id @default(autoincrement()) // Unique identifier for each tag
+  name             String            @unique // Name of the tag (must be unique)
+  teamDescriptions TeamDescription[] @relation("TeamDescriptionTags") // Relation back to TeamDescription
 }
