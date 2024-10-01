@@ -61,8 +61,6 @@ jobs:
       - name: setup flyctl
         uses: superfly/flyctl-actions/setup-flyctl@master
 
-      - name: Delete Fly Volume
-        run: flyctl volumes delete wdcc_orakei_staging_storage --app wdcc-youth-of-orakei-staging 
 
       - name: Fly deploy
         run: flyctl deploy --build-arg ANTON=${{ secrets.ANTON }} \
