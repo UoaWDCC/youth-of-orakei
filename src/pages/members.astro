@@ -9,12 +9,45 @@ import Layout from "../layouts/layout.astro";
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
-
-
+import { getTeamsDescriptions } from "../scripts/getTeamDescription";
 let members = await fetchMembers(); // Call the new function
+import type { memberData } from "../types/memberData";
 
-let { leadershipTeam, communicationTeam, projects } =
-  sortMembersByTeam(members);
+
+
+type TeamDescriptions = {
+  name: string;
+  description?: string;
+  tags?: string;
+}
+
+type Team = {
+  teamName: string;
+  members: memberData[];
+  description: string | undefined;
+}
+
+let { teamsDict, projects } =
+    sortMembersByTeam(members);
+let teamDescription: TeamDescriptions[] = await getTeamsDescriptions();
+
+function mapTeamWithDesc(teams: {[teamName: string]: memberData[]}, teamDescription: TeamDescriptions[]) {
+  return Object.keys(teams)
+      .map(teamName => {
+        const description = teamDescription.find((desc: TeamDescriptions) => desc.name === teamName);
+        if (description) {
+          return {
+            teamName,
+            members: teams[teamName],
+            description: description.description
+          };
+        }
+        return null;
+      })
+      .filter(Boolean);
+}
+
+let teamWithDesc = mapTeamWithDesc(teamsDict, teamDescription);
 ---
 
 <html lang="en">
@@ -75,8 +108,11 @@ let { leadershipTeam, communicationTeam, projects } =
         }
       });
     </script>
-    <TeamDisplayLeft team={leadershipTeam} />
-    <TeamDisplayRight team={communicationTeam} />
+    {teamWithDesc.map((team: Team, index: number) => (
+      index % 2 === 0 ?
+          <TeamDisplayLeft teamName={team.teamName} team={team.members} teamDescription={team.description} /> :
+          <TeamDisplayRight teamName={team.teamName} team={team.members} teamDescription={team.description} />
+    ))}
     <ProjectTeam client:only="react" projects={projects} />
   </Layout>
 </section>
