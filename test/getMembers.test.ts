@@ -1,4 +1,4 @@
-import { getMembers } from "../src/scripts/getMembers";
+import { getMembers } from "../src/scripts/updateMembers";
 import { assert, expect, test } from 'vitest';
 
 let members = await getMembers();

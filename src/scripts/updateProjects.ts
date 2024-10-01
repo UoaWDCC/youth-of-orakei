@@ -15,7 +15,7 @@ type ProjectData = {
   id: string;
 }
 
-export async function getProjects(): Promise<void> {
+export async function updateProjects(): Promise<void> {
   const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
   const NOTION_PROJECTS_ID = process.env.NOTION_PROJECTS_ID || import.meta.env.NOTION_PROJECTS_ID;
 

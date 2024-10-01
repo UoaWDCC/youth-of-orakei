@@ -12,7 +12,7 @@ type Description = {
     images: string[];
 };
 
-export async function getHomepageDescriptions(): Promise<void> {
+export async function updateHomepageDescriptions(): Promise<void> {
     const descriptions: Record<string, Description> = {};
 
     const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;

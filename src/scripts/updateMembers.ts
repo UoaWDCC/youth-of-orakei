@@ -13,7 +13,7 @@ interface Member {
 }
 
 // Main function to get members, update covers, and return the updated members data
-export async function getMembers(): Promise<Member[]> {
+export async function updateMembers(): Promise<Member[]> {
     const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
     const NOTION_MEMBERS_ID = process.env.NOTION_MEMBERS_ID || import.meta.env.NOTION_MEMBERS_ID;
 
