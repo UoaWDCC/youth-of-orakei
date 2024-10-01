@@ -135,17 +135,14 @@
   font-size: var(--fontsize-lrg);
 }
 
-.description-box-lead,
 .main-description-box-lead {
   background-color: var(--YOO-Green-Lightest);
 }
 
-.description-box-coms,
 .main-description-box-coms {
   background-color: var(--YOO-Blue-Light);
 }
 
-.description-box-proj,
 .main-description-box-proj {
   background-color: var(--YOO-Red-Light);
 }

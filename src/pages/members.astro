@@ -6,6 +6,7 @@ import "../styles/global.css";
 import "../styles/members.css";
 import {fetchMembers} from "../scripts/serveMembers"
 import Layout from "../layouts/layout.astro";
+import members from "../../public/members/membersData.json"
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
@@ -75,8 +76,11 @@ let { leadershipTeam, communicationTeam, projects } =
         }
       });
     </script>
-    <TeamDisplayLeft team={leadershipTeam} />
-    <TeamDisplayRight team={communicationTeam} />
+    {teamWithDesc.map((team: Team, index: number) => (
+      index % 2 === 0 ?
+          <TeamDisplayLeft teamName={team.teamName} team={team.members} teamDescription={team.description} /> :
+          <TeamDisplayRight teamName={team.teamName} team={team.members} teamDescription={team.description} />
+    ))}
     <ProjectTeam client:only="react" projects={projects} />
   </Layout>
 </section>

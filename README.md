@@ -1,3 +1,18 @@
+<div align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TypeScript-1572B6?style=for-the-badge&logo=TypeScript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/NodeJS-aaffaf?style=for-the-badge&logo=nodedotjs"/>
+  <img src="https://img.shields.io/badge/Astro-323330?style=for-the-badge&logo=astro"/>
+  <img src="https://img.shields.io/badge/Fly.IO-323330?style=for-the-badge&logo=flydotio"/>
+  <img src="https://img.shields.io/badge/Supabase-3FC58E?style=for-the-badge&logo=Supabase&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Notion-ffffff?style=for-the-badge&logo=Notion&logoColor=black"/>
+  <img src="https://img.shields.io/badge/Prisma-ffffff?style=for-the-badge&logo=Prisma&logoColor=2D3748"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-010101?style=for-the-badge&logo=PostgreSQL"/>
+  <img src="https://img.shields.io/badge/figma-323330?style=for-the-badge&logo=figma"/>
+  <img src="https://img.shields.io/badge/Jira-4285F4?style=for-the-badge&logo=jira&logoColor=white"/>
+</div>
+
 ## 🚀 Project Structure
 
 Inside this Youth of Ōrākei Astro project, you'll see the following folders and files:
