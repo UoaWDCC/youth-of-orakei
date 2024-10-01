@@ -7,6 +7,34 @@ on:
       - ORAKEI-Fly-Volume
 
 jobs: 
+  test-vars:
+    name: Test Var
+    runs-on: ubuntu-latest
+    environment: Notion
+    steps:
+      - name: Test ANTON Secret
+        run: echo "the name is ${{ secrets.ANTON }}"
+      - name: Test NOTION_MEMBERS_ID Secret
+        run: echo "Notion Members ID is ${{ secrets.NOTION_MEMBERS_ID }}"
+      - name: Test NOTION_TOKEN Secret
+        run: echo "Notion Token is ${{ secrets.NOTION_TOKEN }}"
+      - name: Test NOTION_TOKEN Secret
+        run: echo "Notion Token is ${{ vars.ANTONVAR }}"
+      - name: Test NOTION_HOMEPAGE Secret
+        run: echo "Notion Homepage is ${{ secrets.NOTION_HOMEPAGE_ID}}"
+      - name: Test NOTION_HOMEPAGE Secret
+        run: echo "Notion NOTION_TEAMS_ID is ${{ secrets.NOTION_TEAMS_ID}}"
+      - name: Test NOTION_PROJECTS_ID Secret
+        run: echo "Notion Homepage is ${{ secrets.NOTION_PROJECTS_ID}}"
+      - name: Test DATABASE_URL Secret
+        run: echo "DATABASE_URL DATABASE_URL is ${{ secrets.DATABASE_URL}}"
+      - name: Test DIRECT_URL Secret
+        run: echo "DIRECT_URL DIRECT_URL is ${{ secrets.DIRECT_URL}}"
+      - name: Test SERVICE_KEY Secret
+        run: echo "Notion Homepage is ${{ secrets.SUPABASE_URL}}"
+      - name: Test SUPABASE_URL Secret
+        run: echo "Notion Homepage is ${{ secrets.SERVICE_KEY}}"
+
   deploy-web:
       name: Deploy Web
       runs-on: ubuntu-latest
@@ -22,6 +50,10 @@ jobs:
             WEBFORMS_TOKEN: ${{ secrets.WEBFORMS_TOKEN }}
             NOTION_PROJECTS_ID: ${{ secrets.NOTION_PROJECTS_ID}}
             NOTION_REFRESH_ID: ${{ secrets.NOTION_REFRESH_ID }}
+            DATABASE_URL: ${{ secrets.DATABASE_URL}}
+            DIRECT_URL: ${{ secrets.DIRECT_URL }}
+            SERVICE_KEY: ${{ secrets.SERVICE_KEY }}
+            SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       steps:
                             
         - name: actions checkout v3
