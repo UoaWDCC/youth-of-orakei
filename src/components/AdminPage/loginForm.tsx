@@ -19,8 +19,8 @@ const LoginForm = () => {
         'Content-Type': 'application/json',
       },
     });
-
     const result = await response.json();
+    console.log(result)
     if (result.success) {
       setPassword(enteredPassword); // Store the password after login
       setLoggedIn(true); // Hide login form and show "Logged in"
