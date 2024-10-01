@@ -47,9 +47,9 @@ function mapTeamWithDesc(teams: {[teamName: string]: memberData[]}, teamDescript
       .filter(Boolean);
 }
 
-let teamWithDesc = mapTeamWithDesc(teamsDict, teamDescription);
----
+let teamWithDesc: (Team | null)[] = mapTeamWithDesc(teamsDict, teamDescription);
 
+---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -108,11 +108,14 @@ let teamWithDesc = mapTeamWithDesc(teamsDict, teamDescription);
         }
       });
     </script>
-    {teamWithDesc.map((team: Team, index: number) => (
-      index % 2 === 0 ?
+    {teamWithDesc.map((team: Team | null, index: number) => (
+      team ? (
+        index % 2 === 0 ? 
           <TeamDisplayLeft teamName={team.teamName} team={team.members} teamDescription={team.description} /> :
           <TeamDisplayRight teamName={team.teamName} team={team.members} teamDescription={team.description} />
+      ) : null
     ))}
+    
     <ProjectTeam client:only="react" projects={projects} />
   </Layout>
 </section>
