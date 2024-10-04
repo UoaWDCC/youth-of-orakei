@@ -1,12 +1,10 @@
 import axios from 'axios';
 import sharp from "sharp";
 import { Client } from "@notionhq/client";
-import { PrismaClient } from '@prisma/client';
 import { supabase } from '../lib/supabaseClient';
 import { supabaseUrl } from '../lib/supabaseClient';
 import type { memberRow } from "../types/memberRow";
-
-const prisma = new PrismaClient();
+import { prisma } from "../lib/prisma";
 
 interface Member {
     team: string;
@@ -20,7 +18,6 @@ async function downloadImage(url: string): Promise<Buffer> {
     const response = await axios.get(url, { responseType: 'arraybuffer' });
     return Buffer.from(response.data, 'binary');
 }
-
 
 // Function to upload image to Supabase Storage
 async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Promise<string> {
@@ -55,7 +52,6 @@ async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Pro
     return `${supabaseUrl}/storage/v1/object/public/images/${filePath}`;
 }
 
-
 // Function to delete an image from Supabase Storage
 async function deleteImageFromSupabase(filePath: string): Promise<void> {
     const { error } = await supabase.storage.from('images').remove([filePath]);
@@ -66,7 +62,7 @@ async function deleteImageFromSupabase(filePath: string): Promise<void> {
 }
 
 // Main function to get members, update covers, and return the updated members data
-export async function updateMembers(): Promise<Member[]> {
+export async function updateMembers(controller: ReadableStreamDefaultController<Uint8Array>): Promise<Member[]> {
     const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
     const NOTION_MEMBERS_ID = process.env.NOTION_MEMBERS_ID || import.meta.env.NOTION_MEMBERS_ID;
 
@@ -94,50 +90,61 @@ export async function updateMembers(): Promise<Member[]> {
 
     // Process each member
     for (const member of members) {
-        if (member.cover) {
-            const imageBuffer = await downloadImage(member.cover); // Download image
-            const filePath = `members/${member.team}/${member.name.replace(/\s+/g, '-')}.webp`; // Generate file path with .webp extension
-            member.cover = await uploadImageToSupabase(imageBuffer, filePath); // Upload to Supabase and get new URL
-        }
-
-        // Check if the member already exists based on both name and team
-        const existingMember = await prisma.member.findFirst({
-            where: {
-                name: member.name,
-                team: member.team
+        try {
+            if (member.cover) {
+                const imageBuffer = await downloadImage(member.cover); // Download image
+                const filePath = `members/${member.team}/${member.name.replace(/\s+/g, '-')}.webp`; // Generate file path with .webp extension
+                member.cover = await uploadImageToSupabase(imageBuffer, filePath); // Upload to Supabase and get new URL
             }
-        });
 
-        if (existingMember) {
-            // Store the current cover URL before updating
-            const currentCover = existingMember.cover;
-
-            // Update existing member
-            await prisma.member.update({
-                where: { id: existingMember.id },
-                data: {
-                    description: member.desc,
-                    cover: member.cover // Store the Supabase URL
-                }
-            });
-            console.log(`Member ${member.name} updated in the database.`);
-
-            // Check if the cover URL has changed
-            if (currentCover && currentCover !== member.cover) {
-                const oldFilePath = `members/${existingMember.team}/${existingMember.name.replace(/\s+/g, '-')}.webp`; // Generate the old file path
-                await deleteImageFromSupabase(oldFilePath); // Delete old image
-            }
-        } else {
-            // Create a new member
-            await prisma.member.create({
-                data: {
-                    team: member.team,
+            // Check if the member already exists based on both name and team
+            const existingMember = await prisma.member.findFirst({
+                where: {
                     name: member.name,
-                    description: member.desc,
-                    cover: member.cover // Store the Supabase URL
+                    team: member.team
                 }
             });
-            console.log(`Member ${member.name} saved to the database.`);
+
+            if (existingMember) {
+                // Store the current cover URL before updating
+                const currentCover = existingMember.cover;
+
+                // Update existing member
+                await prisma.member.update({
+                    where: { id: existingMember.id },
+                    data: {
+                        description: member.desc,
+                        cover: member.cover // Store the Supabase URL
+                    }
+                });
+                console.log(`Member ${member.name} updated in the database.`);
+
+                // Check if the cover URL has changed
+                if (currentCover && currentCover !== member.cover) {
+                    const oldFilePath = `members/${existingMember.team}/${existingMember.name.replace(/\s+/g, '-')}.webp`; // Generate the old file path
+                    await deleteImageFromSupabase(oldFilePath); // Delete old image
+                }
+            } else {
+                // Create a new member
+                await prisma.member.create({
+                    data: {
+                        team: member.team,
+                        name: member.name,
+                        description: member.desc,
+                        cover: member.cover // Store the Supabase URL
+                    }
+                });
+                console.log(`Member ${member.name} saved to the database.`);
+            }
+
+            // Send success log for each member processed
+            sendLog(controller, `Processed member: ${member.name}`);
+
+        } catch (error) {
+            // Type assertion to ensure 'error' is treated as an Error
+            const errorMessage = (error as Error).message || 'Unknown error occurred';
+            // Send error log for member processing
+            sendLog(controller, `Error processing member ${member.name}: ${errorMessage}`);
         }
     }
 
@@ -166,4 +173,17 @@ export async function updateMembers(): Promise<Member[]> {
     console.log('All members processed.');
 
     return members; 
+}
+
+// Function to send log messages back to the client
+function sendLog(controller: ReadableStreamDefaultController<Uint8Array>, message: string) {
+    try {
+        const logMessage = {
+            message,
+            timestamp: Date.now()
+        };
+        controller.enqueue(new TextEncoder().encode(`data: ${JSON.stringify(logMessage)}\n\n`));
+    } catch (error) {
+        console.error("Error sending log:", error);
+    }
 }

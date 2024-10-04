@@ -1,7 +1,5 @@
 // src/lib/fetchHomepageDescriptions.ts
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import {prisma} from "../lib/prisma";
 
 /**
  * Fetches homepage descriptions from the Prisma database.
@@ -14,7 +12,5 @@ export async function fetchHomepageDescriptions(): Promise<any[]> {
     } catch (error) {
         console.error("Error fetching homepage descriptions:", error);
         return []; // Return an empty array on error
-    } finally {
-        await prisma.$disconnect(); // Ensure to disconnect the Prisma client
-    }
+    } 
 }
