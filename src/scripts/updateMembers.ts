@@ -1,10 +1,9 @@
-import axios from 'axios';
-import sharp from "sharp";
 import { Client } from "@notionhq/client";
 import { supabase } from '../lib/supabaseClient';
 import { supabaseUrl } from '../lib/supabaseClient';
 import type { memberRow } from "../types/memberRow";
-import {prisma} from "../lib/prisma"
+import { prisma } from "../lib/prisma";
+
 interface Member {
     team: string;
     name: string;
@@ -12,20 +11,18 @@ interface Member {
     cover: string | null; // URL of the cover image
 }
 
-// Function to download image from URL
+// Function to download image using Fetch API (compatible with edge environments)
 async function downloadImage(url: string): Promise<Buffer> {
-    const response = await axios.get(url, { responseType: 'arraybuffer' });
-    return Buffer.from(response.data, 'binary');
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Failed to download image: ${response.statusText}`);
+    }
+    const arrayBuffer = await response.arrayBuffer();
+    return Buffer.from(arrayBuffer);
 }
 
-
-// Function to upload image to Supabase Storage
+// Function to upload image to Supabase Storage (without sharp)
 async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Promise<string> {
-    // Convert image to WebP format and compress it
-    const compressedImageBuffer = await sharp(imageBuffer)
-        .toFormat('webp', { quality: 35 }) 
-        .toBuffer();
-
     // Check if the file already exists
     const { data: existingFiles, error: listError } = await supabase.storage.from('images').list(filePath.split('/')[0]); // List files in the folder
 
@@ -41,8 +38,8 @@ async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Pro
         }
     }
 
-    // Now upload the new image
-    const { data, error } = await supabase.storage.from('images').upload(filePath, compressedImageBuffer);
+    // Now upload the new image (in its original format)
+    const { data, error } = await supabase.storage.from('images').upload(filePath, imageBuffer);
 
     if (error) {
         throw new Error(`Failed to upload image: ${error.message}`);
@@ -52,11 +49,10 @@ async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Pro
     return `${supabaseUrl}/storage/v1/object/public/images/${filePath}`;
 }
 
-
 // Function to delete an image from Supabase Storage
 async function deleteImageFromSupabase(filePath: string): Promise<void> {
     const { error } = await supabase.storage.from('images').remove([filePath]);
-    
+
     if (error) {
         console.error(`Failed to delete image: ${error.message}`);
     }
@@ -92,7 +88,7 @@ export async function updateMembers(): Promise<Member[]> {
     // Process each member
     for (const member of members) {
         if (member.cover) {
-            const imageBuffer = await downloadImage(member.cover); // Download image
+            const imageBuffer = await downloadImage(member.cover); // Download image using Fetch API
             const filePath = `members/${member.team}/${member.name.replace(/\s+/g, '-')}.webp`; // Generate file path with .webp extension
             member.cover = await uploadImageToSupabase(imageBuffer, filePath); // Upload to Supabase and get new URL
         }
@@ -162,5 +158,5 @@ export async function updateMembers(): Promise<Member[]> {
 
     console.log('All members processed.');
 
-    return members; 
+    return members;
 }
