@@ -1,12 +1,13 @@
 import { Client } from "@notionhq/client";
-
 import type { projectRow } from '../types/projectRow.ts';
 import axios from 'axios';
 import sharp from "sharp";
 import { supabase } from '../lib/supabaseClient'; 
 import { supabaseUrl } from '../lib/supabaseClient';
 import { prisma } from "../lib/prisma.ts";
+import type { APIRoute } from 'astro';
 
+// Function to sanitize filenames
 function sanitizeFileName(fileName: string): string {
     return fileName.replace(/[^a-z0-9-_.]/gi, '-'); // Replace invalid characters with hyphen
 }
@@ -17,7 +18,7 @@ async function downloadImage(url: string): Promise<Buffer> {
     return Buffer.from(response.data, 'binary');
 }
 
-// Function to upload image to Supabase Storage
+// Function to delete image from Supabase Storage
 async function deleteImageFromSupabase(filePath: string): Promise<void> {
     const { error } = await supabase.storage.from('images').remove([filePath]);
 
@@ -47,8 +48,21 @@ async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Pro
     return `${supabaseUrl}/storage/v1/object/public/images/${filePath}`;
 }
 
-// Update the updateProjects function as needed
-export async function updateProjects(): Promise<void> {
+// Function to log messages
+function sendLog(controller: ReadableStreamDefaultController, message: string) {
+    try {
+        const logMessage = {
+            message,
+            timestamp: Date.now(),
+        };
+        controller.enqueue(`data: ${JSON.stringify(logMessage)}\n\n`);
+    } catch (error) {
+        console.error("Error sending log:", error);
+    }
+}
+
+// Update the updateProjects function
+export async function updateProjects(controller: ReadableStreamDefaultController): Promise<void> {
     const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
     const NOTION_PROJECTS_ID = process.env.NOTION_PROJECTS_ID || import.meta.env.NOTION_PROJECTS_ID;
 
@@ -59,6 +73,8 @@ export async function updateProjects(): Promise<void> {
     const notion = new Client({ auth: NOTION_TOKEN });
 
     try {
+        sendLog(controller, "Starting to retrieve projects from Notion...");
+
         const query = await notion.databases.query({
             database_id: NOTION_PROJECTS_ID,
             sorts: [{ property: 'Date', direction: 'descending' }]
@@ -82,8 +98,14 @@ export async function updateProjects(): Promise<void> {
 
             // If a cover URL exists, download and upload the image to Supabase
             if (coverUrl) {
-                const imageBuffer = await downloadImage(coverUrl); // Download image
-                coverPath = await uploadImageToSupabase(imageBuffer, `projects/${sanitizedTitle}/cover.webp`); // Upload to Supabase
+                try {
+                    sendLog(controller, `Downloading image for project: ${title}`);
+                    const imageBuffer = await downloadImage(coverUrl); // Download image
+                    coverPath = await uploadImageToSupabase(imageBuffer, `projects/${sanitizedTitle}/cover.webp`); // Upload to Supabase
+                    sendLog(controller, `Uploaded cover image for project: ${title}`);
+                } catch (error) {
+                    sendLog(controller, `Error processing cover image for project ${title}: ${(error as Error).message}`);
+                }
             }
 
             return {
@@ -130,10 +152,13 @@ export async function updateProjects(): Promise<void> {
                     },
                 },
             });
+
+            sendLog(controller, `Project ${project.title} upserted in the database.`);
         }
 
-        console.log("Projects data uploaded to Prisma database.");
+        sendLog(controller, "Projects data uploaded to Prisma database.");
     } catch (error) {
         console.error("Error retrieving or processing projects:", error);
+        sendLog(controller, `Error retrieving or processing projects: ${(error as Error).message}`);
     }
 }
