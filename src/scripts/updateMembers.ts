@@ -5,8 +5,6 @@ import { supabase } from '../lib/supabaseClient';
 import { supabaseUrl } from '../lib/supabaseClient';
 import type { memberRow } from "../types/memberRow";
 import { prisma } from "../lib/prisma";
-import fs from 'fs';
-import path from 'path';
 
 interface Member {
     team: string;
@@ -15,51 +13,43 @@ interface Member {
     cover: string | null; // URL of the cover image
 }
 
-// Define the volume path
-const VOLUME_PATH = '/data';
-
-// Function to download image to Fly volume
-async function downloadImageToVolume(url: string, fileName: string): Promise<string> {
+// Function to download image from URL
+async function downloadImage(url: string): Promise<Buffer> {
     const response = await axios.get(url, { responseType: 'arraybuffer' });
-    const filePath = path.join(VOLUME_PATH, fileName);
-    
-    // Write the ArrayBuffer response data directly to the file
-    fs.writeFileSync(filePath, new Uint8Array(response.data)); // Use Uint8Array to handle the ArrayBuffer correctly
-
-    return filePath; // Return the local file path
+    return Buffer.from(response.data, 'binary');
 }
 
 // Function to upload image to Supabase Storage
-async function uploadImageToSupabase(filePath: string, supabaseFilePath: string): Promise<string> {
-    // Compress the image to WebP format
-    const compressedImageBuffer = await sharp(filePath)
+async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Promise<string> {
+    // Convert image to WebP format and compress it
+    const compressedImageBuffer = await sharp(imageBuffer)
         .toFormat('webp', { quality: 35 }) 
         .toBuffer();
 
     // Check if the file already exists
-    const { data: existingFiles, error: listError } = await supabase.storage.from('images').list(supabaseFilePath.split('/')[0]); 
+    const { data: existingFiles, error: listError } = await supabase.storage.from('images').list(filePath.split('/')[0]); // List files in the folder
 
     if (listError) {
         throw new Error(`Failed to list files: ${listError.message}`);
     }
 
     // If the file already exists, remove it before uploading
-    if (existingFiles.some(file => file.name === supabaseFilePath.split('/')[1])) {
-        const { error: deleteError } = await supabase.storage.from('images').remove([supabaseFilePath]);
+    if (existingFiles.some(file => file.name === filePath.split('/')[1])) {
+        const { error: deleteError } = await supabase.storage.from('images').remove([filePath]);
         if (deleteError) {
             throw new Error(`Failed to delete existing image: ${deleteError.message}`);
         }
     }
 
-    // Upload the new compressed image
-    const { data, error } = await supabase.storage.from('images').upload(supabaseFilePath, compressedImageBuffer);
+    // Now upload the new image
+    const { data, error } = await supabase.storage.from('images').upload(filePath, compressedImageBuffer);
 
     if (error) {
         throw new Error(`Failed to upload image: ${error.message}`);
     }
 
     // Return the public URL of the uploaded image
-    return `${supabaseUrl}/storage/v1/object/public/images/${supabaseFilePath}`;
+    return `${supabaseUrl}/storage/v1/object/public/images/${filePath}`;
 }
 
 // Function to delete an image from Supabase Storage
@@ -72,7 +62,7 @@ async function deleteImageFromSupabase(filePath: string): Promise<void> {
 }
 
 // Main function to get members, update covers, and return the updated members data
-export async function updateMembers(): Promise<Member[]> {
+export async function updateMembers(controller: ReadableStreamDefaultController<Uint8Array>): Promise<Member[]> {
     const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
     const NOTION_MEMBERS_ID = process.env.NOTION_MEMBERS_ID || import.meta.env.NOTION_MEMBERS_ID;
 
@@ -100,54 +90,59 @@ export async function updateMembers(): Promise<Member[]> {
 
     // Process each member
     for (const member of members) {
-        if (member.cover) {
-            const fileName = `${member.team}-${member.name.replace(/\s+/g, '-')}.webp`; // Define a local file name
-            const filePath = await downloadImageToVolume(member.cover, fileName); // Download image to Fly volume
-            const supabaseFilePath = `members/${member.team}/${fileName}`; // Generate file path for Supabase
-            member.cover = await uploadImageToSupabase(filePath, supabaseFilePath); // Upload to Supabase and get new URL
-
-            // Optionally, clean up the local file after upload
-            fs.unlinkSync(filePath);
-        }
-
-        // Check if the member already exists based on both name and team
-        const existingMember = await prisma.member.findFirst({
-            where: {
-                name: member.name,
-                team: member.team
+        try {
+            if (member.cover) {
+                const imageBuffer = await downloadImage(member.cover); // Download image
+                const filePath = `members/${member.team}/${member.name.replace(/\s+/g, '-')}.webp`; // Generate file path with .webp extension
+                member.cover = await uploadImageToSupabase(imageBuffer, filePath); // Upload to Supabase and get new URL
             }
-        });
 
-        if (existingMember) {
-            // Store the current cover URL before updating
-            const currentCover = existingMember.cover;
-
-            // Update existing member
-            await prisma.member.update({
-                where: { id: existingMember.id },
-                data: {
-                    description: member.desc,
-                    cover: member.cover // Store the Supabase URL
-                }
-            });
-            console.log(`Member ${member.name} updated in the database.`);
-
-            // Check if the cover URL has changed
-            if (currentCover && currentCover !== member.cover) {
-                const oldFilePath = `members/${existingMember.team}/${existingMember.name.replace(/\s+/g, '-')}.webp`; // Generate the old file path
-                await deleteImageFromSupabase(oldFilePath); // Delete old image
-            }
-        } else {
-            // Create a new member
-            await prisma.member.create({
-                data: {
-                    team: member.team,
+            // Check if the member already exists based on both name and team
+            const existingMember = await prisma.member.findFirst({
+                where: {
                     name: member.name,
-                    description: member.desc,
-                    cover: member.cover // Store the Supabase URL
+                    team: member.team
                 }
             });
-            console.log(`Member ${member.name} saved to the database.`);
+
+            if (existingMember) {
+                // Store the current cover URL before updating
+                const currentCover = existingMember.cover;
+
+                // Update existing member
+                await prisma.member.update({
+                    where: { id: existingMember.id },
+                    data: {
+                        description: member.desc,
+                        cover: member.cover // Store the Supabase URL
+                    }
+                });
+                console.log(`Member ${member.name} updated in the database.`);
+
+                // Check if the cover URL has changed
+                if (currentCover && currentCover !== member.cover) {
+                    const oldFilePath = `members/${existingMember.team}/${existingMember.name.replace(/\s+/g, '-')}.webp`; // Generate the old file path
+                    await deleteImageFromSupabase(oldFilePath); // Delete old image
+                }
+            } else {
+                // Create a new member
+                await prisma.member.create({
+                    data: {
+                        team: member.team,
+                        name: member.name,
+                        description: member.desc,
+                        cover: member.cover // Store the Supabase URL
+                    }
+                });
+                console.log(`Member ${member.name} saved to the database.`);
+            }
+
+            // Send success log for each member processed
+            sendLog(controller, `Processed member: ${member.name}`);
+
+        } catch (error) {
+            // Send error log for member processing
+            sendLog(controller, `Error processing member ${member.name}: ${error.message}`);
         }
     }
 
@@ -176,4 +171,17 @@ export async function updateMembers(): Promise<Member[]> {
     console.log('All members processed.');
 
     return members; 
+}
+
+// Function to send log messages back to the client
+function sendLog(controller: ReadableStreamDefaultController<Uint8Array>, message: string) {
+    try {
+        const logMessage = {
+            message,
+            timestamp: Date.now()
+        };
+        controller.enqueue(new TextEncoder().encode(`data: ${JSON.stringify(logMessage)}\n\n`));
+    } catch (error) {
+        console.error("Error sending log:", error);
+    }
 }

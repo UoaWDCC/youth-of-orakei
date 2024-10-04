@@ -108,7 +108,7 @@ export const POST: APIRoute = async ({ request }) => {
                 sendLog(controller, "Starting refresh process");
 
                 sendLog(controller, "Getting members");
-                await updateMembers();
+                await updateMembers(controller); // Pass the controller to updateMembers
 
                 sendLog(controller, "Getting projects");
                 await updateProjects();
@@ -118,7 +118,6 @@ export const POST: APIRoute = async ({ request }) => {
 
                 sendLog(controller, "Getting team descriptions");
                 await updateTeamsDescriptions();
-
 
                 sendLog(controller, "Refresh process completed");
                 controller.close();
@@ -139,7 +138,7 @@ export const POST: APIRoute = async ({ request }) => {
                 message,
                 timestamp: Date.now()
             };
-            controller.enqueue(`data: ${JSON.stringify(logMessage)}\n\n`);
+            controller.enqueue(new TextEncoder().encode(`data: ${JSON.stringify(logMessage)}\n\n`));
         } catch (error) {
             console.error("Error sending log:", error);
         }
