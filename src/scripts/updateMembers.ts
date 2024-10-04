@@ -141,8 +141,10 @@ export async function updateMembers(controller: ReadableStreamDefaultController<
             sendLog(controller, `Processed member: ${member.name}`);
 
         } catch (error) {
+            // Type assertion to ensure 'error' is treated as an Error
+            const errorMessage = (error as Error).message || 'Unknown error occurred';
             // Send error log for member processing
-            sendLog(controller, `Error processing member ${member.name}: ${error.message}`);
+            sendLog(controller, `Error processing member ${member.name}: ${errorMessage}`);
         }
     }
 
