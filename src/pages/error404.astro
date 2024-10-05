@@ -1,0 +1,34 @@
+---
+import "../styles/global.css";
+import "../styles/error404.css";
+import Layout from '../layouts/layout.astro';
+import BlobBackground from "../components/BlobBackground/BlobBackground";
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  <title>404 Page</title>
+  <style>
+    
+  </style>
+</head>
+
+<Layout>
+    <BlobBackground zIndexVal="-10" offset="-100" height="100vh"/>
+    <div class="error404-wrapper">
+        <div class="header">
+            <h1>404</h1>
+        </div>
+        <div class="error-message">
+            <p>Oops, we can't find the page you are looking for!</p>
+        </div>
+        <a href="/" class="home-button">Return to home</a>
+    </div>
+
+    <BlobBackground zIndexVal="-10"/>
+</Layout>
+    
