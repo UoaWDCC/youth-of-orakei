@@ -1,4 +1,4 @@
-.nav{
+.nav {
     position: sticky;
     top: 0;
     width: 100%;
@@ -27,13 +27,14 @@
 
     will-change: transform;
 }
-.logo:hover{
+
+.logo:hover {
     color: var(--text-active);
     transform: scale(0.98);
     transition: all 200ms;
 }
 
-.logoText{
+.logoText {
     font-size: var(--fontsize-h5);
     font-weight: 800;
 
@@ -41,12 +42,12 @@
     height: 15px;
 }
 
-.logoImg{
+.logoImg {
     width: 70px;
     height: 49px;
 }
 
-.links{
+.links {
     display: flex;
     gap: 48px;
 
@@ -54,7 +55,7 @@
     transform: translateY(2px);
 }
 
-.links a{
+.links a {
     position: relative;
 
     text-decoration: none;
@@ -66,7 +67,7 @@
 
 }
 
-.links a::before{
+.links a::before {
     content: '';
 
     position: absolute;
@@ -83,18 +84,18 @@
     transition: all 400ms;
 }
 
-.links a:hover{
+.links a:hover {
     color: var(--text-active);
     transition: all 200ms;
 }
 
-.links a:hover::before{
+.links a:hover::before {
     width: 100%;
     opacity: 0.75;
     transition: all 200ms;
 }
 
-.sillyButton{
+.sillyButton {
     position: absolute;
     right: 12px;
     top: 12px;
@@ -105,51 +106,30 @@
 
     transition: all 200ms;
 }
-.sillyButton:hover{
+
+.sillyButton:hover {
     opacity: 0.7;
 }
 
 
 /* TODO Navbar mobile */
 
-@media (max-width: 850px) {
-    .hamburger {
-        display: block;
-    }
-    .links {
-        display: none;
-    }
-}
-
 .hamburger {
     display: none; /* Hidden by default */
     background: none;
     border: none;
     cursor: pointer;
+    padding: 0;
+    z-index: 20;
+    position: absolute;
+    top: 30px;
+    right: 5%;
 }
 
 .hamburgerIcon {
-    width: 25px;
-    height: 2px;
-    background-color: black;
-    position: relative;
-}
-
-.hamburgerIcon::before,
-.hamburgerIcon::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 2px;
-    background-color: black;
-}
-
-.hamburgerIcon::before {
-    top: -8px;
-}
-
-.hamburgerIcon::after {
-    bottom: -8px;
+    width: 24px;
+    height: 24px;
+    color: var(--YOO-Green-Primary);
 }
 
 .mobileMenu {
@@ -161,11 +141,14 @@
     left: 0;
     right: 0;
     padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
 }
 
 .mobileMenu.open {
     display: flex;
 }
+
 .mobileMenu a {
     text-decoration: none;
     padding: 0.5rem 0;
@@ -175,7 +158,15 @@
 }
 
 .mobileMenu a:hover {
-    color: #007bff;
+    color: var(--YOO-Green-Primary);
 }
 
+@media (max-width: 850px) {
+    .hamburger {
+        display: block;
+    }
 
+    .links {
+        display: none;
+    }
+}

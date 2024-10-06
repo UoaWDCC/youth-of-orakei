@@ -5,10 +5,6 @@ import {Bars3Icon, XMarkIcon} from "@heroicons/react/20/solid";
 import toggle = Simulate.toggle;
 
 
-/*
-New navbar (see header.astro in components folder for previous version)
- */
-
 const Navbar = () => {
     const [silly, setSilly] = React.useState(false);
     const [typedText, setTypedText] = React.useState('');
@@ -92,14 +88,24 @@ const Navbar = () => {
                 <span className={styles.logoText}>Youth of Ōrākei</span>
             </a>
 
-            {/* Hamburger menu for mobile view */}
+            {/*Hamburger menu for mobile view */}
+
             <button className={styles.hamburger} onClick={toggleMobileMenu}>
                 {isMobileMenuOpen ? (
-                    <XMarkIcon className="h-6 w-6" />
+                    <XMarkIcon className="h-6 w-6 text-black"/>
                 ) : (
-                    <Bars3Icon className="h-6 w-6" />
+                    <Bars3Icon className="h-6 w-6 text-black"/>
                 )}
             </button>
+
+            {/* Mobile menu */}
+
+            <button className={styles.hamburger} onClick={toggleMobileMenu}>
+                <div className={styles.hamburgerIcon}></div>
+                <div className={styles.hamburgerIcon}></div>
+                <div className={styles.hamburgerIcon}></div>
+            </button>
+
 
             {/* Mobile menu */}
             <nav className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.open : ''}`}>
