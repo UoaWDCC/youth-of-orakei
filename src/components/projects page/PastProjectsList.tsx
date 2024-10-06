@@ -35,7 +35,7 @@ export default function PastProjectsList({ projects }: PastProjectsListProps) {
               <img src={project.cover} alt={project.alt} />
             </div>
             <div className="project-team" style={{ backgroundColor: headerColour, color: infoColour }}>
-              <h2 className="project-heading">{project.team}</h2>
+              <h2 className="project-heading"><b>{project.team}</b></h2>
             </div>
             <div className="project-team-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
             <div className="project-team-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
