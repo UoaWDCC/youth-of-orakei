@@ -22,6 +22,7 @@
     align-items: center;
     vertical-align: middle;
     gap: 8px;
+    margin-right: auto;
 
     transition: all 400ms;
 
@@ -50,7 +51,7 @@
 .links {
     display: flex;
     gap: 48px;
-
+    margin-left: auto;
     /* Vertical centering offset for animated underline */
     transform: translateY(2px);
 }
