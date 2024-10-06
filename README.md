@@ -49,14 +49,14 @@ All commands are run from the root of the project, from a terminal:
 
 | Member                    | Photo                                            |
 | :------------------------ | :----------------------------------------------- |
-| Chris Valenzuela          | Installs dependencies                            |
-| Yash Kumar                | Starts local dev server at `localhost:4321`      |
-| Eleanor Crellin           | Build your production site to `./dist/`          |
-| Becky Cheng               | Preview your build locally, before deploying     |
-| Emmanuel Araba            | Run CLI commands like `astro add`, `astro check` |
-| Anna Lin                  | Get help using the Astro CLI                     |
-| Kimberley Zhu             | Get help using the Astro CLI                     |
-| Owen Li                   | Get help using the Astro CLI                     |
-| Anton Garay               | Get help using the Astro CLI                     |
-| Andrew Qiu                | Get help using the Astro CLI                     |
+| Chris Valenzuela          | Placeholder                                      |
+| Yash Kumar                | Placeholder                                      |
+| Eleanor Crellin           | Placeholder                                      |
+| Becky Cheng               | Placeholder                                      |
+| Emmanuel Araba            | Placeholder                                      |
+| Anna Lin                  | Placeholder                                      |
+| Kimberley Zhu             | Placeholder                                      |
+| Owen Li                   | Placeholder                                      |
+| Anton Garay               | Placeholder                                      |
+| Andrew Qiu                | Placeholder                                      |
 
