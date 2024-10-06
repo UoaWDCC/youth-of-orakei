@@ -42,7 +42,7 @@ export default function PastProjectsList({ projects }: PastProjectsListProps) {
 
             <div className="index-event-details">
               <div>
-                <div>
+                <div className="index-event-date">
                   <h5>{project.date}</h5>
                 </div>
                 <div className="index-event-title">

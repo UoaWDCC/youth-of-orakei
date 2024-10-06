@@ -66,7 +66,7 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
               <h5>{events[imgIndex].time}</h5>
             </div>
             <div className="index-event-title">
-              <h2><b>{events[imgIndex].title}</b></h2>
+              <h2>{events[imgIndex].title}</h2>
             </div>
           </div>
           <div className="index-event-description">

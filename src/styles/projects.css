@@ -283,15 +283,26 @@
     height: 100%;
   }
 
-  .index-event-details h5 {
-    font-size: var(--fontsize-h6);
+  .index-event-details {
+    display: flex;
+    margin-left: 10px;
+    left: 35%;
+    color: white;
+    flex-direction: column;
+  }
+
+  .index-event-description {
+    font-size: var(--fontsize-reg);
+    font-weight: 500;
+    width: 100%;
   }
 
   .index-event-title h2 {
-    font-size: var(--fontsize-h5);
+    font-size: var(--fontsize-lrg);
   }
 
-  .index-event-description h5 {
+  .index-event-description h5,
+  .index-event-date h5 {
     font-size: var(--fontsize-reg);
   }
 }
