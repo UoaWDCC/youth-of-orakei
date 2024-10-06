@@ -64,6 +64,7 @@
 
 .index-heading {
   font-weight: 800;
+  font-size: 2.4vw;
 }
 
 .padded-text {
@@ -405,6 +406,11 @@
 
   .index-event-img img {
     height: 100%;
+  }
+
+  .index-event-description h5,
+  .index-event-date h5 {
+    font-size: var(--fontsize-reg);
   }
 }
 

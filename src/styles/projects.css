@@ -233,8 +233,31 @@
     border-bottom-right-radius: var(--common-radius);
   }
 
+  .team-heading {
+    font-weight: 800;
+    font-size: var(--fontsize-h5);
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: auto;
+    margin-top: 8px;
+  }
+
   .index-heading {
-    font-size: var(--fontsize-h4);
+    font-weight: 800;
+    font-size: var(--fontsize-lrg);
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: auto;
+    margin-top: 8px;
+  }
+
+  .project-heading {
+    font-weight: 800;
+    font-size: var(--fontsize-h5);
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: auto;
+    margin-top: 8px;
   }
 
   .project-team-right-corner-element {
@@ -244,7 +267,7 @@
     top: 0;
     bottom: 0;
     background-color: transparent;
-    margin-left: 35%;
+    margin-left: 34%;
     height: 50px;
     color: transparent;
     border-top-left-radius: var(--common-radius);
@@ -285,7 +308,7 @@
 
   .index-event-details {
     display: flex;
-    margin-left: 10px;
+    margin-left: 20px;
     left: 35%;
     color: white;
     flex-direction: column;
@@ -304,5 +327,9 @@
   .index-event-description h5,
   .index-event-date h5 {
     font-size: var(--fontsize-reg);
+  }
+
+  .index-event-text {
+    font-size: var(--fontsize-h4);
   }
 }

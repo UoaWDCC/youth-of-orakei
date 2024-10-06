@@ -48,12 +48,11 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
             <img key={index} src={event.src} alt={event.alt} className="index-event-image-container" style={{ translate: `${-100 * imgIndex}%`, opacity: 0.7 }} />
           ))}
         </div>
-        <div className="index-event-text">
-          <h2 className="index-heading text-green-dark" style={{ paddingRight: 15, paddingLeft: 15, margin: "auto", fontSize: "2.4vw" }}>Upcoming events</h2>
-        </div>
-        {/* Please do not remove the 2 divs below lmao */}
-        <div className="index-event-right-corner-element">corn</div>
         <div className="index-event-left-corner-element">corn</div>
+        <div className="index-event-text">
+          <h2 className="index-heading text-green-dark">Upcoming events</h2>
+        </div>
+        <div className="index-event-right-corner-element">corn</div>
         <button onClick={handleBack} className="index-carousel-button index-carousel-button-left" style={{ left: 10 }}>
           <ArrowBackIosIcon style={{ width: 50, height: 50 }} />
         </button>
@@ -62,7 +61,7 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
         </button>
         <div className="index-event-details">
           <div>
-            <div>
+            <div className="index-event-date">
               <h5>{events[imgIndex].time}</h5>
             </div>
             <div className="index-event-title">
