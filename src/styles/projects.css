@@ -5,7 +5,8 @@
 .project-heading {
   font-weight: 800;
   font-size: 2.4vw;
-  margin: auto;
+  margin-top: 5px;
+  /* margin: auto; */
 }
 
 .index-event-img {
