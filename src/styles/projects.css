@@ -2,6 +2,12 @@
   background-color: var(--YOO-Green-Lightest);
 }
 
+.project-heading {
+  font-weight: 800;
+  font-size: 2.4vw;
+  margin: auto;
+}
+
 .index-event-img {
   height: auto;
   max-height: 1000px;
@@ -248,7 +254,6 @@
     padding-left: 15px;
     padding-right: 15px;
     margin: auto;
-    margin-top: 8px;
   }
 
   .project-heading {
@@ -257,7 +262,6 @@
     padding-left: 15px;
     padding-right: 15px;
     margin: auto;
-    margin-top: 8px;
   }
 
   .project-team-right-corner-element {
@@ -331,5 +335,6 @@
 
   .index-event-text {
     font-size: var(--fontsize-h4);
+    height: 80px;
   }
 }

@@ -65,7 +65,7 @@
 .index-heading {
   font-weight: 800;
   font-size: 2.4vw;
-  margin-top: 5px;
+  margin: auto;
 }
 
 .padded-text {
@@ -166,11 +166,12 @@
 .index-event-text {
   position: absolute;
   padding-top: 10px;
+  padding-bottom: 10px;
   top: 0;
   bottom: 0;
   margin: 0 auto;
   display: flex;
-  height: 80px;
+  height: 100px;
   width: 35%;
   justify-content: center;
   background-color: var(--YOO-Green-Lightest);
@@ -379,6 +380,10 @@
 
   .index-about-text {
     width: 100%;
+  }
+
+  .index-event-text {
+    height: 80px;
   }
 
   .index-about-image {
