@@ -12,23 +12,22 @@ import BlobBackground from "../components/BlobBackground/BlobBackground";
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="generator" content={Astro.generator} />
   <title>404 Page</title>
-  <style>
-    
-  </style>
 </head>
 
 <Layout>
-    <BlobBackground zIndexVal="-10" offset="-100" height="100vh"/>
-    <div class="error404-wrapper">
-        <div class="header">
-            <h1>404</h1>
+    <div class="content-wrapper">
+        <BlobBackground zIndexVal="-10" />
+        <div class="error404-wrapper">
+            <div class="image-wrapper">
+                <img src="/error404.svg" alt="404" />
+            </div>
+            <div class="error-message">
+                <p>Oops, we can't find the page you are looking for!</p>
+            </div>
+            <div class="home-button-wrapper">
+                <a href="/" class="home-button">Return to home</a>
+            </div>
         </div>
-        <div class="error-message">
-            <p>Oops, we can't find the page you are looking for!</p>
-        </div>
-        <a href="/" class="home-button">Return to home</a>
     </div>
-
-    <BlobBackground zIndexVal="-10"/>
 </Layout>
     
