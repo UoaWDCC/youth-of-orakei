@@ -426,6 +426,14 @@
   .index-event-text {
     font-size: var(--fontsize-h4);
   }
+
+  .index-event-details {
+    display: flex;
+    margin-left: 20px;
+    left: 35%;
+    color: white;
+    flex-direction: column;
+  }
 }
 
 /* Images */
