@@ -90,7 +90,7 @@ export async function updateProjects(controller: ReadableStreamDefaultController
             const coverUrl = row.cover?.type === "external" ? row.cover?.external.url : row.cover?.file.url ?? "";
             const team = row.properties.Team.rich_text[0] ? row.properties.Team.rich_text[0].plain_text : "";
             const tags = row.properties.Tags?.multi_select.map((tag) => tag.name) || []; // Ensure tags is always an array
-            const id = row.id || "";
+            const id = row.id || ""; // Ensure the Notion ID is being used
 
             // Sanitize the title for cover path
             const sanitizedTitle = sanitizeFileName(title);
@@ -109,13 +109,13 @@ export async function updateProjects(controller: ReadableStreamDefaultController
             }
 
             return {
+                id, // Use Notion ID as unique identifier
                 title,
                 date,
                 description,
                 cover: coverPath, // Store the Supabase URL
                 team,
                 tags,
-                id,
             };
         });
 
@@ -124,9 +124,16 @@ export async function updateProjects(controller: ReadableStreamDefaultController
 
         // Store projects in the Prisma database
         for (const project of projects) {
+            // Check if the project already exists in the database by ID
+            const existingProject = await prisma.project.findUnique({
+                where: { id: project.id },
+            });
+
+            // If project exists, update it, else create a new one
             await prisma.project.upsert({
                 where: { id: project.id },
                 create: {
+                    id: project.id, // Ensure the ID is passed during creation
                     title: project.title,
                     date: project.date,
                     description: project.description,
