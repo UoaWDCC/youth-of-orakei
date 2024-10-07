@@ -408,9 +408,23 @@
     height: 100%;
   }
 
+  .index-event-description {
+    font-size: var(--fontsize-reg);
+    font-weight: 500;
+    width: 100%;
+  }
+
+  .index-event-title h2 {
+    font-size: var(--fontsize-lrg);
+  }
+
   .index-event-description h5,
   .index-event-date h5 {
     font-size: var(--fontsize-reg);
+  }
+
+  .index-event-text {
+    font-size: var(--fontsize-h4);
   }
 }
 
