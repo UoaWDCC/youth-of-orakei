@@ -1,20 +1,55 @@
 ---
-
-import members from "../../public/members/membersData.json"
-import { sortMembersByTeam } from "../scripts/sortTeams.ts";
-let { leadershipTeam, communicationTeam, projects } =
-  sortMembersByTeam(members);
 import "../styles/global.css";
 import "../styles/members.css";
-
 import Layout from "../layouts/layout.astro";
+import members from "../../public/members/membersData.json"
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
-import MemberDisplay from "../components/MembersDisplay.astro";
-// import MembersDisplay from "../components/MembersDisplay.astro";
-import PersonCard from "../components/PersonCard.tsx";
-import BlobBackground from "../components/BlobBackground/BlobBackground";
+import { sortMembersByTeam } from "../scripts/sortTeams.ts";
+import { getTeamsDescriptions } from "../scripts/getTeamDescription";
+
+type MemberData = {
+  team: string;
+  desc: string;
+  name: string;
+  cover: string;
+  url?: string;
+}
+
+type TeamDescriptions = {
+  name: string;
+  description?: string;
+  tags?: string;
+}
+
+type Team = {
+  teamName: string;
+  members: MemberData[];
+  description: string | undefined;
+}
+
+let { teamsDict, projects } =
+    sortMembersByTeam(members);
+let teamDescription: TeamDescriptions[] = await getTeamsDescriptions();
+
+function mapTeamWithDesc(teams: {[teamName: string]: MemberData[]}, teamDescription: TeamDescriptions[]) {
+  return Object.keys(teams)
+      .map(teamName => {
+        const description = teamDescription.find((desc: TeamDescriptions) => desc.name === teamName);
+        if (description) {
+          return {
+            teamName,
+            members: teams[teamName],
+            description: description.description
+          };
+        }
+        return null;
+      })
+      .filter(Boolean);
+}
+
+let teamWithDesc = mapTeamWithDesc(teamsDict, teamDescription);
 ---
 
 <html lang="en">
@@ -75,25 +110,12 @@ import BlobBackground from "../components/BlobBackground/BlobBackground";
         }
       });
     </script>
-    <TeamDisplayLeft team={leadershipTeam} />
-    <TeamDisplayRight team={communicationTeam} />
+    {teamWithDesc.map((team: Team, index: number) => (
+      index % 2 === 0 ?
+          <TeamDisplayLeft teamName={team.teamName} team={team.members} teamDescription={team.description} /> :
+          <TeamDisplayRight teamName={team.teamName} team={team.members} teamDescription={team.description} />
+    ))}
     <ProjectTeam client:only="react" projects={projects} />
-    <!-- <ProjectTeam team={projects} /> -->
-    <!-- <ProjectTeam client:load /> -->
-    <!-- <ProjectTeam client:visible /> -->
-   <!--  <div class="members">
-      {/* Display specific project team by index */}
-      {
-        projects[3].members.map((member) => (
-          <PersonCard
-            cover={member.cover}
-            name={member.name}
-            team={member.team}
-            desc={member.desc}
-          />
-        ))
-      }
-    </div> -->
   
   </Layout>
 </section>
