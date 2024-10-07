@@ -33,29 +33,33 @@ const carouselContent = [carousel1, carousel2, carousel3].filter((item): item is
 	</head>
 
 	<Layout>
-		<BlobBackground zIndexVal="-10" offset="-100"/>
-		<section class="index-section">
-			<IndexHero content={heroContent}/>
-		</section>
+		<div class="index-wrapper">
+			<BlobBackground zIndexVal="-10" offset="-100"/>
+			<section class="index-section">
+				<IndexHero content={heroContent}/>
+			</section>
 
-		<IndexImage source="/Team + Individual/Whole Council.JPG" desc="A group photo of YOO."/>
+			<IndexImage source="/Team + Individual/Whole Council.JPG" desc="A group photo of YOO."/>
 
-		<BlobBackground zIndexVal="-10"/>
+			<BlobBackground zIndexVal="-10"/>
 
-		<section class="index-section">
-			<IndexAbout content={aboutContent}/>
-		</section>
+			<section class="index-section">
+				<IndexAbout content={aboutContent}/>
+			</section>
 
-		<IndexImage source="/Past Events/Quiz Night.jpg" desc="Some YOO members at a quiz night event"/>
+			<IndexImage source="/Past Events/Quiz Night.jpg" desc="Some YOO members at a quiz night event"/>
 
-		<section class="index-section">
-			<IndexGoals content={goalContent}/>
-		</section>
+			<BlobBackground zIndexVal="-10"/>
 
-		<section class="index-events">
-			 <div class="index-image-carousel-container"> 
-				<ImageCarousel carousels={carouselContent} client:only="react" />
-			</div>
-		</section>
+			<section class="index-section">
+				<IndexGoals content={goalContent}/>
+			</section>
+
+			<section class="index-events">
+				<div class="index-image-carousel-container">
+					<ImageCarousel carousels={carouselContent} client:only="react" />
+				</div>
+			</section>
+		</div>
 	</Layout>
 </html>
