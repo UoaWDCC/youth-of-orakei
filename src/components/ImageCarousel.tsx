@@ -49,10 +49,10 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
           ))}
         </div>
         <div className="index-event-left-corner-element">corn</div>
+        <div className="index-event-right-corner-element">corn</div>
         <div className="index-event-text">
           <h2 className="index-heading text-green-dark">Upcoming events</h2>
         </div>
-        <div className="index-event-right-corner-element">corn</div>
         <button onClick={handleBack} className="index-carousel-button index-carousel-button-left" style={{ left: 10 }}>
           <ArrowBackIosIcon style={{ width: 50, height: 50 }} />
         </button>

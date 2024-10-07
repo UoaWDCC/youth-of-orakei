@@ -384,6 +384,14 @@
     width: 100%;
   }
 
+  .index-heading {
+    font-weight: 800;
+    font-size: var(--fontsize-h5);
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: auto;
+  }
+
   .index-goals-headlines {
     flex-direction: column;
   }
