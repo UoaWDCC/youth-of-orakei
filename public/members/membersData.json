@@ -32,8 +32,8 @@
   {
     "team": "Projects: Fermata",
     "desc": "Project Member",
-    "name": "AntonCACHE",
-    "cover": ""
+    "name": "ANTONSTAGINGTEST",
+    "cover": "/members/projects_fermata_antonstagingtest.webp"
   },
   {
     "team": "Houston",
@@ -162,6 +162,12 @@
     "cover": "/members/projects_schmetterlinge_paidashe.webp"
   },
   {
+    "team": "Projects: Fermata",
+    "desc": "Project Member",
+    "name": "pog",
+    "cover": ""
+  },
+  {
     "team": "Leadership Team",
     "desc": "Council Engagement Lead",
     "name": "Rashmi",
@@ -172,6 +178,12 @@
     "desc": "Communications Member",
     "name": "Saffron",
     "cover": "/members/communication_team_saffron.webp"
+  },
+  {
+    "team": "Projects: Fermata",
+    "desc": "Project Member",
+    "name": "sdasdas",
+    "cover": ""
   },
   {
     "team": "Projects: Schmetterlinge",
@@ -228,6 +240,12 @@
     "cover": "/members/projects_the_gaggle_tommy.webp"
   },
   {
+    "team": "Projects: Fermata",
+    "desc": "Project Member",
+    "name": "TULZATEST",
+    "cover": ""
+  },
+  {
     "team": "Projects: Schmetterlinge",
     "desc": "Project Member",
     "name": "William",
@@ -246,9 +264,9 @@
     "cover": "/members/leadership_team_yixuan.webp"
   },
   {
-    "team": "",
-    "desc": "",
-    "name": "zzz",
-    "cover": "/members/_zzz.webp"
+    "team": "Yas team",
+    "desc": "Member",
+    "name": "yues",
+    "cover": ""
   }
 ]
