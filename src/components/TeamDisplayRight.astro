@@ -1,10 +1,8 @@
 ---
 import "../styles/global.css";
-
-// import MembersDisplay from "./MembersDisplay.astro";
 import PersonCard from "./PersonCard.tsx";
-
-const { team } = Astro.props;
+import MembersDisplay from "./MembersDisplay.astro";
+const { teamName, team, teamDescription } = Astro.props;
 ---
 
 <html lang="en">
@@ -20,24 +18,21 @@ const { team } = Astro.props;
     <div class="communications" id="com-section">
       <div class="left2">
         {
-          team.map((cover: { name: any; team: any; desc: any; cover: any }) => (
+          team.map((member: { name: any; team: any; desc: any; cover: any }) => (
             <PersonCard
-              name={cover.name}
-              team={cover.team}
-              desc={cover.desc}
-              cover={cover.cover}
+              name={member.name}
+              team={member.team}
+              desc={member.desc}
+              cover={member.cover}
+              color={"--YOO-Blue-Light"}
             />
           ))
         }
       </div>
       <div class="right2">
-        <h2 class="coms-title"><b>Communications Team</b></h2>
+        <h2 class="coms-title"><b>{teamName}</b></h2>
         <p class="main-description-box-coms">
-          Description of the communications team... Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Integer sit amet fringilla libero.
-          Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
-          turpis ante.
+          {teamDescription}
           <button class="learn-more-coms">LEARN MORE</button>
         </p>
       </div>

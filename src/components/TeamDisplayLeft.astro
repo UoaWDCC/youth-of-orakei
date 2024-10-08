@@ -1,15 +1,8 @@
 ---
 import "../styles/global.css";
 import MembersDisplay from "./MembersDisplay.astro";
-
-import { getMembers } from "../scripts/getMembers";
-let members = await getMembers();
-
-import { sortMembersByTeam } from "../scripts/sortTeams.ts";
-let { leadershipTeam, communicationTeam, projects } =
-  sortMembersByTeam(members);
-const { team, cover, name, desc } = Astro.props;
-let leadership = "Leadership Team";
+import PersonCard from "./PersonCard.tsx";
+const { teamName, team, teamDescription } = Astro.props;
 ---
 
 <html lang="en">
@@ -24,26 +17,21 @@ let leadership = "Leadership Team";
   <body>
     <div class="leadership" id="leadership-section">
       <div class="left1">
-        <h2 class="lead-title"><b>Leadership Team</b></h2>
+        <h2 class="lead-title"><b>{teamName}</b></h2>
         <p class="main-description-box-lead">
-          Description of the leadership team... Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Integer sit amet fringilla libero.
-          Praesent rutrum in dui ut feugiat. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Nullam eget eleifend nibh. Maecenas ut
-          turpis ante.
+          {teamDescription}
         </p>
       </div>
       <div class="right1">
-        {
-          team.map((cover: { name: any; team: any; desc: any; cover: any }) => (
-            <MembersDisplay
-              name={cover.name}
-              team={cover.team}
-              desc={cover.desc}
-              cover={cover.cover}
-            />
-          ))
-        }
+        {team.map((member: { name: any; team: any; desc: any; cover: any; }) => (
+          <PersonCard
+            name={member.name}
+            team={member.team}
+            desc={member.desc}
+            cover={member.cover}
+            color={"--YOO-Green-Lightest"}
+          />
+        ))}
       </div>
     </div>
   </body>

@@ -1,53 +1,14 @@
 ---
-
-// import { sortProjectsByTeam } from "../scripts/sortProjects.ts";
-// let { team1, team2, team3, team4 } = sortProjectsByTeam(projects);
-
 import "../styles/global.css";
 import "../styles/index.css";
 import "../styles/projects.css";
 import Layout from "../layouts/layout.astro";
-import Carousel from "../components/carousel.astro";
 import PastProjectsList from "../components/projects page/PastProjectsList";
 import ImageCarousel from "../components/ImageCarousel";
 import IndexHeading from "../components/index page/IndexHeading";
-
 import BlobBackground from "../components/BlobBackground/BlobBackground";
-import { fetchPageBlocks } from "../scripts/fetchPageBlocks";
-
-
-// Projects Page
-import { getProjects } from "../scripts/getProjects.ts";
-import { Client } from "@notionhq/client";
-import { getPage } from "../scripts/getPageDescriptions";
-import { title } from "process";
-
-let projects = await getProjects();
-const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
-const NOTION_PROJECTS_ID  = process.env.NOTION_PROJECTS_ID || import.meta.env.NOTION_PROJECTS_ID ;
-
-if (!NOTION_TOKEN || !NOTION_PROJECTS_ID) throw new Error("Missing secret(s)");
-
-const notion = new Client({ auth: NOTION_TOKEN });
-let carouselList: { heading: string; subheadings: string[]; paragraphs: string[]; images: string[] }[] = [];
-
-for (const project of projects) {
-  if (project.title.toLowerCase().includes("carousel content")) {
-    const pageId: string = project.id;
-    const blocks = await fetchPageBlocks(notion, pageId);
-    const { subheadings, paragraphs, images } = await getPage(blocks);
-
-    carouselList.push({
-      heading: subheadings[0],
-      subheadings,
-      paragraphs,
-      images
-    });
-  }
-}
-projects = projects.filter((project) => !project.title.toLowerCase().includes("carousel content"));
-console.log(carouselList)
-
+import { serveProjects } from "../scripts/serveProjects";
+const { projects, carouselList } = await serveProjects();
 ---
 
 <html lang="en">
@@ -70,6 +31,6 @@ console.log(carouselList)
           <PastProjectsList client:only="react" projects={projects} />
         </div>
       </section>
-    </main>
+    </main> 
   </Layout>
 </html>

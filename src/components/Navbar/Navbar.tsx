@@ -120,6 +120,7 @@ const Navbar = () => {
                 <a href="/projects">Projects</a>
                 <a href="/members">Members</a>
                 <a href="/contact">Contact</a>
+                <a href="/archive">Archive</a>
             </nav>
             <button id="silly-toggle" className={styles.sillyButton} onClick={sillyHandler}>
                 {silly ? "disable silly mode" : "enable silly mode"}

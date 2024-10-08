@@ -7,6 +7,7 @@ type PastProjectsListProps = {
 };
 
 export default function PastProjectsList({ projects }: PastProjectsListProps) {
+  console.log(projects)
   return (
     <div>
       {projects.map((project, index) => {
@@ -43,7 +44,7 @@ export default function PastProjectsList({ projects }: PastProjectsListProps) {
             <div className="index-event-details">
               <div>
                 <div>
-                  <h5>{project.date}</h5>
+                  <h5>{project.date?.toString() || "No date available"}</h5>
                 </div>
                 <div className="index-event-title">
                   <h2><b>{project.title}</b></h2>

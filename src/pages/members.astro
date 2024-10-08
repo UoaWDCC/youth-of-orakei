@@ -1,6 +1,4 @@
 ---
-import { getMembers } from "../scripts/getMembers";
-let members = await getMembers();
 
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
 let { leadershipTeam, communicationTeam, projects } =
@@ -8,7 +6,7 @@ let { leadershipTeam, communicationTeam, projects } =
 
 import "../styles/global.css";
 import "../styles/members.css";
-
+import {fetchMembers} from "../scripts/serveMembers"
 import Layout from "../layouts/layout.astro";
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
@@ -16,15 +14,48 @@ import ProjectTeam from "../components/ProjectTeam.tsx";
 
 // Import the TeamDropdown component
 import TeamDropdown from '../components/TeamDropdown';
----
+import type {TeamDescriptions} from "../types/teamDescriptions"
+import {serveTeamDescriptions} from "../scripts/serveTeamDescriptions"
+import type { memberData } from "../types/memberData";
 
+type Team = {
+  teamName: string;
+  members: memberData[];
+  description: string | undefined;
+}
+
+let members = await fetchMembers(); 
+
+let { teamsDict, projects } =
+    sortMembersByTeam(members);
+let teamDescription: TeamDescriptions[] = await serveTeamDescriptions()
+
+function mapTeamWithDesc(teams: {[teamName: string]: memberData[]}, teamDescription: TeamDescriptions[]) {
+  return Object.keys(teams)
+      .map(teamName => {
+        const description = teamDescription.find((desc: TeamDescriptions) => desc.name === teamName);
+        if (description) {
+          return {
+            teamName,
+            members: teams[teamName],
+            description: description.description
+          };
+        }
+        return null;
+      })
+      .filter(Boolean);
+}
+
+let teamWithDesc: (Team | null)[] = mapTeamWithDesc(teamsDict, teamDescription);
+
+---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>Team Display</title>
+    <title>Team Display</title
   </head>
   <body>
     <section class="section-background">
@@ -61,7 +92,6 @@ import TeamDropdown from '../components/TeamDropdown';
           showTeamSection(savedTeam); // Show the previously selected team section
         }
       });
-
       function showTeamSection(team: string) {
         // Hide all sections
         document.querySelectorAll('.team-section').forEach((section) => {
@@ -74,7 +104,16 @@ import TeamDropdown from '../components/TeamDropdown';
           (teamSection as HTMLElement).style.display = 'block';
         }
       }
-
     </script>
+    {teamWithDesc.map((team: Team | null, index: number) => (
+      team ? (
+        index % 2 === 0 ? 
+          <TeamDisplayLeft teamName={team.teamName} team={team.members} teamDescription={team.description} /> :
+          <TeamDisplayRight teamName={team.teamName} team={team.members} teamDescription={team.description} />
+      ) : null
+    ))}
+    
+        <ProjectTeam client:only="react" projects={projects} />
+      </Layout>
   </body>
 </html>
