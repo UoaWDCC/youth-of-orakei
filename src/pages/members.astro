@@ -1,6 +1,9 @@
 ---
 
 import { sortMembersByTeam } from "../scripts/sortTeams.ts";
+let { leadershipTeam, communicationTeam, projects } =
+  sortMembersByTeam(members);
+
 import "../styles/global.css";
 import "../styles/members.css";
 import {fetchMembers} from "../scripts/serveMembers"
@@ -8,6 +11,9 @@ import Layout from "../layouts/layout.astro";
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
+
+// Import the TeamDropdown component
+import TeamDropdown from '../components/TeamDropdown';
 import type {TeamDescriptions} from "../types/teamDescriptions"
 import {serveTeamDescriptions} from "../scripts/serveTeamDescriptions"
 import type { memberData } from "../types/memberData";
@@ -47,59 +53,57 @@ let teamWithDesc: (Team | null)[] = mapTeamWithDesc(teamsDict, teamDescription);
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>Members Page</title>
+    <title>Team Display</title
   </head>
-  <section class="section-background">
-  <Layout>
-  
-      
-    <!-- <BlobBackground zIndexVal="-10" offset="-100"/>
-    <BlobBackground zIndexVal="-10" offset="900"/> -->
-    
-    <object data="..\public\assets\YOO_members_bg.svg"> </object>
-    <div class="nav">
-      <button class="lead-button"
-        ><a href="#leadership-section">LEADERSHIP</a></button
-      >
-      <button class="com-button"
-        ><a href="#com-section">COMMUNICATIONS</a></button
-      >
-      <button class="proj-button"><a href="#proj-section">PROJECTS</a></button>
-    </div>
-    <!-- <div class="shapedividers_com-9592"></div> -->
+  <body>
+    <section class="section-background">
+      <Layout>
 
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-    <!-- function for the scroll up button -->
+        <div class="team-dropdown-container">
+          <TeamDropdown client:only="react" />
+
+        </div>
+
+        <div class="nav" id="desktop-nav">
+          <button class="lead-button"><a href="#leadership-section">LEADERSHIP</a></button>
+          <button class="com-button"><a href="#communications-section">COMMUNICATIONS</a></button>
+          <button class="proj-button"><a href="#projects-section">PROJECTS</a></button>
+        </div>
+
+        <div id="leadership-section" class="team-section">
+          <TeamDisplayLeft team={leadershipTeam} />
+        </div>
+        <div id="communications-section" class="team-section"> 
+          <TeamDisplayRight team={communicationTeam} />
+        </div>
+        <div id="projects-section" class="team-section">
+          <ProjectTeam client:only="react" projects={projects} />
+        </div>
+      </Layout>
+    </section>
+
     <script>
-      document.addEventListener("DOMContentLoaded", (event) => {
-        const myButton = document.getElementById("myBtn") as HTMLButtonElement;
-
-        window.onscroll = function () {
-          scrollFunction();
-        };
-
-        function scrollFunction() {
-          if (
-            document.body.scrollTop > 20 ||
-            document.documentElement.scrollTop > 20
-          ) {
-            myButton.style.display = "block";
-          } else {
-            myButton.style.display = "none";
-          }
-        }
-
-        myButton.onclick = function () {
-          topFunction();
-        };
-
-        function topFunction() {
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
+      document.addEventListener('DOMContentLoaded', function () {
+        const savedTeam = localStorage.getItem('selectedTeam');
+        
+        if (savedTeam) {
+          showTeamSection(savedTeam); // Show the previously selected team section
         }
       });
+      function showTeamSection(team: string) {
+        // Hide all sections
+        document.querySelectorAll('.team-section').forEach((section) => {
+          (section as HTMLElement).style.display = 'none';
+        });
+
+        // Show the selected team section
+        const teamSection = document.getElementById(`${team}-section`);
+        if (teamSection) {
+          (teamSection as HTMLElement).style.display = 'block';
+        }
+      }
     </script>
     {teamWithDesc.map((team: Team | null, index: number) => (
       team ? (
@@ -109,7 +113,7 @@ let teamWithDesc: (Team | null)[] = mapTeamWithDesc(teamsDict, teamDescription);
       ) : null
     ))}
     
-    <ProjectTeam client:only="react" projects={projects} />
-  </Layout>
-</section>
+        <ProjectTeam client:only="react" projects={projects} />
+      </Layout>
+  </body>
 </html>

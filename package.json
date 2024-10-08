@@ -17,6 +17,8 @@
     "@astrojs/tailwind": "^5.1.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@headlessui/react": "^2.1.8",
+    "@heroicons/react": "^2.1.5",
     "@mui/icons-material": "^5.16.4",
     "@mui/material": "^5.16.4",
     "@notionhq/client": "^2.2.15",
