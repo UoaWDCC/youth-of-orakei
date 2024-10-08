@@ -41,7 +41,7 @@ export default function PastProjectsList({ projects }: PastProjectsListProps) {
             <div className="project-team-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
 
             <div className="index-event-details">
-              <div>
+              <div className="index-event-date-and-title">
                 <div className="index-event-date">
                   <h5>{project.date}</h5>
                 </div>

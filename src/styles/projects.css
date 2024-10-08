@@ -15,6 +15,21 @@
   object-fit: cover;
 }
 
+/* .index-event-date-and-title {
+  margin-right: 20px;
+} */
+
+.index-event-details {
+  display: flex;
+  /* margin-left: 20px; */
+  left: 50%;
+  color: white;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
 .index-event-img img {
   height: 100%;
   width: 100%;
@@ -367,7 +382,9 @@
     display: flex;
     margin-left: 20px;
     left: 35%;
+    gap: 0px;
     color: white;
+    align-items: baseline;
     flex-direction: column;
   }
 

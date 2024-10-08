@@ -60,7 +60,7 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
           <ArrowForwardIosIcon style={{ width: 50, height: 50 }} />
         </button>
         <div className="index-event-details">
-          <div>
+          <div className="index-event-date-and-title">
             <div className="index-event-date">
               <h5>{events[imgIndex].time}</h5>
             </div>
