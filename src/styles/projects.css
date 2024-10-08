@@ -5,14 +5,12 @@
 .project-heading {
   font-weight: 800;
   font-size: 2.4vw;
-  margin-top: 5px;
-  /* margin: auto; */
 }
 
 .index-event-img {
   height: auto;
-  max-height: 1000px;
-  min-height: 400px;
+  max-height: 1500px;
+  min-height: 350px;
   width: 100%;
   object-fit: cover;
 }
@@ -222,6 +220,60 @@
   color: var(--YOO-Green-Primary);
 }
 
+@media(max-width: 1400px) {
+  .project-team {
+    position: absolute;
+    top: 0;
+    padding: 15px 10px 10px 10px;
+    width: 25%;
+    height: 80px;
+    text-align: center;
+    border-bottom-right-radius: var(--common-radius);
+  }
+
+  .project-heading {
+    font-weight: 800;
+    font-size: var(--fontsize-h2);
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: auto;
+  }
+
+  .project-team-right-corner-element {
+    content: "";
+    margin-top: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    margin-left: 25%;
+    height: 50px;
+    color: transparent;
+    border-top-left-radius: var(--common-radius);
+    box-shadow: -15px 0px var(--YOO-Green-Lightest);
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .project-team-left-corner-element {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    margin-top: 80px;
+    height: 50px;
+    color: transparent;
+    border-top-left-radius: var(--common-radius);
+    box-shadow: 0px -25px var(--YOO-Green-Lightest);
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+
 @media (max-width: 900px) {
   .past-project-container {
     width: 100%;
@@ -234,7 +286,7 @@
     position: absolute;
     top: 0;
     padding: 15px 10px 10px 10px;
-    width: 35%;
+    width: 40%;
     height: 16%;
     text-align: center;
     border-bottom-right-radius: var(--common-radius);
@@ -267,13 +319,13 @@
 
   .project-team-right-corner-element {
     content: "";
-    margin-top: 10px;
+    margin-top: 9px;
     position: absolute;
     top: 0;
     bottom: 0;
     background-color: transparent;
-    margin-left: 34%;
-    height: 50px;
+    margin-left: 40%;
+    height: 30px;
     color: transparent;
     border-top-left-radius: var(--common-radius);
     box-shadow: -15px 0px var(--YOO-Green-Lightest);
@@ -289,7 +341,7 @@
     top: 0;
     bottom: 0;
     background-color: transparent;
-    margin-top: 65px;
+    margin-top: 58px;
     height: 50px;
     color: transparent;
     border-top-left-radius: var(--common-radius);
