@@ -21,11 +21,11 @@ type CarouselProps = {
 
 export default function ProjectsImageCarousel({ projects }: CarouselProps) {
     const events = projects.map((project) => ({
-        src: project.cover,   // Use the cover image for the carousel image
-        alt: project.title,   // Use the project title for the alt text
-        time: new Date(project.date).toLocaleDateString(),  // Format the date
-        title: project.title, // Use the project title
-        description: project.description,  // Use the project description
+        src: project.cover,   
+        alt: project.title,  
+        time: new Date(project.date).toLocaleDateString(),  
+        title: project.title, 
+        description: project.description,
     }));
 
     const [imgIndex, setImgIndex] = useState<number>(0);
