@@ -7,7 +7,7 @@ type PastProjectsListProps = {
 };
 
 export default function PastProjectsList({ projects }: PastProjectsListProps) {
-  console.log(projects)
+
   return (
     <div>
       {projects.map((project, index) => {

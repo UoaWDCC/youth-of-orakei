@@ -1,33 +1,32 @@
 import { useState } from "react";
-import "../styles/index.css";
+import "../../styles/index.css";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-interface Events {
-    src: string,
-    alt: string,
-    time: string,
-    title: string,
-    description: string
+interface Project {
+    id: string;
+    title: string;
+    date: string;
+    description: string;
+    cover: string;
+    team: string;
+    createdAt: string;
+    updatedAt: string;
+    carouselNumber: number;
 }
 
 type CarouselProps = {
-    carousels?: {
-        heading: string;
-        subheadings: string[];
-        paragraphs: string[];
-        images: string[];
-    }[];
+    projects: Project[];
 };
 
-export default function ImageCarousel({ carousels }: CarouselProps) {
-    const events: Events[] = carousels?.map((carousel) => ({
-        src: carousel.images[0], 
-        alt: carousel.subheadings[0],
-        time: carousel.paragraphs[0], 
-        title: carousel.subheadings[0],
-        description: carousel.paragraphs[1],
-    })) || [];
+export default function ProjectsImageCarousel({ projects }: CarouselProps) {
+    const events = projects.map((project) => ({
+        src: project.cover,   // Use the cover image for the carousel image
+        alt: project.title,   // Use the project title for the alt text
+        time: new Date(project.date).toLocaleDateString(),  // Format the date
+        title: project.title, // Use the project title
+        description: project.description,  // Use the project description
+    }));
 
     const [imgIndex, setImgIndex] = useState<number>(0);
 
@@ -43,14 +42,14 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
         <>  
             <div style={{ width: "100%", height: "100%", position: "relative", padding: "10px"}}>
                 <div className="index-event-img" style={{ width: "100%", height: "100%", display: "flex", overflow: "hidden" }}>
-                    {events.map((event: Events, index: number) => (
+                    {events.map((event, index) => (
                         <img key={index} src={event.src} alt={event.alt} className="index-event-image-container" style={{ translate: `${-100 * imgIndex}%`, opacity: 0.7, aspectRatio: "14/6" }}/>
                     ))}
                 </div>
                 <div className="index-event-text">
                     <h2 className="index-heading text-green-dark" style={{ paddingRight: 15, paddingLeft: 15, margin: "auto", fontSize: "2.4vw" }}>Upcoming events</h2>
                 </div>
-                {/* Please do not remove the 2 divs below lmao */}
+                {/* Do not remove the 2 divs below */}
                 <div className="index-event-right-corner-element">corn</div>
                 <div className="index-event-left-corner-element">corn</div>
                 <button onClick={handleBack} className="index-carousel-button index-carousel-button-left" style={{ left: 10 }}>
@@ -74,7 +73,7 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
                 </div>
                 <div style={{ position: "absolute", bottom: "1.3rem", left: "50%", translate: "-50%" }}>
                     <span className="image-carousel-indicators">
-                        {events.map((_, index: number) => (
+                        {events.map((_, index) => (
                             <button key={index} onClick={() => setImgIndex(index)} className={imgIndex === index ? "image-carousel-indicator" : "image-carousel-indicator image-carousel-indicator-inactive"}></button>
                         ))}
                     </span>

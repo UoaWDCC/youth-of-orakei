@@ -11,6 +11,6 @@ export async function fetchHomepageDescriptions(): Promise<any[]> {
         return descriptions;
     } catch (error) {
         console.error("Error fetching homepage descriptions:", error);
-        return []; // Return an empty array on error
+        return [];
     } 
 }
