@@ -1,50 +1,45 @@
-import { prisma } from "../lib/prisma"
-// Define the CarouselItem type
-type CarouselItem = {
-  heading: string;
-  subheadings: string[];
-  paragraphs: string[];
-  images: string[];
-};
+import { prisma } from "../lib/prisma";
 
-export async function serveProjects(): Promise<{ projects: any[], carouselList: CarouselItem[] }> {
+
+
+export async function serveProjects(): Promise<{ projects: any[], carouselList: any[] }> {
   try {
-    // Fetch the projects from the Prisma database
     const projects = await prisma.project.findMany({
       include: {
-        tags: true, // Include tags related to the project
+        tags: true, 
       },
     });
 
-    // Initialize the carousel list with the defined type
-    const carouselList: CarouselItem[] = [];
+    const carouselProjects: any[] = [];
 
-    // Filter projects that contain "carousel content" in the title
     const nonCarouselProjects = projects.filter((project: typeof projects[0]) => {
-      if (project.title.toLowerCase().includes("carousel content")) {
-        // Extract carousel-related content
-        const { description, cover } = project;
+      const title = project.title.toLowerCase();
 
-        const subheadings = description ? [description] : [];
-        const paragraphs = [description]; // For simplicity, using description as a placeholder
-        const images = cover ? [cover] : []; // Assuming cover is used as an image
-
-        carouselList.push({
-          heading: project.title,
-          subheadings,
-          paragraphs,
-          images,
+      if (title.includes("carousel content")) { 
+        const numberMatch = title.match(/carousel content #(\d+)/);
+        const carouselNumber = numberMatch ? parseInt(numberMatch[1], 10) : 0;
+        const heading = project.title.replace(/\(carousel content\)/i, '').trim();
+        carouselProjects.push({
+          ...project,
+          title: heading, 
+          carouselNumber  
         });
 
-        return false; 
+        return false;
       }
 
       return true; 
     });
 
-    return { projects: nonCarouselProjects, carouselList };
+   
+    const sortedCarouselProjects = carouselProjects.sort((a, b) => a.carouselNumber - b.carouselNumber);
+   
+    return { 
+      projects: nonCarouselProjects, 
+      carouselList: sortedCarouselProjects
+    };
   } catch (error) {
     console.error("Error fetching projects and carousel list:", error);
     throw error;
-  } 
+  }
 }

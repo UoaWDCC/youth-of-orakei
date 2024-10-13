@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import '../../styles/refresh.css';
 
 interface RefreshSectionProps {
   newPassword: string;
@@ -112,10 +113,10 @@ const RefreshSection: React.FC<RefreshSectionProps> = ({
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <p className="text-xl font-bold mb-2">Logged in</p>
-      <form id="change-password-form" onSubmit={handlePasswordChange} className="flex items-center mb-2">
-        <label htmlFor="new-password" className="mr-2 font-semibold">New Password: (Optional)</label>
+    <div className="refresh-section">
+      <p className="logged-in-message">Logged in</p>
+      <form id="change-password-form" onSubmit={handlePasswordChange} className="change-password-form">
+        <label htmlFor="new-password" className="password-label">New Password: (Optional)</label>
         <input
           type="password"
           id="new-password"
@@ -124,28 +125,28 @@ const RefreshSection: React.FC<RefreshSectionProps> = ({
           onChange={(e) => setNewPassword(e.target.value)}
           onKeyDown={(e) => handleKeyDown(e, 'change-password-form')}
           required
-          className="border rounded-lg mx-2 p-2 flex-grow"
+          className="password-input"
         />
-        <button type="submit" className="bg-[#294E03] px-3 py-1 rounded-full text-white font-semibold">
+        <button type="submit" className="change-password-button">
           Change Password
         </button>
         {passwordChanged && (
-          <span className="text-green-600 mx-2 font-bold">Password changed!</span>
+          <span className="password-changed-message">Password changed!</span>
         )}
       </form>
       <button
         onClick={handleRefresh}
-        className="bg-[#294E03] px-3 py-1 rounded-full text-white font-semibold"
+        className="refresh-button"
         disabled={isRefreshing}
       >
         {isRefreshing ? 'Refreshing...' : 'Refresh'}
       </button>
       {logs.length > 0 && (
-        <div className="mt-4 w-full max-w-md">
-          <h3 className="text-lg font-semibold mb-2">Refresh Logs:</h3>
-          <ul className="list-disc pl-5 space-y-1 max-h-40 overflow-y-auto bg-gray-100 p-2 rounded">
+        <div className="logs-container">
+          <h3 className="logs-title">Refresh Logs:</h3>
+          <ul className="logs-list">
             {logs.map((log, index) => (
-              <li key={index} className="text-sm">
+              <li key={index} className="log-message">
                 {new Date(log.timestamp).toLocaleTimeString()}: {log.message}
               </li>
             ))}

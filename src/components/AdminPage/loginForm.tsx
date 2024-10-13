@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './loginForm.css';
+import '../../styles/refresh.css';
 import RefreshSection from './RefreshSection';
 
 const LoginForm = () => {
@@ -41,11 +41,11 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="w-dvw h-dvh flex justify-center items-center bg-[#C8E4AE]">
-      <div className="flex flex-col">
+    <div className="login-container">
+      <div className="login-form-wrapper">
         {!loggedIn ? (
-          <form id="login-form" onSubmit={handleLogin} className="mb-2">
-            <label htmlFor="password" className='mr-2 font-semibold'>Enter Password:</label>
+          <form id="login-form" onSubmit={handleLogin} className="login-form">
+            <label htmlFor="password" className='password-label'>Enter Password:</label>
             <input
               type="password"
               id="password"
@@ -53,12 +53,12 @@ const LoginForm = () => {
               required
               onChange={(e) => setPassword(e.target.value)}
               onKeyDown={(e) => handleKeyDown(e, 'login-form')}
-              className="border rounded-lg mx-2 p-2"
+              className="password-input"
             />
-            <button type="submit" className="bg-[#294E03] px-3 py-1 rounded-full text-white font-semibold">
+            <button type="submit" className="login-button">
               Login
             </button>
-            {errorMessage && <p>{errorMessage}</p>}
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
           </form>
         ) : (
           <RefreshSection
