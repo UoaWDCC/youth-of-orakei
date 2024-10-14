@@ -28,39 +28,6 @@ const Navbar = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen); // Toggle the mobile menu
     }
 
-    /* Adds the silly rotation animation to selected elements. The code is kinda scrappy for it lol */
-    React.useEffect(() => {
-        console.log(`set silly animation mode to ${silly}`);
-
-        /* Select elements to apply animation class to.
-        * Select only from the <main> area to exclude navbar (so that you can toggle it back off without that also animating lol) */
-        let mainArea = document.querySelector('main') || document.body;
-        let change = mainArea.querySelectorAll('main h1, h2, h3, h4, h5, h6, img, p, a, .goalCard');
-        let toggleButton = document.getElementById("silly-toggle");
-
-        if (silly) {
-            for (const i of change) {
-                i.classList.add("silly-anim");
-            }
-            if (toggleButton) {
-                toggleButton.style.opacity = "1";
-                toggleButton.style.color = "red";
-                toggleButton.style.fontWeight = "700";
-            }
-        }
-
-        return () => {
-            for (const i of change) {
-                i.classList.remove("silly-anim");
-            }
-            if (toggleButton) {
-                toggleButton.style.opacity = "0.5";
-                toggleButton.style.color = "rebeccapurple";
-                toggleButton.style.fontWeight = "inherit";
-            }
-        }
-    }, [silly])
-
     React.useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             setTypedText((prev) => {
