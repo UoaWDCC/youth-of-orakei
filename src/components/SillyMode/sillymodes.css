@@ -1,0 +1,122 @@
+/*
+CSS for Silly Animations
+ */
+
+/* Really silly animations */
+
+@keyframes great-rotate{
+    0%{
+        transform: rotate(0);
+    }
+    25%{
+        transform: rotate(90deg) scale(0.5);
+        filter: blur(8px);
+    }
+    50%{
+        transform: rotate(180deg);
+        filter: blur(0);
+    }
+    75%{
+        transform: rotate(270deg) scale(1.5);
+        filter: blur(8px);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.great-rotate{
+    animation: great-rotate 1s infinite both linear !important;
+    animation-play-state: paused !important;
+}
+.great-rotate:hover{
+    animation-play-state: running !important;
+}
+
+@keyframes zoom-warp{
+    0%{
+        transform: scale(1) rotateY(0) rotateZ(0);
+    }
+    100%{
+        transform: scale(2) rotateY(150deg) rotateZ(20deg);
+        filter: blur(2px);
+    }
+}
+.zoom-warp{
+    animation: zoom-warp 0.5s infinite both ease alternate !important;
+    animation-play-state: paused !important;
+}
+.zoom-warp:hover{
+    animation-play-state: running !important;
+}
+
+.letter-vanisher{
+    opacity: 1;
+    transition: 50ms;
+    transition-delay: 5s;
+}
+.letter-vanisher:hover{
+    opacity: 0;
+    transition-delay: 0s;
+}
+
+.colourer{
+    opacity: 0.8;
+    transition: 50ms;
+}
+.colourer:hover{
+    opacity: 1;
+}
+
+@keyframes wigglywigglyanim{
+    0%{
+        transform: rotateZ(0deg) rotateX(0deg) rotateY(0deg);
+
+    }
+    25%{
+        transform: rotateZ(60deg) rotateX(60deg) rotateY(-30deg);
+    }
+    50%{
+        transform: rotateZ(-40deg) rotateX(-10deg) rotateY(10deg);
+    }
+    75%{
+        transform: rotateZ(10deg) rotateX(30deg) rotateY(-30deg);
+    }
+    100%{
+        transform: rotateZ(-40deg) rotateX(-10deg) rotateY(40deg);
+    }
+}
+.wigglywiggly{
+    animation: wigglywigglyanim 0.5s infinite both ease alternate !important;
+    animation-play-state: paused !important;
+}
+.wigglywiggly:hover{
+    animation-play-state: running !important;
+}
+
+
+@keyframes wigglepauseranim{
+    0%{
+        transform: rotateZ(0deg) rotateX(0deg) rotateY(0deg);
+
+    }
+    25%{
+        transform: rotateZ(30deg) rotateX(30deg) rotateY(-10deg);
+    }
+    50%{
+        transform: rotateZ(-20deg) rotateX(-10deg) rotateY(10deg);
+    }
+    75%{
+        transform: rotateZ(10deg) rotateX(15deg) rotateY(-20deg);
+    }
+    100%{
+        transform: rotateZ(-20deg) rotateX(-10deg) rotateY(20deg);
+    }
+}
+
+.wigglepauser{
+    animation: wigglepauseranim 0.8s infinite both ease alternate !important;
+    animation-play-state: running !important;
+}
+.wigglepauser:hover{
+    animation-play-state: paused !important;
+}
