@@ -110,3 +110,11 @@
     color: hsl(347, 51%, 54%);
     cursor: pointer;
 }
+
+@media(max-width: 500px){
+    .wrapper{
+        width: 95%;
+        padding: 28px 24px;
+        border-radius: 16px;
+    }
+}

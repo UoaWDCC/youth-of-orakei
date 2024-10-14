@@ -129,9 +129,9 @@ const SillyMode = ({setSilly} : SillyModeProps) => {
                             <p className={styles.close} onClick={() => setSilly(false)}>Close</p>
                         </div>
                         <p className={styles.desc}>
-                            Activating this mode causes rapid, possibly flashing motion.
+                            <strong>Activating Silly Modes causes rapid, possibly flashing motion. </strong>
                             You can turn it off any time by clicking the same button.
-                            Would you like to continue?</p>
+                            Choose a mode below!</p>
 
                         <div className={styles.buttonsWrapper}>
                             <button className={styles.buttons}
