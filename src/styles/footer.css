@@ -22,6 +22,7 @@
 }
 
 .organization img {
+    width: 160px;
     max-height: 125px;
     margin: auto;
 }
@@ -47,6 +48,9 @@
 }
 
 .footer-logo{
+    width: 100%;
+    height: 100%;
+
     filter: drop-shadow(3px 6px 5px #a3a3a3);
 }
 
