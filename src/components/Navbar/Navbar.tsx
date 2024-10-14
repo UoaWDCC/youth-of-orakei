@@ -92,33 +92,6 @@ const Navbar = () => {
                     />
                     <span className={styles.logoText}>Youth of Ōrākei</span>
                 </a>
-                <nav className={styles.links}>
-                    <a href="/">Home</a>
-                    <a href="/projects">Projects</a>
-                    <a href="/members">Members</a>
-                    <a href="/contact">Contact</a>
-                </nav>
-                {silly
-                    ? <button id="silly-toggle" className={styles.sillyButtonActive} onClick={sillyHandler}>
-                        disable silly mode
-                    </button>
-                    : <button id="silly-toggle" className={styles.sillyButtonInactive} onClick={sillyHandler}>
-                        enable silly mode
-                    </button>}
-
-
-            </header>
-            {silly && <SillyMode setSilly={setSilly}/>}
-
-            <header className={styles.nav}>
-                <a href="/" className={styles.logo}>
-                    <img
-                        className={styles.logoImg}
-                        src="/YOO_Logo_Transparent_Background.png"
-                        alt="Youth of Orakei"
-                    />
-                    <span className={styles.logoText}>Youth of Ōrākei</span>
-                </a>
 
                 {/*Hamburger menu for mobile view */}
 
@@ -154,10 +127,17 @@ const Navbar = () => {
                     <a href="/contact">Contact</a>
                     <a href="/archive">Archive</a>
                 </nav>
-                <button id="silly-toggle" className={styles.sillyButton} onClick={sillyHandler}>
-                    {silly ? "disable silly mode" : "enable silly mode"}
-                </button>
+                {silly
+                    ? <button id="silly-toggle" className={styles.sillyButtonActive} onClick={sillyHandler}>
+                        disable silly mode
+                    </button>
+                    : <button id="silly-toggle" className={styles.sillyButtonInactive} onClick={sillyHandler}>
+                        enable silly mode
+                    </button>}
+
+
             </header>
+            {silly && <SillyMode setSilly={setSilly}/>}
         </>
     );
 };

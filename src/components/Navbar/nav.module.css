@@ -97,6 +97,10 @@
 }
 
 .sillyButtonInactive{
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
     position: absolute;
     right: 12px;
     top: 12px;
@@ -109,9 +113,14 @@
 }
 .sillyButtonInactive:hover{
     opacity: 0.7;
+    cursor: pointer;
 }
 
 .sillyButtonActive{
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
     position: absolute;
     right: 12px;
     top: 12px;
@@ -125,6 +134,7 @@
 }
 .sillyButtonActive:hover{
     opacity: 0.7;
+    cursor: pointer;
 }
 
 
