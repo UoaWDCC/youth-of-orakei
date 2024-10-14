@@ -7,7 +7,6 @@ type PastProjectsListProps = {
 };
 
 export default function PastProjectsList({ projects }: PastProjectsListProps) {
-
   return (
     <div>
       {projects.map((project, index) => {
@@ -31,23 +30,48 @@ export default function PastProjectsList({ projects }: PastProjectsListProps) {
         }
 
         return (
-          <div key={index} className="past-project-container" style={{ backgroundColor: headerColour, position: "relative", padding: "10px" }}>
+          <div
+            key={index}
+            className="past-project-container"
+            style={{
+              backgroundColor: headerColour,
+              position: "relative",
+              padding: "10px",
+            }}
+          >
             <div className="index-event-img">
-              <img src={project.cover} alt={project.alt} style={{ height: "1000px", width: "100%", objectFit: "cover", borderRadius: "var(--common-radius)", opacity: "0.8" }} />
+              <img src={project.cover} alt={project.alt} />
             </div>
-            <div className="project-team" style={{ backgroundColor: headerColour, color: infoColour }}>
-              <h2 className="index-heading">{project.team}</h2>
+            <div
+              className="project-team"
+              style={{ backgroundColor: headerColour, color: infoColour }}
+            >
+              <h2 className="project-heading">
+                <b>{project.team}</b>
+              </h2>
             </div>
-            <div className="project-team-right-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
-            <div className="project-team-left-corner-element" style={{ boxShadow: `-15px 0px ${headerColour}` }}>corn</div>
+            <div
+              className="project-team-right-corner-element"
+              style={{ boxShadow: `-15px 0px ${headerColour}` }}
+            >
+              corn
+            </div>
+            <div
+              className="project-team-left-corner-element"
+              style={{ boxShadow: `-15px 0px ${headerColour}` }}
+            >
+              corn
+            </div>
 
             <div className="index-event-details">
-              <div>
-                <div>
+              <div className="index-event-date-and-title">
+                <div className="index-event-date">
                   <h5>{project.date?.toString() || "No date available"}</h5>
                 </div>
                 <div className="index-event-title">
-                  <h2><b>{project.title}</b></h2>
+                  <h2>
+                    <b>{project.title}</b>
+                  </h2>
                 </div>
               </div>
               <div className="index-event-description">
