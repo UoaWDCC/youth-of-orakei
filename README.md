@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/figma-323330?style=for-the-badge&logo=figma"/>
   <img src="https://img.shields.io/badge/Jira-4285F4?style=for-the-badge&logo=jira&logoColor=white"/>
   <img src="https://img.shields.io/badge/Vitest-fafafa?style=for-the-badge&logo=vitest"/>
-  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react"/>
+  <img src="https://img.shields.io/badge/React-010101?style=for-the-badge&logo=react"/>
 </div>
 
 ## 🚀 Project Structure
