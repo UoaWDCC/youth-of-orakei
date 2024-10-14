@@ -62,6 +62,8 @@ All commands are run from the root of the project, from a terminal:
 | Anton Garay               | Placeholder                                      |
 | Andrew Qiu                | Placeholder                                      |
 
+
+
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 841.9 365.7">
   <!-- Generator: Adobe Illustrator 28.7.1, SVG Export Plug-In . SVG Version: 1.2.0 Build 142)  -->
