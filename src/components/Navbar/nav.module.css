@@ -1,4 +1,4 @@
-.nav{
+.nav {
     position: sticky;
     top: 0;
     width: 100%;
@@ -22,18 +22,20 @@
     align-items: center;
     vertical-align: middle;
     gap: 8px;
+    margin-right: auto;
 
     transition: all 400ms;
 
     will-change: transform;
 }
-.logo:hover{
+
+.logo:hover {
     color: var(--text-active);
     transform: scale(0.98);
     transition: all 200ms;
 }
 
-.logoText{
+.logoText {
     font-size: var(--fontsize-h5);
     font-weight: 800;
 
@@ -41,20 +43,20 @@
     height: 15px;
 }
 
-.logoImg{
+.logoImg {
     width: 70px;
     height: 49px;
 }
 
-.links{
+.links {
     display: flex;
     gap: 48px;
-
+    margin-left: auto;
     /* Vertical centering offset for animated underline */
     transform: translateY(2px);
 }
 
-.links a{
+.links a {
     position: relative;
 
     text-decoration: none;
@@ -66,7 +68,7 @@
 
 }
 
-.links a::before{
+.links a::before {
     content: '';
 
     position: absolute;
@@ -83,12 +85,12 @@
     transition: all 400ms;
 }
 
-.links a:hover{
+.links a:hover {
     color: var(--text-active);
     transition: all 200ms;
 }
 
-.links a:hover::before{
+.links a:hover::before {
     width: 100%;
     opacity: 0.75;
     transition: all 200ms;
@@ -127,8 +129,60 @@
 
 
 /* TODO Navbar mobile */
+
+.hamburger {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 20;
+    position: absolute;
+    top: 30px;
+    right: 5%;
+}
+
+.hamburgerIcon {
+    width: 24px;
+    height: 24px;
+    color: var(--YOO-Green-Primary);
+}
+
+.mobileMenu {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+}
+
+.mobileMenu.open {
+    display: flex;
+}
+
+.mobileMenu a {
+    text-decoration: none;
+    padding: 0.5rem 0;
+    color: black;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.mobileMenu a:hover {
+    color: var(--YOO-Green-Primary);
+}
+
 @media (max-width: 850px) {
-    .links{
+    .hamburger {
+        display: block;
+    }
+
+    .links {
         display: none;
     }
 }

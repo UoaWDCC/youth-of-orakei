@@ -1,31 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap");
 
+/* Added from Tulza From uabc so fix nav links with no tailwind */
+a {
+  color: inherit;
+  text-decoration: none !important;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
 
 :root {
   /* YOO colors (Change per YOO brand)*/
-  --YOO-Green-Primary: #294E03;
-  --YOO-Blue-Primary: #A6DFEA;
-  --YOO-Red-Primary: #ECB9B8;
-  --YOO-Yellow-Primary: #F2EF89;
+  --YOO-Green-Primary: #294e03;
+  --YOO-Blue-Primary: #a6dfea;
+  --YOO-Red-Primary: #ecb9b8;
+  --YOO-Yellow-Primary: #f2ef89;
 
   /* Shades and tints (Contrast reasons; don't change) */
   --YOO-Green-Dark: #142601;
-  --YOO-Green-Medium: #618F32;
-  --YOO-Green-Light: #96BF70;
-  --YOO-Green-Lightest: #C8E4AE;
-  --YOO-Blue-Dark: #55BBCF;
-  --YOO-Blue-Darkest: #06687B;
-  --YOO-Blue-Light: #D9EBEF;
+  --YOO-Green-Medium: #618f32;
+  --YOO-Green-Light: #96bf70;
+  --YOO-Green-Lightest: #c8e4ae;
+  --YOO-Blue-Dark: #55bbcf;
+  --YOO-Blue-Darkest: #06687b;
+  --YOO-Blue-Light: #d9ebef;
   --YOO-Red-Dark: #ce4c4a;
-  --YOO-Red-Light: #FFE4E4;
-  --YOO-Yellow-Dark: #F3D746;
-  --YOO-Yellow-Light: #F9F7CE;
+  --YOO-Red-Light: #ffe4e4;
+  --YOO-Yellow-Dark: #f3d746;
+  --YOO-Yellow-Light: #f9f7ce;
 
   /* General text colors */
-  --text-dark: #292D2A;
+  --text-dark: #292d2a;
   --text-medium: #616562;
-  --text-light: #AAB0AB;
+  --text-light: #aab0ab;
 
   /* Hovers and links (TBD)*/
   --text-active: #669f73;
@@ -56,7 +69,7 @@ body {
   width: 100%;
   line-height: 1.5;
   color: var(--text-dark);
-  font-family: 'Overpass', sans-serif;
+  font-family: "Overpass", sans-serif;
 }
 
 h1 {
@@ -83,7 +96,6 @@ h5 {
   margin: 0 auto;
   width: clamp(300px, 75%, 1300px);
 }
-
 
 .bold-heading {
   font-weight: 900;
@@ -143,4 +155,33 @@ h5 {
 
 .text-light {
   color: var(--text-light);
+}
+
+/* Really silly animations */
+@keyframes silly-anim {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg) scale(0.5);
+    filter: blur(8px);
+  }
+  50% {
+    transform: rotate(180deg);
+    filter: blur(0);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.5);
+    filter: blur(8px);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.silly-anim {
+  animation: silly-anim 1s infinite both linear !important;
+  animation-play-state: paused !important;
+}
+.silly-anim:hover {
+  animation-play-state: running !important;
 }

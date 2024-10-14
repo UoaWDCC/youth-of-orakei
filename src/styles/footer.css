@@ -1,3 +1,5 @@
+
+
 /* Organisations we work with */
 
 .organization {
@@ -20,7 +22,7 @@
 }
 
 .organization img {
-    height: 125px;
+    max-height: 125px;
     margin: auto;
 }
 

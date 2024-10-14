@@ -6,34 +6,26 @@ interface PersonCardProps {
   team: string;
   desc: string;
   name: string;
-  cover: string;
+  cover: string | null;
+  color: string;
 }
 
-const getClassName = (team: string) => {
-  switch (team) {
-    case "Leadership Team":
-      return 'description-box-lead';
-    case 'Communication Team':
-      return 'description-box-coms';
-    case "Projects: Fermata":
-    case "Projects: Legato":
-    case "Projects: Schmetterlinge":
-    case "Projects: The Gaggle":
-      return 'description-box-proj';
-    default:
-      return '';
+const PersonCard: React.FC<PersonCardProps> = ({ team, desc, name, cover, color }) => {
+  let className = "";
+  if (team.startsWith("Projects: ")) {
+    className = 'description-box-proj';
   }
-};
-
-const PersonCard: React.FC<PersonCardProps> = ({ team, desc, name, cover }) => {
-  const className = getClassName(team);
 
   return (
     <div className="person-card">
       <div className="img-wrapper">
-        <img src={cover} alt={name} />
+        {cover ? (  // Conditional rendering based on cover value
+          <img src={cover} alt={name} />
+        ) : (
+          <div className="placeholder-cover">No Image Available</div> // Placeholder div or component
+        )}
       </div>
-      <p className={className}>
+      <p className={className} style={{ backgroundColor: `var(${color})` }}>
         <b>{name}</b><br />
         {team}<br />
         {desc}
