@@ -189,6 +189,7 @@
 
 @media (max-width: 850px) {
     .hamburger {
+        width: 22px;
         display: block;
     }
 
