@@ -94,18 +94,34 @@
     transition: all 200ms;
 }
 
-.sillyButton{
+.sillyButtonInactive{
     position: absolute;
     right: 12px;
     top: 12px;
 
     font-size: var(--fontsize-sml);
     color: rebeccapurple;
-    opacity: 0.1;
+    opacity: 0.2;
 
     transition: all 200ms;
 }
-.sillyButton:hover{
+.sillyButtonInactive:hover{
+    opacity: 0.7;
+}
+
+.sillyButtonActive{
+    position: absolute;
+    right: 12px;
+    top: 12px;
+
+    font-size: var(--fontsize-sml);
+    font-weight: 700;
+    color: red;
+    opacity: 1;
+
+    transition: all 200ms;
+}
+.sillyButtonActive:hover{
     opacity: 0.7;
 }
 

@@ -15,7 +15,16 @@
 }
 
 .wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 20;
+
     width: 80%;
+    height: fit-content;
     max-width: 600px;
 
     padding: 40px 36px;
@@ -86,4 +95,18 @@
 .status{
     color: var(--text-medium);
     font-size: var(--fontsize-sml);
+}
+
+.headingBox{
+    display: flex;
+    justify-content: space-between;
+}
+
+.close{
+    color: hsl(346, 85%, 68%);
+    transition: 200ms;
+}
+.close:hover{
+    color: hsl(347, 51%, 54%);
+    cursor: pointer;
 }

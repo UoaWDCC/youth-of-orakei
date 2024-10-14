@@ -62,9 +62,15 @@ const Navbar = () => {
                     <a href="/members">Members</a>
                     <a href="/contact">Contact</a>
                 </nav>
-                <button id="silly-toggle" className={styles.sillyButton} onClick={sillyHandler}>
-                    {silly ? "disable silly mode" : "enable silly mode"}
-                </button>
+                {silly
+                    ? <button id="silly-toggle" className={styles.sillyButtonActive} onClick={sillyHandler}>
+                        disable silly mode
+                    </button>
+                    : <button id="silly-toggle" className={styles.sillyButtonInactive} onClick={sillyHandler}>
+                        enable silly mode
+                    </button>}
+
+
             </header>
             {silly && <SillyMode setSilly={setSilly}/>}
         </>

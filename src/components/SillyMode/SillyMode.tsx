@@ -26,7 +26,7 @@ const SillyMode = ({setSilly} : SillyModeProps) => {
         * Select only from the <main> area to exclude navbar (so that you can toggle it back off without that also animating lol) */
         let mainArea = document.querySelector('main') || document.body;
         let change = mainArea.querySelectorAll('main');
-        let toggleButton = document.getElementById("silly-toggle");
+        // let toggleButton = document.getElementById("silly-toggle");
 
         let mode = "";
 
@@ -52,8 +52,11 @@ const SillyMode = ({setSilly} : SillyModeProps) => {
                 case "Wiggle Pauser":
                     mode = "wigglepauser"
                     break
-                case "Space":
-                    mode = "space"
+                case "Tilt Spin":
+                    mode = "tiltspin"
+                    break
+                case "Tilt":
+                    mode = "tilt"
                     break
                 default:
                     alert("Silly Mode Error: if you see this something has gone wrong! Refresh the page.")
@@ -100,17 +103,10 @@ const SillyMode = ({setSilly} : SillyModeProps) => {
             }
 
             else{
-                change = mainArea.querySelectorAll('main h1, h2, h3, h4, h5, h6, img, p, a, .goalCard');
+                change = mainArea.querySelectorAll('main h1, h2, h3, h4, h5, h6, img, p, a, .goalCard, span');
                 for (const i of change) {
                     i.classList.add(mode);
                 }
-            }
-
-            // Update "disable/enable silly mode" navbar button style
-            if (toggleButton) {
-                toggleButton.style.opacity = "1";
-                toggleButton.style.color = "red";
-                toggleButton.style.fontWeight = "700";
             }
         }
 
@@ -119,11 +115,6 @@ const SillyMode = ({setSilly} : SillyModeProps) => {
             for (const i of change) {
                 i.classList.remove(mode ? mode : "placeholder-class-for-empty-returns");
             }
-            if (toggleButton) {
-                toggleButton.style.opacity = "0.5";
-                toggleButton.style.color = "rebeccapurple";
-                toggleButton.style.fontWeight = "inherit";
-            }
         }
     }, [sillyMode])
 
@@ -131,21 +122,26 @@ const SillyMode = ({setSilly} : SillyModeProps) => {
     return (
         <>
             {sillyMode === "" &&
-                <div className={styles.bg} onClick={() => setSilly(false)}>
+                <>
                     <div className={styles.wrapper}>
-                        <p className={styles.heading}>You've discovered Silly Mode!</p>
+                        <div className={styles.headingBox}>
+                            <p className={styles.heading}>You've discovered Silly Mode!</p>
+                            <p className={styles.close} onClick={() => setSilly(false)}>Close</p>
+                        </div>
                         <p className={styles.desc}>
                             Activating this mode causes rapid, possibly flashing motion.
                             You can turn it off any time by clicking the same button.
                             Would you like to continue?</p>
 
                         <div className={styles.buttonsWrapper}>
-                            <button className={styles.buttons} onClick={() => setSillyMode("The Great Rotation")}>The
+                            <button className={styles.buttons}
+                                    onClick={() => setSillyMode("The Great Rotation")}>The
                                 Great Rotation
                             </button>
                             <button className={styles.buttons} onClick={() => setSillyMode("Zoom Warp")}>Zoom Warp
                             </button>
-                            <button className={styles.buttons} onClick={() => setSillyMode("Letter Vanisher")}>Letter
+                            <button className={styles.buttons}
+                                    onClick={() => setSillyMode("Letter Vanisher")}>Letter
                                 Vanisher
                             </button>
                             <button className={styles.buttons} onClick={() => setSillyMode("Colourer")}>Colourer
@@ -153,16 +149,24 @@ const SillyMode = ({setSilly} : SillyModeProps) => {
                             <button className={styles.buttons} onClick={() => setSillyMode("Wiggly Wiggly")}>Wiggly
                                 Wiggly
                             </button>
-                            <button className={styles.buttons} onClick={() => setSillyMode("Wiggle Pauser")}>Wiggle Pauser
+                            <button className={styles.buttons} onClick={() => setSillyMode("Wiggle Pauser")}>Wiggle
+                                Pauser
                             </button>
-                            <button className={styles.buttons} onClick={() => setSillyMode("Space")}>Space</button>
+                            <button className={styles.buttons} onClick={() => setSillyMode("Tilt")}>Tilt
+                            </button>
+                            <button className={styles.buttons} onClick={() => setSillyMode("Tilt Spin")}>Tilt Spin</button>
                         </div>
 
                         <p className={styles.warning}>
-                            Silly Mode is the product of whimsical web developers being quirky :) It might be glitchy or cause possible bugs. Refresh the site if you think something is wrong!
+                            Silly Mode is the product of whimsical web developers being quirky :) It might be
+                            glitchy or cause possible bugs. Refresh the site if you think something is wrong!
                         </p>
                     </div>
-                </div>
+                    <div className={styles.bg} onClick={() => setSilly(false)}>
+
+                    </div>
+                </>
+
             }
             {sillyMode !== "" &&
                 <div className={styles.statusWrapper}>

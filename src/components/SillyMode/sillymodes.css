@@ -60,11 +60,11 @@ CSS for Silly Animations
 }
 
 .colourer{
-    opacity: 0.8;
-    transition: 50ms;
+    opacity: 1;
+    transition: 100ms;
 }
 .colourer:hover{
-    opacity: 1;
+    filter: brightness(0.1);
 }
 
 @keyframes wigglywigglyanim{
@@ -119,4 +119,31 @@ CSS for Silly Animations
 }
 .wigglepauser:hover{
     animation-play-state: paused !important;
+}
+
+.tilt{
+    transform: rotateZ(-30deg) rotateX(25deg) rotateY(23deg) !important;
+    transition: 500ms !important;
+}
+.tilt:hover{
+    transform: rotateZ(0) rotateX(0deg) rotateY(0deg) !important;
+    transition: 200ms !important;
+}
+
+
+@keyframes tiltspinanim{
+    0%{
+        transform: rotateZ(-30deg) rotateX(25deg) rotateY(0deg);
+    }
+    50%{
+        transform: rotateZ(-30deg) rotateX(25deg) rotateY(180deg);
+    }
+    100%{
+        transform: rotateZ(-30deg) rotateX(25deg) rotateY(360deg);
+    }
+}
+
+.tiltspin{
+    animation: tiltspinanim 4s infinite both linear !important;
+    animation-play-state: running !important;
 }
