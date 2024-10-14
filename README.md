@@ -11,6 +11,7 @@
   <img src="https://img.shields.io/badge/PostgreSQL-010101?style=for-the-badge&logo=PostgreSQL"/>
   <img src="https://img.shields.io/badge/figma-323330?style=for-the-badge&logo=figma"/>
   <img src="https://img.shields.io/badge/Jira-4285F4?style=for-the-badge&logo=jira&logoColor=white"/>
+<img src="https://img.shields.io/badge/Vitest-4285F4?style=for-the-badge&logo=vitest"/>
 </div>
 
 ## 🚀 Project Structure
