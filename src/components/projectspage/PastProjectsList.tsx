@@ -7,6 +7,7 @@ type PastProjectsListProps = {
 };
 
 export default function PastProjectsList({ projects }: PastProjectsListProps) {
+  console.log(projects);
   return (
     <div>
       {projects.map((project, index) => {
@@ -66,7 +67,11 @@ export default function PastProjectsList({ projects }: PastProjectsListProps) {
             <div className="index-event-details">
               <div className="index-event-date-and-title">
                 <div className="index-event-date">
-                  <h5>{project.date?.toString() || "No date available"}</h5>
+                  <h5>
+                    {project.date
+                      ? `${new Date(project.date).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}, ${new Date(project.date).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}`
+                      : "No date available"}
+                  </h5>
                 </div>
                 <div className="index-event-title">
                   <h2>
