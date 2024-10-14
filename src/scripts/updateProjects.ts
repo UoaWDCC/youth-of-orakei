@@ -2,7 +2,7 @@ import { Client } from "@notionhq/client";
 import type { projectRow } from '../types/projectRow.ts';
 import axios from 'axios';
 import sharp from "sharp";
-import { supabase } from '../lib/supabaseClient'; 
+import { supabase } from '../lib/supabaseClient';
 import { supabaseUrl } from '../lib/supabaseClient';
 import { prisma } from "../lib/prisma.ts";
 import type { APIRoute } from 'astro';
@@ -81,6 +81,8 @@ export async function updateProjects(controller: ReadableStreamDefaultController
         });
 
         const projectsRows = query.results as projectRow[];
+
+        console.log(projectsRows[0].properties)
 
         const projectPromises = projectsRows.map(async (row) => {
             const title = row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : "";

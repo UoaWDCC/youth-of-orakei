@@ -40,9 +40,6 @@ const ProjectTeams = ({ projects }: ProjectTeamsProps) => {
         <h2 className="proj-title"><b>{projects[teamNumber].teamDetails.teamName}</b></h2>
         <p className="main-description-box-proj">
           {projects[teamNumber].teamDetails.description}
-          <button className="learn-more-proj">
-            <a href={`/projects/${selectedTeam}`}>LEARN MORE</a>
-          </button>
         </p>
         <div className="project-team-nav">
           <p className="main-description-box-proj" style={{ padding: 0, margin: 0 }}>View the teams!</p>
