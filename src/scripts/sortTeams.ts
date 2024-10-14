@@ -1,10 +1,6 @@
-type MemberData = {
-  team: string;
-  desc: string;
-  name: string;
-  cover: string;
-  url?: string;
-}
+import type { memberData } from "../types/memberData";
+
+
 
 type TeamDetails = {
   teamName: string;
@@ -12,12 +8,12 @@ type TeamDetails = {
   teamId: string;
 };
 
-export function sortMembersByTeam(members: MemberData[]) {
-  const leadershipTeam: MemberData[] = [];
-  const communicationTeam: MemberData[] = [];
+export function sortMembersByTeam(members: memberData[]) {
+  const leadershipTeam: memberData[] = [];
+  const communicationTeam: memberData[] = [];
   // const projectsMap: { [projectName: string]: MemberData[] } = {};
-  const teamsDict: { [team: string]: MemberData[] } = {};
-  const projectsMap: { [projectName: string]: { teamDetails: TeamDetails; members: MemberData[] } } = {};
+  const teamsDict: { [team: string]: memberData[] } = {};
+  const projectsMap: { [projectName: string]: { teamDetails: TeamDetails; members: memberData[] } } = {};
   let nextProjectId: number = 1; // Start ID counter at 0
 
   members.forEach(member => {
@@ -30,7 +26,7 @@ export function sortMembersByTeam(members: MemberData[]) {
       const projectName: string = member.team.replace("Projects: ", "");
       if (!projectsMap[projectName]) {
         projectsMap[projectName] = {
-          teamDetails: { teamName: projectName, description: member.desc, teamId: "team" + nextProjectId.toString() },
+          teamDetails: { teamName: projectName, description: member.description, teamId: "team" + nextProjectId.toString() },
           members: []
         };
         nextProjectId++;

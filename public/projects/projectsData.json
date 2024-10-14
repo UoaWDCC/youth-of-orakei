@@ -1,14 +1,14 @@
 [
   {
-    "title": "propject 4",
-    "date": "2024-09-24",
-    "description": "desc",
-    "cover": "",
-    "team": "tean 43",
+    "title": "Test",
+    "date": "2024-09-19",
+    "description": "Placeholder project description.",
+    "cover": "/projects/test_cover.webp",
+    "team": "Team 4",
     "tags": [
-      "volunteering"
+      "music"
     ],
-    "id": "10339839-0b9f-8011-971c-c5ae9a87cce2"
+    "id": "10639839-0b9f-804f-ace5-e09ed60e9ca1"
   },
   {
     "title": "Board Game Night",

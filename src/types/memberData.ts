@@ -1,7 +1,9 @@
-export type memberData = {
-    team: string;
-    desc: string;
-    name: string;
-    cover: string;
-    url?: string;
-  }
+// types/memberData.ts
+export interface memberData {
+  id: number;           
+  name: string;      
+  team: string;       
+  description: string; 
+  cover: string | null ;  
+  createdAt: Date;     
+}

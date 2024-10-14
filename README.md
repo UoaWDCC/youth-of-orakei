@@ -45,15 +45,18 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Contributors - Team Houston 
 
-Houston
-Chris Valenzuela
-Yash Kumar
-Eleanor Crellin
-Becky Cheng
-Emmanuel Araba
-Anna Lin
-Kimberley Zhu
-Owen Li
-Anton Garay
-Andrew Qiu
+| Member                    | Photo                                            |
+| :------------------------ | :----------------------------------------------- |
+| Chris Valenzuela          | Placeholder                                      |
+| Yash Kumar                | Placeholder                                      |
+| Eleanor Crellin           | Placeholder                                      |
+| Becky Cheng               | Placeholder                                      |
+| Emmanuel Araba            | Placeholder                                      |
+| Anna Lin                  | Placeholder                                      |
+| Kimberley Zhu             | Placeholder                                      |
+| Owen Li                   | Placeholder                                      |
+| Anton Garay               | Placeholder                                      |
+| Andrew Qiu                | Placeholder                                      |
+

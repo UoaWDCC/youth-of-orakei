@@ -4,7 +4,6 @@ import "../styles/members.css";
 // import MembersDisplay from "../components/MembersDisplay.astro";
 import PersonCard from "./PersonCard.tsx";
 import type { memberData } from "../types/memberData.ts";
-import sanitizeFilename from "../utils/sanitizeFilename.ts";
 
 type TeamDetails = {
   teamName: string;
@@ -66,7 +65,7 @@ const ProjectTeams = ({ projects }: ProjectTeamsProps) => {
               cover={member.cover}
               name={member.name}
               team={member.team}
-              desc={member.desc}
+              desc={member.description}
               color={"--YOO-Red-Light"}
             />
           );

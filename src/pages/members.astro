@@ -1,122 +1,127 @@
 ---
+import { sortMembersByTeam } from "../scripts/sortTeams.ts";
+
 import "../styles/global.css";
 import "../styles/members.css";
+import { fetchMembers } from "../scripts/serveMembers";
 import Layout from "../layouts/layout.astro";
-import members from "../../public/members/membersData.json"
 import TeamDisplayLeft from "../components/TeamDisplayLeft.astro";
 import TeamDisplayRight from "../components/TeamDisplayRight.astro";
 import ProjectTeam from "../components/ProjectTeam.tsx";
-import { sortMembersByTeam } from "../scripts/sortTeams.ts";
-import { getTeamsDescriptions } from "../scripts/getTeamDescription";
 
-type MemberData = {
-  team: string;
-  desc: string;
-  name: string;
-  cover: string;
-  url?: string;
-}
-
-type TeamDescriptions = {
-  name: string;
-  description?: string;
-  tags?: string;
-}
+// Import the TeamDropdown component
+import TeamDropdown from "../components/TeamDropdown";
+import type { TeamDescriptions } from "../types/teamDescriptions";
+import { serveTeamDescriptions } from "../scripts/serveTeamDescriptions";
+import type { memberData } from "../types/memberData";
 
 type Team = {
   teamName: string;
-  members: MemberData[];
+  members: memberData[];
   description: string | undefined;
-}
+};
 
-let { teamsDict, projects } =
-    sortMembersByTeam(members);
-let teamDescription: TeamDescriptions[] = await getTeamsDescriptions();
+let members = await fetchMembers();
 
-function mapTeamWithDesc(teams: {[teamName: string]: MemberData[]}, teamDescription: TeamDescriptions[]) {
+let { teamsDict, projects } = sortMembersByTeam(members);
+
+let teamDescription: TeamDescriptions[] = await serveTeamDescriptions();
+
+function mapTeamWithDesc(
+  teams: { [teamName: string]: memberData[] },
+  teamDescription: TeamDescriptions[],
+) {
   return Object.keys(teams)
-      .map(teamName => {
-        const description = teamDescription.find((desc: TeamDescriptions) => desc.name === teamName);
-        if (description) {
-          return {
-            teamName,
-            members: teams[teamName],
-            description: description.description
-          };
-        }
-        return null;
-      })
-      .filter(Boolean);
+    .map((teamName) => {
+      const description = teamDescription.find(
+        (desc: TeamDescriptions) => desc.name === teamName,
+      );
+      if (description) {
+        return {
+          teamName,
+          members: teams[teamName],
+          description: description.description,
+        };
+      }
+      return null;
+    })
+    .filter(Boolean);
 }
 
-let teamWithDesc = mapTeamWithDesc(teamsDict, teamDescription);
+let teamWithDesc: (Team | null)[] = mapTeamWithDesc(teamsDict, teamDescription);
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>Members Page</title>
+    <title>Team Display</title>
   </head>
-  <section class="section-background">
-  <Layout>
-  
-      
-    <!-- <BlobBackground zIndexVal="-10" offset="-100"/>
-    <BlobBackground zIndexVal="-10" offset="900"/> -->
-    
-    <object data="..\public\assets\YOO_members_bg.svg"> </object>
-    <div class="nav">
-      <button class="lead-button"
-        ><a href="#leadership-section">LEADERSHIP</a></button
-      >
-      <button class="com-button"
-        ><a href="#com-section">COMMUNICATIONS</a></button
-      >
-      <button class="proj-button"><a href="#proj-section">PROJECTS</a></button>
-    </div>
-    <!-- <div class="shapedividers_com-9592"></div> -->
+  <body>
+    <section class="section-background">
+      <Layout>
+        <div class="team-dropdown-container">
+          <TeamDropdown client:only="react" />
+        </div>
 
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-    <!-- function for the scroll up button -->
-    <script>
-      document.addEventListener("DOMContentLoaded", (event) => {
-        const myButton = document.getElementById("myBtn") as HTMLButtonElement;
+        <div class="nav" id="desktop-nav">
+          <button class="lead-button"
+            ><a href="#leadership-section">LEADERSHIP</a></button
+          >
+          <button class="com-button"
+            ><a href="#communications-section">COMMUNICATIONS</a></button
+          >
+          <button class="proj-button"
+            ><a href="#projects-section">PROJECTS</a></button
+          >
+        </div>
 
-        window.onscroll = function () {
-          scrollFunction();
-        };
-
-        function scrollFunction() {
-          if (
-            document.body.scrollTop > 20 ||
-            document.documentElement.scrollTop > 20
-          ) {
-            myButton.style.display = "block";
-          } else {
-            myButton.style.display = "none";
-          }
+        {
+          teamWithDesc.map((team: Team | null, index: number) =>
+            team ? (
+              index % 2 === 0 ? (
+                <TeamDisplayLeft
+                  teamName={team.teamName}
+                  team={team.members}
+                  teamDescription={team.description}
+                />
+              ) : (
+                <TeamDisplayRight
+                  teamName={team.teamName}
+                  team={team.members}
+                  teamDescription={team.description}
+                />
+              )
+            ) : null,
+          )
         }
 
-        myButton.onclick = function () {
-          topFunction();
-        };
+        <ProjectTeam client:only="react" projects={projects} />
+      </Layout>
+    </section>
 
-        function topFunction() {
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const savedTeam = localStorage.getItem("selectedTeam");
+
+        if (savedTeam) {
+          showTeamSection(savedTeam); // Show the previously selected team section
         }
       });
+      function showTeamSection(team: string) {
+        // Hide all sections
+        document.querySelectorAll(".team-section").forEach((section) => {
+          (section as HTMLElement).style.display = "none";
+        });
+
+        // Show the selected team section
+        const teamSection = document.getElementById(`${team}-section`);
+        if (teamSection) {
+          (teamSection as HTMLElement).style.display = "block";
+        }
+      }
     </script>
-    {teamWithDesc.map((team: Team, index: number) => (
-      index % 2 === 0 ?
-          <TeamDisplayLeft teamName={team.teamName} team={team.members} teamDescription={team.description} /> :
-          <TeamDisplayRight teamName={team.teamName} team={team.members} teamDescription={team.description} />
-    ))}
-    <ProjectTeam client:only="react" projects={projects} />
-  
-  </Layout>
-</section>
+  </body>
 </html>
