@@ -3,7 +3,7 @@ import Layout from '../layouts/layout.astro'
 import '../styles/contacts.css';
 import IndexHeading from "../components/index page/IndexHeading";
 import BlobBackground from "../components/BlobBackground/BlobBackground";
-const form_token = process.env.WEBFORMS_TOKEN || 'fallback-string';
+const form_token = process.env.WEBFORMS_TOKEN || import.meta.env.WEBFORMS_TOKEN || 'fallback-string';
 ---
   
 <head>
@@ -134,7 +134,7 @@ const form_token = process.env.WEBFORMS_TOKEN || 'fallback-string';
                             </div>
                             <div class="form-group">
                                 <label for="school">School or organisation <em>(optional)</em></label><br>
-                                <input type="text" id="school" name="School" required><br>
+                                <input type="text" id="school" name="School"><br>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label><br>
