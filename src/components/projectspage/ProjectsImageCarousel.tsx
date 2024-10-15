@@ -41,7 +41,7 @@ export default function ProjectsImageCarousel({ projects }: CarouselProps) {
     return (
         <>  
             <div style={{ width: "100%", height: "100%", position: "relative", padding: "10px"}}>
-                <div className="index-event-img" style={{ width: "100%", height: "100%", display: "flex", overflow: "hidden" }}>
+                <div className="index-event-img" style={{ width: "100%", display: "flex", overflow: "hidden" }}>
                     {events.map((event, index) => (
                         <img key={index} src={event.src} alt={event.alt} className="index-event-image-container" style={{ translate: `${-100 * imgIndex}%`, opacity: 0.7, aspectRatio: "14/6" }}/>
                     ))}
