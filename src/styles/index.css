@@ -409,7 +409,7 @@
   }
 
   .index-event-img {
-    height: 350px;
+    height: auto;
     width: 100%;
     object-fit: cover;
     display: block;

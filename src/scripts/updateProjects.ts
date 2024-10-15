@@ -2,7 +2,7 @@ import { Client } from "@notionhq/client";
 import type { projectRow } from '../types/projectRow.ts';
 import axios from 'axios';
 import sharp from "sharp";
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '../lib/supabaseClient'; 
 import { supabaseUrl } from '../lib/supabaseClient';
 import { prisma } from "../lib/prisma.ts";
 import type { APIRoute } from 'astro';
@@ -75,15 +75,41 @@ export async function updateProjects(controller: ReadableStreamDefaultController
     try {
         sendLog(controller, "Starting to retrieve projects from Notion...");
 
+        // Step 1: Get all project IDs from Notion
         const query = await notion.databases.query({
             database_id: NOTION_PROJECTS_ID,
             sorts: [{ property: 'Date', direction: 'descending' }]
         });
-
         const projectsRows = query.results as projectRow[];
 
-        console.log(projectsRows[0].properties)
+        // Get Notion project IDs
+        const notionProjectIds = projectsRows.map(row => row.id);
 
+        // Step 2: Get all projects from the Prisma database
+        const prismaProjects = await prisma.project.findMany({
+            select: { id: true, cover: true }, // Select only the fields needed for deletion
+        });
+        const prismaProjectIds = prismaProjects.map(project => project.id);
+
+        // Step 3: Identify projects to delete (those in Prisma but not in Notion)
+        const projectsToDelete = prismaProjects.filter(project => !notionProjectIds.includes(project.id));
+
+        // Step 4: Delete projects from Prisma and Supabase
+        for (const project of projectsToDelete) {
+            // Delete the project image from Supabase if it exists
+            if (project.cover) {
+                await deleteImageFromSupabase(project.cover); // Assuming the cover stores the file path
+            }
+
+            // Delete the project from Prisma
+            await prisma.project.delete({
+                where: { id: project.id },
+            });
+
+            sendLog(controller, `Deleted project ${project.id} from Prisma and its image from Supabase.`);
+        }
+
+        // Process the remaining projects (already in your existing logic)
         const projectPromises = projectsRows.map(async (row) => {
             const title = row.properties.Name.title[0] ? row.properties.Name.title[0].plain_text : "";
             const dateStr = row.properties.Date.date ? row.properties.Date.date.start : "";
