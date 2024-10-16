@@ -327,8 +327,16 @@
   display: none;
 }
 
-/* .index-carousel-text{
-} */
+.sign-up-button {
+  margin-top: 2rem;
+  background-color: var(--YOO-Green-Light);
+  color: var(--YOO-Green-Dark);
+  padding: 1rem 1rem;
+  font-size: var(--fontsize-h4);
+  width: 10rem;
+  height: 4rem;
+  border-radius: var(--common-radius);
+}
 
 .carousel-subtitle {
   font-size: var(--fontsize-lrg);

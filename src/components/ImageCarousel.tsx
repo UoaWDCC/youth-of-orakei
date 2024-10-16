@@ -100,6 +100,7 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
         <div className="index-event-description">
           <h5>{events[imgIndex].description}</h5>
         </div>
+        <button className="sign-up-button">Sign up</button>
       </div>
       <div
         style={{

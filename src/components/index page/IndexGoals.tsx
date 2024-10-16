@@ -12,7 +12,7 @@ type IndexAboutProps = {
 
 const colorScheme = ["blue", "green", "red"];
 
-const IndexGoals = ({content} : IndexAboutProps) => {
+const IndexGoals = ({ content }: IndexAboutProps) => {
     if (!content) {
         return <div>No goals available</div>;
     }
@@ -22,7 +22,7 @@ const IndexGoals = ({content} : IndexAboutProps) => {
                 <IndexHeading>Our goals</IndexHeading>
                 <div className={styles.goalsList}>
                     {content.paragraphs.map((goal, index) => (
-                        <IndexGoalCard key={index} title={content.subheadings[index]} styleColor={colorScheme[index % colorScheme.length]}>{goal}</IndexGoalCard>
+                        <IndexGoalCard key={goal} title={content.subheadings[index]} styleColor={colorScheme[index % colorScheme.length]}>{goal}</IndexGoalCard>
                     ))}
                     {/* <IndexGoalCard title="Support" styleColor="blue">We support Ōrākei youth with networks, friends, and community-building events that help both our members and the wider Ōrākei community. We represent the voice of Ōrākei youth in scenarios that involve leaders from all across Auckland.</IndexGoalCard>
                     <IndexGoalCard title="Connect" styleColor="green">We have a mission to connect young people from around the region with each other to promote learning and community. Our teams work on group activities and engagements that build positive relationships across all of Ōrākei.</IndexGoalCard>
