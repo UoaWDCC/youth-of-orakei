@@ -23,6 +23,13 @@ type CarouselProps = {
 };
 
 export default function ImageCarousel({ carousels }: CarouselProps) {
+  //get rid of notion's link parsing (I wish I could go back :sob:)
+  const extractLinkFromBrackets = (text: string | undefined): string | undefined => {
+    if (!text) return undefined; 
+    const match = text.match(/\[(https?:\/\/[^\s]+)\]/);
+    return match ? match[1] : undefined;
+  };
+
   const events: Events[] =
     carousels?.map((carousel, index) => ({
       id: `event-${index}`,
@@ -30,8 +37,8 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
       alt: carousel.subheadings[0],
       time: carousel.paragraphs[0],
       title: carousel.subheadings[0],
-      description: carousel.paragraphs[1],
-      link: carousel.paragraphs[2],
+      description: carousel.paragraphs[1] || "", 
+      link: extractLinkFromBrackets(carousel.paragraphs[2]),
     })) || [];
 
   console.log(events);
@@ -104,9 +111,15 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
         <div className="index-event-description">
           <h5>{events[imgIndex].description}</h5>
         </div>
-        {events[imgIndex].link && <a href={events[imgIndex].link} target="_blank" rel="noopener noreferrer">
-          <button className="sign-up-button">Sign up</button>
-        </a>}
+        {events[imgIndex].link && (
+          <a
+            href={events[imgIndex].link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="sign-up-button">Sign up</button>
+          </a>
+        )}
       </div>
       <div
         style={{
