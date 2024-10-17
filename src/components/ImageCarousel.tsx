@@ -10,6 +10,7 @@ interface Events {
   time: string;
   title: string;
   description: string;
+  link?: string;
 }
 
 type CarouselProps = {
@@ -30,7 +31,10 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
       time: carousel.paragraphs[0],
       title: carousel.subheadings[0],
       description: carousel.paragraphs[1],
+      link: carousel.paragraphs[2],
     })) || [];
+
+  console.log(events);
 
   const [imgIndex, setImgIndex] = useState<number>(0);
 
@@ -100,7 +104,9 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
         <div className="index-event-description">
           <h5>{events[imgIndex].description}</h5>
         </div>
-        <button className="sign-up-button">Sign up</button>
+        {events[imgIndex].link && <a href={events[imgIndex].link} target="_blank" rel="noopener noreferrer">
+          <button className="sign-up-button">Sign up</button>
+        </a>}
       </div>
       <div
         style={{
