@@ -9,8 +9,7 @@ import IndexHeading from "../components/index page/IndexHeading";
 import BlobBackground from "../components/BlobBackground/BlobBackground";
 import { serveProjects } from "../scripts/serveProjects";
 const { projects, carouselList } = await serveProjects();
-console.log(carouselList)
-
+console.log(carouselList);
 ---
 
 <html lang="en">
@@ -23,7 +22,7 @@ console.log(carouselList)
   </head>
   <Layout>
     <main class="projects-page">
-      <ImageCarousel client:only="react" projects={carouselList}/>
+      <ImageCarousel client:only="react" projects={carouselList} />
       <BlobBackground />
       <div class="past-projects-banner">
         <IndexHeading>Our Past Projects</IndexHeading>
