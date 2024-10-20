@@ -183,6 +183,35 @@
   border-bottom-right-radius: var(--common-radius);
 }
 
+.index-event-text-bottom {
+  position: absolute;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  bottom: 0;
+  right: 0;
+  top: auto; /* This makes sure it stays at the bottom */
+  margin: 0;
+  display: flex;
+  height: 100px;
+  width: 35%;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  background-color: var(--YOO-Green-Lightest);
+  border-bottom-right-radius: var(--common-radius);
+}
+
+
+.index-sign-up-link {
+  font-size: 40px;
+}
+
+.index-sign-up-link:hover{
+    box-shadow: 8px 8px 16px -2px hsl(188deg 100% 16% / 0.15), 22px 22px 28px -3px hsl(188deg 100% 16% / 0.15);
+    transform: translate(-6px, -6px);
+
+    transition: all 200ms;
+}
+
 .index-event-right-corner-element {
   content: "";
   margin-top: 10px;
@@ -211,6 +240,22 @@
   color: transparent;
   border-top-left-radius: var(--common-radius);
   box-shadow: 0px -25px var(--YOO-Green-Lightest);
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.index-event-bottom-right-corner-element {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Align to the bottom */
+  right: 0; /* Align to the right */
+  background-color: transparent;
+  height: 50px; /* Adjust height as needed */
+  width: 50px; /* Adjust width as needed */
+  border-top-left-radius: var(--common-radius); /* Curved corner */
+  box-shadow: -15px -15px var(--YOO-Green-Lightest); /* Adjust shadow for a smooth transition */
+  color: transparent;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -331,7 +376,7 @@
   margin-top: 2rem;
   background-color: var(--YOO-Green-Light);
   color: var(--YOO-Green-Dark);
-  padding: 1rem 1rem;
+  padding: 8px 16px;
   font-size: var(--fontsize-h4);
   min-width: 12rem;
   height: 4rem;
@@ -364,6 +409,16 @@
   align-items: center;
   justify-content: center;
 }
+
+.index-event-bottom-left-corner-element {
+  background-color: blue;
+  position: absolute;
+  bottom: 0;
+  height: 50px; 
+  margin: 0;  
+  margin-left: 62.3%;
+}
+
 
 .placeholder-text {
   font-size: var(--fontsize-lrg);

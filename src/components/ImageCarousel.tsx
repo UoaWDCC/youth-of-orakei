@@ -25,7 +25,7 @@ type CarouselProps = {
 export default function ImageCarousel({ carousels }: CarouselProps) {
   //get rid of notion's link parsing (I wish I could go back :sob:)
   const extractLinkFromBrackets = (text: string | undefined): string | undefined => {
-    if (!text) return undefined; 
+    if (!text) return undefined;
     const match = text.match(/\[(https?:\/\/[^\s]+)\]/);
     return match ? match[1] : undefined;
   };
@@ -37,7 +37,7 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
       alt: carousel.subheadings[0],
       time: carousel.paragraphs[0],
       title: carousel.subheadings[0],
-      description: carousel.paragraphs[1] || "", 
+      description: carousel.paragraphs[1] || "",
       link: extractLinkFromBrackets(carousel.paragraphs[2]),
     })) || [];
 
@@ -85,6 +85,19 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
       <div className="index-event-text">
         <h2 className="index-heading text-green-dark">Upcoming events</h2>
       </div>
+      <div className="index-event-bottom-left-corner-element">corn</div>
+      <div className="index-event-text-bottom">
+        {events[imgIndex].link && (
+          <a
+            href={events[imgIndex].link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="index-sign-up-link"
+          >
+            <button className="sign-up-button">Sign up</button>
+          </a>
+        )}
+      </div>
       <button
         onClick={handleBack}
         className="index-carousel-button index-carousel-button-left"
@@ -111,15 +124,6 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
         <div className="index-event-description">
           <h5>{events[imgIndex].description}</h5>
         </div>
-        {events[imgIndex].link && (
-          <a
-            href={events[imgIndex].link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className="sign-up-button">Sign up</button>
-          </a>
-        )}
       </div>
       <div
         style={{
