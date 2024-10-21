@@ -26,11 +26,15 @@ async function downloadImage(url: string): Promise<Buffer> {
 
 // Function to fetch fresh cover URL from Notion
 async function getFreshCoverUrl(notion: Client, pageId: string): Promise<string> {
-    const page = await notion.pages.retrieve({ page_id: pageId }) as projectRow;
-    const coverUrl = page.cover?.type === "external"
-        ? page.cover?.external.url
-        : page.cover?.file.url ?? "";
-    return coverUrl;
+    try {
+        const page = await notion.pages.retrieve({ page_id: pageId }) as projectRow;
+        const coverUrl = page.cover?.type === "external"
+            ? page.cover?.external.url
+            : page.cover?.file.url ?? "";
+        return coverUrl;
+    } catch (error) {
+        throw new Error(`Failed to retrieve fresh cover URL: ${(error as Error).message}`);
+    }
 }
 
 // Function to delete image from Supabase Storage
@@ -56,7 +60,7 @@ async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Pro
         // Upload the new image to Supabase
         const { data, error } = await supabase.storage
             .from('images')
-            .upload(filePath, compressedImageBuffer);
+            .upload(filePath, compressedImageBuffer, { upsert: true });
 
         if (error) {
             throw new Error(`Failed to upload image: ${error.message}`);
@@ -114,7 +118,6 @@ export async function updateProjects(
         const prismaProjects = await prisma.project.findMany({
             select: { id: true, cover: true }, // Select only the fields needed for deletion
         });
-        const prismaProjectIds = prismaProjects.map(project => project.id);
 
         // Step 3: Identify projects to delete (those in Prisma but not in Notion)
         const projectsToDelete = prismaProjects.filter(
@@ -125,7 +128,8 @@ export async function updateProjects(
         for (const project of projectsToDelete) {
             // Delete the project image from Supabase if it exists
             if (project.cover) {
-                await deleteImageFromSupabase(project.cover); // Assuming the cover stores the file path
+                const filePath = `projects/${project.id}/cover.webp`; // Adjusted to use project ID
+                await deleteImageFromSupabase(filePath);
             }
 
             // Delete the project from Prisma
@@ -140,23 +144,24 @@ export async function updateProjects(
         }
 
         // Process the remaining projects
-        const projectPromises = projectsRows.map(async (row) => {
-            const title = row.properties.Name.title[0]
-                ? row.properties.Name.title[0].plain_text
-                : "";
-            const dateStr = row.properties.Date.date
-                ? row.properties.Date.date.start
-                : "";
-            const date = dateStr ? new Date(dateStr) : null; // Convert string to Date object
-            const description = row.properties.Description.rich_text[0]
-                ? row.properties.Description.rich_text[0].plain_text
-                : "";
-            const team = row.properties.Team.rich_text[0]
-                ? row.properties.Team.rich_text[0].plain_text
-                : "";
-            const tags =
-                row.properties.Tags?.multi_select.map((tag) => tag.name) || []; // Ensure tags is always an array
-            const id = row.id || ""; // Ensure the Notion ID is being used
+        const projects: Array<{
+            id: string;
+            title: string;
+            date: Date | null;
+            description: string;
+            cover: string | null;
+            team: string;
+            tags: string[];
+        }> = [];
+
+        for (const row of projectsRows) {
+            const title = row.properties.Name.title[0]?.plain_text ?? "";
+            const dateStr = row.properties.Date.date?.start ?? "";
+            const date = dateStr ? new Date(dateStr) : null;
+            const description = row.properties.Description.rich_text[0]?.plain_text ?? "";
+            const team = row.properties.Team.rich_text[0]?.plain_text ?? "";
+            const tags = row.properties.Tags?.multi_select.map((tag) => tag.name) || [];
+            const id = row.id || "";
 
             // Sanitize the title for cover path
             const sanitizedTitle = sanitizeFileName(title);
@@ -177,14 +182,15 @@ export async function updateProjects(
             }
 
             // Proceed with image processing if coverUrl is available
-            let coverPath = '';
+            let coverPath: string | null = null;
             if (coverUrl) {
                 try {
                     sendLog(controller, `Downloading image for project: ${title}`);
                     const imageBuffer = await downloadImage(coverUrl); // Download image
+                    const filePath = `projects/${id}/cover.webp`; // Use project ID for uniqueness
                     coverPath = await uploadImageToSupabase(
                         imageBuffer,
-                        `projects/${sanitizedTitle}/cover.webp`
+                        filePath
                     ); // Upload to Supabase
                     sendLog(controller, `Uploaded cover image for project: ${title}`);
                 } catch (error) {
@@ -197,59 +203,60 @@ export async function updateProjects(
                 }
             }
 
-            return {
-                id, // Use Notion ID as unique identifier
+            projects.push({
+                id,
                 title,
                 date,
                 description,
-                cover: coverPath, // Store the Supabase URL
+                cover: coverPath, // coverPath is string | null
                 team,
                 tags,
-            };
-        });
-
-        // Await all async operations
-        const projects = await Promise.all(projectPromises);
+            });
+        }
 
         // Store projects in the Prisma database
         for (const project of projects) {
-            // Check if the project already exists in the database by ID
-            const existingProject = await prisma.project.findUnique({
-                where: { id: project.id },
-            });
-
-            // If project exists, update it, else create a new one
-            await prisma.project.upsert({
-                where: { id: project.id },
-                create: {
-                    id: project.id, // Ensure the ID is passed during creation
-                    title: project.title,
-                    date: project.date,
-                    description: project.description,
-                    cover: project.cover,
-                    team: project.team,
-                    tags: {
-                        connectOrCreate: project.tags.map(tag => ({
-                            where: { name: tag },
-                            create: { name: tag },
-                        })),
+            try {
+                // Upsert the project in the database
+                await prisma.project.upsert({
+                    where: { id: project.id },
+                    create: {
+                        id: project.id,
+                        title: project.title,
+                        date: project.date,
+                        description: project.description,
+                        cover: project.cover ?? "", // cover is string | null
+                        team: project.team,
+                        tags: {
+                            connectOrCreate: project.tags.map(tag => ({
+                                where: { name: tag },
+                                create: { name: tag },
+                            })),
+                        },
                     },
-                },
-                update: {
-                    title: project.title,
-                    date: project.date,
-                    description: project.description,
-                    cover: project.cover,
-                    team: project.team,
-                    tags: {
-                        set: project.tags.map(tag => ({
-                            name: tag,
-                        })),
+                    update: {
+                        title: project.title,
+                        date: project.date,
+                        description: project.description,
+                        cover: project.cover ?? "", // cover is string | null
+                        team: project.team,
+                        tags: {
+                            set: [],
+                            connectOrCreate: project.tags.map(tag => ({
+                                where: { name: tag },
+                                create: { name: tag },
+                            })),
+                        },
                     },
-                },
-            });
+                });
 
-            sendLog(controller, `Project ${project.title} upserted in the database.`);
+                sendLog(controller, `Project ${project.title} upserted in the database.`);
+            } catch (error) {
+                sendLog(
+                    controller,
+                    `Error upserting project ${project.title}: ${(error as Error).message}`
+                );
+            }
         }
 
         sendLog(controller, "Projects data uploaded to Prisma database.");
