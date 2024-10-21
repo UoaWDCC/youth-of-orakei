@@ -14,14 +14,34 @@ function sanitizeFileName(fileName: string): string {
 // Function to download image from URL with timeout and error handling
 async function downloadImage(url: string): Promise<Buffer> {
     try {
+        console.log(`Starting download of image from URL: ${url}`);
         const response = await axios.get(url, {
             responseType: 'arraybuffer',
             timeout: 10000, // Set a timeout of 10 seconds
         });
+        console.log(`Successfully downloaded image from URL: ${url}`);
         return Buffer.from(response.data, 'binary');
     } catch (error) {
+        console.error(`Error downloading image from URL: ${url}`, error);
         throw new Error(`Failed to download image: ${(error as Error).message}`);
     }
+}
+
+// Function to download image with retry logic
+async function downloadImageWithRetry(url: string, retries = 3): Promise<Buffer> {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+        try {
+            return await downloadImage(url);
+        } catch (error) {
+            console.error(`Attempt ${attempt} failed: ${(error as Error).message}`);
+            if (attempt === retries) {
+                throw error;
+            }
+            // Wait 1 second before retrying
+            await new Promise(res => setTimeout(res, 1000));
+        }
+    }
+    throw new Error('Failed to download image after retries');
 }
 
 // Function to fetch fresh cover URL from Notion
@@ -84,6 +104,82 @@ function sendLog(controller: ReadableStreamDefaultController, message: string) {
     } catch (error) {
         console.error("Error sending log:", error);
     }
+}
+
+// Function to process a single project with timeout
+async function processProject(
+    notion: Client,
+    row: projectRow,
+    controller: ReadableStreamDefaultController
+): Promise<{
+    id: string;
+    title: string;
+    date: Date | null;
+    description: string;
+    cover: string | null;
+    team: string;
+    tags: string[];
+}> {
+    const timeoutPromise = new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error('Processing timed out')), 60000) // 60 seconds timeout per project
+    );
+
+    return Promise.race([
+        (async () => {
+            const title = row.properties.Name.title[0]?.plain_text ?? "";
+            const dateStr = row.properties.Date.date?.start ?? "";
+            const date = dateStr ? new Date(dateStr) : null;
+            const description = row.properties.Description.rich_text[0]?.plain_text ?? "";
+            const team = row.properties.Team.rich_text[0]?.plain_text ?? "";
+            const tags = row.properties.Tags?.multi_select.map((tag) => tag.name) || [];
+            const id = row.id || "";
+
+            // Sanitize the title for cover path
+            const sanitizedTitle = sanitizeFileName(title);
+
+            // Fetch fresh cover URL
+            let coverUrl = '';
+            if (row.cover) {
+                try {
+                    coverUrl = await getFreshCoverUrl(notion, row.id);
+                } catch (error) {
+                    sendLog(
+                        controller,
+                        `Error fetching fresh cover URL for project ${title}: ${(error as Error).message}`
+                    );
+                }
+            }
+
+            // Proceed with image processing if coverUrl is available
+            let coverPath: string | null = null;
+            if (coverUrl) {
+                try {
+                    sendLog(controller, `Downloading image for project: ${title}`);
+                    const imageBuffer = await downloadImageWithRetry(coverUrl);
+                    const filePath = `projects/${id}/cover.webp`; // Use project ID for uniqueness
+                    coverPath = await uploadImageToSupabase(imageBuffer, filePath);
+                    sendLog(controller, `Uploaded cover image for project: ${title}`);
+                } catch (error) {
+                    sendLog(
+                        controller,
+                        `Error processing cover image for project ${title}: ${(error as Error).message}`
+                    );
+                    coverPath = null;
+                }
+            }
+
+            return {
+                id,
+                title,
+                date,
+                description,
+                cover: coverPath, // coverPath is string | null
+                team,
+                tags,
+            };
+        })(),
+        timeoutPromise,
+    ]);
 }
 
 // Update the updateProjects function
@@ -155,63 +251,15 @@ export async function updateProjects(
         }> = [];
 
         for (const row of projectsRows) {
-            const title = row.properties.Name.title[0]?.plain_text ?? "";
-            const dateStr = row.properties.Date.date?.start ?? "";
-            const date = dateStr ? new Date(dateStr) : null;
-            const description = row.properties.Description.rich_text[0]?.plain_text ?? "";
-            const team = row.properties.Team.rich_text[0]?.plain_text ?? "";
-            const tags = row.properties.Tags?.multi_select.map((tag) => tag.name) || [];
-            const id = row.id || "";
-
-            // Sanitize the title for cover path
-            const sanitizedTitle = sanitizeFileName(title);
-
-            // Fetch fresh cover URL
-            let coverUrl = '';
-            if (row.cover) {
-                try {
-                    coverUrl = await getFreshCoverUrl(notion, row.id);
-                } catch (error) {
-                    sendLog(
-                        controller,
-                        `Error fetching fresh cover URL for project ${title}: ${
-                            (error as Error).message
-                        }`
-                    );
-                }
+            try {
+                const project = await processProject(notion, row, controller);
+                projects.push(project);
+            } catch (error) {
+                sendLog(
+                    controller,
+                    `Error processing project ${row.id}: ${(error as Error).message}`
+                );
             }
-
-            // Proceed with image processing if coverUrl is available
-            let coverPath: string | null = null;
-            if (coverUrl) {
-                try {
-                    sendLog(controller, `Downloading image for project: ${title}`);
-                    const imageBuffer = await downloadImage(coverUrl); // Download image
-                    const filePath = `projects/${id}/cover.webp`; // Use project ID for uniqueness
-                    coverPath = await uploadImageToSupabase(
-                        imageBuffer,
-                        filePath
-                    ); // Upload to Supabase
-                    sendLog(controller, `Uploaded cover image for project: ${title}`);
-                } catch (error) {
-                    sendLog(
-                        controller,
-                        `Error processing cover image for project ${title}: ${
-                            (error as Error).message
-                        }`
-                    );
-                }
-            }
-
-            projects.push({
-                id,
-                title,
-                date,
-                description,
-                cover: coverPath, // coverPath is string | null
-                team,
-                tags,
-            });
         }
 
         // Store projects in the Prisma database
@@ -241,7 +289,7 @@ export async function updateProjects(
                         cover: project.cover ?? "", // cover is string | null
                         team: project.team,
                         tags: {
-                            set: [],
+                            set: [], // Reset tags
                             connectOrCreate: project.tags.map(tag => ({
                                 where: { name: tag },
                                 create: { name: tag },
