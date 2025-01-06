@@ -103,25 +103,29 @@ const RefreshSection: React.FC<RefreshSectionProps> = ({
   ) => {
     event.preventDefault();
 
-    const response = await fetch("/api/refresh-login", {
-      method: "POST",
-      body: JSON.stringify({
-        action: "change-password",
-        password,
-        newPassword,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      const response = await fetch("/api/refresh-login", {
+        method: "POST",
+        body: JSON.stringify({
+          action: "change-password",
+          password,
+          newPassword,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    const result = await response.json();
-    if (result.success) {
-      setErrorMessage("Password updated successfully.");
-      setNewPassword("");
-      setPasswordChanged(true);
-      setTimeout(() => setPasswordChanged(false), 3000);
-    } else {
+      const result = await response.json();
+      if (result.success) {
+        setErrorMessage("Password updated successfully.");
+        setNewPassword("");
+        setPasswordChanged(true);
+        window.location.reload();
+      } else {
+        setErrorMessage("Failed to update password. Try again.");
+      }
+    } catch (error) {
       setErrorMessage("Failed to update password. Try again.");
     }
   };

@@ -151,3 +151,20 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.home-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #294e03;
+  padding: 8px 15px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.home-button:hover {
+  background-color: #1d3802;
+}

@@ -3,6 +3,16 @@ import { updateProjects } from "../../scripts/updateProjects";
 import type { APIRoute } from "astro";
 import type { passwordRow } from "../../types/passwordRow";
 
+function sendLog(controller: ReadableStreamDefaultController, message: string) {
+  const logMessage = {
+    message,
+    timestamp: Date.now(),
+  };
+  controller.enqueue(
+    new TextEncoder().encode(`data: ${JSON.stringify(logMessage)}\n\n`)
+  );
+}
+
 export const POST: APIRoute = async ({ request }) => {
   const NOTION_TOKEN = process.env.NOTION_TOKEN || import.meta.env.NOTION_TOKEN;
   const NOTION_REFRESH_ID =
@@ -35,8 +45,16 @@ export const POST: APIRoute = async ({ request }) => {
 
     return new Response(
       new ReadableStream({
-        start(controller) {
-          updateProjects(controller);
+        async start(controller) {
+          try {
+            sendLog(controller, "Starting projects refresh...");
+            await updateProjects(controller);
+            sendLog(controller, "Projects refresh completed");
+            controller.close();
+          } catch (error) {
+            sendLog(controller, `Error: ${(error as Error).message}`);
+            controller.close();
+          }
         },
       }),
       {

@@ -56,36 +56,41 @@ const LoginForm = () => {
 
   return (
     <div className="login-container">
-      <div className="login-form-wrapper">
-        {!loggedIn ? (
-          <form id="login-form" onSubmit={handleLogin} className="login-form">
-            <label htmlFor="password" className="password-label">
-              Enter Password:
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              required
-              onChange={(e) => setPassword(e.target.value)}
-              onKeyDown={(e) => handleKeyDown(e, "login-form")}
-              className="password-input"
-            />
-            <button type="submit" className="login-button">
-              Login
-            </button>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
-          </form>
-        ) : (
-          <RefreshSection
-            newPassword={newPassword}
-            setNewPassword={setNewPassword}
-            setErrorMessage={setErrorMessage}
-            handleKeyDown={handleKeyDown}
-            password={password}
+      <a href="/" className="home-button">
+        Back to Home
+      </a>
+      {!loggedIn ? (
+        <form
+          id="login-form"
+          onSubmit={handleLogin}
+          className="login-form-wrapper"
+        >
+          <label htmlFor="password" className="password-label">
+            Enter Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e, "login-form")}
+            className="password-input"
           />
-        )}
-      </div>
+          <button type="submit" className="login-button">
+            Login
+          </button>
+        </form>
+      ) : (
+        <RefreshSection
+          newPassword={newPassword}
+          setNewPassword={setNewPassword}
+          setErrorMessage={setErrorMessage}
+          handleKeyDown={handleKeyDown}
+          password={password}
+        />
+      )}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 };
