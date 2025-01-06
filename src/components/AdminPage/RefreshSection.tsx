@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../../styles/refresh.css";
+import "./refresh.module.css";
 
 interface RefreshSectionProps {
   newPassword: string;

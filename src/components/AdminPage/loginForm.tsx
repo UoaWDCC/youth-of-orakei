@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../../styles/refresh.css";
+import "./refresh.module.css";
 import RefreshSection from "./RefreshSection";
 
 const LoginForm = () => {
