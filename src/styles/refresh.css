@@ -1,121 +1,153 @@
 /* loginForm.css */
 
-html, body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    font-family: "Overpass", sans-serif;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  font-family: "Overpass", sans-serif;
+}
 
 .login-container {
-    width: 100dvw;
-    height: 100dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #C8E4AE;
-    overflow: hidden;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c8e4ae;
+  overflow: hidden;
+}
+
+.login-form-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form {
+  margin-bottom: 10px;
+}
+
+.password-label {
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+.password-input {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.login-button {
+  background-color: #294e03;
+  padding: 8px 15px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+}
+
+.error-message {
+  color: red;
+}
+
+.refresh-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logged-in-message {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.change-password-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.change-password-button {
+  background-color: #294e03;
+  padding: 8px 15px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+}
+
+.password-changed-message {
+  color: #28a745;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.refresh-button {
+  background-color: #294e03;
+  padding: 8px 15px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.logs-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.logs-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.logs-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.log-message {
+  font-size: 0.875rem;
+}
+
+.refresh-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+  max-width: 600px;
+}
+
+.refresh-button {
+  background-color: #294e03;
+  padding: 12px 20px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.refresh-button:hover {
+  background-color: #1d3802;
+}
+
+.refresh-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .refresh-buttons {
+    grid-template-columns: 1fr;
   }
-  
-  .login-form-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .login-form {
-    margin-bottom: 10px;
-  }
-  
-  .password-label {
-    margin-right: 10px;
-    font-weight: 600;
-  }
-  
-  .password-input {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 8px;
-    margin-right: 10px;
-  }
-  
-  .login-button {
-    background-color: #294E03;
-    padding: 8px 15px;
-    border-radius: 999px;
-    color: white;
-    font-weight: 600;
-  }
-  
-  .error-message {
-    color: red;
-  }
-  
-  .refresh-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .logged-in-message {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .change-password-form {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .change-password-button {
-    background-color: #294E03;
-    padding: 8px 15px;
-    border-radius: 999px;
-    color: white;
-    font-weight: 600;
-  }
-  
-  .password-changed-message {
-    color: #28A745;
-    font-weight: bold;
-    margin-left: 10px;
-  }
-  
-  .refresh-button {
-    background-color: #294E03;
-    padding: 8px 15px;
-    border-radius: 999px;
-    color: white;
-    font-weight: 600;
-    margin-top: 10px;
-  }
-  
-  .logs-container {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .logs-title {
-    font-size: 1.125rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .logs-list {
-    list-style-type: disc;
-    padding-left: 20px;
-    max-height: 150px;
-    overflow-y: auto;
-    background-color: #F0F0F0;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  
-  .log-message {
-    font-size: 0.875rem;
-  }
-  
+}
