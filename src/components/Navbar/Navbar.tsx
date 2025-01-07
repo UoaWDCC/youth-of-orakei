@@ -1,8 +1,8 @@
 import styles from './nav.module.css'
 import SillyMode from "../SillyMode/SillyMode.tsx";
 import React from "react";
-import {Simulate} from "react-dom/test-utils";
-import {Bars3Icon, XMarkIcon} from "@heroicons/react/20/solid";
+import { Simulate } from "react-dom/test-utils";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import toggle = Simulate.toggle;
 
 
@@ -64,9 +64,9 @@ const Navbar = () => {
 
                 <button className={styles.hamburger} onClick={toggleMobileMenu}>
                     {isMobileMenuOpen ? (
-                        <XMarkIcon className="h-6 w-6 text-black"/>
+                        <XMarkIcon className="h-6 w-6 text-black" />
                     ) : (
-                        <Bars3Icon className="h-6 w-6 text-black"/>
+                        <Bars3Icon className="h-6 w-6 text-black" />
                     )}
                 </button>
 
@@ -91,8 +91,8 @@ const Navbar = () => {
                     <a href="/">Home</a>
                     <a href="/projects">Projects</a>
                     <a href="/members">Members</a>
-                    <a href="/contact">Contact</a>
-                    <a href="/archive">Archive</a>
+                    <a href="/contact">Contact Us</a>
+                    <a href="/archive">History</a>
                 </nav>
                 {silly
                     ? <button id="silly-toggle" className={styles.sillyButtonActive} onClick={sillyHandler}>
@@ -104,7 +104,7 @@ const Navbar = () => {
 
 
             </header>
-            {silly && <SillyMode setSilly={setSilly}/>}
+            {silly && <SillyMode setSilly={setSilly} />}
         </>
     );
 };
