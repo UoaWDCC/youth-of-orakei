@@ -5,10 +5,11 @@ import Layout from '../layouts/layout.astro';
 import { NotionAPI } from 'notion-client';
 import NotionPage from '../components/NotionPage';
 import IndexHeading from "../components/index page/IndexHeading";
-
+console.log("helloaaa")
 const notion = new NotionAPI();
 const pageId = '7bc7f1106e404a4dad6c055c9579726d';
 const recordMap = await notion.getPage(pageId);
+
 ---
 
 <html lang="en">

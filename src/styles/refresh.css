@@ -14,6 +14,7 @@ body {
   width: 100dvw;
   height: 100dvh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #c8e4ae;
@@ -39,11 +40,14 @@ body {
   border-radius: 8px;
   padding: 8px;
   margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 8px;
 }
 
 .login-button {
   background-color: #294e03;
   padding: 8px 15px;
+
   border-radius: 999px;
   color: white;
   font-weight: 600;
@@ -91,7 +95,6 @@ body {
   border-radius: 999px;
   color: white;
   font-weight: 600;
-  margin-top: 10px;
 }
 
 .logs-container {
@@ -124,7 +127,8 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  margin: 20px 0;
+  margin-bottom: 10px;
+  margin-top: 5px;
   max-width: 600px;
 }
 

@@ -99,7 +99,7 @@ const Navbar = () => {
           <a href="/projects">Projects</a>
           <a href="/members">Members</a>
           <a href="/contact">Contact Us</a>
-          <a href="/archive">History</a>
+          <a href="/history">History</a>
         </nav>
         {silly ? (
           <button
