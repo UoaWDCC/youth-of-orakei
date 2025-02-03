@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
-import '../../styles/refresh.css';
+import React, { useState, useEffect, useRef } from "react";
 
 interface RefreshSectionProps {
   newPassword: string;
   setNewPassword: (value: string) => void;
   setErrorMessage: (message: string) => void;
-  handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>, formId: string) => void;
+  handleKeyDown: (
+    event: React.KeyboardEvent<HTMLInputElement>,
+    formId: string
+  ) => void;
   password: string;
 }
 
@@ -34,7 +36,7 @@ const RefreshSection: React.FC<RefreshSectionProps> = ({
     };
   }, []);
 
-  const handleRefresh = async () => {
+  const handleRefresh = async (endpoint: string) => {
     setIsRefreshing(true);
     setLogs([]);
 
@@ -45,85 +47,136 @@ const RefreshSection: React.FC<RefreshSectionProps> = ({
     abortControllerRef.current = new AbortController();
 
     try {
-      const response = await fetch('/api/refresh-login', {
-        method: 'POST',
+      const response = await fetch(`/api/${endpoint}`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ action: 'refresh', password }),
+        body: JSON.stringify({ password }),
         signal: abortControllerRef.current.signal,
       });
 
-      const reader = response.body?.getReader();
-      if (!reader) {
-        throw new Error('Failed to get response reader');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+
+      const reader = response.body?.getReader();
+      if (!reader) throw new Error("Failed to get response reader");
 
       while (true) {
         const { done, value } = await reader.read();
-        if (done) break;
+
+        if (done) {
+          setIsRefreshing(false);
+          break;
+        }
 
         const chunk = new TextDecoder().decode(value);
-        const messages = chunk.split('\n\n');
-        messages.forEach((message) => {
-          if (message.startsWith('data: ')) {
+        const messages = chunk.split("\n\n");
+
+        for (const message of messages) {
+          if (message.startsWith("data: ")) {
             try {
               const logMessage = JSON.parse(message.slice(6));
               setLogs((prevLogs) => [...prevLogs, logMessage]);
             } catch (error) {
-              console.error('Error parsing log message:', error);
+              console.error("Error parsing log message:", error);
             }
           }
-        });
+        }
       }
-
-      setIsRefreshing(false);
-      window.location.href = '/';
     } catch (error: any) {
-      if (error.name === 'AbortError') {
-        console.log('Fetch aborted');
-      } else {
-        console.error('Error during refresh:', error);
-        setErrorMessage('Failed to refresh. Try again.');
+      console.error("Error during refresh:", error);
+      setErrorMessage("Failed to refresh. Try again.");
+      setIsRefreshing(false);
+    } finally {
+      if (abortControllerRef.current) {
+        abortControllerRef.current = null;
       }
       setIsRefreshing(false);
     }
   };
 
-  const handlePasswordChange = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handlePasswordChange = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
 
-    const response = await fetch('/api/refresh-login', {
-      method: 'POST',
-      body: JSON.stringify({ action: 'change-password', password, newPassword }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    try {
+      const response = await fetch("/api/refresh-login", {
+        method: "POST",
+        body: JSON.stringify({
+          action: "change-password",
+          password,
+          newPassword,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    const result = await response.json();
-    if (result.success) {
-      setErrorMessage('Password updated successfully.');
-      setNewPassword('');
-      setPasswordChanged(true);
-      setTimeout(() => setPasswordChanged(false), 3000);
-    } else {
-      setErrorMessage('Failed to update password. Try again.');
+      const result = await response.json();
+      if (result.success) {
+        setErrorMessage("Password updated successfully.");
+        setNewPassword("");
+        setPasswordChanged(true);
+        window.location.reload();
+      } else {
+        setErrorMessage("Failed to update password. Try again.");
+      }
+    } catch (error) {
+      setErrorMessage("Failed to update password. Try again.");
     }
   };
 
   return (
     <div className="refresh-section">
       <p className="logged-in-message">Logged in</p>
-      <form id="change-password-form" onSubmit={handlePasswordChange} className="change-password-form">
-        <label htmlFor="new-password" className="password-label">New Password: (Optional)</label>
+      <div className="refresh-buttons">
+        <button
+          onClick={() => handleRefresh("refresh-members")}
+          disabled={isRefreshing}
+          className="refresh-button"
+        >
+          Refresh Members
+        </button>
+        <button
+          onClick={() => handleRefresh("refresh-projects")}
+          disabled={isRefreshing}
+          className="refresh-button"
+        >
+          Refresh Projects
+        </button>
+        <button
+          onClick={() => handleRefresh("refresh-homepage")}
+          disabled={isRefreshing}
+          className="refresh-button"
+        >
+          Refresh Homepage
+        </button>
+        <button
+          onClick={() => handleRefresh("refresh-teams")}
+          disabled={isRefreshing}
+          className="refresh-button"
+        >
+          Refresh Teams
+        </button>
+      </div>
+      <form
+        id="change-password-form"
+        onSubmit={handlePasswordChange}
+        className="change-password-form"
+      >
+        <label htmlFor="new-password" className="password-label">
+          New Password: (Optional)
+        </label>
         <input
           type="password"
           id="new-password"
           name="new-password"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
-          onKeyDown={(e) => handleKeyDown(e, 'change-password-form')}
+          onKeyDown={(e) => handleKeyDown(e, "change-password-form")}
           required
           className="password-input"
         />
@@ -134,13 +187,6 @@ const RefreshSection: React.FC<RefreshSectionProps> = ({
           <span className="password-changed-message">Password changed!</span>
         )}
       </form>
-      <button
-        onClick={handleRefresh}
-        className="refresh-button"
-        disabled={isRefreshing}
-      >
-        {isRefreshing ? 'Refreshing...' : 'Refresh'}
-      </button>
       {logs.length > 0 && (
         <div className="logs-container">
           <h3 className="logs-title">Refresh Logs:</h3>
