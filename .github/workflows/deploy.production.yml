@@ -1,11 +1,6 @@
-name: Fly Deploy Staging
+name: Fly Deploy Production
 
-on:
-  push:
-    branches:
-      - ORAKEI-Staging
-      - ORAKEI-Fly-Volume
-      - ORAKEI-Thanos
+on: [workflow_dispatch]
 
 jobs:
   test-vars:
