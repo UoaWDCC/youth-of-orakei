@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: Notion
     env:
-      FLY_API_TOKEN: ${{ secrets.FLY_STAGING_API_TOKEN }}
+      FLY_API_TOKEN: ${{ secrets.FLY_PRODUCTION_API_TOKEN }}
       ANTON: ${{ secrets.ANTON }}
       AntonVar: ${{ vars.ANTONVAR }}
       NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
