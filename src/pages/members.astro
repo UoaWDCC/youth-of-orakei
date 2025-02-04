@@ -27,6 +27,7 @@ let { teamsDict, projects } = sortMembersByTeam(members);
 
 let teamDescription: TeamDescriptions[] = await serveTeamDescriptions();
 
+
 function mapTeamWithDesc(
   teams: { [teamName: string]: memberData[] },
   teamDescription: TeamDescriptions[],

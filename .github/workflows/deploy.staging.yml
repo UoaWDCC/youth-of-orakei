@@ -5,6 +5,7 @@ on:
     branches:
       - ORAKEI-Staging
       - ORAKEI-Fly-Volume
+      - ORAKEI-Thanos
 
 jobs: # remove these tests in production - Anton
   deploy-web:
