@@ -7,32 +7,12 @@ on:
       - ORAKEI-Fly-Volume
 
 jobs: # remove these tests in production - Anton
-  test-vars:
-    name: Test Var
-    runs-on: ubuntu-latest
-    environment: Notion
-    steps:
-      - name: Test ANTON Secret
-        run: echo "the name is ${{ secrets.ANTON }}"
-      - name: Test NOTION_MEMBERS_ID Secret
-        run: echo "Notion Members ID is ${{ secrets.NOTION_MEMBERS_ID }}"
-      - name: Test NOTION_TOKEN Secret
-        run: echo "Notion Token is ${{ secrets.NOTION_TOKEN }}"
-      - name: Test NOTION_TOKEN Secret
-        run: echo "Notion Token is ${{ vars.ANTONVAR }}"
-      - name: Test NOTION_HOMEPAGE Secret
-        run: echo "Notion Homepage is ${{ secrets.NOTION_HOMEPAGE_ID}}"
-      - name: Test NOTION_HOMEPAGE Secret
-        run: echo "Notion NOTION_TEAMS_ID is ${{ secrets.NOTION_TEAMS_ID}}"
-      - name: Test NOTION_PROJECTS_ID Secret
-        run: echo "Notion Homepage is ${{ secrets.NOTION_PROJECTS_ID}}"
-
   deploy-web:
     name: Deploy Web
     runs-on: ubuntu-latest
     environment: Notion
     env:
-      FLY_API_TOKEN: ${{ secrets.FLY_STAGING_API_TOKEN }} 
+      FLY_API_TOKEN: ${{ secrets.FLY_STAGING_API_TOKEN }}
       ANTON: ${{ secrets.ANTON }}
       AntonVar: ${{ vars.ANTONVAR }}
       NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}

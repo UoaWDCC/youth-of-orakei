@@ -17,6 +17,3 @@ primary_region = 'syd'
   cpu_kind = 'shared'
   cpus = 1
 
-[mounts]
-  source = "wdcc_orakei_staging_storage"
-  destination = "/data"
