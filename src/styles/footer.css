@@ -23,8 +23,9 @@
 
 .organization img {
     width: 160px;
-    max-height: 125px;
+    height: 160px;
     margin: auto;
+    object-fit: contain;
 }
 
 
@@ -119,6 +120,17 @@ img.soclog{
     width: 26px;
     height:auto;
     padding: 3px;
+}
+
+@media (max-width: 600px) {
+    .organization img {
+        max-width: 100px; /* Smaller max-width for mobile screens */
+    }
+    
+    .company {
+        flex-wrap: wrap; /* Wraps logos to fit within the screen */
+        gap: 10px; /* Adds space between wrapped logos */
+    }
 }
 
 @media screen and (max-width: 1342px) {
