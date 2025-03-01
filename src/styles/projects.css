@@ -129,6 +129,17 @@
   border-bottom-right-radius: var(--common-radius);
 }
 
+.project-signup {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 20px 10px 3px 10px;
+  width: 35%;
+  height: 100px;
+  text-align: center;
+  border-top-left-radius: var(--common-radius);
+}
+
 .project-team-right-corner-element {
   position: absolute;
   top: 0;
@@ -154,6 +165,34 @@
   overflow: hidden;
   color: transparent;
   text-indent: 100%;
+}
+
+.project-team-bottom-right-corner-element {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 50px;
+  margin-bottom: 100px;
+  margin-right: 9px;
+  border-bottom-right-radius: var(--common-radius);
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.project-team-bottom-left-corner-element {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 50px;
+  margin-right: 35%;
+  margin-bottom: 10px;
+  border-bottom-right-radius: var(--common-radius);
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /* CARDS */
