@@ -77,6 +77,7 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
           onClick={handleBack}
           className="index-carousel-button index-carousel-button-left"
           style={{ left: 10 }}
+          aria-label="Back"
         >
           <ArrowBackIosIcon style={{ width: 50, height: 50 }} />
         </button>
@@ -84,6 +85,7 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
           onClick={handleForward}
           className="index-carousel-button index-carousel-button-right"
           style={{ right: 10 }}
+          aria-label="Forward"
         >
           <ArrowForwardIosIcon style={{ width: 50, height: 50 }} />
         </button>
@@ -118,6 +120,7 @@ export default function ImageCarousel({ carousels }: CarouselProps) {
                     ? "image-carousel-indicator"
                     : "image-carousel-indicator image-carousel-indicator-inactive"
                 }
+                aria-label={`carousel index ${index}`}
               ></button>
             ))}
           </span>
