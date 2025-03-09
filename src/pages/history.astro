@@ -12,58 +12,8 @@ const recordMap = await notion.getPage(pageId);
 
 ---
 
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <meta name="generator" content={Astro.generator} />
-  <title>Youth of Ōrākei | History</title>
-  <style>
 
-    .contact-wrapper {
-          padding: 20px;
-          position: relative;
-          overflow: hidden;
-          background-image: url('/assets/YOO_index-hero-bg-2.svg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center;
-        }
-
-    /* .contact-wrapper {
-      padding: 20px;
-      position: relative;
-      overflow: hidden;
-      background-image: 
-        url('/assets/YOO_index-hero-bg-2.svg');
-      background-repeat: repeat;
-      background-size: 2500px 10000px;
-    } */
-
-    .notion-wrapper {
-      overflow-x: auto;
-      background-color: rgba(255, 255, 255, 0.658); 
-      padding: 20px;
-      margin: 0 auto; /* Center horizontally */
-      max-width: 1200px; /* Control the width */
-      border-radius: 10px; /* Optional for rounded corners */
-    }
-
-    .heading-wrapper {
-          margin-top: 40px; 
-          margin-bottom: 20px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          
-        }
-
-  </style>
-</head>
-
-<body>
-  <Layout>
+  <Layout title="Youth of Ōrākei | History" description="Youth of Ōrākei's History page, showcasing past members.">
     <div class="contact-wrapper">
       <div class="heading-wrapper">
         <IndexHeading>Archive of Past Members and Projects</IndexHeading>
@@ -73,7 +23,4 @@ const recordMap = await notion.getPage(pageId);
       </div>
     </div>
   </Layout>
-</body>
-
-</html>
 

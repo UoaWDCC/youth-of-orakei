@@ -52,77 +52,71 @@ function mapTeamWithDesc(
 let teamWithDesc: (Team | null)[] = mapTeamWithDesc(teamsDict, teamDescription);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Youth of Ōrākei | Members</title>
-  </head>
-  <body>
+<Layout
+  title="Our Members | Youth of Ōrākei"
+  description="Meet the dedicated members of Youth of Ōrākei who serve our community."
+>
+  <div class="members-wrapper">
     <section class="section-background">
-      <Layout>
-        <div class="team-dropdown-container">
-          <TeamDropdown client:only="react" />
-        </div>
+      <div class="team-dropdown-container">
+        <TeamDropdown client:only="react" />
+      </div>
 
-        <div class="nav" id="desktop-nav">
-          <button class="lead-button"
-            ><a href="#leadership-section">LEADERSHIP</a></button
-          >
-          <button class="com-button"
-            ><a href="#communications-section">COMMUNICATIONS</a></button
-          >
-          <button class="proj-button"
-            ><a href="#projects-section">PROJECTS</a></button
-          >
-        </div>
+      <div class="nav" id="desktop-nav">
+        <button class="lead-button"
+          ><a href="#leadership-section">LEADERSHIP</a></button
+        >
+        <button class="com-button"
+          ><a href="#communications-section">COMMUNICATIONS</a></button
+        >
+        <button class="proj-button"
+          ><a href="#projects-section">PROJECTS</a></button
+        >
+      </div>
 
-        {
-          teamWithDesc.map((team: Team | null, index: number) =>
-            team ? (
-              index % 2 === 0 ? (
-                <TeamDisplayLeft
-                  teamName={team.teamName}
-                  team={team.members}
-                  teamDescription={team.description}
-                />
-              ) : (
-                <TeamDisplayRight
-                  teamName={team.teamName}
-                  team={team.members}
-                  teamDescription={team.description}
-                />
-              )
-            ) : null,
-          )
-        }
-
-        <ProjectTeam client:only="react" projects={projects} />
-      </Layout>
-    </section>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const savedTeam = localStorage.getItem("selectedTeam");
-
-        if (savedTeam) {
-          showTeamSection(savedTeam); // Show the previously selected team section
-        }
-      });
-      function showTeamSection(team: string) {
-        // Hide all sections
-        document.querySelectorAll(".team-section").forEach((section) => {
-          (section as HTMLElement).style.display = "none";
-        });
-
-        // Show the selected team section
-        const teamSection = document.getElementById(`${team}-section`);
-        if (teamSection) {
-          (teamSection as HTMLElement).style.display = "block";
-        }
+      {
+        teamWithDesc.map((team: Team | null, index: number) =>
+          team ? (
+            index % 2 === 0 ? (
+              <TeamDisplayLeft
+                teamName={team.teamName}
+                team={team.members}
+                teamDescription={team.description}
+              />
+            ) : (
+              <TeamDisplayRight
+                teamName={team.teamName}
+                team={team.members}
+                teamDescription={team.description}
+              />
+            )
+          ) : null,
+        )
       }
-    </script>
-  </body>
-</html>
+
+      <ProjectTeam client:only="react" projects={projects} />
+    </section>
+  </div>
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const savedTeam = localStorage.getItem("selectedTeam");
+
+    if (savedTeam) {
+      showTeamSection(savedTeam); // Show the previously selected team section
+    }
+  });
+  function showTeamSection(team: string) {
+    // Hide all sections
+    document.querySelectorAll(".team-section").forEach((section) => {
+      (section as HTMLElement).style.display = "none";
+    });
+
+    // Show the selected team section
+    const teamSection = document.getElementById(`${team}-section`);
+    if (teamSection) {
+      (teamSection as HTMLElement).style.display = "block";
+    }
+  }
+</script>
