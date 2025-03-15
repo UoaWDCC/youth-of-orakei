@@ -122,6 +122,13 @@ img.soclog{
     padding: 3px;
 }
 
+.school-logo {
+    width: 50px; !important;
+    height: 50px; !important;
+    margin: auto;
+    object-fit: contain;
+}
+
 @media (max-width: 600px) {
     .organization img {
         max-width: 100px; /* Smaller max-width for mobile screens */
