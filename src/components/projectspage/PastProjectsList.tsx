@@ -31,85 +31,85 @@ export default function PastProjectsList({ projects }: PastProjectsListProps) {
         }
 
         return (
+          <div
+            key={index}
+            className="past-project-container"
+            style={{
+              backgroundColor: headerColour,
+              position: "relative",
+              padding: "10px",
+            }}
+          >
+            <div className="index-event-img">
+              <img src={project.cover} alt={project.alt} />
+            </div>
             <div
-                key={index}
-                className="past-project-container"
-                style={{
-                  backgroundColor: headerColour,
-                  position: "relative",
-                  padding: "10px",
-                }}
+              className="project-team"
+              style={{ backgroundColor: headerColour, color: infoColour }}
             >
-              <div className="index-event-img">
-                <img src={project.cover} alt={project.alt}/>
-              </div>
-              <div
-                  className="project-team"
-                  style={{backgroundColor: headerColour, color: infoColour}}
-              >
-                <h2 className="project-heading">
-                  <b>{project.team}</b>
-                </h2>
-              </div>
-              <div
-                  className="project-team-right-corner-element"
-                  style={{boxShadow: `-15px 0px ${headerColour}`}}
-              >
-                corn
-              </div>
-              <div
-                  className="project-team-left-corner-element"
-                  style={{boxShadow: `-15px 0px ${headerColour}`}}
-              >
-                corn
-              </div>
+              <h2 className="project-heading">
+                <b>{project.team}</b>
+              </h2>
+            </div>
+            <div
+              className="project-team-right-corner-element"
+              style={{ boxShadow: `-15px 0px ${headerColour}` }}
+            >
+              corn
+            </div>
+            <div
+              className="project-team-left-corner-element"
+              style={{ boxShadow: `-15px 0px ${headerColour}` }}
+            >
+              corn
+            </div>
 
-              <div className="index-event-details">
-                <div className="index-event-date-and-title">
-                  <div className="index-event-date">
-                    <h5>
-                      {project.date
-                          ? `${new Date(project.date).toLocaleDateString("en-US", {
-                            weekday: "long",
-                            month: "long",
-                            day: "numeric"
-                          })}, ${new Date(project.date).toLocaleTimeString("en-US", {
-                            hour: "2-digit",
-                            minute: "2-digit"
-                          })}`
-                          : "No date available"}
-                    </h5>
-                  </div>
-                  <div className="index-event-title">
-                    <h2>
-                      <b>{project.title}</b>
-                    </h2>
-                  </div>
+            <div className="index-event-details">
+              <div className="index-event-date-and-title">
+                <div className="index-event-date">
+                  <h5>
+                    {project.date
+                      ? `${new Date(project.date).toLocaleDateString("en-US", {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric"
+                      })}, ${new Date(project.date).toLocaleTimeString("en-US", {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                      })}`
+                      : "No date available"}
+                  </h5>
                 </div>
-                <div className="index-event-description">
-                  <h5>{project.description}</h5>
+                <div className="index-event-title">
+                  <h2>
+                    <b>{project.title}</b>
+                  </h2>
                 </div>
               </div>
-
-              <div className="project-signup" style={{backgroundColor: headerColour, color: infoColour}}>
-                <h2 className="project-heading">
-                  <b>placeholder</b>
-                </h2>
-              </div>
-
-              <div
-                  className="project-team-bottom-right-corner-element"
-                  style={{boxShadow: `0 10px ${headerColour}`}}
-              >
-                corn
-              </div>
-              <div
-                  className="project-team-bottom-left-corner-element"
-                  style={{boxShadow: `15px 0px ${headerColour}`}}
-              >
-                corn
+              <div className="index-event-description">
+                <h5>{project.description}</h5>
               </div>
             </div>
+
+            <div className="project-signup" style={{ backgroundColor: headerColour, color: infoColour }}>
+              <h2 className="project-heading">
+                <b>{project.title}</b>
+              </h2>
+            </div>
+
+            <div
+              className="project-team-bottom-right-corner-element"
+              style={{ boxShadow: `0 10px ${headerColour}` }}
+            >
+              corn
+            </div>
+            <div
+              className="project-team-bottom-left-corner-element"
+              style={{ boxShadow: `15px 0px ${headerColour}` }}
+            >
+              corn
+            </div>
+          </div>
         );
       })}
     </div>
