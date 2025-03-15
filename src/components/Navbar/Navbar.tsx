@@ -101,23 +101,6 @@ const Navbar = () => {
           <a href="/contact">Contact Us</a>
           <a href="/history">History</a>
         </nav>
-        {silly ? (
-          <button
-            id="silly-toggle"
-            className={styles.sillyButtonActive}
-            onClick={sillyHandler}
-          >
-            disable silly mode
-          </button>
-        ) : (
-          <button
-            id="silly-toggle"
-            className={styles.sillyButtonInactive}
-            onClick={sillyHandler}
-          >
-            enable silly mode
-          </button>
-        )}
       </header>
       {silly && <SillyMode setSilly={setSilly} />}
     </>
