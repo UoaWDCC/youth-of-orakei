@@ -27,7 +27,6 @@ let { teamsDict, projects } = sortMembersByTeam(members);
 
 let teamDescription: TeamDescriptions[] = await serveTeamDescriptions();
 
-
 function mapTeamWithDesc(
   teams: { [teamName: string]: memberData[] },
   teamDescription: TeamDescriptions[],
@@ -65,18 +64,6 @@ let teamWithDesc: (Team | null)[] = mapTeamWithDesc(teamsDict, teamDescription);
       <Layout>
         <div class="team-dropdown-container">
           <TeamDropdown client:only="react" />
-        </div>
-
-        <div class="nav" id="desktop-nav">
-          <button class="lead-button"
-            ><a href="#leadership-section">LEADERSHIP</a></button
-          >
-          <button class="com-button"
-            ><a href="#communications-section">COMMUNICATIONS</a></button
-          >
-          <button class="proj-button"
-            ><a href="#projects-section">PROJECTS</a></button
-          >
         </div>
 
         {
