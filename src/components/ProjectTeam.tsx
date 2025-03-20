@@ -61,7 +61,7 @@ const ProjectTeams = ({ projects }: ProjectTeamsProps) => {
               key={member.name}
               cover={member.cover}
               name={member.name}
-              team={member.team}
+              team={""}
               desc={member.description}
               color={"--YOO-Red-Light"}
             />

@@ -27,7 +27,7 @@ const PersonCard: React.FC<PersonCardProps> = ({ team, desc, name, cover, color 
       </div>
       <p className={className} style={{ backgroundColor: `var(${color})` }}>
         <b>{name}</b><br />
-        {team}<br />
+        {team && <>{team}<br /></>}
         {desc}
       </p>
     </div>

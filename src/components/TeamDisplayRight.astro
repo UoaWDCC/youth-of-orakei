@@ -18,22 +18,28 @@ const { teamName, team, teamDescription } = Astro.props;
     <div class="communications" id="com-section">
       <div class="left2">
         {
-          team.map((member: { name: any; team: any; desc: any; cover: any }) => (
-            <PersonCard
-              name={member.name}
-              team={member.team}
-              desc={member.desc}
-              cover={member.cover}
-              color={"--YOO-Blue-Light"}
-            />
-          ))
+          team.map(
+            (member: {
+              name: any;
+              team: any;
+              description: any;
+              cover: any;
+            }) => (
+              <PersonCard
+                name={member.name}
+                team={member.team}
+                desc={member.description}
+                cover={member.cover}
+                color={"--YOO-Blue-Light"}
+              />
+            ),
+          )
         }
       </div>
       <div class="right2">
         <h2 class="coms-title"><b>{teamName}</b></h2>
         <p class="main-description-box-coms">
           {teamDescription}
-
         </p>
       </div>
     </div>
