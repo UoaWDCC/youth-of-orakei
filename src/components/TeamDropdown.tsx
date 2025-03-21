@@ -21,12 +21,12 @@ const TeamDropdown = () => {
     setSelectedTeam(team);
     if (team) {
       // Show the corresponding team section based on the selected option
-      showTeamSection(team.value);
+      showTeamSectionMobile(team.value);
     }
   };
 
   // Function to display the selected team section and hide others
-  const showTeamSection = (team: string) => {
+  const showTeamSectionMobile = (team: string) => {
     // Hide all sections initially
     document.querySelectorAll('.team-section').forEach((section) => {
       (section as HTMLElement).style.display = 'none';

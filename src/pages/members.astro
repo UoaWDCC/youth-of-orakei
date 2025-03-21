@@ -106,9 +106,9 @@ let teamWithDesc: (Team | null)[] = mapTeamWithDesc(teamsDict, teamDescription);
           (teamSection as HTMLElement).style.display = "block";
         }
       }
+    </script>
 
-      <ProjectTeam client:only="react" projects={projects} />
-    </section>
+    <ProjectTeam client:only="react" projects={projects} />
   </div>
 </Layout>
 
