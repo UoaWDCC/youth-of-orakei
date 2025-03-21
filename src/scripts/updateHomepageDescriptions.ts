@@ -48,7 +48,7 @@ async function uploadImageToSupabase(imageBuffer: Buffer, filePath: string): Pro
     }
 
     // Now upload the new image
-    const { data, error } = await supabase.storage.from('images').upload(filePath, compressedImageBuffer);
+    const { error } = await supabase.storage.from('images').upload(filePath, compressedImageBuffer);
 
     // If there's an error uploading, check if it's because it already exists
     if (error) {
@@ -158,5 +158,5 @@ export async function updateHomepageDescriptions(controller: ReadableStreamDefau
     } catch (error) {
         console.error("Error retrieving or processing homepage descriptions:", error);
         sendLog(controller, `Error retrieving or processing homepage descriptions: ${(error as Error).message}`);
-    } 
+    }
 }

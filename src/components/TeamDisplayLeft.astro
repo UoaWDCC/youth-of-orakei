@@ -23,15 +23,24 @@ const { teamName, team, teamDescription } = Astro.props;
         </p>
       </div>
       <div class="right1">
-        {team.map((member: { name: any; team: any; desc: any; cover: any; }) => (
-          <PersonCard
-            name={member.name}
-            team={member.team}
-            desc={member.desc}
-            cover={member.cover}
-            color={"--YOO-Green-Lightest"}
-          />
-        ))}
+        {
+          team.map(
+            (member: {
+              name: any;
+              team: any;
+              description: any;
+              cover: any;
+            }) => (
+              <PersonCard
+                name={member.name}
+                team={""}
+                desc={member.description}
+                cover={member.cover}
+                color={"--YOO-Green-Lightest"}
+              />
+            ),
+          )
+        }
       </div>
     </div>
   </body>

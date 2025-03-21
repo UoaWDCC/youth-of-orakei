@@ -69,7 +69,14 @@ export default function PastProjectsList({ projects }: PastProjectsListProps) {
                 <div className="index-event-date">
                   <h5>
                     {project.date
-                      ? `${new Date(project.date).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}, ${new Date(project.date).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}`
+                      ? `${new Date(project.date).toLocaleDateString("en-US", {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric"
+                      })}, ${new Date(project.date).toLocaleTimeString("en-US", {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                      })}`
                       : "No date available"}
                   </h5>
                 </div>
@@ -82,6 +89,25 @@ export default function PastProjectsList({ projects }: PastProjectsListProps) {
               <div className="index-event-description">
                 <h5>{project.description}</h5>
               </div>
+            </div>
+
+            <div className="project-signup" style={{ backgroundColor: headerColour, color: infoColour }}>
+              <h2 className="project-heading">
+                <b>{project.title}</b>
+              </h2>
+            </div>
+
+            <div
+              className="project-team-bottom-right-corner-element"
+              style={{ boxShadow: `0 10px ${headerColour}` }}
+            >
+              corn
+            </div>
+            <div
+              className="project-team-bottom-left-corner-element"
+              style={{ boxShadow: `15px 0px ${headerColour}` }}
+            >
+              corn
             </div>
           </div>
         );
