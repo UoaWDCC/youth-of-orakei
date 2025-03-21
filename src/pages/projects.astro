@@ -12,16 +12,7 @@ const { projects, carouselList } = await serveProjects();
 console.log(carouselList)
 
 ---
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Youth of Ōrākei | Projects</title>
-  </head>
-  <Layout>
+  <Layout title="Youth of Ōrākei | Projects" description="Youth of Ōrākei's project's page, showcasing previous, current and upcoming projects!">
     <main class="projects-page">
       <ImageCarousel client:only="react" projects={carouselList}/>
       <BlobBackground />
@@ -35,4 +26,3 @@ console.log(carouselList)
       </section>
     </main>
   </Layout>
-</html>
