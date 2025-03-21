@@ -124,9 +124,9 @@ img.soclog{
 
 .school-logo {
     width: 50px; !important;
-    height: 50px; !important;
+    max-height: 100px; !important;
     margin: auto;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 @media (max-width: 600px) {
