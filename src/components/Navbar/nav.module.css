@@ -187,7 +187,7 @@
     color: var(--YOO-Green-Primary);
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
     .hamburger {
         width: 22px;
         display: block;
