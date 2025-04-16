@@ -14,6 +14,7 @@ import TeamDropdown from "../components/TeamDropdown";
 import type { TeamDescriptions } from "../types/teamDescriptions";
 import { serveTeamDescriptions } from "../scripts/serveTeamDescriptions";
 import type { memberData } from "../types/memberData";
+import BlobBackground from "../components/BlobBackground/BlobBackground";
 
 type Team = {
   teamName: string;
@@ -55,35 +56,40 @@ let teamWithDesc: (Team | null)[] = mapTeamWithDesc(teamsDict, teamDescription);
   title="Our Members | Youth of Ōrākei"
   description="Meet the dedicated members of Youth of Ōrākei who serve our community."
 >
-  <div class="members-wrapper">
-    <section class="section-background">
-      <Layout>
-        <div class="team-dropdown-container">
-          <TeamDropdown client:only="react" />
-        </div>
+  <div style="position: relative; z-index: -10">
+    <BlobBackground zIndexVal="-10" offset="-100"/>
+  </div>
 
+  <div class="members-wrapper">
+    <section>
+      <div class="team-dropdown-container">
+        <TeamDropdown client:only="react" />
+      </div>
+
+      <div class="members-cards-wrapper">
         {
           teamWithDesc.map((team: Team | null, index: number) =>
-            team ? (
-              index % 2 === 0 ? (
-                <TeamDisplayLeft
-                  teamName={team.teamName}
-                  team={team.members}
-                  teamDescription={team.description}
-                />
-              ) : (
-                <TeamDisplayRight
-                  teamName={team.teamName}
-                  team={team.members}
-                  teamDescription={team.description}
-                />
-              )
-            ) : null,
+              team ? (
+                  index % 2 === 0 ? (
+                      <TeamDisplayLeft
+                          teamName={team.teamName}
+                          team={team.members}
+                          teamDescription={team.description}
+                      />
+                  ) : (
+                      <TeamDisplayRight
+                          teamName={team.teamName}
+                          team={team.members}
+                          teamDescription={team.description}
+                      />
+                  )
+              ) : null,
           )
         }
-
         <ProjectTeam client:only="react" projects={projects} />
-      </Layout>
+
+      </div>
+
     </section>
 
     <script>
@@ -107,8 +113,6 @@ let teamWithDesc: (Team | null)[] = mapTeamWithDesc(teamsDict, teamDescription);
         }
       }
     </script>
-
-    <ProjectTeam client:only="react" projects={projects} />
   </div>
 </Layout>
 

@@ -112,7 +112,6 @@
   display: flex;
   height: auto;
   padding: 35px;
-  margin: 60px;
   border-radius: 15px;
 }
 
@@ -266,7 +265,6 @@
 .project-button {
   width: 95%;
   /* change width later... */
-  border-radius: 15px;
   margin: 3%;
   padding: 10px;
   border-radius: 10px;
@@ -500,4 +498,27 @@ html {
     display: block;
   }
 }
+
+/* It's too cooked, I'm cooking it more by doing this I know, but it fixes some of the visibility issues */
+
+.members-cards-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  padding: 64px;
+}
+
+
+@media (max-width: 768px) {
+  .members-cards-wrapper{
+    padding: 16px;
+  }
+}
+
+
+
+
+
+
 
