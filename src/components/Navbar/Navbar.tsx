@@ -69,14 +69,6 @@ const Navbar = () => {
         </button>
 
         {/* Mobile menu */}
-
-        <button className={styles.hamburger} onClick={toggleMobileMenu}>
-          <div className={styles.hamburgerIcon}></div>
-          <div className={styles.hamburgerIcon}></div>
-          <div className={styles.hamburgerIcon}></div>
-        </button>
-
-        {/* Mobile menu */}
         <nav
           className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.open : ""}`}
         >
