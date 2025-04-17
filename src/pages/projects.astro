@@ -15,7 +15,7 @@ console.log(carouselList)
   <Layout title="Youth of Ōrākei | Projects" description="Youth of Ōrākei's project's page, showcasing previous, current and upcoming projects!">
     <main class="projects-page">
       <ImageCarousel client:only="react" projects={carouselList}/>
-      <BlobBackground />
+      <BlobBackground zIndexVal="-10" offset="-100"/>
       <div class="past-projects-banner">
         <IndexHeading>Our Past Projects</IndexHeading>
       </div>

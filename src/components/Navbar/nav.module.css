@@ -147,9 +147,8 @@
     cursor: pointer;
     padding: 0;
     z-index: 20;
-    position: absolute;
-    top: 30px;
-    right: 5%;
+    width: 24px;
+    height: 24px;
 }
 
 .hamburgerIcon {
@@ -187,9 +186,8 @@
     color: var(--YOO-Green-Primary);
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
     .hamburger {
-        width: 22px;
         display: block;
     }
 
