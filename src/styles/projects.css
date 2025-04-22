@@ -4,7 +4,7 @@
 
 .project-heading {
   font-weight: 800;
-  font-size: 2.4vw;
+  font-size: var(--fontsize-h4);
 }
 
 .index-event-img {
@@ -287,7 +287,7 @@
 
   .project-heading {
     font-weight: 800;
-    font-size: var(--fontsize-h2);
+    font-size: var(--fontsize-h4);
     padding-left: 15px;
     padding-right: 15px;
     margin-top: auto;
@@ -365,7 +365,7 @@
 
   .project-heading {
     font-weight: 800;
-    font-size: var(--fontsize-h5);
+    font-size: var(--fontsize-lrg);
     padding-left: 15px;
     padding-right: 15px;
     margin: auto;
