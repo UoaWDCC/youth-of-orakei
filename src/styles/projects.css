@@ -127,13 +127,16 @@
   height: 100px;
   text-align: center;
   border-bottom-right-radius: var(--common-radius);
+  align-content: center;
 }
 
 .project-signup {
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 20px 10px 3px 10px;
+  align-content: center;
+  overflow: hidden;
+  z-index: 1;
   width: 35%;
   height: 100px;
   text-align: center;
@@ -287,9 +290,9 @@
 
   .project-heading {
     font-weight: 800;
-    font-size: var(--fontsize-h4);
-    padding-left: 15px;
-    padding-right: 15px;
+    font-size: var(--fontsize-h5);
+    padding-left: 10px;
+    padding-right: 10px;
     margin-top: auto;
   }
 
