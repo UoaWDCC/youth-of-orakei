@@ -258,12 +258,12 @@
   border-top-right-radius: var(--common-radius);
 }
 
-.index-carousel-button > * {
+.index-carousel-button>* {
   height: 2rem;
   width: 2rem;
 }
 
-.index-carousel-button:hover > * {
+.index-carousel-button:hover>* {
   scale: 1.2;
 }
 
@@ -283,6 +283,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  flex-direction: column;
 }
 
 .index-event-title {
@@ -295,7 +296,7 @@
   margin-right: 0;
   font-size: var(--fontsize-lrg);
   font-weight: 500;
-  width: 45%;
+  /* width: 45%; */
 }
 
 .image-carousel-indicators {
