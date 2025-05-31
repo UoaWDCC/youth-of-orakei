@@ -3,11 +3,11 @@ This is the global layout, reflecting the common components to all pages (header
  -->
 
 ---
-import "../styles/global.css";
-import Header from "../components/header.astro";
-import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/footer.astro";
 import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/footer.astro";
+import { DeprecatedWarning } from "../components/Navbar/DeprecatedWarning";
+import Navbar from "../components/Navbar/Navbar";
+import "../styles/global.css";
 
 interface Props {
 	title?: string;
@@ -33,22 +33,22 @@ const {
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		
+
 		<!-- Primary Meta Tags -->
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
-		
+
 		<!-- Canonical URL -->
 		<link rel="canonical" href={canonicalURL} />
-		
+
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={image} />
-		
+
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={canonicalURL} />
@@ -64,6 +64,7 @@ const {
 	<body>
 		<!--<Header />-->
 		<Navbar client:load/>
+		<DeprecatedWarning />
 		<main>
 			<slot />
 		</main>
